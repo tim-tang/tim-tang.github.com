@@ -4,13 +4,92 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://techtalk.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://techtalk.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-18T21:17:00+08:00</updated>
+   <updated>2012-05-18T21:48:55+08:00</updated>
    <id>http://techtalk.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
      <email>tang.jilong@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>Vim 实用命令</title>
+     <link href="http://techtalk.everyday-cn.com/2012/05/18/vim-usefulcommands.html"/>
+     <updated>2012-05-18T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2012/05/18/vim-usefulcommands</id>
+     <content type="html">&lt;h3&gt;光标移动&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;H：移动光标到屏幕上面&lt;/li&gt;
+&lt;li&gt;M：移动光标到屏幕中间&lt;/li&gt;
+&lt;li&gt;L：移动光标到屏幕下面&lt;/li&gt;
+&lt;li&gt;fx：移动光标到当前行的下一个x处。很明显，x可以是任意一个字母，而且你可以使用;来重复你的上一个f命令。&lt;/li&gt;
+&lt;li&gt;tx：和上面的命令类似，但是是移动到x的左边一个位置。（这真的很有用）&lt;/li&gt;
+&lt;li&gt;Fx：和fx类似，不过是往回找。&lt;/li&gt;
+&lt;li&gt;^ : 移到当前行的第一个非空字符。&lt;/li&gt;
+&lt;li&gt;*：读取光标处的字符串，n 将光标移动到它再次出现的地方。&lt;/li&gt;
+&lt;li&gt;0: 光标移动到行首&lt;/li&gt;
+&lt;li&gt;V: 选中一行&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;视图模式下剪切和拷贝&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;d：剪贴选择的内容到剪贴板。&lt;/li&gt;
+&lt;li&gt;y：拷贝选择的内容到剪贴板。&lt;/li&gt;
+&lt;li&gt;c：剪贴选择的内容到剪贴板并且进入插入模式。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;代码处理&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;%：匹配花括号，方括号，括号等。在一个括号的上面，然后按%，鼠标就会出现在匹配的另外一半括号处。&lt;/li&gt;
+&lt;li&gt;gf: 打开引用的文件。&lt;/li&gt;
+&lt;li&gt;ctrl+o: 返回到原来的文件。&lt;/li&gt;
+&lt;li&gt;ctrl+w, f: 打开引用的文件, 并split窗口给新文件。&lt;/li&gt;
+&lt;li&gt;ctrl+w, q: 关闭窗口。&lt;/li&gt;
+&lt;li&gt;gg=G   格式化全文代码&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;多列注释&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ctrl+v  选择列模式 输入I（大写），输入#或//，ctrl+[ 多列注释。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;Nerdtree插件&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;m: 提供文本文件系统菜单来创建/删除/移动/复制目录或文件&lt;/li&gt;
+&lt;li&gt;r:  refreshing current directory&lt;/li&gt;
+&lt;li&gt;R: refreshing root directory&lt;/li&gt;
+&lt;li&gt;e: browser current directory&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;文件操作&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;:e ~/Desktop/xxx   打开文件&lt;/li&gt;
+&lt;li&gt;:b#       返回到原来编辑的文件&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h3&gt;文件查找&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;vimgrep /keywords/ &lt;em&gt;*/&lt;/em&gt;.rb&lt;/li&gt;
+&lt;li&gt;:cw    打开查找结果&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;vim的实用中还需要一些插件，具体的配置可以看我们的&lt;a href=&quot;https://github.com/tim-tang/vim&quot;&gt;&lt;strong&gt;vim环境&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
    
    <entry>
      <title>Git,GitHub常用命令介绍</title>
@@ -870,101 +949,6 @@ File.delete( “chaps.txt” )
 
 
 &lt;p&gt; 就写到这里，方便将来查找。&lt;/p&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>ruby使用rails generator生成migration&model文件</title>
-     <link href="http://techtalk.everyday-cn.com/2011/11/23/ruby-rails-generator-migration-model.html"/>
-     <updated>2011-11-23T00:00:00+08:00</updated>
-     <id>http://techtalk.everyday-cn.com/2011/11/23/ruby-rails-generator-migration-model</id>
-     <content type="html">&lt;p&gt;最近在业余时间写一个&lt;a href=&quot;https://github.com/tim-tang/crawler_engine&quot; title=&quot;crawler-engine&quot;&gt;&lt;strong&gt;&lt;em&gt;crawler engine&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;的rubygem, 主要用途是通过rss抓取各个网站的最新新闻、博客等，期间用到了rails migration成数据库表结构和model，下面接介绍下如何在rubygem中使用rails/generator:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;首先我们要编写文件lib/generators/crawler_engine_generator.rb：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-require 'rails/generators'
-require 'rails/generators/migration'
-require 'rails/generators/active_record'
-class CrawlerEngineGenerator &lt; Rails::Generators::Base
-    include Rails::Generators::Migration
-    extend ActiveRecord::Generators::Migration
-    desc &quot;Generates migration for crawler engine model&quot;
-    def self.source_root
-        File.expand_path('../templates', __FILE__)
-    end
-    def create_migration_file
-        migration_template 'migration.rb', 'db/migrate/create_crawler_engine'
-    end
-    def crate_model_file
-        template 'post.rb', 'app/models/post.rb'
-        template 'source.rb', 'app/models/source.rb'
-    end
-end
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;在CrawlerEngineGenerator类中，会逐个执行public 方法。&lt;/li&gt;
-&lt;li&gt;下面可以创建我们的lib/generators/templates/migration.rb:&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-class CreateCrawlerEngine &lt; ActiveRecord::Migration
-    def self.up
-        create_table :sources, :force =&gt; true do |t|
-            t.string :site_name
-            t.string :link
-            t.string :filter
-            t.string :category
-            t.datetime :crawled_at # When to run. Could be Time.now for immediately, or sometime in the future.
-        end
-    end
-        def self.down
-        drop_table :sources
-        drop_table :posts
-    end
-end
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;如果同时生成model文件，我们只要在template目录下添加，post.rb&amp;amp;source.rb文件如下：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-class Source &lt; ActiveRecord::Base
-end
-&lt;/pre&gt;
-
-
-&lt;pre&gt;
-class Post &lt; ActiveRecord::Base
-end
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;接下来就是build的你的rubygem并安装即可，这样就可以在rails项目中执行如下命令：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-$ rails g crawler_engine
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;我们可以看到生成了migration文件和model文件。&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;blockquote&gt;&lt;p&gt;就写到这里，要查看更详细的信息可以看&lt;a href=&quot;https://github.com/tim-tang/crawler_engine&quot; title=&quot;crawler-engine&quot;&gt;&lt;strong&gt;&lt;em&gt;crawler engine&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;这个rubygem.(原创文章)&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
