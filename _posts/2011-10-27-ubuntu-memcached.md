@@ -68,5 +68,4 @@ key: []
 > 详细的memcached的服务器介绍可以查看这本书[Using_Memcached][2]
 （原创文章）
 
-  [1]: http://www.everyday-cn.com/system/pictures/929/large_memcached_stats.png?1319684668 "memcached_stat"
-  [2]: http://www.everyday-cn.com/en/ibook_list "Using_Memcached"
+  [1]: http://cms.everyday-cn.com/system/pictures/929/large_memcached_stats.png?1319684668 "memcached_stat"

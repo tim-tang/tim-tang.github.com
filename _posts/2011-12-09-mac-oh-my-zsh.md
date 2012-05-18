@@ -42,5 +42,5 @@ $ grep -h -r -e '^alias' ~/.oh-my-zsh
 > 就写到这里，更多资料可以看这里[oh-my-zsh][2]  原创文章
 
 
-  [1]: http://www.everyday-cn.com/system/pictures/1195/large_oh-my-zsh.png?1323394528 "oh my zsh"
+  [1]: http://cms.everyday-cn.com/system/pictures/1195/large_oh-my-zsh.png?1323394528 "oh my zsh"
   [2]: https://github.com/robbyrussell/oh-my-zsh "oh my zsh"

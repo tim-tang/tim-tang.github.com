@@ -60,5 +60,5 @@ key: []
     $cap deploy   ---- 以后每次可以用
 </pre>
 > 这样我们可以用shell+crontab让capistrano定时去部署master上的代码。（原创文章）
-  [1]: http://www.everyday-cn.com/en/show_blog/245 "git config"
+  [1]: http://tim.everyday-cn.com/en/show_blog/245 "git config"
   [2]: git@github.com:tim-tang/everyday.git

@@ -88,5 +88,5 @@ vim是一个很好的开发工具，对于习惯了IDE开发环境的程序员�
 > 现在基本习惯了vim的开发环境，鼠标的使用率明显减少，给个可以供学习的vim视频(需要翻墙)：[***Vimeo***][3]  (原创文章)
 
   [1]: https://github.com/tim-tang/vim "vim"
-  [2]: http://www.everyday-cn.com/system/pictures/912/medium_Screenshot%20at%202011-10-25%2011:00:08.png?1319511830 "vim"
+  [2]: http://cms.everyday-cn.com/system/pictures/912/medium_Screenshot%20at%202011-10-25%2011:00:08.png?1319511830 "vim"
   [3]: http://vimeo.com/6332848 "vimcast"

@@ -110,8 +110,8 @@ Undefined method debug_rjs= for ActionView::Base Class
 
 > (原创文章)
 
-  [1]: http://www.everyday-cn.com/zh/show_blog/ubuntu11-10-mongodb "MongoDB Installation"
-  [2]: http://www.everyday-cn.com/system/pictures/953/large_mongo_scaffold.png?1320105964 "scaffold"
-  [3]: http://www.everyday-cn.com/system/pictures/950/large_g_model.png?1320105960 "mongoid comment"
-  [4]: http://www.everyday-cn.com/system/pictures/949/large_g_controller_comments.png?1320105958 "controller"
-  [5]: http://www.everyday-cn.com/system/pictures/954/large_Screenshot.png?1320108987 "result"
+  [1]: http://tim.everyday-cn.com/zh/show_blog/ubuntu11-10-mongodb "MongoDB Installation"
+  [2]: http://cms.everyday-cn.com/system/pictures/953/large_mongo_scaffold.png?1320105964 "scaffold"
+  [3]: http://cms.everyday-cn.com/system/pictures/950/large_g_model.png?1320105960 "mongoid comment"
+  [4]: http://cms.everyday-cn.com/system/pictures/949/large_g_controller_comments.png?1320105958 "controller"
+  [5]: http://cms.everyday-cn.com/system/pictures/954/large_Screenshot.png?1320108987 "result"

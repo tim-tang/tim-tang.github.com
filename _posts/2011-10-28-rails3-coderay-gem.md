@@ -45,4 +45,4 @@ key: []
 
 
   [1]: https://github.com/tim-tang/everyday/blob/master/public/stylesheets/coderay.css "coderay"
-  [2]: http://www.everyday-cn.com/system/pictures/941/large_code_ray.png?1319766033 "coderay"
+  [2]: http://cms.everyday-cn.com/system/pictures/941/large_code_ray.png?1319766033 "coderay"

@@ -88,5 +88,5 @@ $ ps -ef|grep solr
 </pre>
 
   [1]: http://outoftime.github.com/sunspot/ "sunspot"
-  [2]: http://everyday-cn.com/system/pictures/973/large__search.png?1320390727 "search code"
-  [3]: http://everyday-cn.com/system/pictures/974/large_result_list.png?1320391117 "search_results"
+  [2]: http://cms.everyday-cn.com/system/pictures/973/large__search.png?1320390727 "search code"
+  [3]: http://cms.everyday-cn.com/system/pictures/974/large_result_list.png?1320391117 "search_results"

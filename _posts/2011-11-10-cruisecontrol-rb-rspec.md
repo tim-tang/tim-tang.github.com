@@ -79,6 +79,6 @@ $ ./cruise start
 > 到这里一个简单的CI环境就有了，我们还可以完善如将metrical/rcov生成的测试报告自动放到#rails_app/public目录下方便查看，自动启动#rails_app等等...(原创文章)
 
   [1]: http://cruisecontrolrb.thoughtworks.com/documentation "cc.rb"
-  [2]: http://www.everyday-cn.com/en/show_blog/rails3-rspec-factory_girl "rspec"
-  [3]: http://www.everyday-cn.com/system/pictures/1019/large_build_log.png?1320883392 "build_log"
-  [4]: http://www.everyday-cn.com/system/pictures/1020/large_changeset.png?1320883394 "gitlog"
+  [2]: http://cms.everyday-cn.com/en/show_blog/rails3-rspec-factory_girl "rspec"
+  [3]: http://cms.everyday-cn.com/system/pictures/1019/large_build_log.png?1320883392 "build_log"
+  [4]: http://cms.everyday-cn.com/system/pictures/1020/large_changeset.png?1320883394 "gitlog"

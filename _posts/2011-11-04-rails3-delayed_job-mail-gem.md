@@ -115,4 +115,4 @@ $ bundle exec rake jobs:clear  #同时清空delayed_jobs表
 
 
   [1]: https://github.com/collectiveidea/delayed_job "delayed job"
-  [2]: http://everyday-cn.com/system/pictures/972/large_everyday_139.png?1320368578 "mail"
+  [2]: http://cms.everyday-cn.com/system/pictures/972/large_everyday_139.png?1320368578 "mail"

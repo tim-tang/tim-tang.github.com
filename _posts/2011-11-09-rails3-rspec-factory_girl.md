@@ -133,7 +133,7 @@ $ rake spec:rcov
 > 具体rspec方面的书可以到这里下载[***The_Rspec_Book***][4],有空介绍下和CI的集成。（原创文章）
 
 
-  [1]: http://www.everyday-cn.com/system/pictures/1010/large_overview_rspec.png?1320803540 "cover"
-  [2]: http://www.everyday-cn.com/system/pictures/1009/large_eyd_user.png?1320803537 "rsec"
-  [3]: http://www.everyday-cn.com/system/pictures/1011/large_spec_eyd_controller.png?1320803542 "a"
-  [4]: http://www.everyday-cn.com/zh/ibook_download/12 "the rspec book"
+  [1]: http://cms.everyday-cn.com/system/pictures/1010/large_overview_rspec.png?1320803540 "cover"
+  [2]: http://cms.everyday-cn.com/system/pictures/1009/large_eyd_user.png?1320803537 "rsec"
+  [3]: http://cms.everyday-cn.com/system/pictures/1011/large_spec_eyd_controller.png?1320803542 "a"
+  [4]: http://cms.everyday-cn.com/zh/ibook_download/12 "the rspec book"

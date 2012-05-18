@@ -4,7 +4,7 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://techtalk.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://techtalk.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-18T15:38:02+08:00</updated>
+   <updated>2012-05-18T16:41:19+08:00</updated>
    <id>http://techtalk.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
@@ -782,45 +782,7 @@ links.each {|link| puts link}
 &lt;/pre&gt;
 
 
-&lt;ul&gt;
-&lt;li&gt;文件查询&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-File::open(“file.rb”) if File::exists?( “file.rb” )
-File.file?( “sonnet29.txt” ) # =&gt; true 
-File::directory?( “/usr/local/bin” ) # =&gt; true 
-File::directory?( “file.rb” ) # =&gt; false 
-File.readable?( “sonnet_119.txt” ) # =&gt; true 
-File.writable?( “sonnet_119.txt” ) # =&gt; true 
-File.executable?( “sonnet_119.txt” ) # =&gt; false 
-system(“touch chap.txt”) # Create a zero-length file with a system command 
-File.zero?( “chap.txt” ) # =&gt; true 
-File.size?( “sonnet_129.txt” ) # =&gt; 594 
-File.size( “sonnet_129.txt” ) # =&gt; 594 
-File::ftype( “file.rb” ) # =&gt; “file” 
-File::ctime( “file.rb” ) # =&gt; Wed Nov 08 10:06:37 -0700 2006 
-File::mtime( “file.rb” ) # =&gt; Wed Nov 08 10:44:44 -0700 2006 
-File::atime( “file.rb” ) # =&gt; Wed Nov 08 10:45:01 -0700 2006
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;操作文件权限&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-file = File.new( “books.txt”, “w” )
-file.chmod( 0755 ) 
-file = File.new( “books.txt”, “w” ).chmod(0755 ) #另一种方法
-system “ls -l books.txt” # =&gt; -rwxr-xr-x     1 mikejfz  mikejfz     0 Nov  8 22:13 
-books.txt
-&lt;/pre&gt;
-
-
-&lt;blockquote&gt;&lt;p&gt;就写到这里，方便将来查找。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt; 就写到这里，方便将来查找。&lt;/p&gt;
 </content>
    </entry>
    

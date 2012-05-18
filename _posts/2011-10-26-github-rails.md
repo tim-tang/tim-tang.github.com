@@ -51,4 +51,3 @@ GitHub 提供了很好的代码配置管理方案，特别是linux系统用户�
 
   [1]: https://github.com/tim-tang/everyday/blob/master/.gitignore "gitignore"
   [2]: http://help.github.com/linux-set-up-git/ "linux-set-up-git"
-  [3]: http://www.everyday-cn.com/en/ibook_list "git book"

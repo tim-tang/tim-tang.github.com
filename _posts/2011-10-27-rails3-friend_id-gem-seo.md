@@ -52,4 +52,4 @@ key: []
 > 最后还个问题就是slug只能识别英文，中文无法识别，所以title中存在中英文时它只会拿出英文单词作为slug,这个问题的替代解决方案是用google translate api来翻译中文，这里就不再介绍了。（原创文章）
 
   [1]: https://github.com/norman/friendly_id "friendly_id"
-  [2]: http://www.everyday-cn.com/system/pictures/931/large_friendly_id.png?1319703284 "result"
+  [2]: http://cms.everyday-cn.com/system/pictures/931/large_friendly_id.png?1319703284 "result"

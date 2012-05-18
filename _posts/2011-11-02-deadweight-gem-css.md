@@ -80,4 +80,4 @@ bundle exec rake deadweight
 > firefox也提供了类似的插件，具体可以google,希望这些工具能提高你的开发效率。（原创文章）
 
   [1]: https://github.com/aanand/deadweight "deadweight"
-  [2]: http://www.everyday-cn.com/system/pictures/958/large_nokogiri_error.png?1320198981 "nokogiri"
+  [2]: http://cms.everyday-cn.com/system/pictures/958/large_nokogiri_error.png?1320198981 "nokogiri"

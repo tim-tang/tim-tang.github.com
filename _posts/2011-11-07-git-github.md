@@ -40,4 +40,4 @@ $ git push --tag      #提交tag到github
 
 > 下面的事情就是，在服务器部署了，这里不再详述。对于git的更多使用还要在实践中更新，慢慢来吧！ (原创文章)
 
-  [1]: http://everyday-cn.com/zh/show_blog/github-rails "git"
+  [1]: http://tim.everyday-cn.com/zh/show_blog/github-rails "git"
