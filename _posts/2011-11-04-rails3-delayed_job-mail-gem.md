@@ -4,7 +4,7 @@ title: Rails3,delayed_job,mail gem异步发送邮件实现
 description: Rails3,delayed_job,mail gem异步发送邮件实现
 key: []
 ---
-我们经常在项目中遇到发送email给指定的用户，而发送的邮件的工作需要在后台作为job异步的执行，那么在rails中如何实现，我们这里就介绍一下使用[***delayed job***][1]作为后台的异步工作队列，使用rails的mailer来发送邮件，下面看详细的实现：
+我们经常在项目中遇到发送email给指定的用户，而发送的邮件的工作需要在后台作为job异步的执行，那么在rails中如何实现，我们这里就介绍一下使用[**delayed job**][1]作为后台的异步工作队列，使用rails的mailer来发送邮件，下面看详细的实现：
 
  - 首先我们安装delayed_job gem:
 <pre>
@@ -23,7 +23,7 @@ $ rails g delayed_job
 $ rake db:migrate
 </pre>
  - 我们可以看到生成的表的字段描述：
-[code:sql]
+<pre>
 create_table :delayed_jobs, :force => true do |table|
   table.integer  :priority, :default => 0      # Allows some jobs to jump to the front of the queue
   table.integer  :attempts, :default => 0      # Provides for retries, but still fail eventually.
@@ -112,7 +112,6 @@ $ bundle exec rake jobs:clear  #同时清空delayed_jobs表
 ![delayed_job][2]
 
 > 好大功告成！（原创文章）
-
 
   [1]: https://github.com/collectiveidea/delayed_job "delayed job"
   [2]: http://cms.everyday-cn.com/system/pictures/972/large_everyday_139.png?1320368578 "mail"
