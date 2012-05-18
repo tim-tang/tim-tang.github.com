@@ -4,13 +4,115 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://techtalk.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://techtalk.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-18T16:41:19+08:00</updated>
+   <updated>2012-05-18T21:17:00+08:00</updated>
    <id>http://techtalk.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
      <email>tang.jilong@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>Git,GitHub常用命令介绍</title>
+     <link href="http://techtalk.everyday-cn.com/Git/2012/05/18/git.html"/>
+     <updated>2012-05-18T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/Git/2012/05/18/git</id>
+     <content type="html">&lt;h3&gt;Git给项目打标签&lt;/h3&gt;
+
+&lt;pre&gt;
+git tag -a v1.0 -m 'version 1.0'        #给项目打v1.0标签
+git push --tags          #把标签推到github中
+git tag checkout v1.0     #把项目检出到某个tag
+git checkout master    #切换到master 分支
+git tag -l                    #列出所有的tag
+git tag -d v1.0            #删除某个tag
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git generate ssh key&amp;amp;add config params&lt;/h3&gt;
+
+&lt;pre&gt;
+ssh-keygen -t rsa -C &quot;tang.jilong@139.com&quot;
+ssh -T git@github.com
+git config --global user.name &quot;tim.tang&quot;
+git config --global user.email &quot;tang.jilong@139.com&quot;
+
+git config --global color.branch auto
+git config --global color.diff auto
+git config --global color.interactive auto
+git config --global color.status auto
+
+cat ~/.gitconfig
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git查看配置&lt;/h3&gt;
+
+&lt;pre&gt;
+git config -l             #查看所有配置
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git branch操作&lt;/h3&gt;
+
+&lt;pre&gt;
+git branch                 #查看分支
+git branch -r              #查看远程分支
+git branch -d tmp        #删除本地tmp分支
+git branch everyday_dev  #在本地创建everyday_dev分支
+git push origin everyday_dev  #把本地分支提交到github.
+git push origin :everyday_dev   #删除github上的远程分支
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git diff操作&lt;/h3&gt;
+
+&lt;pre&gt;
+git diff [&lt;path&gt;...]  #这个命令最常用，在每次add进入index前会运行这个命令，查看即将add进入index时所做的内容修改，即working directory和index的差异。
+git diff --cached [&lt;path&gt;...]   #这个命令初学者不太常用，却非常有用，它表示查看已经add进入index但是尚未commit的内容同最后一次commit时的内容的差异。即index和git directory的差异。
+git diff &lt;commit&gt; &lt;commit&gt; [&lt;path&gt;...]   #这个命令用来比较git directory中任意两个&lt;commit&gt;之间的差别，如果想比较任意一个&lt;commit&gt;和最新版的差别，把其中一个&lt;commit&gt;换成HEAD即可
+git diff --stat     #统计一下有哪些文件被改动，有多少行被改动
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git reset使用&lt;/h3&gt;
+
+&lt;pre&gt;
+git reset [--hard|soft|mixed|merge|keep] [&lt;commit&gt;或HEAD] #将当前的分支重设（reset）到指定的&lt;commit&gt;或者HEAD。
+A). --hard：重设（reset） index和working directory，自从&lt;commit&gt;以来在working directory中的任何改变都被丢弃，并把HEAD指向&lt;commit&gt;。
+B). --soft：index和working directory中的内容不作任何改变，仅仅把HEAD指向&lt;commit&gt;。这个模式的效果是，执行完毕后，自从&lt;commit&gt;以来的所有改变都会显示在git status的&quot;Changes to be committed&quot;中。
+C). --mixed：仅reset index，但是不reset working directory。这个模式是默认模式，即当不显示告知git reset模式时，会使用mixed模式。这个模式的效果是，working directory中文件的修改都会被保留，不会丢弃，但是也不会被标记成&quot;Changes to be committed&quot;，但是会打出什么还未被更新的报告。
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git fetch&lt;/h3&gt;
+
+&lt;pre&gt;
+git fetch origin master:tmp
+git diff master..tmp
+git merge tmp
+功能同上：
+git fetch origin master
+git log -p master..origin/master     
+git merge origin/master
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git blame&lt;/h3&gt;
+
+&lt;pre&gt;
+git blame filename    #查看当前文件每行代码的修改者
+&lt;/pre&gt;
+
+
+&lt;h3&gt;Git archive&lt;/h3&gt;
+
+&lt;pre&gt;
+git archive --format zip -o $(git log --pretty=format:&quot;%h&quot; -1).zip HEAD #打包代码
+&lt;/pre&gt;
+
+</content>
+   </entry>
    
    <entry>
      <title>Ruby实现Mongo MapReduce初探</title>
@@ -101,7 +203,7 @@ $ gem install bson_ext
      <link href="http://techtalk.everyday-cn.com/2011/12/15/ruby--3.html"/>
      <updated>2011-12-15T00:00:00+08:00</updated>
      <id>http://techtalk.everyday-cn.com/2011/12/15/ruby--3</id>
-     <content type="html">&lt;p&gt;昨天无意间翻了下&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;http://www.everyday-cn.com/zh/ibook_download/13&quot; title=&quot;design pattern&quot;&gt;Design Patterns in Ruby&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;这本书，顺便复习了设计模式方面的东西，实现同样一个设计模式，无论在可扩展性还是代码的简洁程度都比java高出不少，下面看看如何用ruby实现常用的设计模式：&lt;/p&gt;
+     <content type="html">&lt;p&gt;昨天无意间翻了下&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;http://cms.everyday-cn.com/zh/ibook_download/13&quot; title=&quot;design pattern&quot;&gt;Design Patterns in Ruby&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;这本书，顺便复习了设计模式方面的东西，实现同样一个设计模式，无论在可扩展性还是代码的简洁程度都比java高出不少，下面看看如何用ruby实现常用的设计模式：&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Singleton Method:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例&lt;/li&gt;
@@ -602,7 +704,7 @@ source ~/.zshrc
 
 &lt;ul&gt;
 &lt;li&gt;这样我们就可以看到效果了，如图：
-&lt;img src=&quot;http://www.everyday-cn.com/system/pictures/1195/large_oh-my-zsh.png?1323394528&quot; title=&quot;oh my zsh&quot; alt=&quot;oh-my-zsh&quot; /&gt;&lt;/li&gt;
+&lt;img src=&quot;http://cms.everyday-cn.com/system/pictures/1195/large_oh-my-zsh.png?1323394528&quot; title=&quot;oh my zsh&quot; alt=&quot;oh-my-zsh&quot; /&gt;&lt;/li&gt;
 &lt;li&gt;我们还可以查看所有oh my zsh提供的自动补全：&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -740,13 +842,13 @@ Dir.rmdir( “/Users/weston/test” ) # 删除目录
 Dir.mkdir( “/Users/weston/test”,755 ) #常见目录，设置权限
 d = Dir.entries( “/Users/weston” ).each { |e| puts e } #=&gt; Array
 d2 = d.delete_if{ |e| e=~ /^\..*/} #=&gt;这样出来的就是不包含隐藏文件了
-dir = Dir.open( “/Users/weston” ) # =&gt; #&lt;Dir:0x1cd784&gt; 
-dir.path # =&gt; “/Users/weston” 
-dir.tell # =&gt; “.” 
+dir = Dir.open( “/Users/weston” ) # =&gt; #&lt;Dir:0x1cd784&gt;
+dir.path # =&gt; “/Users/weston”
+dir.tell # =&gt; “.”
 dir.read # =&gt; 1
-dir.tell # =&gt; “..” 
-dir.rewind # =&gt; rewind to beginning 
-dir.each { |e| puts e } # puts each entry in dir 
+dir.tell # =&gt; “..”
+dir.rewind # =&gt; rewind to beginning
+dir.each { |e| puts e } # puts each entry in dir
 dir.close # =&gt; close stream
 &lt;/pre&gt;
 
@@ -764,21 +866,6 @@ file.close
 File.new( “books.txt”, “w” )
 File.rename( “books.txt”, “chaps.txt” )
 File.delete( “chaps.txt” )
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;操作URI&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-require 'open-uri'
-url = “http://www.google.com/search?q=ruby”
-open(url) { |page| page_content = page.read()
-links = page_content.scan(/&lt;a class=l.*?href=\&quot;(.*?)\&quot;/).flatten
-links.each {|link| puts link}
-}
 &lt;/pre&gt;
 
 
@@ -878,116 +965,6 @@ $ rails g crawler_engine
 
 
 &lt;blockquote&gt;&lt;p&gt;就写到这里，要查看更详细的信息可以看&lt;a href=&quot;https://github.com/tim-tang/crawler_engine&quot; title=&quot;crawler-engine&quot;&gt;&lt;strong&gt;&lt;em&gt;crawler engine&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;这个rubygem.(原创文章)&lt;/p&gt;&lt;/blockquote&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>如何编写一个rubygem</title>
-     <link href="http://techtalk.everyday-cn.com/2011/11/18/rubygem.html"/>
-     <updated>2011-11-18T00:00:00+08:00</updated>
-     <id>http://techtalk.everyday-cn.com/2011/11/18/rubygem</id>
-     <content type="html">&lt;p&gt;在开发everyday和&lt;a href=&quot;http://tim.everyday-cn.com&quot; title=&quot;tech talk&quot;&gt;&lt;strong&gt;&lt;em&gt;tech talk&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;的时候一直使用别人开发的ruby gem,一直对别人的gem比较好奇，最近有时间看了下ruby gem的开发规范，自己写了个最简单的hello.gem作为入门实例和大家分享，下面看具体的实现：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;先看下gem的基本文件布局：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-gemspec #gem的规范说明。
-lib                    #用于存放lib文件
-bin                   #用于存放可执行文件
-ext                   #存放C/C++文件
-tests                #存放单元测试文件
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;下面我们开始编写Gem,创建如下目录和文件:&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-hello/hello.gemspec
-hello/lib/hello.rb
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;hello.gemspc实现：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-Gem::Specification.new do |s|
-    s.author='tim.tang'
-    s.email='tang.jilong@139.com'
-    s.homepage='http://tim.everyday-cn.com'
-    s.files = [&quot;lib/hello.rb&quot;]
-    s.description = 'Hello world rubygem'
-    s.name = 'hello'
-    s.version = '0.1.0'
-    s.summary = 'hello gems'
-    s.files = [&quot;lib/hello.rb&quot;]
-end
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;hello.rb实现：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-def hello
-    &quot;hello, this is my first ruby gem!&quot;
-end
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;编译hello.gem&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-$ gem build hello.gemspec
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;安装hello.gem&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-$ gem install hello.gem
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;最后写个测试test.rb：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-require 'rubygems'
-require 'hello'
-puts hello
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;成功输出：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-hello, this is my first ruby gem!
-&lt;/pre&gt;
-
-
-&lt;blockquote&gt;&lt;p&gt;这样一个最简单的ruby gem 就完成了，更深入的东西看&lt;a href=&quot;http://docs.rubygems.org/read/chapter/20&quot; title=&quot;rubygem&quot;&gt;&lt;strong&gt;&lt;em&gt;官方文档&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt; (原创)&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
