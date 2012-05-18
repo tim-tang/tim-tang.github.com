@@ -4,7 +4,7 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://techtalk.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://techtalk.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-18T11:18:41+08:00</updated>
+   <updated>2012-05-18T15:03:04+08:00</updated>
    <id>http://techtalk.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
@@ -103,6 +103,913 @@
 
 
 
+</content>
+   </entry>
+   
+   <entry>
+     <title>Ruby实现Mongo MapReduce初探</title>
+     <link href="http://techtalk.everyday-cn.com/2011/12/22/ruby-mongo-mapreduce.html"/>
+     <updated>2011-12-22T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/12/22/ruby-mongo-mapreduce</id>
+     <content type="html">&lt;p&gt;MapReduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。这样做的好处是可以在任务被分解后，可以通过大量机器进行并行计算，减少整个操作的时间。下面以MongoDB MapReduce为例说明:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;计算一个标签系统中每个标签出现的次数通过ruby实现:&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+require 'mongo'
+class MongoMapReduce
+    def generate_mr
+        mongodb = init_mongo
+        coll = mongodb.collection(&quot;things&quot;)
+        map = &quot;function(){
+            this.tags.forEach(
+               function(z){
+                    emit( z , { count : 1 } );
+                }
+            );
+        };&quot;
+        reduce = &quot;function( key , values ){
+            var total = 0;
+            for ( var i=0; i&lt;values.length; i++ )
+                total += values[i].count;
+            return { count : total };
+        };&quot;
+        m = BSON::Code.new(map)
+        r = BSON::Code.new(reduce)
+        output = coll.map_reduce(m, r, { :out =&gt; &quot;myresult&quot; })
+        puts output.stats
+        mongodb.collection(&quot;myresult&quot;).find().each{|row| puts row.inspect }
+        output.drop
+    end
+    def init_mongo
+        mongodb = Mongo::Connection.new(&quot;localhost&quot;, 27017).db(&quot;test&quot;)
+        #coll = mongodb.collection(&quot;things&quot;)
+        #init_data coll
+    end
+    def init_data coll
+        doc = {&quot;_id&quot; =&gt;1,  &quot;tags&quot; =&gt; ['dog', 'cat']}
+        doc2 = {&quot;_id&quot;=&gt;2, &quot;tags&quot; =&gt; ['cat']}
+        doc3 = {&quot;_id&quot;=&gt;3, &quot;tags&quot; =&gt; ['mouse', 'cat', 'dog']}
+        doc4 = {&quot;_id&quot;=&gt;4, &quot;tags&quot; =&gt; []}
+        coll.insert(doc)
+        coll.insert(doc2)
+        coll.insert(doc3)
+        coll.insert(doc4)
+        coll.find().each {|row| puts row.inspect }
+    end
+end
+MongoMapReduce.new.generate_mr
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;如需要运行以上代码还要安装mongo/bson/bson_ext:&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+$ gem install mongo
+$ gem install bson
+$ gem install bson_ext
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;从上面的代码我们可以看出map/reduce是由符合js语法的函数组成，我们可以这样理解，当你在所有需要计算的行执行完了map函数，你就得到了一组key-values对。基本key是emit中的key，values是每次emit函数的第二个参数组成的集合。&lt;/li&gt;
+&lt;li&gt;这里这个emit函数是非常重要的，他的作用是将一条数据放入数据分组集合。&lt;/li&gt;
+&lt;li&gt;key-values变在key-value，也就是把这一个集合变成一个单一的值。这个操作就是Reduce&lt;/li&gt;
+&lt;li&gt;我们必须了解这一机制会要求我们遵守的原则，那就是当我们书写Map函数时，emit的第二个参数形式是我们的Reduce函数的第二个参数，而Reduce函数的返回值，可能会作为新的输入参数再次执行Reduce操作，所以Reduce函数的返回值也需要和Reduce函数的第二个参数结构一致。&lt;/li&gt;
+&lt;li&gt;当我们的key-values中的values集合过大，会被再切分成很多个小的key-values块，然后分别执行Reduce函数，再将多个块的结果组合成一个新的集合，作为Reduce函数的第二个参数，继续Reducer操作。可以预见，如果我们初始的values非常大，可能还会对第一次分块计算后组成的集合再次Reduce。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;具体的mongodb MapReduce内容可以参考&lt;a href=&quot;http://www.mongodb.org/display/DOCS/MapReduce#MapReduce-ShellExample2&quot; title=&quot;mapreduce&quot;&gt;&lt;strong&gt;&lt;em&gt;官方网站&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Ruby 设计模式</title>
+     <link href="http://techtalk.everyday-cn.com/2011/12/15/ruby--3.html"/>
+     <updated>2011-12-15T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/12/15/ruby--3</id>
+     <content type="html">&lt;p&gt;昨天无意间翻了下&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;http://www.everyday-cn.com/zh/ibook_download/13&quot; title=&quot;design pattern&quot;&gt;Design Patterns in Ruby&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;这本书，顺便复习了设计模式方面的东西，实现同样一个设计模式，无论在可扩展性还是代码的简洁程度都比java高出不少，下面看看如何用ruby实现常用的设计模式：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Singleton Method:确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+module SingletonClass
+    class &lt;&lt; self
+        def single
+            puts &quot;This is singleton method!&quot;
+        end
+    end
+end
+SingletonClass.single
+&lt;/pre&gt;
+
+
+&lt;p&gt;可以看出使用ruby的Module来实现单例多么有优越性相比较java而言。
+ - Chain of Responsibility Method:使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止&lt;/p&gt;
+
+&lt;pre&gt;
+class Chain
+    def initialize
+        @chain = []
+    end
+    def add_handler &amp;block
+        @chain &lt;&lt; block
+    end
+    def handle req
+        @chain.each do |e|
+            # 如果handler返回 false(未处理)，则让下一个处理
+            result = e[req]
+            return result if result
+        end
+        false
+    end
+end
+c = Chain.new
+c.add_handler {|req| req == 1 ? &quot;1-handled&quot;: &quot;1-not my responsibility&quot; }
+c.add_handler {|req| req == 2 ? &quot;2-handled&quot;: &quot;2-not my responsibility&quot; }
+c.handle 1
+c.handle 2
+&lt;/pre&gt;
+
+
+&lt;p&gt;利用了ruby提供的闭包的特性，动态处理代码块。
+ - Proxy Method: 为某个对象提供代理对象:&lt;/p&gt;
+
+&lt;pre&gt;
+class Proxy
+    def initialize origin
+        @obj=origin
+    end
+    def method_missing (name, *args)
+        @obj.send(name, *args)
+    end
+end
+class Tool
+  def execute args
+      puts &quot;Executing tool methods now....#{args}&quot;
+  end
+end
+proxy=Proxy.new(Tool.new)
+proxy.execute &quot;xxxxxxx&quot;
+&lt;/pre&gt;
+
+
+&lt;p&gt;充分利用了ruby的元编程能力，运行时动态增加实例和方法，更强的扩展性。
+ - Observer Method: 定义了对象间的一种一对多依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并被自动更新&lt;/p&gt;
+
+&lt;pre&gt;
+class Employee
+    attr_reader :name, :title
+    attr_reader :salary
+    def initialize( name, title, salary)
+        @name = name
+        @title = title
+        @salary = salary
+        @observers = []
+    end
+    def salary=(new_salary)
+        @salary = new_salary
+        notify_observers
+    end
+    def notify_observers
+        @observers.each do |observer|
+            observer.update(self)
+        end
+    end
+    def add_observer(observer)
+        @observers &lt;&lt; observer
+    end
+    def delete_observer(observer)
+        @observers.delete(observer)
+    end
+end
+class Payroll
+    def update(changed_employee )
+        puts(&quot;Cut a new check for #{changed_employee.name}!&quot;)
+        puts(&quot;His salary is now #{changed_employee.salary}!&quot;)
+    end
+end
+class TaxMan
+    def update( changed_employee )
+        puts(&quot;Send #{changed_employee.name} a new tax bill!&quot;)
+    end
+end
+payroll = Payroll.new
+tax_man = TaxMan.new
+fred = Employee.new('Fred', 'Crane Operator', 30000)
+fred.add_observer(payroll)
+fred.salary = 35000
+fred.add_observer(tax_man)
+fred.salary = 88000
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Builder Method: 将一个复杂对象的构建与它的表示分离,使得同样的构建过程可以创建不同的表示&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+class Director
+    def build_with builder
+        acc = ''
+        [:header, :body, :footer].each do |m|
+            acc += builder.send(m) if builder.respond_to? m
+        end
+        acc
+    end
+end
+class HTMLBuilder
+    def header; '&lt;html&gt;&lt;title&gt;html builder&lt;/title&gt;';end
+    def body;     '&lt;body&gt;html builder&lt;/body&gt;'        ;end
+    def footer; '&lt;/html&gt;'                          ;end
+end
+class XMLBuilder
+    def header; '&lt;?xml version=&quot;1.0&quot; charset=&quot;utf-8&quot;&gt;';end
+    def body;   '&lt;root&gt;xml builder&lt;/root&gt;'            ;end
+end
+d = Director.new
+puts(d.build_with HTMLBuilder.new)
+puts(d.build_with XMLBuilder.new)
+&lt;/pre&gt;
+
+
+&lt;p&gt;还是通过ruby元编程利用send动态执行方法&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;通过上上面的这些设计模式，可以看出没有类型声明和继承，代码耦合降低，接口也无用武之地了。当我们回头再出用JAVA来实现这些设计模式的话，会是什么情况？&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Ruby DSL初探</title>
+     <link href="http://techtalk.everyday-cn.com/2011/12/13/ruby-dsl.html"/>
+     <updated>2011-12-13T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/12/13/ruby-dsl</id>
+     <content type="html">&lt;p&gt;Ruby 是当前用于建立内部 DSL 最流行的语言。当在 Ruby 上开发时你所考虑的大部分基础设施都是基于 DSL 的例如：Active Record、RSpec、Cucumber、Rake 以及许多其他方面，— 因为它是服从于主机托管内部 DSL 的。行为驱动开发 (BDD) 的新潮技术需要一个强大的 DSL 基础来实现其普及。Rails DSL很大程度上依赖于Ruby的元编程能力，这里将对Ruby的 DSL 写一个简单测试的例子，功能如下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;向baidu发送搜索请求&lt;/li&gt;
+&lt;li&gt;关键字是everyday-cn&lt;/li&gt;
+&lt;li&gt;查找搜索结果中有没有我要检查的关键字&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先给出测试脚本,新建test.txt文件：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+host &quot;www.baidu.com&quot;
+port 80
+page &quot;s&quot;
+field &quot;wd&quot;,&quot;everyday-cn&quot;
+field &quot;sourceid&quot;,&quot;Mozilla-search&quot;
+get
+check_content &quot;tang.jilong&quot;
+check_content &quot;Tim.Tang&quot;
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;编写ruby dsl文件：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+require 'open-uri'
+class MyDSL
+    def self.dsl_accessor(*symbols)
+        symbols.each { |sym|
+            class_eval %{
+                def #{sym}(*val)
+                  if val.empty?
+                   @#{sym}
+                  else
+                   @#{sym} = val.size == 1 ? val[0] : val
+                  end
+                end
+            }
+        }
+    end
+    def method_missing(sym, *args)
+        self.class.dsl_accessor sym
+        puts &quot;method missing #{sym}, #{args}&quot;
+        send(sym, *args)
+    end
+    attr_accessor :query
+    dsl_accessor :test
+    def self.load(filename)
+        dsl = new
+        dsl.instance_eval(File.read(filename), filename)
+        puts File.read(filename)
+        dsl
+    end
+    def self.loads(filename)
+        dsl = new
+        dsl.instance_eval(filename)
+        dsl
+    end
+    def field(field_string,value)
+        puts &quot;#{field_string}=#{value}&quot;
+        if ! @query
+            @query=&quot;#{field_string}=#{value}&quot;
+        else
+            @query=&quot;#{@query}&amp;#{field_string}=#{value}&quot;
+        end
+        puts @query
+    end
+    def get
+        puts 'get'
+        @request=&quot;http://#{@host}:#{@port}/#{@page}?#{@query}&quot;
+        puts @request
+        @result=open(@request)
+    end
+    def check_content(s)
+        tmp=@result.read.scan(s).uniq
+        if tmp.length!=0
+            puts &quot;found&quot;
+            puts tmp
+        else
+            puts &quot;not found&quot;
+        end
+    end
+    def post
+        puts 'post'
+    end
+end
+dsl=MyDSL.load(&quot;dsl.txt&quot;)
+p dsl
+p dsl.instance_variables
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;其中method_missing和dsl_accessor让客户端动态增删属性的功能&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;目前ruby dsl还主要用在测试领域，将来的发展潜力巨大。&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Ruby使用rexml解析xml</title>
+     <link href="http://techtalk.everyday-cn.com/2011/12/12/ruby-rexml-xml.html"/>
+     <updated>2011-12-12T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/12/12/ruby-rexml-xml</id>
+     <content type="html">&lt;p&gt;在开发中常用到xml解析，在ruby中我们可以使用rexml来解析xml,rexml具有如下特点:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;100%用ruby编写&lt;/li&gt;
+&lt;li&gt;可以用来解析SAX和DOM&lt;/li&gt;
+&lt;li&gt;轻量，不足2000行代码&lt;/li&gt;
+&lt;li&gt;提供完整的API支持&lt;/li&gt;
+&lt;li&gt;ruby中内置&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;hr /&gt;
+
+&lt;p&gt;下面我们来看看如何使用它：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;假设我们有如下xml文件：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+&lt;collection shelf=&quot;New Arrivals&quot;&gt;
+    &lt;movie title=&quot;Enemy Behind&quot;&gt;
+        &lt;type&gt;War, Thriller&lt;/type&gt;
+        &lt;format&gt;DVD&lt;/format&gt;
+        &lt;year&gt;2003&lt;/year&gt;
+        &lt;rating&gt;PG&lt;/rating&gt;
+        &lt;stars&gt;10&lt;/stars&gt;
+        &lt;description&gt;Talk about a US-Japan war&lt;/description&gt;
+    &lt;/movie&gt;
+    &lt;movie title=&quot;Transformers&quot;&gt;
+        &lt;type&gt;Anime, Science Fiction&lt;/type&gt;
+        &lt;format&gt;DVD&lt;/format&gt;
+        &lt;year&gt;1989&lt;/year&gt;
+        &lt;rating&gt;R&lt;/rating&gt;
+        &lt;stars&gt;8&lt;/stars&gt;
+        &lt;description&gt;A schientific fiction&lt;/description&gt;
+    &lt;/movie&gt;
+    &lt;movie title=&quot;Trigun&quot;&gt;
+        &lt;type&gt;Anime, Action&lt;/type&gt;
+        &lt;format&gt;DVD&lt;/format&gt;
+        &lt;episodes&gt;4&lt;/episodes&gt;
+        &lt;rating&gt;PG&lt;/rating&gt;
+        &lt;stars&gt;10&lt;/stars&gt;
+        &lt;description&gt;Vash the Stampede!&lt;/description&gt;
+    &lt;/movie&gt;
+    &lt;movie title=&quot;Ishtar&quot;&gt;
+        &lt;type&gt;Comedy&lt;/type&gt;
+        &lt;format&gt;VHS&lt;/format&gt;
+        &lt;rating&gt;PG&lt;/rating&gt;
+        &lt;stars&gt;2&lt;/stars&gt;
+        &lt;description&gt;Viewable boredom&lt;/description&gt;
+    &lt;/movie&gt;
+&lt;/collection&gt;
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;解析DOM：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+require 'rexml/document'
+include REXML
+xmlfile = File.new(&quot;movies.xml&quot;)
+xmldoc = Document.new(xmlfile)
+root = xmldoc.root
+puts &quot;Root element : &quot; + root.attributes[&quot;shelf&quot;]
+xmldoc.elements.each(&quot;collection/movie&quot;){
+    |e| puts &quot;Movie Title : &quot; + e.attributes[&quot;title&quot;]
+}
+xmldoc.elements.each(&quot;collection/movie/type&quot;) {
+    |e| puts &quot;Movie Type : &quot; + e.text
+}
+xmldoc.elements.each(&quot;collection/movie/description&quot;) {
+    |e| puts &quot;Movie Description : &quot; + e.text
+}
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;使用XPATH：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+require 'rexml/document'
+include REXML
+xmlfile = File.new(&quot;movies.xml&quot;)
+xmldoc = Document.new(xmlfile)
+movie = XPath.first(xmldoc, &quot;//movie&quot;)
+p movie
+XPath.each(xmldoc, &quot;//type&quot;) { |e| puts e.text }
+names = XPath.match(xmldoc, &quot;//format&quot;).map {|x| x.text }
+p names
+&lt;/pre&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;以备不时之需&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Ruby使用DBI gem操作mysql</title>
+     <link href="http://techtalk.everyday-cn.com/2011/12/12/ruby-dbi-gem-mysql.html"/>
+     <updated>2011-12-12T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/12/12/ruby-dbi-gem-mysql</id>
+     <content type="html">&lt;p&gt;之前使用rails开发，处理数据库操作这方面都是使用active record, 它是一个orm的框架，一直在找一个更加轻量的gem，于是找到了dbi，它包括数据库接口（具有跨平台性）和数据库驱动（数据库独立），下面介绍如何使用它：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装dbi,dbd-mysql&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+gem install dbi
+gem install dbd-mysql
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;如果发现上面的命令安装不了，我们可以去rubygems.org下载以后手动安装&lt;/li&gt;
+&lt;li&gt;下面给出具体使用的代码：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+require 'dbi'
+begin
+    dbh = DBI.connect('DBI:Mysql:crawler_engine', 'root', 'root')
+    dbh['AutoCommit'] = false # Set auto commit to false.
+    sql = &quot;insert into sources(site_name, link, filter, category) VALUES (?,?,?,?)&quot;
+    dbh.prepare(sql) do | sth |
+        1.upto(13) { |i| sth.execute(&quot;tim #{i}&quot;, &quot;link#{i*10}&quot;, &quot;filter#{i*100}&quot;, &quot;cat#{i*100}&quot;)}
+    end
+    dbh.select_all('select * from sources') do | row |
+        p row
+    end
+    usql=&quot;update sources set filter=? where id &gt; ?&quot;
+    dbh.prepare(usql) do |stmt|
+        stmt.execute(&quot;xxxxxxxxxxxx&quot;, 10)
+    end
+    dbh.select_all(&quot;select * from sources where id&gt;10&quot;) do |row|
+        p row
+    end
+    dbh.do('delete from sources where id &gt; 10')
+    dbh.commit
+rescue DBI::DatabaseError =&gt; e
+        puts &quot;Error: #{e}&quot;
+        dbh.rollback
+ensure
+        dbh.disconnect if dbh
+end
+&lt;/pre&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;就写到这里，方便查阅。&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Mac安装配置oh my zsh</title>
+     <link href="http://techtalk.everyday-cn.com/2011/12/09/mac-oh-my-zsh.html"/>
+     <updated>2011-12-09T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/12/09/mac-oh-my-zsh</id>
+     <content type="html">&lt;p&gt;最近看了一些 ruby-china上的帖子，有人介绍说mac terminal下可以使用zsh(zsh是bash的一个扩展,并且兼容bash命令).但需要安装一些东西，mac默认使用的是bash shell。在mac 下有oh my zsh的东东介绍说不错，提供了很多的主题和rails/git/gem等的插件最重要的是提供了自动补全的功能，下面记录下具体的安装和配置：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装oh my zsh:&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;要让安装生效，只要重启终端即可&lt;/li&gt;
+&lt;li&gt;我们可以看到在~/目录下生成了.zshrc文件，修改它让它支持rvm,方便rails开发，将原来.bash_profile与.profile中的自定义内容导入过来：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+...
+[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot;
+...
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;到这里我们就可以增加rails3开发要使用到的插件了,继续修改~/.zshrc文件：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+ # Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(rails3 rails git textmate ruby rvm gem github brew bundler textmate pow osx)
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;继续修改主题,个人比较喜欢的是candy和darkblood,更多主题可以看它的github wiki：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+...
+ZSH_THEME=&quot;darkblood&quot;
+...
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;使~/.zshrc文件生效：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+source ~/.zshrc
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;这样我们就可以看到效果了，如图：
+&lt;img src=&quot;http://www.everyday-cn.com/system/pictures/1195/large_oh-my-zsh.png?1323394528&quot; title=&quot;oh my zsh&quot; alt=&quot;oh-my-zsh&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;我们还可以查看所有oh my zsh提供的自动补全：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+$ grep -h -r -e '^alias' ~/.oh-my-zsh
+&lt;/pre&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;就写到这里，更多资料可以看这里&lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh&quot; title=&quot;oh my zsh&quot;&gt;oh-my-zsh&lt;/a&gt;  原创文章&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Mac通过homebrew 安装mysql</title>
+     <link href="http://techtalk.everyday-cn.com/2011/12/07/mac-homebrew-mysql.html"/>
+     <updated>2011-12-07T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/12/07/mac-homebrew-mysql</id>
+     <content type="html">&lt;p&gt;使用MBP有一年了，开始想在工作中使用mac由于各种不习惯最终失败，导致自己使用了一年多的ubuntu,最近把ubuntu升级到了11.10,新版本的unity界面，和程序之间的切换缓慢让我决定强制切换到mac  os 来开发，为将来尝试textmate做准备，没想到刚切到mac os 安装mysql就遇到了问题，下面介绍下在osx下brew安装mysql的过程：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;安装homebrew比较简单：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.github.com/gist/323731)&quot;
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;通过brew安装mysql:&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+brew install mysql
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;等成功安装完成，想要登录的时候出问题了：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;google了一下，找到答案原来，还没彻底安装完成：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+brew info mysql
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;以上命令可以看到具体的安装信息，那就装吧：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+unset TMPDIR
+mysql_install_db --verbose --user=`root` --basedir=&quot;$(brew --prefix mysql)&quot; --datadir=/usr/local/var/mysql --tmpdir=/tmp
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;下面我们还需要启动mysql服务：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+mysql.server start
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;用如下命令登录即可：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+mysql -uroot  #初始没有设置密码
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;如果要在启动系统的时候启动服务可以执行如下命令：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+mkdir -p ~/Library/LaunchAgents
+cp /usr/local/Cellar/mysql/5.5.15/com.mysql.mysqld.plist ~/Library/LaunchAgents/
+launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;在rails app 中常用到mysql,我们还需要建立一个软链接&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+sudo ln -s /tmp/mysql.sock /var/run/mysqld/mysqld.sock
+&lt;/pre&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt; 初步安装完成，慢慢开始习惯和体验mac os,看看是否真有网上说的这么好，就写到这里。&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>Ruby目录(Diretories)文件(files)操作</title>
+     <link href="http://techtalk.everyday-cn.com/2011/11/28/ruby-diretories-files.html"/>
+     <updated>2011-11-28T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/11/28/ruby-diretories-files</id>
+     <content type="html">&lt;p&gt;最近一直在用ruby写crawler engine,不可避免的需要用到一些对文件和目录的操作，下面记录一下：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;操作目录&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+Dir.chdir( “/Users/weston” )  #进入目录
+home =Dir.pwd  #=&gt; “/Users/weston/” * 显示目录
+Dir.mkdir( “/Users/weston/” )  ＃创建目录，和*nix命令一样吧
+Dir.rmdir( “/Users/weston/test” ) # 删除目录
+Dir.mkdir( “/Users/weston/test”,755 ) #常见目录，设置权限
+d = Dir.entries( “/Users/weston” ).each { |e| puts e } #=&gt; Array
+d2 = d.delete_if{ |e| e=~ /^\..*/} #=&gt;这样出来的就是不包含隐藏文件了
+dir = Dir.open( “/Users/weston” ) # =&gt; #&lt;Dir:0x1cd784&gt; 
+dir.path # =&gt; “/Users/weston” 
+dir.tell # =&gt; “.” 
+dir.read # =&gt; 1
+dir.tell # =&gt; “..” 
+dir.rewind # =&gt; rewind to beginning 
+dir.each { |e| puts e } # puts each entry in dir 
+dir.close # =&gt; close stream
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;文件&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+file = File.new( “file.rb”, “w” ) # =&gt; #&lt;File:file.rb&gt; 其中的w是表示可以写，还有很多模式：r, r+, w, w+, a, a+,b
+file = File.open( “sonnet_129.txt” )
+file.each { |line| print “#{file.lineno}. ”, line } #lineno 是行号
+file.close
+File.new( “books.txt”, “w” )
+File.rename( “books.txt”, “chaps.txt” )
+File.delete( “chaps.txt” )
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;操作URI&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+require 'open-uri'
+url = “http://www.google.com/search?q=ruby”
+open(url) { |page| page_content = page.read()
+links = page_content.scan(/&lt;a class=l.*?href=\&quot;(.*?)\&quot;/).flatten
+links.each {|link| puts link}
+}
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;文件查询&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+File::open(“file.rb”) if File::exists?( “file.rb” )
+File.file?( “sonnet29.txt” ) # =&gt; true 
+File::directory?( “/usr/local/bin” ) # =&gt; true 
+File::directory?( “file.rb” ) # =&gt; false 
+File.readable?( “sonnet_119.txt” ) # =&gt; true 
+File.writable?( “sonnet_119.txt” ) # =&gt; true 
+File.executable?( “sonnet_119.txt” ) # =&gt; false 
+system(“touch chap.txt”) # Create a zero-length file with a system command 
+File.zero?( “chap.txt” ) # =&gt; true 
+File.size?( “sonnet_129.txt” ) # =&gt; 594 
+File.size( “sonnet_129.txt” ) # =&gt; 594 
+File::ftype( “file.rb” ) # =&gt; “file” 
+File::ctime( “file.rb” ) # =&gt; Wed Nov 08 10:06:37 -0700 2006 
+File::mtime( “file.rb” ) # =&gt; Wed Nov 08 10:44:44 -0700 2006 
+File::atime( “file.rb” ) # =&gt; Wed Nov 08 10:45:01 -0700 2006
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;操作文件权限&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+file = File.new( “books.txt”, “w” )
+file.chmod( 0755 ) 
+file = File.new( “books.txt”, “w” ).chmod(0755 ) #另一种方法
+system “ls -l books.txt” # =&gt; -rwxr-xr-x     1 mikejfz  mikejfz     0 Nov  8 22:13 
+books.txt
+&lt;/pre&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;就写到这里，方便将来查找。&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
+     <title>ruby使用rails generator生成migration&model文件</title>
+     <link href="http://techtalk.everyday-cn.com/2011/11/23/ruby-rails-generator-migration-model.html"/>
+     <updated>2011-11-23T00:00:00+08:00</updated>
+     <id>http://techtalk.everyday-cn.com/2011/11/23/ruby-rails-generator-migration-model</id>
+     <content type="html">&lt;p&gt;最近在业余时间写一个&lt;a href=&quot;https://github.com/tim-tang/crawler_engine&quot; title=&quot;crawler-engine&quot;&gt;&lt;strong&gt;&lt;em&gt;crawler engine&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;的rubygem, 主要用途是通过rss抓取各个网站的最新新闻、博客等，期间用到了rails migration成数据库表结构和model，下面接介绍下如何在rubygem中使用rails/generator:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;首先我们要编写文件lib/generators/crawler_engine_generator.rb：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+require 'rails/generators'
+require 'rails/generators/migration'
+require 'rails/generators/active_record'
+class CrawlerEngineGenerator &lt; Rails::Generators::Base
+    include Rails::Generators::Migration
+    extend ActiveRecord::Generators::Migration
+    desc &quot;Generates migration for crawler engine model&quot;
+    def self.source_root
+        File.expand_path('../templates', __FILE__)
+    end
+    def create_migration_file
+        migration_template 'migration.rb', 'db/migrate/create_crawler_engine'
+    end
+    def crate_model_file
+        template 'post.rb', 'app/models/post.rb'
+        template 'source.rb', 'app/models/source.rb'
+    end
+end
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;在CrawlerEngineGenerator类中，会逐个执行public 方法。&lt;/li&gt;
+&lt;li&gt;下面可以创建我们的lib/generators/templates/migration.rb:&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+class CreateCrawlerEngine &lt; ActiveRecord::Migration
+    def self.up
+        create_table :sources, :force =&gt; true do |t|
+            t.string :site_name
+            t.string :link
+            t.string :filter
+            t.string :category
+            t.datetime :crawled_at # When to run. Could be Time.now for immediately, or sometime in the future.
+        end
+    end
+        def self.down
+        drop_table :sources
+        drop_table :posts
+    end
+end
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;如果同时生成model文件，我们只要在template目录下添加，post.rb&amp;amp;source.rb文件如下：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+class Source &lt; ActiveRecord::Base
+end
+&lt;/pre&gt;
+
+
+&lt;pre&gt;
+class Post &lt; ActiveRecord::Base
+end
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;接下来就是build的你的rubygem并安装即可，这样就可以在rails项目中执行如下命令：&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;pre&gt;
+$ rails g crawler_engine
+&lt;/pre&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;我们可以看到生成了migration文件和model文件。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;就写到这里，要查看更详细的信息可以看&lt;a href=&quot;https://github.com/tim-tang/crawler_engine&quot; title=&quot;crawler-engine&quot;&gt;&lt;strong&gt;&lt;em&gt;crawler engine&lt;/em&gt;&lt;/strong&gt;&lt;/a&gt;这个rubygem.(原创文章)&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
