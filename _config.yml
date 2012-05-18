@@ -20,3 +20,6 @@ description:      "Teck Talk v1.0 "
 style: 			  /css/style.css
 blogName: 		  Tech Talk
 blogDesc: 		  [Git|Vim|RubyOnRails]
+
+layout:           default
+comments:         true

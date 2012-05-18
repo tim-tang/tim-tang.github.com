@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
-   <title>Tech Talk</title>
+   <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://techtalk.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://techtalk.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-18T10:07:31+08:00</updated>
+   <updated>2012-05-18T11:18:41+08:00</updated>
    <id>http://techtalk.everyday-cn.com</id>
    <author>
-     <name>PIZn</name>
-     <email>pizner@gmail.com</email>
+     <name>Tim.Tang</name>
+     <email>tang.jilong@gmail.com</email>
    </author>
 
    
