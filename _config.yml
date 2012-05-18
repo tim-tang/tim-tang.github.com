@@ -3,7 +3,7 @@ pygments:         true
 paginate:         6
 
 title:            Tech Talk - Git|Vim|RubyOnRails
-url:              http://techtalk.everyday-cn.com
+url:              http://tim.everyday-cn.com
 feed:             /atom.xml
 author:
     name:         Tim.Tang
