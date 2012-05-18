@@ -2,7 +2,7 @@ markdown:         rdiscount
 pygments:         true
 paginate:         4
 
-title:            Tech Talk
+title:            Tech Talk - Git|Vim|RubyOnRails
 url:              http://techtalk.everyday-cn.com
 feed:             /atom.xml
 author:
