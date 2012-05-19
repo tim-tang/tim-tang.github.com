@@ -4,7 +4,7 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-19T08:12:43+08:00</updated>
+   <updated>2012-05-19T21:24:00+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
@@ -14,9 +14,9 @@
    
    <entry>
      <title>Vim 实用命令</title>
-     <link href="http://tim.everyday-cn.com/2012/05/18/vim-usefulcommands.html"/>
+     <link href="http://tim.everyday-cn.com/Vim/2012/05/18/vim-usefulcommands.html"/>
      <updated>2012-05-18T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2012/05/18/vim-usefulcommands</id>
+     <id>http://tim.everyday-cn.com/Vim/2012/05/18/vim-usefulcommands</id>
      <content type="html">&lt;h3&gt;光标移动&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -172,7 +172,7 @@ git diff master..tmp
 git merge tmp
 功能同上：
 git fetch origin master
-git log -p master..origin/master     
+git log -p master..origin/master
 git merge origin/master
 &lt;/pre&gt;
 
@@ -195,9 +195,9 @@ git archive --format zip -o $(git log --pretty=format:&quot;%h&quot; -1).zip HEA
    
    <entry>
      <title>Ruby实现Mongo MapReduce初探</title>
-     <link href="http://tim.everyday-cn.com/2011/12/22/ruby-mongo-mapreduce.html"/>
+     <link href="http://tim.everyday-cn.com/Ruby/2011/12/22/ruby-mongo-mapreduce.html"/>
      <updated>2011-12-22T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/12/22/ruby-mongo-mapreduce</id>
+     <id>http://tim.everyday-cn.com/Ruby/2011/12/22/ruby-mongo-mapreduce</id>
      <content type="html">&lt;p&gt;MapReduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。这样做的好处是可以在任务被分解后，可以通过大量机器进行并行计算，减少整个操作的时间。下面以MongoDB MapReduce为例说明:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -279,9 +279,9 @@ $ gem install bson_ext
    
    <entry>
      <title>Ruby 设计模式</title>
-     <link href="http://tim.everyday-cn.com/2011/12/15/ruby--3.html"/>
+     <link href="http://tim.everyday-cn.com/Ruby/2011/12/15/ruby--3.html"/>
      <updated>2011-12-15T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/12/15/ruby--3</id>
+     <id>http://tim.everyday-cn.com/Ruby/2011/12/15/ruby--3</id>
      <content type="html">&lt;p&gt;昨天无意间翻了下&lt;strong&gt;&lt;em&gt;&lt;a href=&quot;http://cms.everyday-cn.com/zh/ibook_download/13&quot; title=&quot;design pattern&quot;&gt;Design Patterns in Ruby&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;这本书，顺便复习了设计模式方面的东西，实现同样一个设计模式，无论在可扩展性还是代码的简洁程度都比java高出不少，下面看看如何用ruby实现常用的设计模式：&lt;/p&gt;
 
 &lt;ul&gt;
@@ -439,9 +439,9 @@ puts(d.build_with XMLBuilder.new)
    
    <entry>
      <title>Ruby DSL初探</title>
-     <link href="http://tim.everyday-cn.com/2011/12/13/ruby-dsl.html"/>
+     <link href="http://tim.everyday-cn.com/Ruby/2011/12/13/ruby-dsl.html"/>
      <updated>2011-12-13T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/12/13/ruby-dsl</id>
+     <id>http://tim.everyday-cn.com/Ruby/2011/12/13/ruby-dsl</id>
      <content type="html">&lt;p&gt;Ruby 是当前用于建立内部 DSL 最流行的语言。当在 Ruby 上开发时你所考虑的大部分基础设施都是基于 DSL 的例如：Active Record、RSpec、Cucumber、Rake 以及许多其他方面，— 因为它是服从于主机托管内部 DSL 的。行为驱动开发 (BDD) 的新潮技术需要一个强大的 DSL 基础来实现其普及。Rails DSL很大程度上依赖于Ruby的元编程能力，这里将对Ruby的 DSL 写一个简单测试的例子，功能如下：&lt;/p&gt;
 
 &lt;ul&gt;
@@ -554,9 +554,9 @@ p dsl.instance_variables
    
    <entry>
      <title>Ruby使用rexml解析xml</title>
-     <link href="http://tim.everyday-cn.com/2011/12/12/ruby-rexml-xml.html"/>
+     <link href="http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-rexml-xml.html"/>
      <updated>2011-12-12T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/12/12/ruby-rexml-xml</id>
+     <id>http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-rexml-xml</id>
      <content type="html">&lt;p&gt;在开发中常用到xml解析，在ruby中我们可以使用rexml来解析xml,rexml具有如下特点:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -662,9 +662,9 @@ p names
    
    <entry>
      <title>Ruby使用DBI gem操作mysql</title>
-     <link href="http://tim.everyday-cn.com/2011/12/12/ruby-dbi-gem-mysql.html"/>
+     <link href="http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-dbi-gem-mysql.html"/>
      <updated>2011-12-12T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/12/12/ruby-dbi-gem-mysql</id>
+     <id>http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-dbi-gem-mysql</id>
      <content type="html">&lt;p&gt;之前使用rails开发，处理数据库操作这方面都是使用active record, 它是一个orm的框架，一直在找一个更加轻量的gem，于是找到了dbi，它包括数据库接口（具有跨平台性）和数据库驱动（数据库独立），下面介绍如何使用它：&lt;/p&gt;
 
 &lt;ul&gt;
@@ -720,9 +720,9 @@ end
    
    <entry>
      <title>Mac安装配置oh my zsh</title>
-     <link href="http://tim.everyday-cn.com/2011/12/09/mac-oh-my-zsh.html"/>
+     <link href="http://tim.everyday-cn.com/Mac/2011/12/09/mac-oh-my-zsh.html"/>
      <updated>2011-12-09T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/12/09/mac-oh-my-zsh</id>
+     <id>http://tim.everyday-cn.com/Mac/2011/12/09/mac-oh-my-zsh</id>
      <content type="html">&lt;p&gt;最近看了一些 ruby-china上的帖子，有人介绍说mac terminal下可以使用zsh(zsh是bash的一个扩展,并且兼容bash命令).但需要安装一些东西，mac默认使用的是bash shell。在mac 下有oh my zsh的东东介绍说不错，提供了很多的主题和rails/git/gem等的插件最重要的是提供了自动补全的功能，下面记录下具体的安装和配置：&lt;/p&gt;
 
 &lt;ul&gt;
@@ -799,9 +799,9 @@ $ grep -h -r -e '^alias' ~/.oh-my-zsh
    
    <entry>
      <title>Mac通过homebrew 安装mysql</title>
-     <link href="http://tim.everyday-cn.com/2011/12/07/mac-homebrew-mysql.html"/>
+     <link href="http://tim.everyday-cn.com/Mac/2011/12/07/mac-homebrew-mysql.html"/>
      <updated>2011-12-07T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/12/07/mac-homebrew-mysql</id>
+     <id>http://tim.everyday-cn.com/Mac/2011/12/07/mac-homebrew-mysql</id>
      <content type="html">&lt;p&gt;使用MBP有一年了，开始想在工作中使用mac由于各种不习惯最终失败，导致自己使用了一年多的ubuntu,最近把ubuntu升级到了11.10,新版本的unity界面，和程序之间的切换缓慢让我决定强制切换到mac  os 来开发，为将来尝试textmate做准备，没想到刚切到mac os 安装mysql就遇到了问题，下面介绍下在osx下brew安装mysql的过程：&lt;/p&gt;
 
 &lt;ul&gt;
@@ -903,9 +903,9 @@ sudo ln -s /tmp/mysql.sock /var/run/mysqld/mysqld.sock
    
    <entry>
      <title>Ruby目录(Diretories)文件(files)操作</title>
-     <link href="http://tim.everyday-cn.com/2011/11/28/ruby-diretories-files.html"/>
+     <link href="http://tim.everyday-cn.com/Ruby/2011/11/28/ruby-diretories-files.html"/>
      <updated>2011-11-28T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/2011/11/28/ruby-diretories-files</id>
+     <id>http://tim.everyday-cn.com/Ruby/2011/11/28/ruby-diretories-files</id>
      <content type="html">&lt;p&gt;最近一直在用ruby写crawler engine,不可避免的需要用到一些对文件和目录的操作，下面记录一下：&lt;/p&gt;
 
 &lt;ul&gt;

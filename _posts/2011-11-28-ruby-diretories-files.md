@@ -2,7 +2,8 @@
 layout: post
 title: Ruby目录(Diretories)文件(files)操作
 description: Ruby目录(Diretories)文件(files)操作
-key: []
+category: Ruby
+tags: [Ruby]
 ---
 最近一直在用ruby写crawler engine,不可避免的需要用到一些对文件和目录的操作，下面记录一下：
 

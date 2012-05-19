@@ -2,7 +2,8 @@
 layout: post
 title: 利用Github管理Rails代码
 description: 利用Github管理Rails代码
-key: []
+category: Git
+tags: [Git, GitHub]
 ---
 GitHub 提供了很好的代码配置管理方案，特别是linux系统用户，没有道理不使用，废话少说，看下如何在ubuntu下用git管理你的rails代码:
 

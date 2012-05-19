@@ -2,7 +2,8 @@
 layout: post
 title: Mac通过homebrew 安装mysql
 description: Mac通过homebrew 安装mysql
-key: []
+category: Mac
+tags: [Homebrew, Mac]
 ---
 使用MBP有一年了，开始想在工作中使用mac由于各种不习惯最终失败，导致自己使用了一年多的ubuntu,最近把ubuntu升级到了11.10,新版本的unity界面，和程序之间的切换缓慢让我决定强制切换到mac  os 来开发，为将来尝试textmate做准备，没想到刚切到mac os 安装mysql就遇到了问题，下面介绍下在osx下brew安装mysql的过程：
 
@@ -46,4 +47,4 @@ launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist
 sudo ln -s /tmp/mysql.sock /var/run/mysqld/mysqld.sock
 </pre>
 
->  初步安装完成，慢慢开始习惯和体验mac os,看看是否真有网上说的这么好，就写到这里。 
+>  初步安装完成，慢慢开始习惯和体验mac os,看看是否真有网上说的这么好，就写到这里。

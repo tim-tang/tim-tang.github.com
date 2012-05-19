@@ -2,7 +2,8 @@
 layout: post
 title: Rails3,CodeRay gem 高亮代码
 description: Rails3,CodeRay gem 高亮代码
-key: []
+category: RubyOnRails
+tags: [Rails, CodeRay]
 ---
 由于使用的wmd编辑器对代码支持不是很好，写博客一直困扰于代码的语法无法高亮，于是在网上找到了CodeRay的rails gem, 看起来效果还不错，好像railscasts也是用的这个gem,下面介绍下这个plugin的使用:
 

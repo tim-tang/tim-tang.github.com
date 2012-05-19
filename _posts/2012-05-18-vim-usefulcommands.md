@@ -2,8 +2,8 @@
 layout: post
 title: "Vim 实用命令"
 description: "经过实际开发总结了一些有用的VIM命令。"
-category: 
-tags: [vim]
+category: Vim
+tags: [Vim]
 ---
 
 ###光标移动
@@ -28,7 +28,7 @@ tags: [vim]
 + gf: 打开引用的文件。
 + ctrl+o: 返回到原来的文件。
 + ctrl+w, f: 打开引用的文件, 并split窗口给新文件。
-+ ctrl+w, q: 关闭窗口。 
++ ctrl+w, q: 关闭窗口。
 + gg=G   格式化全文代码
 
 ###多列注释

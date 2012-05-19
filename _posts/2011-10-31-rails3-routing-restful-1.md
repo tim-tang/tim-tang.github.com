@@ -2,7 +2,8 @@
 layout: post
 title: Rails3 Routing构建RESTFUL应用(1)
 description: Rails3 Routing构建RESTFUL应用(1)
-key: []
+category: RubyOnRails
+tags: [Rails, Routing]
 ---
 Rails routing 对于初学rails的人来说比较难理解，里面的东西也比较多和杂，需要静下心来慢慢琢磨，下面介绍下我对routing的理解：
 

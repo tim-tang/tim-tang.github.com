@@ -2,7 +2,8 @@
 layout: post
 title: 使用rails_best_practices代码重构
 description: 使用rails_best_practices代码重构
-key: []
+category: RubyOnRails
+tags: [Rails]
 ---
 在平时的在开发中我们经常需要对代码进行优化重构，不同人对同一段代码可能都有很多不同的看法，所以我们需要制定这些重构的规则，可以把不同人的看法统一起来，达到最佳状态，这是我们就需要一些工具来帮助我们达到这个目地，例如我们这里介绍的[***rails_best_practices***][1] gem,下面我们来看看它的功能：
 

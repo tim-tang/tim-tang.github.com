@@ -2,7 +2,8 @@
 layout: post
 title: CruiseControl.rb,Rspec实践持续集成
 description: CruiseControl.rb,Rspec实践持续集成
-key: []
+category: CI
+tags: [Rspec, CI]
 ---
 现在很多agile development 开发团队在多人协作开发的时候，经常用到CI，在java中常用的CI工具有Hudson,cruisecontrol等，rails的项目我们可以用cruisecontrol.rb,它遵循Rails项目一贯的“convention over configuration”原则，CC.rb也允许你以非常简单的方式指定这些设置——没有XML，配置都是你熟悉的Ruby代码。下面我们实践下如何集成rspec去做ci:
 

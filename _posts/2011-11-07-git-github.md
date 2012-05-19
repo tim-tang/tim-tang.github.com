@@ -2,7 +2,8 @@
 layout: post
 title: Git,Github开发流程
 description: Git,Github开发流程
-key: []
+category: Git
+tags: [Git, GitHub]
 ---
 使用Git有几个月了，但一直在一个master上开发和发布版本，看了下git-flow方面的实践资料，准备在下一个版本中调整git的开发流程，下面描述下想法和具体实现：
 **我们会把branch分成两个主要的分支：**

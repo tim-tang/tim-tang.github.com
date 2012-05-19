@@ -2,7 +2,8 @@
 layout: post
 title: Mac安装配置oh my zsh
 description: Mac安装配置oh my zsh
-key: []
+category: Mac
+tags: [Mac, zsh]
 ---
 最近看了一些 ruby-china上的帖子，有人介绍说mac terminal下可以使用zsh(zsh是bash的一个扩展,并且兼容bash命令).但需要安装一些东西，mac默认使用的是bash shell。在mac 下有oh my zsh的东东介绍说不错，提供了很多的主题和rails/git/gem等的插件最重要的是提供了自动补全的功能，下面记录下具体的安装和配置：
 

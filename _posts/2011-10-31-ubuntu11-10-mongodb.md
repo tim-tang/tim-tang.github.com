@@ -2,7 +2,8 @@
 layout: post
 title: Ubuntu11.10,MongoDB安装测试
 description: Ubuntu11.10,MongoDB安装测试
-key: []
+category: Ubuntu
+tags: [Ubuntu, MongoDB]
 ---
 下面简单介绍下MongoDB在Ubuntu上的安装:
 

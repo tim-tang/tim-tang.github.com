@@ -2,7 +2,8 @@
 layout: post
 title: PPTP,VPN配置(Linode)
 description: PPTP,VPN配置(Linode)
-key: []
+category: Msic
+tags: [PPTP, Linode]
 ---
 介绍下Linode VPS上，利用PPTP搭建VPN服务器：
 

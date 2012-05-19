@@ -19,7 +19,8 @@ follow:
     twitter:      http://www.twitter.com/tangjilong
 description:      "Teck Talk v1.0 "
 
-
 style: 			  /css/style.css
 blogName: 		  Tech Talk
 blogDesc: 		  [Git|Vim|RubyOnRails]
+
+tags_path:        tags.html

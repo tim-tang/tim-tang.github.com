@@ -2,7 +2,8 @@
 layout: post
 title: Ubuntu,Memcached安装&监控
 description: Ubuntu,Memcached安装&监控
-key: []
+category: Ubuntu
+tags: [Memcached]
 ---
 有于rails自身提供的page cache/action cache/fragment cache的缓存策略不够灵活，主要是生成缓存的html文件，所以考虑在后台加上数据缓存，首选肯定是memcached,下面先介绍下memcached在ubuntu上的安装和监控：
 
