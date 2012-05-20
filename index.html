@@ -9,6 +9,7 @@ layout: default
 		<h3 class="main-excerpt-title"><a href="{{ rpost.url }}" title="{{ rpost.title }}" rel="bookmark">{{ rpost.title }}</a></h3>
 		<p class="date">
 		<time pubdate="{{ rpost.date }}">{{ rpost.date | date_to_string }}</time>
+        <span>&nbsp;&#10149;</span>
 		{% unless rpost.tags == empty %}
 			{% assign tag_list = rpost.tags %}
 		    {% include tag_list.html%}
