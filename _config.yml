@@ -24,3 +24,4 @@ blogName: 		  Tech Talk
 blogDesc: 		  [Git|Vim|RubyOnRails]
 
 tags_path:        tags.html
+base_url:         http://tim.everyday-cn.com/
