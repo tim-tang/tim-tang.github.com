@@ -8,7 +8,7 @@ title: Tags
 		<h4 class="page-title">Blog Tags</span></h4>
 	<article class="entry">
 	{% for tag in site.tags %}
-	<h3 id="{{ tag[0] }}-ref">{{ tag[0] }}&nbsp;&nbsp;<span style="vertical_align:super;font-size:0.8em;color:green;">{{ tag[1].size }}</span></h3>
+	<h3 id="{{ tag[0] }}-ref">{{ tag[0] }}&nbsp;&nbsp;</h3><span class="tag-list-size">{{ tag[1].size }}</span>
 	<ul>
 		{% assign page_list = tag[1] %}
 		{% include page_list.html%}
