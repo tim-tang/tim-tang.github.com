@@ -27,7 +27,7 @@ tags: [Ruby, MongoDB]
  require "json"
  require "mongo"
  myXML = Crack::XML.parse(File.read("/home/tim-tang/OFBProductCategory1.xml"))
- myJSON = JSON.parse(myXML.to_json)
+ myJSON = myXML.to_hash
  connection = Mongo::Connection.new("localhost", 27017)
  db = connection.db("tim-db")
  coll = db.collection("products")
