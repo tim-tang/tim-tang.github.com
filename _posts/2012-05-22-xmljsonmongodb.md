@@ -22,11 +22,10 @@ tags: [Ruby, MongoDB]
 
  - 具体的代码实现
  <pre>
- #encoding:utf-8
+ \#encoding:utf-8
  require "crack"
  require "json"
  require "mongo"
-
  myXML = Crack::XML.parse(File.read("/home/tim-tang/OFBProductCategory1.xml"))
  myJSON = JSON.parse(myXML.to_json)
  connection = Mongo::Connection.new("localhost", 27017)

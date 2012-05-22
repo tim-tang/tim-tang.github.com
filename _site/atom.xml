@@ -4,13 +4,52 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-21T15:14:45+08:00</updated>
+   <updated>2012-05-22T16:35:53+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
      <email>tang.jilong@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>XML,JSON转换存MongoDB</title>
+     <link href="http://tim.everyday-cn.com/MongoDB/2012/05/22/xmljsonmongodb.html"/>
+     <updated>2012-05-22T00:00:00+08:00</updated>
+     <id>http://tim.everyday-cn.com/MongoDB/2012/05/22/xmljsonmongodb</id>
+     <content type="html">&lt;p&gt;最近项目用到xml和json的转换，于是想到了如何用ruby来实现这个功能，下面介绍下如何实现：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;安装XML转JSON需要的RubyGems
+&lt;pre&gt;
+$ gem install json
+$ gem install crack
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装存储MongoDB所需要的RubyGems
+&lt;pre&gt;
+$ gem install mongo
+$ gem install bson_ext
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;具体的代码实现
+&lt;pre&gt;
+#encoding:utf-8
+require &quot;crack&quot;
+require &quot;json&quot;
+require &quot;mongo&quot;
+myXML = Crack::XML.parse(File.read(&quot;/home/tim-tang/OFBProductCategory1.xml&quot;))
+myJSON = JSON.parse(myXML.to_json)
+connection = Mongo::Connection.new(&quot;localhost&quot;, 27017)
+db = connection.db(&quot;tim-db&quot;)
+coll = db.collection(&quot;products&quot;)
+coll.save(myJSON)
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对MongoDB的安装和使用有疑问的可以看&lt;a href=&quot;http://tim.everyday-cn.com/Ubuntu/2011/10/31/ubuntu11-10-mongodb.html&quot;&gt;Ubuntu11.10,MongoDB安装测试&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;使用ruby现有的类库来操作XML&amp;amp;JSON，相对来说比java方便很多!&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
    
    <entry>
      <title>Vim 实用命令</title>
@@ -898,57 +937,6 @@ sudo ln -s /tmp/mysql.sock /var/run/mysqld/mysqld.sock
 
 
 &lt;blockquote&gt;&lt;p&gt; 初步安装完成，慢慢开始习惯和体验mac os,看看是否真有网上说的这么好，就写到这里。&lt;/p&gt;&lt;/blockquote&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>Ruby目录(Diretories)文件(files)操作</title>
-     <link href="http://tim.everyday-cn.com/Ruby/2011/11/28/ruby-diretories-files.html"/>
-     <updated>2011-11-28T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/Ruby/2011/11/28/ruby-diretories-files</id>
-     <content type="html">&lt;p&gt;最近一直在用ruby写crawler engine,不可避免的需要用到一些对文件和目录的操作，下面记录一下：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;操作目录&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-Dir.chdir( “/Users/weston” )  #进入目录
-home =Dir.pwd  #=&gt; “/Users/weston/” * 显示目录
-Dir.mkdir( “/Users/weston/” )  ＃创建目录，和*nix命令一样吧
-Dir.rmdir( “/Users/weston/test” ) # 删除目录
-Dir.mkdir( “/Users/weston/test”,755 ) #常见目录，设置权限
-d = Dir.entries( “/Users/weston” ).each { |e| puts e } #=&gt; Array
-d2 = d.delete_if{ |e| e=~ /^\..*/} #=&gt;这样出来的就是不包含隐藏文件了
-dir = Dir.open( “/Users/weston” ) # =&gt; #&lt;Dir:0x1cd784&gt;
-dir.path # =&gt; “/Users/weston”
-dir.tell # =&gt; “.”
-dir.read # =&gt; 1
-dir.tell # =&gt; “..”
-dir.rewind # =&gt; rewind to beginning
-dir.each { |e| puts e } # puts each entry in dir
-dir.close # =&gt; close stream
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;文件&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-file = File.new( “file.rb”, “w” ) # =&gt; #&lt;File:file.rb&gt; 其中的w是表示可以写，还有很多模式：r, r+, w, w+, a, a+,b
-file = File.open( “sonnet_129.txt” )
-file.each { |line| print “#{file.lineno}. ”, line } #lineno 是行号
-file.close
-File.new( “books.txt”, “w” )
-File.rename( “books.txt”, “chaps.txt” )
-File.delete( “chaps.txt” )
-&lt;/pre&gt;
-
-
-&lt;p&gt; 就写到这里，方便将来查找。&lt;/p&gt;
 </content>
    </entry>
    
