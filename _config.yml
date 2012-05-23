@@ -1,6 +1,6 @@
 markdown:         rdiscount
 pygments:         true
-paginate:         6
+paginate:         18
 
 title:            Tech Talk - Git|Vim|RubyOnRails
 url:              http://tim.everyday-cn.com
