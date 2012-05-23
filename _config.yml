@@ -9,6 +9,8 @@ author:
     name:         Tim.Tang
     email:        tang.jilong@gmail.com
 description:      "Teck Talk v1.1 "
+keywords:         "Ruby,Rails,Git,MongoDB,Vim"
+robots:           "Ruby,Rails,Git,MongoDB,Vim"
 
 about: 			  "Tim has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
 Tim currently enjoys spending most of his time with RubyOnRails and jQuery but often has to find ways to coexist with legacy technologies for example J2EE in the IT department at a large enterprise.
