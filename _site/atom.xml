@@ -4,7 +4,7 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-24T22:05:28+08:00</updated>
+   <updated>2012-05-24T22:18:44+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
@@ -161,9 +161,9 @@ end
 &amp;lt;%= image_tag blog.file_url(:large)%&gt;
 &lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;到这里终于可以启动服务，上传图片了，看看结果
-&lt;img src=&quot;http://tim.everyday-cn/images/post/carrierwave-mongoid.png&quot;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;img src=&quot;/images/post/carrierwave-mongoid.png&quot; width=&quot;750px&quot; height=&quot;500px&quot;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;在看mongodb的查询结果，多了三个collection以及对于的储存记录
-&lt;img src=&quot;http://tim.everyday-cn/images/post/mongodb-result.png&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;img src=&quot;/images/post/mongodb-result.png&quot; width=&quot;820px&quot; height=&quot;400px&quot;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
