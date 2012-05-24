@@ -150,7 +150,7 @@ end
 
   - 修改app/views/blogs/_form.html.erb，在content表单项下面添加图片上传
   <pre>
-    <%= f.label :file %><br />
+    <%= f.label :file %>
     <%= f.file_field :file %>
   </pre>
 
