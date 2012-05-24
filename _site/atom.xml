@@ -4,13 +4,172 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-22T16:35:53+08:00</updated>
+   <updated>2012-05-24T22:05:28+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
      <email>tang.jilong@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>Rails3,GridFS,MongoID,CarrierWave实现图片上传</title>
+     <link href="http://tim.everyday-cn.com/RubyOnRails/2012/05/24/rails3gridfsmongoidcarrierwave.html"/>
+     <updated>2012-05-24T00:00:00+08:00</updated>
+     <id>http://tim.everyday-cn.com/RubyOnRails/2012/05/24/rails3gridfsmongoidcarrierwave</id>
+     <content type="html">&lt;p&gt;最近准备将Everyday CMS的数据存储由MySQL切换到MongoDB,作为实验先探探路，看看能不能用MongoDB的GridFS来存储图片，下面具体的实现：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;首先环境准备：Rails 3.1.3/Ruby 1.9.2p320/MongoDB 已经安装并启动，具体安装可参考&lt;a href=&quot;http://tim.everyday-cn.com/Ubuntu/2011/10/31/ubuntu11-10-mongodb.html&quot;&gt;UBUNTU11.10,MONGODB安装测试&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建app
+&lt;pre&gt;
+$ rails new demo
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改Gemfile文件，加入如下Gems
+&lt;pre&gt;
+gem 'mongoid' #2.4.10
+gem 'bson_ext' #1.6.2
+gem 'carrierwave' #0.5.8
+gem 'carrierwave-mongoid', :require =&gt; 'carrierwave/mongoid' #0.1.7
+gem 'mini_magick' #3.4
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;生成mongoid.yml
+&lt;pre&gt;
+$ rails g mongoid:config
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过修改 config/application.rb去掉对默认数据库依赖
+&lt;pre&gt;
+# require 'rails/all'
+require &quot;action_controller/railtie&quot;
+require &quot;action_mailer/railtie&quot;
+require &quot;active_resource/railtie&quot;
+require &quot;rails/test_unit/railtie&quot;
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;继续添加以下代码，防止 error mongoid [not found] 的问题
+&lt;pre&gt;
+config.generators do |g|
+g.orm :active_record
+end
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除默认的 config/database.yml，并用scaffold创建blog应用:
+&lt;pre&gt;
+$ rm -f config/database.yml
+$ rails g scaffold blog name:string content:text
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;添加carrierwave配置文件 config/initializers/carrierwave.rb
+&lt;pre&gt;
+CarrierWave.configure do |config|
+config.storage = :grid_fs
+config.grid_fs_access_url = &quot;&quot;
+config.grid_fs_database = Mongoid.database.name
+config.grid_fs_host = Mongoid.config.master.connection.host
+end
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;生成File Uploader
+&lt;pre&gt;
+$ rails g uploader File
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改app/uploaders/file_uploader.rb
+&lt;pre&gt;
+class FileUploader &amp;lt; CarrierWave::Uploader::Base
+include CarrierWave::MiniMagick
+# Choose what kind of storage to use for this uploader:
+storage :grid_fs
+# Override the directory where uploaded files will be stored.
+def store_dir
+ &quot;uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}&quot;
+end
+def default_url
+  &quot;/uploads/fallback/&quot; + [version_name, &quot;default.png&quot;].compact.join('_')
+end
+# Create different versions of your uploaded files:
+version :thumb do
+  process :resize_to_fill=&gt; [50, 50]
+end
+version :normal do
+  process :resize_to_fill =&gt; [150, 200]
+end
+version :big do
+  process :resize_to_fill =&gt; [250, 300]
+end
+version :large do
+  process :resize_to_fill =&gt; [350, 400]
+end
+def extension_white_list
+  %w(jpg jpeg gif png)
+end
+def filename
+  &quot;something.jpg&quot; if original_filename
+end
+end
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;生成生成gridfs的controller
+&lt;pre&gt;
+$ rails g controller gridfs
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改GridfsController,内容如下
+&lt;pre&gt;
+class GridfsController &amp;lt; ActionController::Metal
+def serve
+ gridfs_path = env[&quot;PATH_INFO&quot;].gsub(&quot;/uploads/&quot;, &quot;uploads/&quot;)
+ begin
+   puts &quot;---------------------------------------&quot;
+   puts gridfs_path
+   puts Mongoid.database.name
+   puts &quot;---------------------------------------&quot;
+   gridfs_file = Mongo::GridFileSystem.new(Mongoid.database).open(gridfs_path, 'r')
+   self.response_body = gridfs_file.read
+   self.content_type = gridfs_file.content_type
+ rescue Exception =&gt; e
+   self.status = :file_not_found
+   Rails.logger.debug { &quot;#{e}&quot; }
+   self.content_type = 'text/plain'
+   self.response_body = ''
+   raise e
+ end
+end
+end
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改routes.rb，使开发模式下，通过gridfs这个controller来管理图片文件
+&lt;pre&gt;
+if Rails.env.development?
+ match &quot;/uploads/*path&quot; =&gt; &quot;gridfs#serve&quot;
+end
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改app/models/blog.rb，添加file字段，并挂载uploader, 注意这里不再继承active record.
+&lt;pre&gt;
+class Blog
+include Mongoid::Document
+  field :name
+  field :content
+  field :file
+  mount_uploader :file, FileUploader
+end
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改app/views/blogs/_form.html.erb，在content表单项下面添加图片上传
+&lt;pre&gt;
+&amp;lt;%= f.label :file %&gt;&lt;br /&gt;
+&amp;lt;%= f.file_field :file %&gt;
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改 app/views/blogs/index.html.erb, 用来展现上传的图片
+&lt;pre&gt;
+&amp;lt;%= blog.file.size %&gt;
+&amp;lt;%= blog.file.filename%&gt;
+&amp;lt;%= image_tag blog.file_url(:thumb)%&gt;
+&amp;lt;%= image_tag blog.file_url(:normal)%&gt;
+&amp;lt;%= image_tag blog.file_url(:big)%&gt;
+&amp;lt;%= image_tag blog.file_url(:large)%&gt;
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;到这里终于可以启动服务，上传图片了，看看结果
+&lt;img src=&quot;http://tim.everyday-cn/images/post/carrierwave-mongoid.png&quot;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在看mongodb的查询结果，多了三个collection以及对于的储存记录
+&lt;img src=&quot;http://tim.everyday-cn/images/post/mongodb-result.png&quot; /&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;注意:尽量不要在rails3.1以下版本操作，否则会出现无法继承mongoid的问题，OK JSUT DO IT!&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
    
    <entry>
      <title>XML,JSON转换存MongoDB</title>
@@ -37,7 +196,7 @@ require &quot;crack&quot;
 require &quot;json&quot;
 require &quot;mongo&quot;
 myXML = Crack::XML.parse(File.read(&quot;/home/tim-tang/OFBProductCategory1.xml&quot;))
-myJSON = JSON.parse(myXML.to_json)
+myJSON = myXML.to_hash
 connection = Mongo::Connection.new(&quot;localhost&quot;, 27017)
 db = connection.db(&quot;tim-db&quot;)
 coll = db.collection(&quot;products&quot;)
@@ -833,110 +992,6 @@ $ grep -h -r -e '^alias' ~/.oh-my-zsh
 
 
 &lt;blockquote&gt;&lt;p&gt;就写到这里，更多资料可以看这里&lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh&quot; title=&quot;oh my zsh&quot;&gt;oh-my-zsh&lt;/a&gt;  原创文章&lt;/p&gt;&lt;/blockquote&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>Mac通过homebrew 安装mysql</title>
-     <link href="http://tim.everyday-cn.com/Mac/2011/12/07/mac-homebrew-mysql.html"/>
-     <updated>2011-12-07T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/Mac/2011/12/07/mac-homebrew-mysql</id>
-     <content type="html">&lt;p&gt;使用MBP有一年了，开始想在工作中使用mac由于各种不习惯最终失败，导致自己使用了一年多的ubuntu,最近把ubuntu升级到了11.10,新版本的unity界面，和程序之间的切换缓慢让我决定强制切换到mac  os 来开发，为将来尝试textmate做准备，没想到刚切到mac os 安装mysql就遇到了问题，下面介绍下在osx下brew安装mysql的过程：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;安装homebrew比较简单：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.github.com/gist/323731)&quot;
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;通过brew安装mysql:&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-brew install mysql
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;等成功安装完成，想要登录的时候出问题了：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;google了一下，找到答案原来，还没彻底安装完成：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-brew info mysql
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;以上命令可以看到具体的安装信息，那就装吧：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-unset TMPDIR
-mysql_install_db --verbose --user=`root` --basedir=&quot;$(brew --prefix mysql)&quot; --datadir=/usr/local/var/mysql --tmpdir=/tmp
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;下面我们还需要启动mysql服务：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-mysql.server start
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;用如下命令登录即可：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-mysql -uroot  #初始没有设置密码
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;如果要在启动系统的时候启动服务可以执行如下命令：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-mkdir -p ~/Library/LaunchAgents
-cp /usr/local/Cellar/mysql/5.5.15/com.mysql.mysqld.plist ~/Library/LaunchAgents/
-launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;在rails app 中常用到mysql,我们还需要建立一个软链接&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-sudo ln -s /tmp/mysql.sock /var/run/mysqld/mysqld.sock
-&lt;/pre&gt;
-
-
-&lt;blockquote&gt;&lt;p&gt; 初步安装完成，慢慢开始习惯和体验mac os,看看是否真有网上说的这么好，就写到这里。&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
