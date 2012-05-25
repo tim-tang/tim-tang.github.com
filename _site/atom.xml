@@ -4,13 +4,41 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-24T22:18:44+08:00</updated>
+   <updated>2012-05-25T21:29:30+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
      <email>tang.jilong@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>Rake从MySQL向Mongo GridFS迁移图片数据</title>
+     <link href="http://tim.everyday-cn.com/MongoDB/2012/05/25/rakemysqlmongo-gridfs.html"/>
+     <updated>2012-05-25T00:00:00+08:00</updated>
+     <id>http://tim.everyday-cn.com/MongoDB/2012/05/25/rakemysqlmongo-gridfs</id>
+     <content type="html">&lt;p&gt;为了将来Everyday CMS的数据库切换到MongDB准备，这就涉及到了历史遗留数据的迁移尤其是图片，目前目前存储在文件系统上，下面使用Rake将文件系统种的图片导入GridFS.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;修改遗留系统中的Gemfile,增加
+&lt;pre&gt;
+gem 'mongo'
+gem 'mongoid'
+gem 'bson_ext'
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;生成config/mongoid.yml在这里配置MongoDB连接
+&lt;pre&gt;
+$ rails g mongoid:config
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建mongo_import.rake文件，存放在lib/tasks目录下&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;下面看具体的mongo_import.rake文件内容,看代码注释:&lt;a href=&quot;https://github.com/tim-tang/everyday/blob/master/lib/tasks/mongo_import.rake&quot;&gt;mongo_import.rake&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;下面运行rake gridfs:import就导入图片文件了,注意MongoDB已经启动了！&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;其他的数据导入，也可以仿照类似的方式实现，Cheers!&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
    
    <entry>
      <title>Rails3,GridFS,MongoID,CarrierWave实现图片上传</title>
@@ -148,7 +176,7 @@ end
 &lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;修改app/views/blogs/_form.html.erb，在content表单项下面添加图片上传
 &lt;pre&gt;
-&amp;lt;%= f.label :file %&gt;&lt;br /&gt;
+&amp;lt;%= f.label :file %&gt;
 &amp;lt;%= f.file_field :file %&gt;
 &lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;修改 app/views/blogs/index.html.erb, 用来展现上传的图片
@@ -163,11 +191,11 @@ end
 &lt;li&gt;&lt;p&gt;到这里终于可以启动服务，上传图片了，看看结果
 &lt;img src=&quot;/images/post/carrierwave-mongoid.png&quot; width=&quot;750px&quot; height=&quot;500px&quot;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;在看mongodb的查询结果，多了三个collection以及对于的储存记录
-&lt;img src=&quot;/images/post/mongodb-result.png&quot; width=&quot;820px&quot; height=&quot;400px&quot;/&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;img src=&quot;/images/post/mongodb-result.png&quot; width=&quot;830px&quot; height=&quot;420px&quot;/&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
-&lt;blockquote&gt;&lt;p&gt;注意:尽量不要在rails3.1以下版本操作，否则会出现无法继承mongoid的问题，OK JSUT DO IT!&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;&lt;p&gt;注意:尽量不要在rails3.1以下版本操作，否则会出现无法集成mongoid的问题，OK JSUT DO IT!&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
@@ -913,85 +941,6 @@ end
 
 
 &lt;blockquote&gt;&lt;p&gt;就写到这里，方便查阅。&lt;/p&gt;&lt;/blockquote&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>Mac安装配置oh my zsh</title>
-     <link href="http://tim.everyday-cn.com/Mac/2011/12/09/mac-oh-my-zsh.html"/>
-     <updated>2011-12-09T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/Mac/2011/12/09/mac-oh-my-zsh</id>
-     <content type="html">&lt;p&gt;最近看了一些 ruby-china上的帖子，有人介绍说mac terminal下可以使用zsh(zsh是bash的一个扩展,并且兼容bash命令).但需要安装一些东西，mac默认使用的是bash shell。在mac 下有oh my zsh的东东介绍说不错，提供了很多的主题和rails/git/gem等的插件最重要的是提供了自动补全的功能，下面记录下具体的安装和配置：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;安装oh my zsh:&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;要让安装生效，只要重启终端即可&lt;/li&gt;
-&lt;li&gt;我们可以看到在~/目录下生成了.zshrc文件，修改它让它支持rvm,方便rails开发，将原来.bash_profile与.profile中的自定义内容导入过来：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-...
-[[ -s &quot;$HOME/.rvm/scripts/rvm&quot; ]] &amp;&amp; . &quot;$HOME/.rvm/scripts/rvm&quot;
-...
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;到这里我们就可以增加rails3开发要使用到的插件了,继续修改~/.zshrc文件：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
- # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails3 rails git textmate ruby rvm gem github brew bundler textmate pow osx)
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;继续修改主题,个人比较喜欢的是candy和darkblood,更多主题可以看它的github wiki：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-...
-ZSH_THEME=&quot;darkblood&quot;
-...
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;使~/.zshrc文件生效：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-source ~/.zshrc
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;这样我们就可以看到效果了，如图：
-&lt;img src=&quot;http://cms.everyday-cn.com/system/pictures/1195/large_oh-my-zsh.png?1323394528&quot; title=&quot;oh my zsh&quot; alt=&quot;oh-my-zsh&quot; /&gt;&lt;/li&gt;
-&lt;li&gt;我们还可以查看所有oh my zsh提供的自动补全：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-$ grep -h -r -e '^alias' ~/.oh-my-zsh
-&lt;/pre&gt;
-
-
-&lt;blockquote&gt;&lt;p&gt;就写到这里，更多资料可以看这里&lt;a href=&quot;https://github.com/robbyrussell/oh-my-zsh&quot; title=&quot;oh my zsh&quot;&gt;oh-my-zsh&lt;/a&gt;  原创文章&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
