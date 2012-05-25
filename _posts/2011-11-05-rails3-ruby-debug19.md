@@ -3,7 +3,7 @@ layout: post
 title: Rails3,ruby-debug19调试攻略
 description: Rails3,ruby-debug19调试攻略
 category: RubyOnRails
-tags: [Rails, Ruby_debug]
+tags: [Rails, RubyGem]
 ---
 在之前的j2ee的项目中经常需要debug复杂的逻辑的代码，但在rails3的项目中如何来使用debug功能，这个也是一直想了解的，任何项目都可能有复杂逻辑，网上找了一圈资料，下面介绍下如何安装和使用ruby-deug在rails3环境下：
 

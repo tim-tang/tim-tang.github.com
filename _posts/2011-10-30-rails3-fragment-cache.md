@@ -3,7 +3,7 @@ layout: post
 title: Rails3,fragment cache 缓存局部页面
 description: Rails3,fragment cache 缓存局部页面
 category: RubyOnRails
-tags: [Rails, Fragment_cache]
+tags: [Rails]
 ---
 一直想对页面不经常更新的部分做缓存，看了下关于rails缓存的内容，觉得fragment缓存可以用，于是把everyday页面右边的博客分类/标签云/最近评论/博客归档都做了fragment缓存，果然页面加载快了很多，不用每次都读数据库，只要在需要更新的时候清缓存即可，下面介绍下实现：
 

@@ -3,7 +3,7 @@ layout: post
 title: Rails3,MongoDB,MongoID完整实例
 description: Rails3,MongoDB,MongoID完整实例
 category: RubyOnRails
-tags: [Rails, MongoDB, MongoID]
+tags: [Rails, MongoDB]
 ---
 一直想尝试下rails3和mongodb,mongoid的集成使用，网上找了一圈没发现有好的文档，最后只能自己动手了，主要参考了railscasts和mongoid的官方文档，下面介绍下具体实现:
 

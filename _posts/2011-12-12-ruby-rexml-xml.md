@@ -3,7 +3,7 @@ layout: post
 title: Ruby使用rexml解析xml
 description: Ruby使用rexml解析xml
 category: Ruby
-tags: [Ruby, Rexml]
+tags: [Ruby, RubyGem]
 ---
 在开发中常用到xml解析，在ruby中我们可以使用rexml来解析xml,rexml具有如下特点:
 

@@ -3,7 +3,7 @@ layout: post
 title: 打造Capistrano,Git,Passenger自动部署环境
 description: 打造Capistrano,Git,Passenger自动部署环境
 category: RubyOnRails
-tags: [Git, Capistrano]
+tags: [Git, RubyGem]
 ---
 对于rails应用capistrano提供的很好的自动化部署方案，支持部署版本的回滚，和github,svn等scm服务器有不错的集成，介绍下目前everyday所使用到的capistrano配置方案：
 

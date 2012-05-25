@@ -3,7 +3,7 @@ layout: post
 title: ruby使用rails generator生成migration&model文件
 description: ruby使用rails generator生成migration&model文件
 category: Ruby
-tags: [Ruby, Migration]
+tags: [Ruby, Rails]
 ---
 最近在业余时间写一个[***crawler engine***][1]的rubygem, 主要用途是通过rss抓取各个网站的最新新闻、博客等，期间用到了rails migration成数据库表结构和model，下面接介绍下如何在rubygem中使用rails/generator:
 

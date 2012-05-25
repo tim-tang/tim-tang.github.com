@@ -3,7 +3,7 @@ layout: post
 title: Rails3利用friend_id gem,SEO优化
 description: Rails3利用friend_id gem,SEO优化
 category: RubyOnRails
-tags: [Rails, Friendly_id]
+tags: [Rails, RubyGem]
 ---
 出于想增加blog被baidu,google 等搜索引擎收录的条目，于是想到了SEO优化，首先从url的美化开始，rails3中可以使用friendly_id 这个gem, github地址：[Friendly_id][1]
 

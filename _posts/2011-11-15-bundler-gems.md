@@ -3,7 +3,7 @@ layout: post
 title: 使用bundler管理gems
 description: 使用bundler管理gems
 category: RubyOnRails
-tags: [Rails, Bundler]
+tags: [Rails, RubyGem
 ---
 #### Bundle介绍 ##
 Rails 3中引入Bundle来管理项目中所有gem依赖，该命令只能在一个含有Gemfile的目录下执行，如rails 3项目的根目录。

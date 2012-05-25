@@ -3,7 +3,7 @@ layout: post
 title: Ruby使用DBI gem操作mysql
 description: Ruby使用DBI gem操作mysql
 category: Ruby
-tags: [Ruby]
+tags: [Ruby, RubyGem]
 ---
 之前使用rails开发，处理数据库操作这方面都是使用active record, 它是一个orm的框架，一直在找一个更加轻量的gem，于是找到了dbi，它包括数据库接口（具有跨平台性）和数据库驱动（数据库独立），下面介绍如何使用它：
 
