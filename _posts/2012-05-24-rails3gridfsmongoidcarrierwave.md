@@ -170,6 +170,6 @@ end
   - 在看mongodb的查询结果，多了三个collection以及对于的储存记录
   <img src="/images/post/mongodb-result.png" width="830px" height="420px"/>
 
-  > 注意:尽量不要在rails3.1以下版本操作，否则会出现无法继承mongoid的问题，OK JSUT DO IT!
+  > 注意:尽量不要在rails3.1以下版本操作，否则会出现无法集成mongoid的问题，OK JSUT DO IT!
 
   [1]: http://tim.everyday-cn.com/Ubuntu/2011/10/31/ubuntu11-10-mongodb.html
