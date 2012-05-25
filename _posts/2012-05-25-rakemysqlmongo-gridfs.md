@@ -3,7 +3,7 @@ layout: post
 title: "Rake从MySQL向Mongo GridFS迁移图片数据"
 description: "使用Rake将文件系统和MySQL中的图片数据迁移到GridFS中"
 category: MongoDB
-tags: [MongDB]
+tags: [MongoDB]
 ---
 
 为了将来Everyday CMS的数据库切换到MongDB准备，这就涉及到了历史遗留数据的迁移尤其是图片，目前目前存储在文件系统上，下面使用Rake将文件系统种的图片导入GridFS.
