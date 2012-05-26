@@ -81,20 +81,20 @@ def create
 end
 </pre>
  - 修改blog_mongo/app/views/blogs/show.html.erb,增加:
-[code:html]
+<pre>
 ...
 <% if @article.comments.size > 0 %>
-  <p>Comments</p>
-  <% for comment in @article.comments %>
-    <p><%= comment.name %></p>
-    <p><%= comment.content %></p>
+ Comments
+ <% for comment in @article.comments %>
+    <%= comment.name %>
+    <%= comment.content %>
   <% end %>
 <% end %>
-<p>New Comment</p>
+New Comment
 <%= form_for [@article, Comment.new] do |f| %>
-  <p><%= f.label :name %> <%= f.text_field :name %></p>
-  <p><%= f.text_area :content, :rows => 10 %></p>
-  <p><%= f.submit %></p>
+  <%= f.label :name %> <%= f.text_field :name %>
+  <%= f.text_area :content, :rows => 10 %>
+  <%= f.submit %>
 <% end %>
 ....
 </pre>
@@ -104,10 +104,9 @@ Undefined method debug_rjs= for ActionView::Base Class
 </pre>
  - 原来是rails3.1已经不使用debug_rjs,修改blog_mongo/config/environments/development.rb:
 <pre>
-*#config.action_view.debug_rjs  = true*
+#config.action_view.debug_rjs = true
 </pre>
- - 启动服务就可有正常运行了，下面看看运行结果：
-![alt text][5]
+ - 启动服务就可有正常运行了，下面看看运行结果了！
 
 > (原创文章)
 
@@ -115,4 +114,3 @@ Undefined method debug_rjs= for ActionView::Base Class
   [2]: http://cms.everyday-cn.com/system/pictures/953/large_mongo_scaffold.png?1320105964 "scaffold"
   [3]: http://cms.everyday-cn.com/system/pictures/950/large_g_model.png?1320105960 "mongoid comment"
   [4]: http://cms.everyday-cn.com/system/pictures/949/large_g_controller_comments.png?1320105958 "controller"
-  [5]: http://cms.everyday-cn.com/system/pictures/954/large_Screenshot.png?1320108987 "result"
