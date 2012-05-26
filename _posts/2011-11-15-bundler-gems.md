@@ -3,7 +3,7 @@ layout: post
 title: 使用bundler管理gems
 description: 使用bundler管理gems
 category: RubyOnRails
-tags: [Rails, RubyGem
+tags: [Rails, RubyGem]
 ---
 #### Bundle介绍 ##
 Rails 3中引入Bundle来管理项目中所有gem依赖，该命令只能在一个含有Gemfile的目录下执行，如rails 3项目的根目录。
@@ -50,6 +50,11 @@ $ bundle unlock
  - bundle package会把当前所有信赖的包都放到 ./vendor/cache/ 目录下，发布时可用来保证包版本的一致性。
 <pre>
 $ bundle package
+</pre>
+ - bundle open打开gem的源码查看，首先要设置编辑器
+<pre>
+export EDITOR='vim' \#在.bashrc中设置
+$ bundle open xxgem
 </pre>
 
 > 关于bundle 的东西比较基础，希望对大家有帮助！
