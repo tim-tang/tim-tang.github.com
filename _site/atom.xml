@@ -4,13 +4,45 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-26T16:07:36+08:00</updated>
+   <updated>2012-05-27T19:09:04+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
      <email>tang.jilong@gmail.com</email>
    </author>
 
+   
+   <entry>
+     <title>关于RDoc的使用</title>
+     <link href="http://tim.everyday-cn.com/Ruby/2012/05/27/rdoc.html"/>
+     <updated>2012-05-27T00:00:00+08:00</updated>
+     <id>http://tim.everyday-cn.com/Ruby/2012/05/27/rdoc</id>
+     <content type="html">&lt;p&gt; ###最近一直为查找Ruby和各种RubyGem的api烦恼，由于不是使用大型的IDE，所以就没由自动呼出的功能，这就导致需要经常查找一些API，下面介绍如何查找Ruby的API。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ruby API查找方式由两种&lt;/li&gt;
+&lt;li&gt;1-访问&lt;a href=&quot;http://www.ruby-doc.org/&quot;&gt;Ruby Doc&lt;/a&gt;网站&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2-当离线情况下使用ri查找
+&lt;pre&gt;
+$ ri Array
+$ ri Array.sort
+$ ri Hash#each
+$ ri Math::sqrt
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;RubyGems的API查找，首先可以先更新所安装的gem的rdoc使用如下命令：
+&lt;pre&gt;
+$ gem rdoc --all
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动RubyGem 的服务通过http://localhost:8808来查找
+&lt;pre&gt;
+$ gem server   #启动Gem服务
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;Cheer up...&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
    
    <entry>
      <title>Rake从MySQL向Mongo GridFS迁移图片数据</title>
@@ -883,64 +915,6 @@ p names
 
 
 &lt;blockquote&gt;&lt;p&gt;以备不时之需&lt;/p&gt;&lt;/blockquote&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>Ruby使用DBI gem操作mysql</title>
-     <link href="http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-dbi-gem-mysql.html"/>
-     <updated>2011-12-12T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-dbi-gem-mysql</id>
-     <content type="html">&lt;p&gt;之前使用rails开发，处理数据库操作这方面都是使用active record, 它是一个orm的框架，一直在找一个更加轻量的gem，于是找到了dbi，它包括数据库接口（具有跨平台性）和数据库驱动（数据库独立），下面介绍如何使用它：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;安装dbi,dbd-mysql&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-gem install dbi
-gem install dbd-mysql
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;如果发现上面的命令安装不了，我们可以去rubygems.org下载以后手动安装&lt;/li&gt;
-&lt;li&gt;下面给出具体使用的代码：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-require 'dbi'
-begin
-    dbh = DBI.connect('DBI:Mysql:crawler_engine', 'root', 'root')
-    dbh['AutoCommit'] = false # Set auto commit to false.
-    sql = &quot;insert into sources(site_name, link, filter, category) VALUES (?,?,?,?)&quot;
-    dbh.prepare(sql) do | sth |
-        1.upto(13) { |i| sth.execute(&quot;tim #{i}&quot;, &quot;link#{i*10}&quot;, &quot;filter#{i*100}&quot;, &quot;cat#{i*100}&quot;)}
-    end
-    dbh.select_all('select * from sources') do | row |
-        p row
-    end
-    usql=&quot;update sources set filter=? where id &gt; ?&quot;
-    dbh.prepare(usql) do |stmt|
-        stmt.execute(&quot;xxxxxxxxxxxx&quot;, 10)
-    end
-    dbh.select_all(&quot;select * from sources where id&gt;10&quot;) do |row|
-        p row
-    end
-    dbh.do('delete from sources where id &gt; 10')
-    dbh.commit
-rescue DBI::DatabaseError =&gt; e
-        puts &quot;Error: #{e}&quot;
-        dbh.rollback
-ensure
-        dbh.disconnect if dbh
-end
-&lt;/pre&gt;
-
-
-&lt;blockquote&gt;&lt;p&gt;就写到这里，方便查阅。&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
