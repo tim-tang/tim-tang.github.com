@@ -4,7 +4,7 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-27T19:09:04+08:00</updated>
+   <updated>2012-05-28T22:03:58+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
@@ -13,14 +13,78 @@
 
    
    <entry>
+     <title>MongoDB Auto Sharding初探</title>
+     <link href="http://tim.everyday-cn.com/MongoDB/2012/05/28/mongodb-auto-sharding.html"/>
+     <updated>2012-05-28T00:00:00+08:00</updated>
+     <id>http://tim.everyday-cn.com/MongoDB/2012/05/28/mongodb-auto-sharding</id>
+     <content type="html">&lt;p&gt;  MongoDB最近在项目种使用比较频繁，所以最近些这方面的东西比较多，下面我们看看MongoDB的Auto-Sharding提供了什么：
+  - Reblancing当各Sharding间负载和数据分布不平衡时自动触发
+  - 可以简单方便的添加和删除节点
+  - 通过Replica Set 作自动的failover处理
+  - 可以横向扩展至上千台节点&lt;/p&gt;
+
+&lt;p&gt;  一个MongoDB的Auto Sharding由三部分组成：
+  - Shard: 即存储实际数据的分片，每个Shard可以是一个mongod实例，也可以是一组mongod实例构成的Replica Set
+  - Config Servers: 用来存储所有shard节点的配置信息,每个chunk的shard key范围,chunk在各shard的分布,该集群中所有DB和collection的sharding配置
+  - Routing Process: 它相当于一个透明代理，接收来自客户端的查询或更新请求，然后询问Config Servers需要到哪个Shard上查询或保存记录，再连接相应的Shard进行操作，最后将结果返回给客户端。&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;下面搭建一个简单的MongoDB的集群，包括：两个Shards，一个Config Server和一个Routing Process&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;创建两个Shards和一个Config Server数据目录
+&lt;pre&gt;
+$sudo mkdir -p /data0/mongo/shard1 /data0/mongo/shard2 /data0/mongo/config
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;启动两个mongod进程作为Shard，一个mongod进程作为Config Server，一个mongos进程作为Routing Process
+&lt;pre&gt;
+$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27017 --fork --logpath ~/mongo_shard1.log --dbpath /data0/mongo/shard1 --shardsvr
+$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27018 --fork --logpath ~/mongo_shard2.log --dbpath /data0/mongo/shard2 --shardsvr
+$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27217 --fork --logpath ~/mongo_config.log --dbpath /data0/mongo/config --configsvr
+$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongos --port 27417 --fork --logpath ~/mongos.log --configdb 127.0.0.1:27217 --chunkSize 10
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;chunkSize这一项是用来指定chunk的大小的，单位是MB，默认大小为200MB&lt;/p&gt;&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;登录到mongos，添加Shard节点
+&lt;pre&gt;
+$mongo --port 27417
+&gt; use admin;
+&gt; db.runCommand({addshard:&quot;127.0.0.1:27017&quot;})
+&gt; db.runCommand({addshard:&quot;127.0.0.1:27018&quot;})
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;我们为数据库tim-db启用sharding, 将其中的event collection的shard key 设置为{&lt;em&gt;id:1},更多关于shard key的介绍，可以查看&lt;a href=&quot;http://www.mongodb.org/display/DOCS/Choosing+a+Shard+Key&quot;&gt;Choosing A Sharding Key&lt;/a&gt;
+&lt;pre&gt;
+&gt; db.runCommand({enablesharding:'tim-db'});
+&gt; db.runCommand({shardcollection:&quot;tim-db.event&quot;, key:{&lt;/em&gt;id:1}});
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;到这里我们些一个ruby脚本来测试
+&lt;pre&gt;
+#encoding:utf-8
+require &quot;mongo&quot;
+connection = Mongo::Connection.new(&quot;localhost&quot;, 27417)
+db = connection.db(&quot;tim-db&quot;)
+coll = db.collection(&quot;event&quot;)
+1.upto(100000) do |i|
+myJSON = {&quot;name&quot; =&gt; &quot;MongoDB&quot;, &quot;type&quot; =&gt; &quot;database&quot;, &quot;count&quot; =&gt; i,&quot;created_at&quot;=&gt;(Time.now()+(i*3600))}
+  puts myJSON
+  coll.save(myJSON)
+end
+&lt;/pre&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;blockquote&gt;&lt;p&gt;我们可以通过db.event.stats()名录来查看两个sharding具体的数据情况，OK， good luck!&lt;/p&gt;&lt;/blockquote&gt;
+</content>
+   </entry>
+   
+   <entry>
      <title>关于RDoc的使用</title>
      <link href="http://tim.everyday-cn.com/Ruby/2012/05/27/rdoc.html"/>
      <updated>2012-05-27T00:00:00+08:00</updated>
      <id>http://tim.everyday-cn.com/Ruby/2012/05/27/rdoc</id>
-     <content type="html">&lt;p&gt; ###最近一直为查找Ruby和各种RubyGem的api烦恼，由于不是使用大型的IDE，所以就没由自动呼出的功能，这就导致需要经常查找一些API，下面介绍如何查找Ruby的API。&lt;/p&gt;
+     <content type="html">&lt;p&gt; 最近一直为查找Ruby和各种RubyGem的api烦恼，由于不是使用大型的IDE，所以就没由自动呼出的功能，这就导致需要经常查找一些API，下面介绍如何查找Ruby的API。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Ruby API查找方式由两种&lt;/li&gt;
+&lt;li&gt;Ruby API查找方式由两种:&lt;/li&gt;
 &lt;li&gt;1-访问&lt;a href=&quot;http://www.ruby-doc.org/&quot;&gt;Ruby Doc&lt;/a&gt;网站&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;2-当离线情况下使用ri查找
 &lt;pre&gt;
@@ -807,114 +871,6 @@ p dsl.instance_variables
 
 
 &lt;blockquote&gt;&lt;p&gt;目前ruby dsl还主要用在测试领域，将来的发展潜力巨大。&lt;/p&gt;&lt;/blockquote&gt;
-</content>
-   </entry>
-   
-   <entry>
-     <title>Ruby使用rexml解析xml</title>
-     <link href="http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-rexml-xml.html"/>
-     <updated>2011-12-12T00:00:00+08:00</updated>
-     <id>http://tim.everyday-cn.com/Ruby/2011/12/12/ruby-rexml-xml</id>
-     <content type="html">&lt;p&gt;在开发中常用到xml解析，在ruby中我们可以使用rexml来解析xml,rexml具有如下特点:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;100%用ruby编写&lt;/li&gt;
-&lt;li&gt;可以用来解析SAX和DOM&lt;/li&gt;
-&lt;li&gt;轻量，不足2000行代码&lt;/li&gt;
-&lt;li&gt;提供完整的API支持&lt;/li&gt;
-&lt;li&gt;ruby中内置&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;hr /&gt;
-
-&lt;p&gt;下面我们来看看如何使用它：&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;假设我们有如下xml文件：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-&lt;collection shelf=&quot;New Arrivals&quot;&gt;
-    &lt;movie title=&quot;Enemy Behind&quot;&gt;
-        &lt;type&gt;War, Thriller&lt;/type&gt;
-        &lt;format&gt;DVD&lt;/format&gt;
-        &lt;year&gt;2003&lt;/year&gt;
-        &lt;rating&gt;PG&lt;/rating&gt;
-        &lt;stars&gt;10&lt;/stars&gt;
-        &lt;description&gt;Talk about a US-Japan war&lt;/description&gt;
-    &lt;/movie&gt;
-    &lt;movie title=&quot;Transformers&quot;&gt;
-        &lt;type&gt;Anime, Science Fiction&lt;/type&gt;
-        &lt;format&gt;DVD&lt;/format&gt;
-        &lt;year&gt;1989&lt;/year&gt;
-        &lt;rating&gt;R&lt;/rating&gt;
-        &lt;stars&gt;8&lt;/stars&gt;
-        &lt;description&gt;A schientific fiction&lt;/description&gt;
-    &lt;/movie&gt;
-    &lt;movie title=&quot;Trigun&quot;&gt;
-        &lt;type&gt;Anime, Action&lt;/type&gt;
-        &lt;format&gt;DVD&lt;/format&gt;
-        &lt;episodes&gt;4&lt;/episodes&gt;
-        &lt;rating&gt;PG&lt;/rating&gt;
-        &lt;stars&gt;10&lt;/stars&gt;
-        &lt;description&gt;Vash the Stampede!&lt;/description&gt;
-    &lt;/movie&gt;
-    &lt;movie title=&quot;Ishtar&quot;&gt;
-        &lt;type&gt;Comedy&lt;/type&gt;
-        &lt;format&gt;VHS&lt;/format&gt;
-        &lt;rating&gt;PG&lt;/rating&gt;
-        &lt;stars&gt;2&lt;/stars&gt;
-        &lt;description&gt;Viewable boredom&lt;/description&gt;
-    &lt;/movie&gt;
-&lt;/collection&gt;
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;解析DOM：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-require 'rexml/document'
-include REXML
-xmlfile = File.new(&quot;movies.xml&quot;)
-xmldoc = Document.new(xmlfile)
-root = xmldoc.root
-puts &quot;Root element : &quot; + root.attributes[&quot;shelf&quot;]
-xmldoc.elements.each(&quot;collection/movie&quot;){
-    |e| puts &quot;Movie Title : &quot; + e.attributes[&quot;title&quot;]
-}
-xmldoc.elements.each(&quot;collection/movie/type&quot;) {
-    |e| puts &quot;Movie Type : &quot; + e.text
-}
-xmldoc.elements.each(&quot;collection/movie/description&quot;) {
-    |e| puts &quot;Movie Description : &quot; + e.text
-}
-&lt;/pre&gt;
-
-
-&lt;ul&gt;
-&lt;li&gt;使用XPATH：&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;pre&gt;
-require 'rexml/document'
-include REXML
-xmlfile = File.new(&quot;movies.xml&quot;)
-xmldoc = Document.new(xmlfile)
-movie = XPath.first(xmldoc, &quot;//movie&quot;)
-p movie
-XPath.each(xmldoc, &quot;//type&quot;) { |e| puts e.text }
-names = XPath.match(xmldoc, &quot;//format&quot;).map {|x| x.text }
-p names
-&lt;/pre&gt;
-
-
-&lt;blockquote&gt;&lt;p&gt;以备不时之需&lt;/p&gt;&lt;/blockquote&gt;
 </content>
    </entry>
    
