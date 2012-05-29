@@ -5,13 +5,15 @@ description: "Mongodb提供了Auto-Sharding的功能，通过简单的配置就�
 category: MongoDB
 tags: [MongoDB]
 ---
-  MongoDB最近在项目种使用比较频繁，所以最近些这方面的东西比较多，下面我们看看MongoDB的Auto-Sharding提供了什么：
+  MongoDB最近在项目种使用比较频繁，所以最近些这方面的东西比较多，下面我们看看MongoDB的Auto-Sharding提供了什么?
+
   - Reblancing当各Sharding间负载和数据分布不平衡时自动触发
   - 可以简单方便的添加和删除节点
   - 通过Replica Set 作自动的failover处理
   - 可以横向扩展至上千台节点
 
   一个MongoDB的Auto Sharding由三部分组成：
+
   - Shard: 即存储实际数据的分片，每个Shard可以是一个mongod实例，也可以是一组mongod实例构成的Replica Set
   - Config Servers: 用来存储所有shard节点的配置信息,每个chunk的shard key范围,chunk在各shard的分布,该集群中所有DB和collection的sharding配置
   - Routing Process: 它相当于一个透明代理，接收来自客户端的查询或更新请求，然后询问Config Servers需要到哪个Shard上查询或保存记录，再连接相应的Shard进行操作，最后将结果返回给客户端。

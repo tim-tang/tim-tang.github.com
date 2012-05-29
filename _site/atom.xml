@@ -4,7 +4,7 @@
    <title>Tech Talk - Git|Vim|RubyOnRails</title>
    <link href="http://tim.everyday-cn.com/atom.xml" rel="self" type="application/atom+xml"/>
    <link href="http://tim.everyday-cn.com" rel="alternate" type="text/html" />
-   <updated>2012-05-28T22:03:58+08:00</updated>
+   <updated>2012-05-29T08:22:01+08:00</updated>
    <id>http://tim.everyday-cn.com</id>
    <author>
      <name>Tim.Tang</name>
@@ -13,20 +13,28 @@
 
    
    <entry>
-     <title>MongoDB Auto Sharding初探</title>
+     <title>MongoDB Auto-Sharding初探</title>
      <link href="http://tim.everyday-cn.com/MongoDB/2012/05/28/mongodb-auto-sharding.html"/>
      <updated>2012-05-28T00:00:00+08:00</updated>
      <id>http://tim.everyday-cn.com/MongoDB/2012/05/28/mongodb-auto-sharding</id>
-     <content type="html">&lt;p&gt;  MongoDB最近在项目种使用比较频繁，所以最近些这方面的东西比较多，下面我们看看MongoDB的Auto-Sharding提供了什么：
-  - Reblancing当各Sharding间负载和数据分布不平衡时自动触发
-  - 可以简单方便的添加和删除节点
-  - 通过Replica Set 作自动的failover处理
-  - 可以横向扩展至上千台节点&lt;/p&gt;
+     <content type="html">&lt;p&gt;  MongoDB最近在项目种使用比较频繁，所以最近些这方面的东西比较多，下面我们看看MongoDB的Auto-Sharding提供了什么?&lt;/p&gt;
 
-&lt;p&gt;  一个MongoDB的Auto Sharding由三部分组成：
-  - Shard: 即存储实际数据的分片，每个Shard可以是一个mongod实例，也可以是一组mongod实例构成的Replica Set
-  - Config Servers: 用来存储所有shard节点的配置信息,每个chunk的shard key范围,chunk在各shard的分布,该集群中所有DB和collection的sharding配置
-  - Routing Process: 它相当于一个透明代理，接收来自客户端的查询或更新请求，然后询问Config Servers需要到哪个Shard上查询或保存记录，再连接相应的Shard进行操作，最后将结果返回给客户端。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reblancing当各Sharding间负载和数据分布不平衡时自动触发&lt;/li&gt;
+&lt;li&gt;可以简单方便的添加和删除节点&lt;/li&gt;
+&lt;li&gt;通过Replica Set 作自动的failover处理&lt;/li&gt;
+&lt;li&gt;可以横向扩展至上千台节点&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;  一个MongoDB的Auto Sharding由三部分组成：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Shard: 即存储实际数据的分片，每个Shard可以是一个mongod实例，也可以是一组mongod实例构成的Replica Set&lt;/li&gt;
+&lt;li&gt;Config Servers: 用来存储所有shard节点的配置信息,每个chunk的shard key范围,chunk在各shard的分布,该集群中所有DB和collection的sharding配置&lt;/li&gt;
+&lt;li&gt;Routing Process: 它相当于一个透明代理，接收来自客户端的查询或更新请求，然后询问Config Servers需要到哪个Shard上查询或保存记录，再连接相应的Shard进行操作，最后将结果返回给客户端。&lt;/li&gt;
+&lt;/ul&gt;
+
 
 &lt;blockquote&gt;&lt;p&gt;下面搭建一个简单的MongoDB的集群，包括：两个Shards，一个Config Server和一个Routing Process&lt;/p&gt;&lt;/blockquote&gt;
 
