@@ -15,8 +15,8 @@ tags: [Linode]
 </pre>
  - 编辑/etc/pptpd.conf 。修改localip,remoteip的ip地址段，例如修改为:
 <pre>
-    localip 10.10.10.1
-    remoteip 10.10.10.100-200
+    localip 192.168.1.1
+    remoteip 192.168.1.100-200
 </pre>
  - 编辑/etc/ppp/pptpd-options,修改ms-dns 的dns地址，例如可以修改为:
 <pre>
@@ -34,7 +34,11 @@ tags: [Linode]
 </pre>
  - iptables防火墙设置:
 <pre>
-    iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o eth0 -j MASQUERADE
+    iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+</pre>
+ - iptables保存:
+<pre>
+    $iptables-save > ~/iptables-script
 </pre>
  - 由于Linode VPS下没有ppp设备，需要执行如下命令:
 <pre>
