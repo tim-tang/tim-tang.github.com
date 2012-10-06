@@ -3,7 +3,7 @@ layout: post
 title: "Git diff,vimdiff 集成"
 description: "使用vimdiff作为Git合并工具"
 category: Git
-tags: [Git, Vimdiff]
+tags: [Git]
 ---
 
 ###Creating the git_diff_wrapper shell script:
