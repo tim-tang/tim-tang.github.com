@@ -7,7 +7,7 @@ category: Msic
 tags: [postgres]
 ---
 
- - Prequistion: 已经安装Homebrew：
+Prequistion: 已经安装Homebrew：
 
  - Installing postgreSQL by home brew:
 <pre>
