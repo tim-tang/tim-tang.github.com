@@ -58,4 +58,17 @@ dh1 = diff HEAD~1
 keepBackup = false
 </pre>
 
- - Now you can use vimdiff to instead of git diff.
+###If you guys want to tell git to auto completion,following steps:
+ - You need to install bash_completion.
+<pre>
+brew install bash_completion
+</pre>
+ - Config ~/.bash_profile
+<pre>
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+</pre>
+
+- Now you can use vimdiff to instead of git diff.
+
