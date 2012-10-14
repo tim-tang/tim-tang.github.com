@@ -70,5 +70,5 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 </pre>
 
-###Now you can use vimdiff to instead of git diff.
+ >Now you can use vimdiff to instead of git diff.
 
