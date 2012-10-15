@@ -4,11 +4,11 @@ title: Ruby目录(Diretories)文件(files)操作
 description: Ruby目录(Diretories)文件(files)操作
 category: Ruby
 tags: [Ruby]
+location: Suzhou, China
 ---
 最近一直在用ruby写crawler engine,不可避免的需要用到一些对文件和目录的操作，下面记录一下：
 
- - 操作目录
-<pre>
+##操作目录
 Dir.chdir( “/Users/weston” )  #进入目录
 home =Dir.pwd  #=> “/Users/weston/” * 显示目录
 Dir.mkdir( “/Users/weston/” )  ＃创建目录，和*nix命令一样吧
@@ -24,10 +24,8 @@ dir.tell # => “..”
 dir.rewind # => rewind to beginning
 dir.each { |e| puts e } # puts each entry in dir
 dir.close # => close stream
-</pre>
 
- - 文件
-<pre>
+##文件
 file = File.new( “file.rb”, “w” ) # => #<File:file.rb> 其中的w是表示可以写，还有很多模式：r, r+, w, w+, a, a+,b
 file = File.open( “sonnet_129.txt” )
 file.each { |line| print “#{file.lineno}. ”, line } #lineno 是行号
@@ -35,6 +33,5 @@ file.close
 File.new( “books.txt”, “w” )
 File.rename( “books.txt”, “chaps.txt” )
 File.delete( “chaps.txt” )
-</pre>
 
  就写到这里，方便将来查找。

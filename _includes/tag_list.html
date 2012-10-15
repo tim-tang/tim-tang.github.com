@@ -1,6 +1,0 @@
-{% if tag_list.first[0] == null %}
-{% for tag in tag_list %}
-<a href="{{ site.base_url }}{{ site.tags_path }}#{{ tag }}-ref">{{ tag }} <span class="tag-list-size">{{ site.tags[tag].size }}</span></a>&nbsp;
-{% endfor %}
-{% endif %}
-{% assign tags_list = nil %}

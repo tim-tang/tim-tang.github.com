@@ -4,26 +4,20 @@ title: Deadweight gem找出未使用的css
 description: Deadweight gem找出未使用的css
 category: RubyOnRails
 tags: [RubyGem, Rails]
+location: Suzhou, China
 ---
 我们在做项目的时候，经常用到一些第三方的css模板，Jquery插件等，里面常包含一些我们不需要的css定义，这个时候逐个去删除这些没使用到的css时比较头痛而且很容易出错，下面介绍一个自动查找无用的css的gem--[***deadweight***][1]:
 
  - 首先我们安装deadweight:
-<pre>
 $ gem install deadweight
-</pre>
 安装过程发生如下错误：
 ![alt text][2]
  - 安装libxslt-dev, libxml2-dev 依赖包
-<pre>
 $ sudo apt-get install libxslt-dev libxml2-dev
 $ gem install nokogiri
-</pre>
  - 修改Gemfile,添加
-<pre>
 gem 'deadweight'
-</pre>
  - 新建#rails_app/lib/tasks/deadweight.rake
-<pre>
 begin
   require 'deadweight'
 rescue LoadError
@@ -36,14 +30,10 @@ task :deadweight do
   dw.ignore_selectors = /flash_notice|flash_error|errorExplanation|fieldWithErrors/
   puts dw.run
 end
-</pre>
  - 下面我们启动rails应用服务
  - 执行如下命令：
-<pre>
 bundle exec rake deadweight
-</pre>
  - deadweight将自动找出所有未使用到的css结果:
-<pre>
  found 32 unused selectors out of 123 total
  .cleaner_h10
  .cleaner_h20
@@ -77,7 +67,6 @@ bundle exec rake deadweight
  #contact_form form label
  #contact_form form textarea
 
-</pre>
 > firefox也提供了类似的插件，具体可以google,希望这些工具能提高你的开发效率。（原创文章）
 
   [1]: https://github.com/aanand/deadweight "deadweight"

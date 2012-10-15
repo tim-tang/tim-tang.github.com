@@ -4,17 +4,15 @@ title: Ruby使用DBI gem操作mysql
 description: Ruby使用DBI gem操作mysql
 category: Ruby
 tags: [Ruby, RubyGem]
+location: Suzhou, China
 ---
 之前使用rails开发，处理数据库操作这方面都是使用active record, 它是一个orm的框架，一直在找一个更加轻量的gem，于是找到了dbi，它包括数据库接口（具有跨平台性）和数据库驱动（数据库独立），下面介绍如何使用它：
 
- - 安装dbi,dbd-mysql
-<pre>
+##安装dbi,dbd-mysql
 gem install dbi
 gem install dbd-mysql
-</pre>
- - 如果发现上面的命令安装不了，我们可以去rubygems.org下载以后手动安装
- - 下面给出具体使用的代码：
-<pre>
+##如果发现上面的命令安装不了，我们可以去rubygems.org下载以后手动安装
+##下面给出具体使用的代码：
 require 'dbi'
 begin
 	dbh = DBI.connect('DBI:Mysql:crawler_engine', 'root', 'root')
@@ -41,6 +39,5 @@ rescue DBI::DatabaseError => e
 ensure
 		dbh.disconnect if dbh
 end
-</pre>
 
 > 就写到这里，方便查阅。

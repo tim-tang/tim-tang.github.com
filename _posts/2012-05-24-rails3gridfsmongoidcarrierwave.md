@@ -4,70 +4,54 @@ title: "Rails3,GridFS,MongoID,CarrierWave实现图片上传"
 description: "Rails3, MongoID, CarrierWave使用MongoDB的GridFS作为图片存储,实现图片上传功能"
 category: "RubyOnRails"
 tags: [Rails, MongoDB]
+location: Suzhou, China
 ---
 
 最近准备将Everyday CMS的数据存储由MySQL切换到MongoDB,作为实验先探探路，看看能不能用MongoDB的GridFS来存储图片，下面具体的实现：
 
- - 首先环境准备：Rails 3.1.3/Ruby 1.9.2p320/MongoDB 已经安装并启动，具体安装可参考[UBUNTU11.10,MONGODB安装测试][1]
+##首先环境准备：Rails 3.1.3/Ruby 1.9.2p320/MongoDB 已经安装并启动，具体安装可参考[UBUNTU11.10,MONGODB安装测试][1]
 
- - 创建app
- <pre>
+##创建app
  $ rails new demo
- </pre>
 
- - 修改Gemfile文件，加入如下Gems
- <pre>
+##修改Gemfile文件，加入如下Gems
  gem 'mongoid' \#2.4.10
  gem 'bson_ext' \#1.6.2
  gem 'carrierwave' \#0.5.8
  gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid' \#0.1.7
  gem 'mini_magick' \#3.4
- </pre>
 
- - 生成mongoid.yml
- <pre>
+##生成mongoid.yml
  $ rails g mongoid:config
- </pre>
 
- - 通过修改 config/application.rb去掉对默认数据库依赖
- <pre>
+##通过修改 config/application.rb去掉对默认数据库依赖
  \# require 'rails/all'
  require "action_controller/railtie"
  require "action_mailer/railtie"
  require "active_resource/railtie"
  require "rails/test_unit/railtie"
- </pre>
 
- - 继续添加以下代码，防止 error mongoid [not found] 的问题
- <pre>
+##继续添加以下代码，防止 error mongoid [not found] 的问题
  config.generators do |g|
    g.orm :active_record
  end
- </pre>
 
- - 删除默认的 config/database.yml，并用scaffold创建blog应用:
- <pre>
+##删除默认的 config/database.yml，并用scaffold创建blog应用:
  $ rm -f config/database.yml
  $ rails g scaffold blog name:string content:text
- </pre>
 
- - 添加carrierwave配置文件 config/initializers/carrierwave.rb
- <pre>
+##添加carrierwave配置文件 config/initializers/carrierwave.rb
  CarrierWave.configure do |config|
    config.storage = :grid_fs
    config.grid_fs_access_url = ""
    config.grid_fs_database = Mongoid.database.name
    config.grid_fs_host = Mongoid.config.master.connection.host
  end
- </pre>
 
- - 生成File Uploader
- <pre>
+##生成File Uploader
  $ rails g uploader File
- </pre>
 
- - 修改app/uploaders/file_uploader.rb
- <pre>
+##修改app/uploaders/file_uploader.rb
  class FileUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   \# Choose what kind of storage to use for this uploader:
@@ -99,15 +83,11 @@ tags: [Rails, MongoDB]
      "something.jpg" if original_filename
   end
  end
- </pre>
 
- - 生成生成gridfs的controller
- <pre>
+##生成生成gridfs的controller
  $ rails g controller gridfs
- </pre>
 
- - 修改GridfsController,内容如下
- <pre>
+##修改GridfsController,内容如下
 class GridfsController < ActionController::Metal
   def serve
     gridfs_path = env["PATH_INFO"].gsub("/uploads/", "uploads/")
@@ -128,17 +108,13 @@ class GridfsController < ActionController::Metal
     end
   end
 end
- </pre>
 
- - 修改routes.rb，使开发模式下，通过gridfs这个controller来管理图片文件
- <pre>
+##修改routes.rb，使开发模式下，通过gridfs这个controller来管理图片文件
   if Rails.env.development?
     match "/uploads/*path" => "gridfs#serve"
   end
- </pre>
 
- - 修改app/models/blog.rb，添加file字段，并挂载uploader, 注意这里不再继承active record.
- <pre>
+##修改app/models/blog.rb，添加file字段，并挂载uploader, 注意这里不再继承active record.
  class Blog
    include Mongoid::Document
      field :name
@@ -146,30 +122,25 @@ end
 	 field :file
 	 mount_uploader :file, FileUploader
   end
- </pre>
 
-  - 修改app/views/blogs/_form.html.erb，在content表单项下面添加图片上传
-  <pre>
+ ##修改app/views/blogs/_form.html.erb，在content表单项下面添加图片上传
     <%= f.label :file %>
     <%= f.file_field :file %>
-  </pre>
 
-  - 修改 app/views/blogs/index.html.erb, 用来展现上传的图片
-  <pre>
+##修改 app/views/blogs/index.html.erb, 用来展现上传的图片
   <%= blog.file.size %>
   <%= blog.file.filename%>
   <%= image_tag blog.file_url(:thumb)%>
   <%= image_tag blog.file_url(:normal)%>
   <%= image_tag blog.file_url(:big)%>
   <%= image_tag blog.file_url(:large)%>
-  </pre>
 
-  - 到这里终于可以启动服务，上传图片了，看看结果
+##到这里终于可以启动服务，上传图片了，看看结果
   <img src="/images/post/carrierwave-mongoid.png" width="750px" height="500px"/>
 
-  - 在看mongodb的查询结果，多了三个collection以及对于的储存记录
+##在看mongodb的查询结果，多了三个collection以及对于的储存记录
   <img src="/images/post/mongodb-result.png" width="830px" height="420px"/>
 
-  > 注意:尽量不要在rails3.1以下版本操作，否则会出现无法集成mongoid的问题，OK JSUT DO IT!
+> 注意:尽量不要在rails3.1以下版本操作，否则会出现无法集成mongoid的问题，OK JSUT DO IT!
 
   [1]: http://tim.everyday-cn.com/Ubuntu/2011/10/31/ubuntu11-10-mongodb.html

@@ -1,29 +1,27 @@
 ---
 layout: post
-title: Ubuntu,Memcached安装&监控
-description: Ubuntu,Memcached安装&监控
+title: Ubuntu,Memcached安装监控
+description: Ubuntu,Memcached安装监控
 category: Ubuntu
 tags: [Memcached]
+location: Suzhou, China
 ---
 有于rails自身提供的page cache/action cache/fragment cache的缓存策略不够灵活，主要是生成缓存的html文件，所以考虑在后台加上数据缓存，首选肯定是memcached,下面先介绍下memcached在ubuntu上的安装和监控：
 
 **Memcached 安装：**
-<pre>
- - sudo apt-get install memcached
- - memcached -d -m 64 -p 11211 -u root --启动memcached server
-</pre>
- - 参数说明：
+##sudo apt-get install memcached
+##memcached -d -m 64 -p 11211 -u root --启动memcached server
+##参数说明：
     -m 指定使用多少兆的缓存空间；
     -p 指定要监听的端口；
     -u 指定以哪个用户来运行 
- - 具体的启动项配置可以在这里找到：/etc/memcached.conf
+##具体的启动项配置可以在这里找到：/etc/memcached.conf
 
 **监控Memcached服务器**
- - $ telnet 127.0.0.1 11211
- - > stats
+##$ telnet 127.0.0.1 11211
+##> stats
 ![alt text][1]
- - 参数说明:
-<pre>
+##参数说明:
     STAT pid 18006
     STAT uptime 702   //memcached运行的秒数
     STAT time 1292904537 //memcached服务器所在主机当前系统的时间，单位是秒。
@@ -62,7 +60,6 @@ tags: [Memcached]
     STAT total_items 0  从服务器启动以后存储的items总数量
     STAT evictions 0  为获取空闲内存而删除的items数（分配给memcache的空间用满后需要删除旧的items来得到空间分配给新的items）
     STAT reclaimed 0
-</pre>
 > 缓存命中率 = get_hits/cmd_get * 100%
 > get_misses的数字加上get_hits应该等于cmd_get
 > total_items == cmd_set == get_misses，当可用最大内存用光时。

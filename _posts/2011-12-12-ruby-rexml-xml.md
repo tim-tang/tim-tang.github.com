@@ -4,6 +4,7 @@ title: Ruby使用rexml解析xml
 description: Ruby使用rexml解析xml
 category: Ruby
 tags: [Ruby, RubyGem]
+location: Suzhou, China
 ---
 在开发中常用到xml解析，在ruby中我们可以使用rexml来解析xml,rexml具有如下特点:
 
@@ -17,8 +18,7 @@ tags: [Ruby, RubyGem]
 ----------
 下面我们来看看如何使用它：
 
- - 假设我们有如下xml文件：
-<pre>
+##假设我们有如下xml文件：
 <collection shelf="New Arrivals">
 	<movie title="Enemy Behind">
 		<type>War, Thriller</type>
@@ -52,9 +52,7 @@ tags: [Ruby, RubyGem]
 		<description>Viewable boredom</description>
 	</movie>
 </collection>
-</pre>
- - 解析DOM：
-<pre>
+##解析DOM：
 require 'rexml/document'
 include REXML
 xmlfile = File.new("movies.xml")
@@ -70,9 +68,7 @@ xmldoc.elements.each("collection/movie/type") {
 xmldoc.elements.each("collection/movie/description") {
 	|e| puts "Movie Description : " + e.text
 }
-</pre>
- - 使用XPATH：
-<pre>
+##使用XPATH：
 require 'rexml/document'
 include REXML
 xmlfile = File.new("movies.xml")
@@ -82,6 +78,5 @@ p movie
 XPath.each(xmldoc, "//type") { |e| puts e.text }
 names = XPath.match(xmldoc, "//format").map {|x| x.text }
 p names
-</pre>
 
 > 以备不时之需

@@ -1,21 +1,19 @@
 ---
 layout: post
-title: Rails3,Rspec,Factory_girl单元&功能测试
-description: Rails3,Rspec,Factory_girl单元&功能测试
+title: Rails3,Rspec,Factory_girl单元功能测试
+description: Rails3,Rspec,Factory_girl单元功能测试
 category: RubyOnRails
 tags: [Rails, RubyGem]
+location: Suzhou, China
 ---
 Rspec使用行为驱动开发（Behaviour-driven development）,它从外围的业务成果的定义开始，然后深入到那些实现这个成果的功能块上。每一个功能都被收集成一个故事，它按照验收标准来定义这个功能的范围。在everyday中使用了一下，确实发现Rspec可以把测试用例写得更加易于理解。下面来看看如何用Rspec讲故事:
- - 先从安装说起：
-<pre>
+##先从安装说起：
 $ gem install rspec
 $ gem install rspec-rails
 $ gem install factory_girl_rails   #用factory_girl替代rails自带的fixture,因为它更加灵活
 $ gem install mocha    #rspec mock对方法对象的gem
 $ gem install rcov     #生成测试报告及代码的覆盖度gem
-</pre>
- - 修改Gemfile,添加如下：
-<pre>
+##修改Gemfile,添加如下：
 group :development, :test do
   gem "rspec", "~> 2.7.0"
   gem "rspec-rails", "~> 2.7.0"
@@ -23,13 +21,9 @@ group :development, :test do
   gem "rcov"
   gem "mocha"
 end
-</pre>
- - 在rails_app中安装rspec：
-<pre>
+##在rails_app中安装rspec：
 $ rails generate rspec:install   #生成#rails_app/spec/目录和#rails_app/spec/spec_helper.rb
-</pre>
- - 现在准备工作完成，我们首先写model的测试用例，以eyd_user 为例，创建#rails_app/spec/support/factory_girl.rb
-<pre>
+##现在准备工作完成，我们首先写model的测试用例，以eyd_user 为例，创建#rails_app/spec/support/factory_girl.rb
 Factory.define :user, :class=>EydUser do |f|
   f.id 1
   f.name 'tim.tang'
@@ -37,9 +31,7 @@ Factory.define :user, :class=>EydUser do |f|
   f.salt '833156400.9654452857118'
   f.email 'tang.jilong@139.com'
 end
-</pre>
- - 我们还需要一个创建#rails_app/spec/models/eyd_user_spec.rb(注意命名规则)
-<pre>
+##我们还需要一个创建#rails_app/spec/models/eyd_user_spec.rb(注意命名规则)
 require 'spec_helper'
 describe EydUser do
   before(:all) do
@@ -77,13 +69,9 @@ describe EydUser do
     @user.delete #测试结束删除
   end
 end
-</pre>
- - 下面我们可以用命令执行：
-<pre>
+##下面我们可以用命令执行：
 $ rake spec #将自动执行spec目录下所有测试用例
-</pre>
- - 以上是model的测试，我们再看看controller的测试,新建#rails_app/spec/controllers/eyd_login_controller_spec.rb：
-<pre>
+##以上是model的测试，我们再看看controller的测试,新建#rails_app/spec/controllers/eyd_login_controller_spec.rb：
 require 'spec_helper'
 describe EydLoginController do
   render_views
@@ -120,14 +108,11 @@ describe EydLoginController do
     end
   end
 end
-</pre>
- - 我们可以通过如下命令，执行测试并生成测试报告：
-<pre>
+##我们可以通过如下命令，执行测试并生成测试报告：
 $ rake spec:rcov
-</pre>
- - 下面看测试结果以及代码覆盖情况：
+##下面看测试结果以及代码覆盖情况：
 ![alt text][1]
- - 具体的model和controller的代码覆盖：
+##具体的model和controller的代码覆盖：
 ![alt text][2]
 ![alt text][3]
 
