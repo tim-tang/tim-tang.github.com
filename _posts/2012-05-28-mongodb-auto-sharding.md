@@ -21,37 +21,37 @@ location: Suzhou, China
 
 > 下面搭建一个简单的MongoDB的集群，包括：两个Shards，一个Config Server和一个Routing Process
 
- ##创建两个Shards和一个Config Server数据目录
-  $sudo mkdir -p /data0/mongo/shard1 /data0/mongo/shard2 /data0/mongo/config
+##创建两个Shards和一个Config Server数据目录
+	$sudo mkdir -p /data0/mongo/shard1 /data0/mongo/shard2 /data0/mongo/config
 
- ##启动两个mongod进程作为Shard，一个mongod进程作为Config Server，一个mongos进程作为Routing Process
-  $sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27017 --fork --logpath ~/mongo_shard1.log --dbpath /data0/mongo/shard1 --shardsvr
-  $sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27018 --fork --logpath ~/mongo_shard2.log --dbpath /data0/mongo/shard2 --shardsvr
-  $sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27217 --fork --logpath ~/mongo_config.log --dbpath /data0/mongo/config --configsvr
-  $sudo ./software/mongodb-linux-i686-2.0.0/bin/mongos --port 27417 --fork --logpath ~/mongos.log --configdb 127.0.0.1:27217 --chunkSize 10
-  > chunkSize这一项是用来指定chunk的大小的，单位是MB，默认大小为200MB
+##启动两个mongod进程作为Shard，一个mongod进程作为Config Server，一个mongos进程作为Routing Process
+	$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27017 --fork --logpath ~/mongo_shard1.log --dbpath /data0/mongo/shard1 --shardsvr
+	$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27018 --fork --logpath ~/mongo_shard2.log --dbpath /data0/mongo/shard2 --shardsvr
+	$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27217 --fork --logpath ~/mongo_config.log --dbpath /data0/mongo/config --configsvr
+	$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongos --port 27417 --fork --logpath ~/mongos.log --configdb 127.0.0.1:27217 --chunkSize 10
+> chunkSize这一项是用来指定chunk的大小的，单位是MB，默认大小为200MB
 
- ##登录到mongos，添加Shard节点
-  $mongo --port 27417
-  \> use admin;
-  \> db.runCommand({addshard:"127.0.0.1:27017"})
-  \> db.runCommand({addshard:"127.0.0.1:27018"})
+##登录到mongos，添加Shard节点
+	$mongo --port 27417
+	\> use admin;
+	\> db.runCommand({addshard:"127.0.0.1:27017"})
+	\> db.runCommand({addshard:"127.0.0.1:27018"})
 
- ##我们为数据库tim-db启用sharding, 将其中的event collection的shard key 设置为{_id:1},更多关于shard key的介绍，可以查看[Choosing A Sharding Key][1]
-  \> db.runCommand({enablesharding:'tim-db'});
-  \> db.runCommand({shardcollection:"tim-db.event", key:{_id:1}});
+##我们为数据库tim-db启用sharding, 将其中的event collection的shard key 设置为{_id:1},更多关于shard key的介绍，可以查看[Choosing A Sharding Key][1]
+	\> db.runCommand({enablesharding:'tim-db'});
+	\> db.runCommand({shardcollection:"tim-db.event", key:{_id:1}});
 
- ##到这里我们些一个ruby脚本来测试
-  \#encoding:utf-8
-  require "mongo"
-  connection = Mongo::Connection.new("localhost", 27417)
-  db = connection.db("tim-db")
-  coll = db.collection("event")
-  1.upto(100000) do |i|
-    myJSON = {"name" => "MongoDB", "type" => "database", "count" => i,"created_at"=>(Time.now()+(i*3600))}
+##到这里我们些一个ruby脚本来测试
+	#encoding:utf-8
+	require "mongo"
+	connection = Mongo::Connection.new("localhost", 27417)
+	db = connection.db("tim-db")
+	coll = db.collection("event")
+	1.upto(100000) do |i|
+	  myJSON = {"name" => "MongoDB", "type" => "database", "count" => i,"created_at"=>(Time.now()+(i*3600))}
 	  puts myJSON
 	  coll.save(myJSON)
-  end
+	end
 
 > 我们可以通过db.event.stats()名录来查看两个sharding具体的数据情况，OK， good luck!
 

@@ -357,7 +357,8 @@ pre:hover {
 	overflow: visible;
 }
 code {
-	font-size: 1em;
+	font-family: Palatino, georgia, "times new roman", serif;
+	font-size: 1.2em;
 	background-color: #f7f7ff;
 	line-height: 1.4em;
 }

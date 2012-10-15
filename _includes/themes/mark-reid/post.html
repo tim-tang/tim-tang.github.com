@@ -1,9 +1,10 @@
 <div id="page">
-
+<!--
   <ul class="tag_box inline">
   {% assign tags_list = page.tags %}
   {% include JB/tags_list %}
   </ul>
+ -->
 
   <h1 class="emphnext">{{ page.title }}</h1>
 
@@ -16,11 +17,11 @@
   </address>
 
   <div class="prev-next">
-  {% if page.previous %}
-    <a href="{{ page.previous.url }}" class="prev" title="{{ page.previous.title }}">&larr; Previous Post</a>
-  {% endif %}
   {% if page.next %}
     <a href="{{ page.next.url }}" class="next" title="{{ page.next.title }}">Next Post &rarr;</a>
+  {% endif %}
+  {% if page.previous %}
+    <a href="{{ page.previous.url }}" class="prev" title="{{ page.previous.title }}">&larr; Earlier Post</a>
   {% endif %}
   </div>
 

@@ -8,9 +8,10 @@ location: Suzhou, China
 ---
 有于rails自身提供的page cache/action cache/fragment cache的缓存策略不够灵活，主要是生成缓存的html文件，所以考虑在后台加上数据缓存，首选肯定是memcached,下面先介绍下memcached在ubuntu上的安装和监控：
 
-**Memcached 安装：**
-##sudo apt-get install memcached
-##memcached -d -m 64 -p 11211 -u root --启动memcached server
+##Memcached 安装：
+	sudo apt-get install memcached
+	memcached -d -m 64 -p 11211 -u root --启动memcached server
+
 ##参数说明：
     -m 指定使用多少兆的缓存空间；
     -p 指定要监听的端口；
@@ -18,8 +19,8 @@ location: Suzhou, China
 ##具体的启动项配置可以在这里找到：/etc/memcached.conf
 
 **监控Memcached服务器**
-##$ telnet 127.0.0.1 11211
-##> stats
+	$ telnet 127.0.0.1 11211
+	> stats
 ![alt text][1]
 ##参数说明:
     STAT pid 18006
