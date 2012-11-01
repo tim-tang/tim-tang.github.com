@@ -23,7 +23,7 @@ Here are some details on what we are going to do:
 * Let us call one host as 'master'(ip:10.0.0.51), the other one as 'slave'(ip:10.0.1.50), and the third one as 'httpd server'(ip:10.0.1.63).
 * Both master and slave will run AS7, and master will run as domain controller, slave will under the domain management of master.
 * Apache httpd will be run on httpd server, and in httpd we will enable the mod_cluster module. The as7 on master and slave will form a cluster and discovered by httpd.
-* We will deploy a mtx.runtime project into domain, and verify that the project is deployed into both master and slave by domain controller. Thus we could see that domain management provide us a single point to manage the deployments across multiple hosts in a single domain.
+* We will deploy a cluster-demo project into domain, and verify that the project is deployed into both master and slave by domain controller. Thus we could see that domain management provide us a single point to manage the deployments across multiple hosts in a single domain.
 * We will access the cluster URL and verify that httpd has distributed the request to one of the as7 host. So we could see the cluster is working properly.
 * We will try to make a request on cluster, and if the request is forwarded to master as7, we then kill the as7 process on master. After that we will go on requesting cluster and we should see the request is forwarded to slave, but the session is not lost. Our goal is to verify the HA is working and sessions are replicated.
 * After previous step finished, we reconnect the master as7 by restarting it. We should see the master as7 is registered back into cluster, also we should see slave as7 sees master as7 as domain controller again and connect to it.
@@ -166,8 +166,6 @@ Because we have not properly set up the authentication between master and slave.
 
 > We will use this user for slave as7 host to connect to master. Notice that the username must be equal to the name given in the slaves host element. That mean for each additional host you need a user.
 
-* Add JNDI Datasource and Driver in domain.xml under the full-ha profile, more details please refer [JBoss Datasource setup] and [Set up JNDI datasources In JBoss]:
-
 * Add hornetq server username/password node in domain.xml, find  full-ha profile under hornetq-server node add following:
 
 		<cluster-user>admin</cluster-user>
@@ -226,8 +224,6 @@ Because we have not properly set up the authentication between master and slave.
 		</security-realms>
 
 * In secret value property we have 'MTIz', which is the base64 code for '123'. You can generate this value by using a base64 calculator such as the one at http://www.webutils.pl/index.php?idx=base64.
-
-* Add JNDI Datasource and Driver in domain.xml under the full-ha profile, more details please refer [JBoss Datasource setup] and [Set up JNDI datasources In JBoss]:
 
 * Then in domain controller section we also need to add security-realm property:
 
@@ -363,9 +359,9 @@ Because we have not properly set up the authentication between master and slave.
 
 * Select 'runtime' and the server 'slave' in the upper corners.you will see the server-two listed in running status.
 
-* Entering 'Manage Deployments' page, click 'Add Content' at top right corner. Then we should choose our mtx.runtime.war, and follow the instruction to add it into our content repository.
+* Entering 'Manage Deployments' page, click 'Add Content' at top right corner. Then we should choose our cluster-demo.war, and follow the instruction to add it into our content repository.
 
-* Now we can see mtx.runtime.war is added. Next we click 'Add to Groups' button and add the war to 'main-server-group' and then click 'save'.Wait a few seconds, management console will tell you that the project is deployed into 'main-server-group'.：
+* Now we can see cluster-demo.war is added. Next we click 'Add to Groups' button and add the war to 'main-server-group' and then click 'save'.Wait a few seconds, management console will tell you that the project is deployed into 'main-server-group'.：
 
 * If everything go well, you can visist URL, you will see two nodes are added and active:
 
@@ -397,7 +393,3 @@ Because we have not properly set up the authentication between master and slave.
 * JBoss mod_cluster: http://www.jboss.org/mod_cluster
 
 > Cheers!
-
-[JBoss Datasource Setup]:https://github.com/workatplay/MTX-Platform/wiki/JBoss-Datasource-Setup
-[Set up JNDI datasources In JBoss]:https://github.com/workatplay/MTX-Platform/wiki/Set-up-JNDI-datasources-In-JBoss
-
