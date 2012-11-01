@@ -1,11 +1,12 @@
 ---
 layout: post
 title: "JBoss AS7 cluster with mod_cluster setup howto"
-description: "In this article, I would like to show you how to setup JBoss AS7 in domain mode and enable clustering so we could get HA and session replication among the nodes."
+description: "How to setup JBoss AS7 in domain mode and enable clustering so we could get HA and session replication among the nodes."
 category: JBoss
 tags: [JBoss,Cluster]
 location: Suzhou, China
 ---
+In this article, I would like to show you how to setup JBoss AS7 in domain mode and enable clustering so we could get HA and session replication among the nodes.
 
 ## Preparation & Scenario
 
