@@ -375,7 +375,7 @@ Because we have not properly set up the authentication between master and slave.
 
 * access the cluster
 
-		http://10.211.55.7/cluster-demo/put.jsp
+		http://10.0.1.63/cluster-demo/put.jsp
 
 * We should see the request is distributed to one of the hosts(master or slave) from the as7 log
 
@@ -385,7 +385,7 @@ Because we have not properly set up the authentication between master and slave.
 
 * Then wait for a few seconds and access cluster:
 
-		http://10.211.55.7/cluster-demo/get.jsp
+		http://10.0.1.63/cluster-demo/get.jsp
 
 * Now the request should be served by slave and we should see the log from slave as7:
 

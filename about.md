@@ -7,7 +7,7 @@ group: navigation
 
 {% include JB/setup %}
 
-<img class='inset right' src='/images/avatar1.png' title='Tim Tang' alt='Photo of Tim.Tang at redang island!' width='160px' />
+<img class='inset right' src='/images/avatar1.png' title='Tim Tang' alt='Photo of Tim.Tang at redang island!' width='168px' />
 
 Tim has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies. Tim currently enjoys spending most of his time with RubyOnRails and jQuery but often has to find ways to coexist with legacy technologies for example J2EE in the IT department at a large enterprise. Everyday&Tech Talk are two experimental websites for technic research and accumulate. When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
 
