@@ -2,7 +2,7 @@
 layout: post
 title: "JBoss AS7 cluster with mod_cluster setup howto"
 description: "How to setup JBoss AS7 in domain mode and enable clustering so we could get HA and session replication among the nodes."
-category:Cluster
+category: Cluster
 tags: [Cluster]
 location: Suzhou, China
 ---
@@ -13,7 +13,9 @@ In this article, I would like to show you how to setup JBoss AS7 in domain mode 
 We need to prepare three hosts (or virtual hosts) to do the experiment. We will use these three hosts as following:
 
 * Install Ubuntu 12.04 LTS on them(Other linux version may also fine)
+
 * Make sure that they are in same local network
+
 * Make sure that they can access each other via different TCP/UDP ports(better turn off firewall and disable SELinux during the experiment or they will cause network problems).
 
 ### Scenario
@@ -21,12 +23,19 @@ We need to prepare three hosts (or virtual hosts) to do the experiment. We will 
 Here are some details on what we are going to do:
 
 * Let us call one host as 'master'(ip:10.0.0.51), the other one as 'slave'(ip:10.0.1.50), and the third one as 'httpd server'(ip:10.0.1.63).
+
 * Both master and slave will run AS7, and master will run as domain controller, slave will under the domain management of master.
+
 * Apache httpd will be run on httpd server, and in httpd we will enable the mod_cluster module. The as7 on master and slave will form a cluster and discovered by httpd.
+
 * We will deploy a cluster-demo project into domain, and verify that the project is deployed into both master and slave by domain controller. Thus we could see that domain management provide us a single point to manage the deployments across multiple hosts in a single domain.
+
 * We will access the cluster URL and verify that httpd has distributed the request to one of the as7 host. So we could see the cluster is working properly.
+
 * We will try to make a request on cluster, and if the request is forwarded to master as7, we then kill the as7 process on master. After that we will go on requesting cluster and we should see the request is forwarded to slave, but the session is not lost. Our goal is to verify the HA is working and sessions are replicated.
+
 * After previous step finished, we reconnect the master as7 by restarting it. We should see the master as7 is registered back into cluster, also we should see slave as7 sees master as7 as domain controller again and connect to it.
+
 ![jboss-cluster](https://docs.jboss.org/author/download/attachments/21626956/test_scenario.jpg?version=1&modificationDate=1330278039000)
 
 ## Download JBoss AS7
