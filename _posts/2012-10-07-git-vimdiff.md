@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Git diff,vimdiff 集成"
-description: "使用vimdiff作为Git合并工具"
+title: "Git diff,vimdiff Integration"
+description: "Use vimdiff as Git merge tool."
 category: Git
 tags: [Git]
 location: Suzhou, China
