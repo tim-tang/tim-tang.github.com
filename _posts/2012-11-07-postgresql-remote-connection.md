@@ -8,9 +8,6 @@ location: Suzhou, China
 ---
 Introduce how to open remote connections for postgresSQL server.
 
-
-## PostgreSQL9 installed on Mac. For installation details please refer=> [Mac OSX下PostgreSQL安装配置](http://tim.everyday-cn.com/Msic/2012/10/06/macpostgres/)
-
 ## Modify /usr/local/var/postgres/postgresql.conf
 
 	listen_addresses = '*'
@@ -21,7 +18,7 @@ Introduce how to open remote connections for postgresSQL server.
 	host    all             all             samenet                 password
 
 
-> OK, Cheers!
+> PostgreSQL9 installed on Mac. For installation details please refer: [Mac OSX下PostgreSQL安装配置](http://tim.everyday-cn.com/Msic/2012/10/06/macpostgres/)
 
 
 
