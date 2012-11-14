@@ -78,7 +78,7 @@ Note useful shell commands for both Mac OSX and Ubuntu.
 
 	du -h  #display file & fold size recursively.
 
-## commnads for MySQL cli
+## Commnads for MySQL cli
 
 	export MYSQL_PS1="mysql://\u@\h:/\d - \R:\m:\s > "
 
