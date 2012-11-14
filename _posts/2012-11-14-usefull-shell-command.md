@@ -62,11 +62,9 @@ Note useful shell commands for both Mac OSX and Ubuntu.
 
 	ls -d */             #只列出文件目录
 
-	mysqldump --add-drop-table --extended-insert --force --log-error=error.log -uUSER -pPASS OLD_DB_NAME | ssh -C user@newhost "mysql -uUSER -pPASS NEW_DB_NAME" # 导出远端服务器数据库
-
 	tidy -xml -i -m [file]  # 格式化XML文件
 
-	lspci -vv           #列出设备驱动
+	lspci -v           #列出设备驱动
 
 	which somecommand   #列出命令所在目录
 
@@ -83,3 +81,5 @@ Note useful shell commands for both Mac OSX and Ubuntu.
 ## commnads for MySQL cli
 
 	export MYSQL_PS1="mysql://\u@\h:/\d - \R:\m:\s > "
+
+	mysqldump --add-drop-table --extended-insert --force --log-error=error.log -uUSER -pPASS OLD_DB_NAME | ssh -C user@newhost "mysql -uUSER -pPASS NEW_DB_NAME" # 导出远端服务器数据库
