@@ -11,15 +11,25 @@ Note useful shell commands for both Mac OSX and Ubuntu.
 ## Commands for Mac OSX
 
 	find . -name *.java -exec grep -ilr mtx {} \; # search mtx in java file.
+
 	grep -ilr xx *                                # find xx recursively
+
 	ls -tls                                       # order by time desc.
+
 	open -a safari xx.html
+
 	open http://www.xxx.com
+
 	alias doc='cd /Users/tim/Documents'
+
 	alias desk='cd /Users/tim/Desktop'
+
 	alias down='cd /Users/tim/Downloads'
+
 	alias up='cd ..'
+
 	printenv                                       # display environment variable.
+
 	find . -name '*.rar' -execdir unrar e {} \;    # unrar recursive
 
 ## Commands for Ubuntu
