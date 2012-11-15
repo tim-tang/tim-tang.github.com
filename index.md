@@ -12,7 +12,7 @@ feed: atom.xml
 
 Recent Posts
 
-{% for post in site.posts limit:12%}
+{% for post in site.posts limit:18%}
 <div class="section list">
 <h1>{{ post.date | date_to_string }}</h1>
 <p class="line">
