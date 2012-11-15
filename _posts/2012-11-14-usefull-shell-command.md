@@ -34,6 +34,8 @@ Note useful shell commands for both Mac OSX and Ubuntu.
 
 ## Commands for Ubuntu
 
+	netstat -tunlp|grep 80     # 查看 http server started.
+
 	ls -al | tee -a out.txt | cat -n
 
 	alias install='sudo apt-get install'
