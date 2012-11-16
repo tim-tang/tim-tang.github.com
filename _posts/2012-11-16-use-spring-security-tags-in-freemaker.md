@@ -9,13 +9,13 @@ location: Suzhou, China
 
 If we need to use spring security tags in free marker, do as following:
 
-* Put code into *.ftl
+## Put code into \*.ftl
 
 	<#assign security=JspTaglibs["/WEB-INF/security.tld"]/>
 
-* Copy security.tld from spring security source into WEB-INF/ folder.
+## Copy security.tld from spring security source into WEB-INF/ folder.
 
-* You can add code to testing:
+## You can add code to testing:
 
 	<#if Session["SPRING_SECURITY_CONTEXT"]?exists>
 		<ul>
