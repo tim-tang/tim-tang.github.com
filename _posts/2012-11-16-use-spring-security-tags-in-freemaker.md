@@ -11,7 +11,7 @@ If we need to use spring security tags in free marker, do as following:
 
 * Put code into *.ftl
 
-<#assign security=JspTaglibs["/WEB-INF/security.tld"]/>
+	<#assign security=JspTaglibs["/WEB-INF/security.tld"]/>
 
 * Copy security.tld from spring security source into WEB-INF/ folder.
 
