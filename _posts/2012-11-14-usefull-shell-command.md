@@ -8,6 +8,18 @@ location: Suzhou, China
 ---
 Note useful shell commands for both Mac OSX and Ubuntu.
 
+## Commands for system monitor
+
+	dd if=/dev/zero of=testfile obs=1M count=512 conv=sync  #测试硬盘读写速度
+
+	hdparam -t  /dev/sda  ＃测试硬盘
+
+	hdparam -T  /dev/sda  #测试内存
+
+	sudo iotop     # 监控磁盘io
+
+	vmstat 1       # 监控cpu/memory/io
+
 ## Commands for Mac OSX
 
 	find . -name *.java -exec grep -ilr mtx {} \; # search mtx in java file.
