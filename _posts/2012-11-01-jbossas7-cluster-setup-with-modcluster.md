@@ -9,8 +9,8 @@ location: Suzhou, China
 In this article, I would like to show you how to setup JBoss AS7 in domain mode and enable clustering so we could get HA and session replication among the nodes.
 
 ### Preparation
-
-We need to prepare three hosts (or virtual hosts) to do the experiment. We will use these three hosts as following:
+---
+**We need to prepare three hosts (or virtual hosts) to do the experiment. We will use these three hosts as following:**
 
 * Install Ubuntu 12.04 LTS on them(Other linux version may also fine)
 
@@ -19,8 +19,8 @@ We need to prepare three hosts (or virtual hosts) to do the experiment. We will 
 * Make sure that they can access each other via different TCP/UDP ports(better turn off firewall and disable SELinux during the experiment or they will cause network problems).
 
 ### Scenario
-
-Here are some details on what we are going to do:
+---
+**Here are some details on what we are going to do:**
 
 * Let us call one host as 'master'(ip:10.0.0.51), the other one as 'slave'(ip:10.0.1.50), and the third one as 'httpd server'(ip:10.0.1.63).
 
@@ -57,7 +57,7 @@ If everything ok we should see AS7 successfully startup in domain mode.
 ## Domain Configuration
 
 ### Interface config on master
-
+---
 In this section we will setup both master and slave for them to run in domain mode. And we will configure master to be the domain controller.
 
 * First open the host.xml in master as7 for editing:
@@ -93,6 +93,7 @@ In this section we will setup both master and slave for them to run in domain mo
 		</interfaces>
 
 ### Interface config on slave
+---
 
 * First edit host.xml
 
@@ -136,6 +137,7 @@ If you start as7 on both master and slave now, you will see the slave as7 cannot
 Because we have not properly set up the authentication between master and slave. Now let us work on it:
 
 ### Master
+---
 
 * In bin directory there is a script called add-user.sh, we will use it to add new users to the properties file used for domain management authentication:
 
@@ -218,6 +220,7 @@ Because we have not properly set up the authentication between master and slave.
 		</servers>
 
 ### Slave
+---
 
 * In slave we need to configure host.xml for authentication. We should change the security-realms section as following:
 
@@ -277,6 +280,7 @@ Because we have not properly set up the authentication between master and slave.
 		</server-groups>
 
 ### Dry Run
+---
 
 * Now everything is set for the two hosts to run in domain mode. Let us start them by running domain.sh on both hosts. If everything goes fine, we could see from the log on master:
 
@@ -286,11 +290,11 @@ Because we have not properly set up the authentication between master and slave.
 
 * Download mod_cluster binary package from:
 
-		http://www.jboss.org/mod_cluster/downloads
+> <http://www.jboss.org/mod_cluster/downloads>
 
 * The version We downloaded is:
 
-	    http://downloads.jboss.org/mod_cluster//1.2.0.Final/mod_cluster-1.2.0.Final-linux2-x64-ssl.tar.gz
+> <http://downloads.jboss.org/mod_cluster//1.2.0.Final/mod_cluster-1.2.0.Final-linux2-x64-ssl.tar.gz>
 
 * Install the whole httpd, that will give you a full httpd install in your /opt/jboss directory.:
 
@@ -346,7 +350,7 @@ Because we have not properly set up the authentication between master and slave.
 
 * Now we can deploy a demo project into the domain. I have created a simple project located at:
 
-		https://github.com/liweinan/cluster-demo
+		<https://github.com/liweinan/cluster-demo>
 
 * We can use git command to fetch a copy of the demo:
 
@@ -398,7 +402,7 @@ Because we have not properly set up the authentication between master and slave.
 
 ## Refence docs
 
-* AS7 Cluster Howto: https://docs.jboss.org/author/display/AS71/AS7+Cluster+Howto
-* JBoss mod_cluster: http://www.jboss.org/mod_cluster
+* AS7 Cluster Howto: <https://docs.jboss.org/author/display/AS71/AS7+Cluster+Howto>
+* JBoss mod_cluster: <http://www.jboss.org/mod_cluster>
 
 > Cheers!
