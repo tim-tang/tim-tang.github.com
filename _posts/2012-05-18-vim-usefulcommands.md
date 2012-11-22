@@ -7,6 +7,8 @@ tags: [Vim]
 location: Suzhou, China
 ---
 
+Introduce to Vim commands. It is useful for your development.
+
 ## 光标移动
 
 	H：移动光标到屏幕上面
@@ -38,7 +40,7 @@ location: Suzhou, China
 	c：剪贴选择的内容到剪贴板并且进入插入模式。
 
 
-##代码处理
+## 代码处理
 
 	%：匹配花括号，方括号，括号等。在一个括号的上面，然后按%，鼠标就会出现在匹配的另外一半括号处。
 
@@ -52,11 +54,11 @@ location: Suzhou, China
 
 	gg=G   格式化全文代码
 
-##多列注释
+## 多列注释
 
 	ctrl+v  选择列模式 输入I（大写），输入#或//，ctrl+[ 多列注释。
 
-###Nerdtree插件
+## Nerdtree插件
 
 	m: 提供文本文件系统菜单来创建/删除/移动/复制目录或文件
 
@@ -66,17 +68,23 @@ location: Suzhou, China
 
 	e: browser current directory
 
-##文件操作
+## 文件操作
 
 	:e ~/Desktop/xxx   打开文件
 
 	:b#       返回到原来编辑的文件
 
-##文件查找
+## 文件查找
 
 	vimgrep /keywords/ **/*.rb
 
 	:cw    打开查找结果
+
+## vim 多列注释：
+
+	ctrl+v  选择列模式
+
+	输入I（大写），输入#或//，ctrl+[ 多列注释。
 
 ## 有用的命令
 
