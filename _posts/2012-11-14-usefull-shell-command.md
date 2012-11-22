@@ -10,6 +10,10 @@ Note useful shell commands for both Mac OSX and Ubuntu.
 
 ## Commands for system monitor
 
+	curl ifconfig.me   #机器内网，查看外网ip
+
+	lsof -i       #查看网络服务的状态
+
 	dd if=/dev/zero of=testfile obs=1M count=512 conv=sync  #测试硬盘读写速度
 
 	hdparam -t  /dev/sda  ＃测试硬盘
