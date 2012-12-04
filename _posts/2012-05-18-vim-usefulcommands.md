@@ -82,9 +82,19 @@ Introduce to Vim commands. It is useful for your development.
 
 ## 文件内容替换
 
-	:s/str1/str2/ #用字符串 str2 替换行中首次出现的字符串 str1
+	:%s/str1/str2/ #用字符串 str2 替换文件中首次出现的字符串 str1
 
-	:s/str1/str2/g #用字符串 str2 替换行中所有出现的字符串 str1
+	:%s/str1/str2/g #用字符串 str2 替换文件中所有出现的字符串 str1
+
+	:[range]s/pattern/string/[c,e,g,i]
+
+	range: 指的是範圍，1,7 指從第一行至第七行，1,$ 指從第一至最後一行，也就是整篇文章，也可以 % 代表。
+	pattern: 就是要被替換掉的字串，可以用 regexp 來表示。
+	string: 將 pattern 由 string 所取代。
+	c:  confirm，每次替換前會詢問。
+	e:  不顯示 error。
+	g:  globe，不詢問，整行替換。
+	i:  ignore 不分大小寫。
 
 
 ## vim 多列注释：
