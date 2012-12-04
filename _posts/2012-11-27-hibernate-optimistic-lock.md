@@ -17,7 +17,7 @@ The solution is to use Spring managed Hibernate interceptor in JPA, when updatin
 
 <http://blog.krecan.net/2009/01/24/spring-managed-hibernate-interceptor-in-jpa/>
 
-	I have been trying to teach Hibernate injecting dependencies into Entities (I know, there is magic @Configurableannotation, I wanted to try it without magic). It is quite easy to do it using Hibernate interceptor (for example likethis). But there is one drawback. It is not straightforward to inject interceptor into Hibernate when JPA abstraction is in the way.
+I have been trying to teach Hibernate injecting dependencies into Entities (I know, there is magic @Configurableannotation, I wanted to try it without magic). It is quite easy to do it using Hibernate interceptor (for example likethis). But there is one drawback. It is not straightforward to inject interceptor into Hibernate when JPA abstraction is in the way.
 
 
 ## It is simple to define interceptor in persistence.xml using hibernate.ejb.interceptor property. But it is only possible to specify class name, you can not inject Spring bean. If you read documentation to SpringLocalContainerEntityManagerFactoryBean there is no possibility to specify the interceptor bean there neither. But there is a way how to achieve it. First of all, you have to redefine Hibernate PersistenceProvider.
