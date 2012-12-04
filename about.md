@@ -37,13 +37,13 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 
 ### Contact Me
 ---
-- email: tang.jilong@gmail.com
+- email => tang.jilong@gmail.com
 
 ### GitHub Public Repos
 ---
-- [crawler_engine]:https://github.com/tim-tang/crawler_engine
-- [everyday]:https://github.com/tim-tang/everyday
-- [vim-configuration]:https://github.com/tim-tang/vim
-- [news-aggregation]:https://github.com/tim-tang/news_agg
-- [everyday-cn]:https://github.com/tim-tang/everyday-cn
-- [teck talk]:https://github.com/tim-tang/tim-tang.github.com
+- [crawler_engine](https://github.com/tim-tang/crawler_engine)
+- [everyday](https://github.com/tim-tang/everyday)
+- [vim-configuration](https://github.com/tim-tang/vim)
+- [news-aggregation](https://github.com/tim-tang/news_agg)
+- [everyday-cn](https://github.com/tim-tang/everyday-cn)
+- [teck talk](https://github.com/tim-tang/tim-tang.github.com)
