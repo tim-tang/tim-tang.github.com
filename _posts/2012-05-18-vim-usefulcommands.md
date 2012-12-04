@@ -80,6 +80,13 @@ Introduce to Vim commands. It is useful for your development.
 
 	:cw    打开查找结果
 
+## 文件内容替换
+
+	:s/str1/str2/ #用字符串 str2 替换行中首次出现的字符串 str1
+
+	:s/str1/str2/g #用字符串 str2 替换行中所有出现的字符串 str1
+
+
 ## vim 多列注释：
 
 	ctrl+v  选择列模式
@@ -98,6 +105,4 @@ Introduce to Vim commands. It is useful for your development.
 
 	diB:             删除内含 ‘{‘ ‘}’ 大块
 
-> vim的实用中还需要一些插件，具体的配置可以看我们的[**vim环境**][1].
-
-[1]: https://github.com/tim-tang/vim
+> vim的实用中还需要一些插件，具体的配置可以看我们的[**vim环境**](https://github.com/tim-tang/vim).
