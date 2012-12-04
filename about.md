@@ -31,27 +31,19 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 ---
 - (Aug 2012 – Time.now ) => Coding [@XPlusZ](http://www.xplusz.com)
 - (Feb 2010 – Aug 2012 ) => Coding [@Dextrys](http://www.dextrys.com)
-- (Aug 2009 – Feb 2010 ) => Freelance Ruby/Rails @home
+- (Aug 2009 – Feb 2010 ) => Freelancer Ruby/Rails @home
 - (Feb 2008 – July 2009) => Coding [@Technodex](http://www.technodex.com)
-- (Nov 2006 – Jan 2008 ) => Coding @Yucheng Tech(http://www.yuchengtech.com)
+- (Nov 2006 – Jan 2008 ) => Coding [@Yucheng Tech](http://www.yuchengtech.com)
 
-## Contact Me
+### Contact Me
 ---
 - email: tang.jilong@gmail.com
 
 ### GitHub Public Repos
 ---
-- [crawler_engine]
-- [everyday]
-- [vim-configuration]
-- [news-aggregation]
-- [everyday-cn]
-- [teck talk]
-
-[crawler_engine]: https://github.com/tim-tang/crawler_engine
-[everyday]: https://github.com/tim-tang/everyday
-[vim-configuration]: https://github.com/tim-tang/vim
-[news-aggregation]: https://github.com/tim-tang/news_agg
-[everyday-cn]: https://github.com/tim-tang/everyday-cn
-[teck talk]: https://github.com/tim-tang/tim-tang.github.com
-
+- [crawler_engine]:https://github.com/tim-tang/crawler_engine
+- [everyday]:https://github.com/tim-tang/everyday
+- [vim-configuration]:https://github.com/tim-tang/vim
+- [news-aggregation]:https://github.com/tim-tang/news_agg
+- [everyday-cn]:https://github.com/tim-tang/everyday-cn
+- [teck talk]:https://github.com/tim-tang/tim-tang.github.com
