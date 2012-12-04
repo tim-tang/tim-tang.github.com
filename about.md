@@ -41,9 +41,9 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 
 ### GitHub Public Repos
 ---
-- [crawler_engine](https://github.com/tim-tang/crawler_engine)
-- [everyday](https://github.com/tim-tang/everyday)
-- [vim-configuration](https://github.com/tim-tang/vim)
-- [news-aggregation](https://github.com/tim-tang/news_agg)
-- [everyday-cn](https://github.com/tim-tang/everyday-cn)
-- [teck talk](https://github.com/tim-tang/tim-tang.github.com)
+- [Crawler Engine](https://github.com/tim-tang/crawler_engine)
+- [Everyday](https://github.com/tim-tang/everyday)
+- [Vim Configuration](https://github.com/tim-tang/vim)
+- [News Aggregation](https://github.com/tim-tang/news_agg)
+- [Everyday-Cn](https://github.com/tim-tang/everyday-cn)
+- [Teck Talk](https://github.com/tim-tang/tim-tang.github.com)
