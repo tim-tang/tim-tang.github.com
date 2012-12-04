@@ -14,7 +14,8 @@ The solution is to use Spring managed Hibernate interceptor in JPA, when updatin
 	when current timestamp is earlier than that of db, we throw concurrency exception because it means this entity is already updated by another user.
 
 ## So here are steps of how to configure the interceptor:
-	http://blog.krecan.net/2009/01/24/spring-managed-hibernate-interceptor-in-jpa/
+
+<http://blog.krecan.net/2009/01/24/spring-managed-hibernate-interceptor-in-jpa/>
 
 	I have been trying to teach Hibernate injecting dependencies into Entities (I know, there is magic @Configurableannotation, I wanted to try it without magic). It is quite easy to do it using Hibernate interceptor (for example likethis). But there is one drawback. It is not straightforward to inject interceptor into Hibernate when JPA abstraction is in the way.
 
