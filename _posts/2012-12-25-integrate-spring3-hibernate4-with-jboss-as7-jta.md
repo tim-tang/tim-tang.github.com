@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Integrate spring3.1 hibernate4 with JBoss AS7 JTA
+title: "Integrate spring3.1 hibernate4 with JBoss AS7 JTA"
 description: "Use JBoss AS7 JTA to integrate with spring3.1 and hibernate4 JPA"
 category: J2EE
 tags: [JTA]
