@@ -1,9 +1,9 @@
 /* @override http://mark.reid.dev/files/css/screen.css */
 
 /* @override
-	http://mark.reid.dev/files/css/screen.css
-	http://mark.reid.name/files/css/screen.css
-*/
+http://mark.reid.dev/files/css/screen.css
+http://mark.reid.name/files/css/screen.css
+ */
 
 /* screen.css
  *
@@ -72,7 +72,7 @@ sup { line-height: 1ex; }
 
 #page, #disqus_thread {
 	background: white;
-/*	background-image: url(grid.png); */
+	/*	background-image: url(grid.png); */
 	padding: 3em 3em 1.5em 3em;
 	border: 1px solid #ccc;
 }
@@ -89,12 +89,12 @@ sup { line-height: 1ex; }
 /* TODO
 #page { counter-reset: section; }
 #page h2:before {
-	margin-left: -3.5ex;
-	color: silver;
-	content: "§" counter(section) ". ";
-	counter-increment: section 2;
+margin-left: -3.5ex;
+color: silver;
+content: "§" counter(section) ". ";
+counter-increment: section 2;
 }
-*/
+ */
 
 /* @group FancyFirst */
 .emphnext + p:first-letter, p.emphfirst:first-letter {
@@ -127,14 +127,35 @@ sup { line-height: 1ex; }
 }
 /*
 blockquote {
-	padding: 0 2.8em;
-	margin: 1.714em 0;
-	color: #444;
-	font-size: 1.28em;
-	line-height: 1.864em;
+padding: 0 2.8em;
+margin: 1.714em 0;
+color: #444;
+font-size: 1.28em;
+line-height: 1.864em;
 }
-*/
+ */
+blockquote {
+	padding: 13px 13px 21px 15px;
+	margin-bottom: 18px;
+	font-family:georgia,serif;
+	font-style: italic;
+}
 
+blockquote:before {
+	content:"\201C";
+	font-size:40px;
+	margin-left:-10px;
+	font-family:georgia,serif;
+	color:#eee;
+}
+
+blockquote p {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 18px;
+	margin-bottom: 0;
+	font-style: italic;
+}
 .note {
 	padding-top: 0.5em;
 	background-color: #fafaff;
@@ -296,7 +317,7 @@ body#Kith #header a.kith
 	font-weight: bold;
 	font-variant: small-caps;
 }
-.section p { margin-bottom: 1.43em; }
+.section p { margin-bottom: 1.28em; }
 
 /* @end */
 

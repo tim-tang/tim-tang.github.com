@@ -10,9 +10,9 @@ group: navigation
 
 ###SUMMARY
 ---
->Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
+Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
 
->>When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
+When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
 
 _Specialities:_
 
