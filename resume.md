@@ -10,25 +10,24 @@ group: navigation
 
 ###SUMMARY
 ---
-Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
+>Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
 
-When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
+>>When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
 
 _Specialities:_
 
-	- More than 5 years experience in J2EE direction. Both in web development and backend service.
-	- More than 2 years for Ruby/Rails web application development.
-	- Familiar with Vim /Eclipse and others tools, and I like use them for both Ruby and J2EE development.
-	- Familiar with shell script, and like to use Terminal and Vim.
-	- Like using Linux/Mac OSX development.
-	- Like running & swimming & reading.
+- More than 5 years experience in J2EE direction. Both in web development and backend service.
+- More than 2 years for Ruby/Rails web application development.
+- Familiar with Vim /Eclipse and others tools, and I like use them for both Ruby and J2EE development.
+- Familiar with shell script, and like to use Terminal and Vim.
+- Like using Linux/Mac OSX development.
+- Like running & swimming & reading.
 
 ###EXPERIENCE
 ---
 ## Senior Engineer
 
 _X Plus Z Online, Inc_
-
 **August 2012 – Present (5 months)SuZhou**
 
 	- Code review, trouble shooting.
