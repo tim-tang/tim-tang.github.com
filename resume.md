@@ -10,6 +10,7 @@ group: navigation
 
 ###SUMMARY
 ---
+
 Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
 
 When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
@@ -27,8 +28,7 @@ _Specialities:_
 ---
 ## Senior Engineer
 
-_X Plus Z Online, Inc_
-**August 2012 – Present (5 months)SuZhou**
+_X Plus Z Online, Inc_ => **August 2012 – Present (5 months)SuZhou**
 
 	- Code review, trouble shooting.
 	- Mentor team member.
@@ -39,9 +39,7 @@ _X Plus Z Online, Inc_
 
 ## Development Leader
 
-_Dextrys_
-
-**March 2010 – September 2012 (2 years 7 months)Suzhou**
+_Dextrys_ => **March 2010 – September 2012 (2 years 7 months)Suzhou**
 
 	- Based on Blackberry OS5.0 to develop BB mobile application for Avid.
 	- Use springsecurity3 implements login authentication and authorization functionality.
@@ -53,9 +51,7 @@ _Dextrys_
 
 ## Freelancer
 
-_@Home_
-
-**August 2009 – March 2010 (8 months)Suzhou City, China**
+_@Home_ => **August 2009 – March 2010 (8 months)Suzhou City, China**
 
 	- Self-learning Ruby/ROR.
 	- Coding personal website of everyday with ROR.
@@ -64,9 +60,7 @@ _@Home_
 
 ## Senior Engineer
 
-_Technodex_
-
-**June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malaysia**
+_Technodex_ => **June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malaysia**
 
 	- Worked as senior java developer implements task allocation module, involved in database design, development, and system implementation.
 	- Use Hudson/Maven2 to implement continuous integration.
@@ -105,16 +99,16 @@ _Yucheng Technologies_
 ### SKILLS & EXPERTISE
 ---
 
-- J2SE/J2EE
-	- Multi-thread/IO etc.
-	- JBoss/Tomcat/Jetty
-	- Spring/Spring Security/Hibernate etc.
-- Ruby/RubyOnRails
-- Linux/Mac OSX
-- MySQL/PostgreSQL/Oracke/MongoDB
-- HTML5/JQuery etc.
-- Git/Perforce/Clear Case etc.
-- VIM/Eclipse etc.
+	- J2SE/J2EE
+		- Multi-thread/IO etc.
+		- JBoss/Tomcat/Jetty
+		- Spring/Spring Security/Hibernate etc.
+	- Ruby/RubyOnRails
+	- Linux/Mac OSX
+	- MySQL/PostgreSQL/Oracke/MongoDB
+	- HTML5/JQuery etc.
+	- Git/Perforce/Clear Case etc.
+	- VIM/Eclipse etc.
 
 ### PERSONAL DETAILS
 ---
