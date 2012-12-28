@@ -12,7 +12,6 @@ group: navigation
 ---
 
 Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
-
 When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
 
 _Specialities:_
@@ -28,7 +27,7 @@ _Specialities:_
 ---
 ## Senior Engineer
 
-_X Plus Z Online, Inc_ => **August 2012 – Present (5 months)SuZhou**
+**X Plus Z Online, Inc** => _August 2012 – Present (5 months)SuZhou_
 
 	- Code review, trouble shooting.
 	- Mentor team member.
@@ -39,7 +38,7 @@ _X Plus Z Online, Inc_ => **August 2012 – Present (5 months)SuZhou**
 
 ## Development Leader
 
-_Dextrys_ => **March 2010 – September 2012 (2 years 7 months)Suzhou**
+**Dextrys** => _March 2010 – September 2012 (2 years 7 months)Suzhou_
 
 	- Based on Blackberry OS5.0 to develop BB mobile application for Avid.
 	- Use springsecurity3 implements login authentication and authorization functionality.
@@ -51,7 +50,7 @@ _Dextrys_ => **March 2010 – September 2012 (2 years 7 months)Suzhou**
 
 ## Freelancer
 
-_@Home_ => **August 2009 – March 2010 (8 months)Suzhou City, China**
+**@Home** => _August 2009 – March 2010 (8 months)Suzhou City, China_
 
 	- Self-learning Ruby/ROR.
 	- Coding personal website of everyday with ROR.
@@ -60,7 +59,7 @@ _@Home_ => **August 2009 – March 2010 (8 months)Suzhou City, China**
 
 ## Senior Engineer
 
-_Technodex_ => **June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malaysia**
+**Technodex** => _June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malaysia_
 
 	- Worked as senior java developer implements task allocation module, involved in database design, development, and system implementation.
 	- Use Hudson/Maven2 to implement continuous integration.
@@ -68,9 +67,7 @@ _Technodex_ => **June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malays
 
 ## Software Engineer
 
-_Yucheng Technologies_
-
-**January 2007 – June 2008 (1 year 6 months)Xiamen City, China**
+**Yucheng Technologies** => _January 2007 – June 2008 (1 year 6 months)Xiamen City, China_
 
 	- RIDE (Report Integrate Develop Environment)
 	- MUSE (Metric Unified Service Environment)
