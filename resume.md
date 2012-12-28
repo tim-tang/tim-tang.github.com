@@ -27,7 +27,7 @@ _Specialities:_
 ---
 ## Senior Engineer
 
-**X Plus Z Online, Inc** => _August 2012 – Present (5 months)SuZhou_
+[**X Plus Z Online, Inc**](http://www.xplusz.com) => _August 2012 – Present (5 months)SuZhou_
 
 	- Code review, trouble shooting.
 	- Mentor team member.
@@ -38,7 +38,7 @@ _Specialities:_
 
 ## Development Leader
 
-**Dextrys** => _March 2010 – September 2012 (2 years 7 months)Suzhou_
+[**Dextrys**](http://www.dextrys.com) => _March 2010 – September 2012 (2 years 7 months)Suzhou_
 
 	- Based on Blackberry OS5.0 to develop BB mobile application for Avid.
 	- Use springsecurity3 implements login authentication and authorization functionality.
@@ -50,7 +50,7 @@ _Specialities:_
 
 ## Freelancer
 
-**@Home** => _August 2009 – March 2010 (8 months)Suzhou City, China_
+[**@Home**](http://www.everyday-cn.com) => _August 2009 – March 2010 (8 months)Suzhou City, China_
 
 	- Self-learning Ruby/ROR.
 	- Coding personal website of everyday with ROR.
@@ -59,7 +59,7 @@ _Specialities:_
 
 ## Senior Engineer
 
-**Technodex** => _June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malaysia_
+[**Technodex**](http://www.technodex.com) => _June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malaysia_
 
 	- Worked as senior java developer implements task allocation module, involved in database design, development, and system implementation.
 	- Use Hudson/Maven2 to implement continuous integration.
@@ -67,7 +67,7 @@ _Specialities:_
 
 ## Software Engineer
 
-**Yucheng Technologies** => _January 2007 – June 2008 (1 year 6 months)Xiamen City, China_
+[**Yucheng Technologies**](http://www.yuchengtech.com) => _January 2007 – June 2008 (1 year 6 months)Xiamen City, China_
 
 	- RIDE (Report Integrate Develop Environment)
 	- MUSE (Metric Unified Service Environment)
