@@ -10,9 +10,9 @@ group: navigation
 
 ###SUMMARY
 ---
-Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
+> Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
 
-When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
+> When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
 
 _Specialities:_
 
@@ -26,7 +26,9 @@ _Specialities:_
 ###EXPERIENCE
 ---
 ## Senior Engineer
+
 _X Plus Z Online, Inc_
+
 **August 2012 – Present (5 months)SuZhou**
 
 - Code review, trouble shooting.
@@ -37,7 +39,9 @@ _X Plus Z Online, Inc_
 - JBoss AS7 Infinispan/JTA/Spring/Hibernate JPA integration.
 
 ## Development Leader
+
 _Dextrys_
+
 **March 2010 – September 2012 (2 years 7 months)Suzhou**
 
 - Based on Blackberry OS5.0 to develop BB mobile application for Avid.
@@ -49,7 +53,9 @@ _Dextrys_
 - Act as team leader implements Catalog and Metaachivements feature.
 
 ## Freelancer
+
 _@Home_
+
 **August 2009 – March 2010 (8 months)Suzhou City, China**
 
 - Self-learning Ruby/ROR.
@@ -58,7 +64,9 @@ _@Home_
 - Coding company website for ZhenHe Intelligence architect.
 
 ## Senior Engineer
+
 _Technodex_
+
 **June 2008 – August 2009 (1 year 3 months)Kuala Lumpur, Malaysia**
 
 - Worked as senior java developer implements task allocation module, involved in database design, development, and system implementation.
@@ -66,7 +74,9 @@ _Technodex_
 - Use iReport/JapserReport to develop 20+ reports.
 
 ## Software Engineer
+
 _Yucheng Technologies_
+
 **January 2007 – June 2008 (1 year 6 months)Xiamen City, China**
 
 - RIDE (Report Integrate Develop Environment)
