@@ -37,7 +37,8 @@ var disqus_shortname = 'timstechtalk'; // required: replace example with your fo
 (function () {
  var s = document.createElement('script'); s.async = true;
  s.type = 'text/javascript';
- s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+ //s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+ s.src = 'http://disqus.com/forums/'+ disqus_shortname + '/count.js';
  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
  }());
 </script>
