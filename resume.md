@@ -5,9 +5,8 @@ tagline: Supporting tagline
 group: navigation
 ---
 
-<img class='inset right' src='/images/avatar1.png' title='Tim Tang at redang island!' alt='Photo of Tim.Tang at redang island!' width='168px' />
 {% include JB/setup %}
-
+<img class='inset right' src='/images/avatar1.png' title='Tim Tang at redang island!' alt='Photo of Tim.Tang at redang island!' width='168px' />
 ###SUMMARY
 ---
 
