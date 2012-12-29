@@ -1,12 +1,12 @@
 ---
-layout: post
+layout: page
 title: Tim Tang
 tagline: Supporting tagline
-location: Suzhou, China
+group: navigation
 ---
-Tim Tang
 
 <img class='inset right' src='/images/avatar1.png' title='Tim Tang at redang island!' alt='Photo of Tim.Tang at redang island!' width='168px' />
+{% include JB/setup %}
 
 ###SUMMARY
 ---
