@@ -28,6 +28,7 @@ location: Suzhou, China
 			template 'source.rb', 'app/models/source.rb'
 		end
 	end
+
 ##在CrawlerEngineGenerator类中，会逐个执行public 方法。
 
 ##下面可以创建我们的lib/generators/templates/migration.rb:

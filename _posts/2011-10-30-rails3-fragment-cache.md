@@ -33,6 +33,7 @@ location: Suzhou, China
 	cache_sweeper :eyd_comment_sweeper, :only=>[:create,:destroy]
 
 ##修改fetch_comments方法如下：
+
 	def fetch_comments
 	   **unless read_fragment('comment_fragment')**
 		 @comments = EydComment.find_by_sql("select comment.* from eyd_comments comment where comment.is_guestbook = false order by comment.updated_at desc limit 5")

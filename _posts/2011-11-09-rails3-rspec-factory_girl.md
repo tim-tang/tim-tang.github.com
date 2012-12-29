@@ -9,6 +9,7 @@ location: Suzhou, China
 Rspec使用行为驱动开发（Behaviour-driven development）,它从外围的业务成果的定义开始，然后深入到那些实现这个成果的功能块上。每一个功能都被收集成一个故事，它按照验收标准来定义这个功能的范围。在everyday中使用了一下，确实发现Rspec可以把测试用例写得更加易于理解。下面来看看如何用Rspec讲故事:
 
 ##先从安装说起：
+
 	$ gem install rspec
 	$ gem install rspec-rails
 	$ gem install factory_girl_rails   #用factory_girl替代rails自带的fixture,因为它更加灵活
@@ -136,8 +137,7 @@ Rspec使用行为驱动开发（Behaviour-driven development）,它从外围的�
 
 > 具体rspec方面的书可以到这里下载[***The_Rspec_Book***][4],有空介绍下和CI的集成。（原创文章）
 
-
-  [1]: http://cms.everyday-cn.com/system/pictures/1010/large_overview_rspec.png?1320803540 "cover"
-  [2]: http://cms.everyday-cn.com/system/pictures/1009/large_eyd_user.png?1320803537 "rsec"
-  [3]: http://cms.everyday-cn.com/system/pictures/1011/large_spec_eyd_controller.png?1320803542 "a"
-  [4]: http://cms.everyday-cn.com/zh/ibook_download/12 "the rspec book"
+[1]: http://cms.everyday-cn.com/system/pictures/1010/large_overview_rspec.png?1320803540 "cover"
+[2]: http://cms.everyday-cn.com/system/pictures/1009/large_eyd_user.png?1320803537 "rsec"
+[3]: http://cms.everyday-cn.com/system/pictures/1011/large_spec_eyd_controller.png?1320803542 "a"
+[4]: http://cms.everyday-cn.com/zh/ibook_download/12 "the rspec book"

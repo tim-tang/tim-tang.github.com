@@ -14,9 +14,11 @@ location: Suzhou, China
 ##要让安装生效，只要重启终端即可
 
 ##我们可以看到在~/目录下生成了.zshrc文件，修改它让它支持rvm,方便rails开发，将原来.bash_profile与.profile中的自定义内容导入过来：
+
 	...
 	[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 	...
+
 ##到这里我们就可以增加rails3开发要使用到的插件了,继续修改~/.zshrc文件：
 
     # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -27,9 +29,11 @@ location: Suzhou, China
 	...
 	ZSH_THEME="darkblood"
 	...
+
 ##使~/.zshrc文件生效：
 
 	source ~/.zshrc
+
 ##这样我们就可以看到效果了，如图：
 
 ![oh-my-zsh][1]

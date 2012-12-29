@@ -9,6 +9,7 @@ location: Suzhou, China
 最近一直在用ruby写crawler engine,不可避免的需要用到一些对文件和目录的操作，下面记录一下：
 
 ##操作目录
+
 	Dir.chdir( “/Users/weston” )  #进入目录
 	home =Dir.pwd  #=> “/Users/weston/” * 显示目录
 	Dir.mkdir( “/Users/weston/” )  ＃创建目录，和*nix命令一样吧
@@ -26,6 +27,7 @@ location: Suzhou, China
 	dir.close # => close stream
 
 ##文件
+
 	file = File.new( “file.rb”, “w” ) # => #<File:file.rb> 其中的w是表示可以写，还有很多模式：r, r+, w, w+, a, a+,b
 	file = File.open( “sonnet_129.txt” )
 	file.each { |line| print “#{file.lineno}. ”, line } #lineno 是行号
@@ -34,4 +36,4 @@ location: Suzhou, China
 	File.rename( “books.txt”, “chaps.txt” )
 	File.delete( “chaps.txt” )
 
- 就写到这里，方便将来查找。
+> 就写到这里，方便将来查找。

@@ -6,12 +6,15 @@ category: Vim
 tags: [Vim, Rails]
 location: Suzhou, China
 ---
+
 vim是一个很好的开发工具，对于习惯了IDE开发环境的程序员来说初用它可能会很痛苦，我也经历了这样的阶段（虽然我还是刚入门^_^），下面就介绍下我的vim开发环境配置：
 
 ##**首先从安装说起还是ubuntu上：** 
+
     $sudo apt-get remove vim-tiny --删除ubuntu默认安装的tiny版本
     $sudo apt-get install vim
 ##**创建～/.vimrc 文件，配置如下：**
+
 	set nocompatible
 	filetype on
 	filetype plugin indent on
@@ -72,6 +75,7 @@ vim是一个很好的开发工具，对于习惯了IDE开发环境的程序员�
     $ctags -R --exclude=.git --exclude=log *  --生成ctags文件，在代码中按下"Ctrl-]"。用"Ctrl-o"退回原来的地方
 
 ##最后贴一些有用的vim命令：
+
     :e ~/Desktop/xxx   打开文件
     :b#       返回到原来编辑的文件
     设置vim的查找路径
@@ -84,8 +88,9 @@ vim是一个很好的开发工具，对于习惯了IDE开发环境的程序员�
     ctrl+v  选择列模式
     输入I（大写），输入#或//，ctrl+[ 多列注释。
 ![alt text][2]    
+
 > 现在基本习惯了vim的开发环境，鼠标的使用率明显减少，给个可以供学习的vim视频(需要翻墙)：[***Vimeo***][3]  (原创文章)
 
-  [1]: https://github.com/tim-tang/vim "vim"
-  [2]: http://cms.everyday-cn.com/system/pictures/912/medium_Screenshot%20at%202011-10-25%2011:00:08.png?1319511830 "vim"
-  [3]: http://vimeo.com/6332848 "vimcast"
+[1]: https://github.com/tim-tang/vim "vim"
+[2]: http://cms.everyday-cn.com/system/pictures/912/medium_Screenshot%20at%202011-10-25%2011:00:08.png?1319511830 "vim"
+[3]: http://vimeo.com/6332848 "vimcast"

@@ -29,6 +29,7 @@ location: Suzhou, China
 	$rails_best_practices -g
 
 ##内容如下：
+
 	default:
 	MoveFinderToNamedScopeCheck: { }
 	UseModelAssociationCheck: { }
@@ -65,7 +66,7 @@ location: Suzhou, China
 
 > 现在就开始轻松重构代码了。（原创文章）
 
-  [1]: https://github.com/flyerhzm/rails_best_practices "rails-best-practices"
-  [2]: http://cms.everyday-cn.com/system/pictures/966/large_best_practices.png?1320279181 "warning"
-  [3]: http://cms.everyday-cn.com/system/pictures/965/large_best_practice2.png?1320279178 "method"
-  [4]: 如何去自定义规则：https://github.com/flyerhzm/rails_best_practices/wiki/How-to-write-your-own-check-list "How-to-write-your-own-check-list"
+[1]: https://github.com/flyerhzm/rails_best_practices "rails-best-practices"
+[2]: http://cms.everyday-cn.com/system/pictures/966/large_best_practices.png?1320279181 "warning"
+[3]: http://cms.everyday-cn.com/system/pictures/965/large_best_practice2.png?1320279178 "method"
+[4]: 如何去自定义规则：https://github.com/flyerhzm/rails_best_practices/wiki/How-to-write-your-own-check-list "How-to-write-your-own-check-list"

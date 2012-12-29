@@ -9,6 +9,7 @@ location: Suzhou, China
 Rails routing 对于初学rails的人来说比较难理解，里面的东西也比较多和杂，需要静下心来慢慢琢磨，下面介绍下我对routing的理解：
 
 ##首先我们看下match形式的route,eg:
+
 	match "/patients/:id" => "patients#show"
 	这种形式的route将request分发给patents controller中的show方法，需要带id参数。
 	view中这样使用:
@@ -50,25 +51,23 @@ Rails routing 对于初学rails的人来说比较难理解，里面的东西也�
 	  resources :posts, :comments
 	end
 
-##我们可以给resource 添加member routes eg:
+##我们可以给resource 添加member routes 增加preview方法:
 
 	resources :photos do
 	  member do
 		get 'preview'
 	  end
 	end
-	增加preview方法
 
 ##直接定义controller方式 eg:
+
     controller :eyd_avatar do
-    get 'avatar_index' => :index
-    get 'avatar_show/:id' => :show, :as => :avatar_show
-    get 'avatar_new' => :new
-    post 'avatar_upload' => :upload
-    delete 'avatar_destroy' => :destroy
+		get 'avatar_index' => :index
+		get 'avatar_show/:id' => :show, :as => :avatar_show
+		get 'avatar_new' => :new
+		post 'avatar_upload' => :upload
+		delete 'avatar_destroy' => :destroy
     end
 
 > 还有很多route的复杂用法，到时用到了再更新，详细的资料可以参考[Rails3 Routing][1]
-
-
-  [1]: http://guides.rubyonrails.org/routing.html#changelog "routing"
+[1]: http://guides.rubyonrails.org/routing.html#changelog "routing"

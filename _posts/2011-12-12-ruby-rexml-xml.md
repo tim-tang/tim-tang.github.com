@@ -15,6 +15,7 @@ location: Suzhou, China
  - ruby中内置
 
 ##下面我们来看看如何使用它,假设我们有如下xml文件：
+
 	<collection shelf="New Arrivals">
 		<movie title="Enemy Behind">
 			<type>War, Thriller</type>
@@ -48,7 +49,9 @@ location: Suzhou, China
 			<description>Viewable boredom</description>
 		</movie>
 	</collection>
+
 ##解析DOM：
+
 	require 'rexml/document'
 	include REXML
 	xmlfile = File.new("movies.xml")
@@ -64,7 +67,9 @@ location: Suzhou, China
 	xmldoc.elements.each("collection/movie/description") {
 		|e| puts "Movie Description : " + e.text
 	}
+
 ##使用XPATH：
+
 	require 'rexml/document'
 	include REXML
 	xmlfile = File.new("movies.xml")

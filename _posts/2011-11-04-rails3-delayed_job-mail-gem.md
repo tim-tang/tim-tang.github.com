@@ -25,6 +25,7 @@ location: Suzhou, China
 	$ rake db:migrate
 
 ##我们可以看到生成的表的字段描述：
+
 	create_table :delayed_jobs, :force => true do |table|
 	  table.integer  :priority, :default => 0      # Allows some jobs to jump to the front of the queue
 	  table.integer  :attempts, :default => 0      # Provides for retries, but still fail eventually.

@@ -52,8 +52,10 @@ Gemfile.lock则用来记录本机目前所有依赖的Ruby Gems及其版本。�
 
 	$ bundle unlock
 ##bundle package会把当前所有信赖的包都放到 ./vendor/cache/ 目录下，发布时可用来保证包版本的一致性。
+
 	$ bundle package
 ##bundle open打开gem的源码查看，首先要设置编辑器
+
 	export EDITOR='vim' \#在.bashrc中设置
 	$ bundle open xxgem
 

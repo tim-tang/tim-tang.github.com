@@ -20,9 +20,11 @@ location: Suzhou, China
 	$ gem install nokogiri
 
 ##修改Gemfile,添加
+
 	gem 'deadweight'
 
 ##新建#rails_app/lib/tasks/deadweight.rake
+
 	begin
 	  require 'deadweight'
 	rescue LoadError
@@ -79,5 +81,5 @@ location: Suzhou, China
 
 > firefox也提供了类似的插件，具体可以google,希望这些工具能提高你的开发效率。（原创文章）
 
-  [1]: https://github.com/aanand/deadweight "deadweight"
-  [2]: http://cms.everyday-cn.com/system/pictures/958/large_nokogiri_error.png?1320198981 "nokogiri"
+[1]: https://github.com/aanand/deadweight "deadweight"
+[2]: http://cms.everyday-cn.com/system/pictures/958/large_nokogiri_error.png?1320198981 "nokogiri"

@@ -24,15 +24,19 @@ Prequistion: 已经安装Homebrew：
 	sudo chown yourusername /usr/local/var/postgres
 
 ##And initialize database:
+
 	initdb /usr/local/var/postgres
 
 ##Add alias startup to script to .bash_profile
+
 	alias ptstart='postgres -D /usr/local/var/postgres &'
 
 ##If you guys happened to meet the PSQL  can not connect to server error.You can use following command:
+
 	curl http://nextmarvel.net/blog/downloads/fixBrewLionPostgres.sh | sh
 
 ##Reconfiguration .psqlrc and put it to the `~/.psqlrc`
+
 	\pset null <NULL>
 	\set HISTFILE ~/.psql_history- :HOST - :DBNAME
 	\set HISTSIZE 2000

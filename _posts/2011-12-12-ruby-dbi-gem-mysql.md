@@ -12,6 +12,7 @@ location: Suzhou, China
 
 	gem install dbi
 	gem install dbd-mysql
+
 ##如果发现上面的命令安装不了，我们可以去rubygems.org下载以后手动安装
 
 ##下面给出具体使用的代码：
