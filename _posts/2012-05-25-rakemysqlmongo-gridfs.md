@@ -10,11 +10,13 @@ location: Suzhou, China
 为了将来Everyday CMS的数据库切换到MongDB准备，这就涉及到了历史遗留数据的迁移尤其是图片，目前目前存储在文件系统上，下面使用Rake将文件系统种的图片导入GridFS.
 
 ##修改遗留系统中的Gemfile,增加
+
 	gem 'mongo'
 	gem 'mongoid'
 	gem 'bson_ext'
 
 ##生成config/mongoid.yml在这里配置MongoDB连接
+
 	$ rails g mongoid:config
 
 ##创建mongo_import.rake文件，存放在lib/tasks目录下

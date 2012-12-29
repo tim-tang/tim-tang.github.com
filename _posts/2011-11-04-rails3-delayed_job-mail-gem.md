@@ -103,6 +103,7 @@ location: Suzhou, China
 ##在后台我们可以通过如下命令查看job是否被成功执行:
 
 	$ bundle exec rake jobs:work
+
 ##如果job成功执行，delayed_jobs表生成一条数据
 
 ##我们有时需要清空job队列，可执行：

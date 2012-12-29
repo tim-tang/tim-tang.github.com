@@ -57,8 +57,11 @@ This post introduction Integration vimdiff with git merge tool, for vim liked us
      keepBackup = false
 
 ##If you guys want to tell git to auto completion,following steps:
+
      brew install bash_completion
+
 ##Config `~/.bash_profile`
+
      if [ -f $(brew --prefix)/etc/bash_completion ]; then
      . $(brew --prefix)/etc/bash_completion
      fi

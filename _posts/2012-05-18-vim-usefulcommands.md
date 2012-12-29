@@ -100,19 +100,14 @@ Introduce to Vim commands. It is useful for your development.
 ## vim 多列注释：
 
 	ctrl+v  选择列模式
-
 	输入I（大写），输入#或//，ctrl+[ 多列注释。
 
 ## 有用的命令
 
 	D: 删除光标后的内容
-
 	/<c-r><c-w>:    将当前单词添加到搜索栏
-
 	% :             跳到对应的括号(),[],{}
-
 	dib:             删除内含 ‘(‘ ‘)’ 块
-
 	diB:             删除内含 ‘{‘ ‘}’ 大块
 
 > vim的实用中还需要一些插件，具体的配置可以看我们的[**vim环境**](https://github.com/tim-tang/vim).

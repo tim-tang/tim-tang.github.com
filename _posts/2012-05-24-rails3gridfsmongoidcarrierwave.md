@@ -12,9 +12,11 @@ location: Suzhou, China
 ##首先环境准备：Rails 3.1.3/Ruby 1.9.2p320/MongoDB 已经安装并启动.
 
 ##创建app
+
 	$ rails new demo
 
 ##修改Gemfile文件，加入如下Gems
+
 	gem 'mongoid' #2.4.10
 	gem 'bson_ext' #1.6.2
 	gem 'carrierwave' #0.5.8
@@ -22,9 +24,11 @@ location: Suzhou, China
 	gem 'mini_magick' #3.4
 
 ##生成mongoid.yml
+
 	$ rails g mongoid:config
 
 ##通过修改 config/application.rb去掉对默认数据库依赖
+
 	require 'rails/all'
 	require "action_controller/railtie"
 	require "action_mailer/railtie"
@@ -32,15 +36,18 @@ location: Suzhou, China
 	require "rails/test_unit/railtie"
 
 ##继续添加以下代码，防止 error mongoid [not found] 的问题
+
 	config.generators do |g|
 	  g.orm :active_record
 	end
 
 ##删除默认的 config/database.yml，并用scaffold创建blog应用:
+
 	$ rm -f config/database.yml
 	$ rails g scaffold blog name:string content:text
 
 ##添加carrierwave配置文件 config/initializers/carrierwave.rb
+
 	CarrierWave.configure do |config|
 	  config.storage = :grid_fs
 	  config.grid_fs_access_url = ""
@@ -130,6 +137,7 @@ location: Suzhou, China
 	end
 
 ##修改app/views/blogs/_form.html.erb，在content表单项下面添加图片上传
+
     <%= f.label :file %>
     <%= f.file_field :file %>
 
@@ -143,9 +151,11 @@ location: Suzhou, China
 	<%= image_tag blog.file_url(:large)%>
 
 ##到这里终于可以启动服务，上传图片了，看看结果
+
 [carrierwave-mogoid](/images/post/carrierwave-mongoid.png){:width=300}
 
 ##在看mongodb的查询结果，多了三个collection以及对于的储存记录
+
 [mogo-result](/images/post/mongodb-result.png){:width=300}
 
 > 注意:尽量不要在rails3.1以下版本操作，否则会出现无法集成mongoid的问题，OK JSUT DO IT!
