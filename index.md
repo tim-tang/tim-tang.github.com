@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcome to Tech Talk &rarr; {Ruby|ROR|Vim|Mac|Ubuntu}
+title: Welcome to Tech Talk &rarr; {Ruby|ROR|Vim|Mac|Linux}
 tagline: Supporting tagline
 feed: atom.xml
 ---
@@ -31,7 +31,7 @@ feed: atom.xml
 
 <script type="text/javascript">
 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'timstecktalk'; // required: replace example with your forum shortname
+var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
 
 /* * * DON'T EDIT BELOW THIS LINE * * */
 (function () {
