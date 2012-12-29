@@ -20,6 +20,7 @@ Use JBoss AS7 JTA to integrate with spring3.1 and hibernate4 JPA.
 ---
 
 ## xa-datasource configuration
+
 	 <xa-datasource jndi-name="java:jboss/datasources/firstDS" pool-name="firstDS" enabled="true" use-java-context="true" spy="true">
 		<xa-datasource-property name="user">
 			username

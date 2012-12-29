@@ -23,9 +23,9 @@ This blog will introduce infinispan integrate with spring. While we need to use 
 			<version>5.1.2.Final</version>
 		</dependency>
 
-## Usage
+### Usage
 
-### Configuration
+## Configuration
 
 * Add infinispan.xml file(we use the simplest configuration for demo) into the classpath:
 
