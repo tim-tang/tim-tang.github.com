@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Tim Tang
 tagline: Supporting tagline
 group: navigation
