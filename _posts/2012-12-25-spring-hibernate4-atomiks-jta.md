@@ -12,28 +12,19 @@ Introduce to hibernate JPA integrate with spring to implements JTA.
 ---
 
 * Spring3.1
-
 * Hibernate4
-
 * Atomikos3.8
-
 * Jetty
 
 ### Dependency Library
 ---
 
 * transactions.jar
-
 * transactions-jta.jar
-
 * transactions-jdbc.jar
-
 * transactions-hibernate3.jar
-
 * cglib.jar (hibernate4 depends it)
-
 * spring related libs
-
 * hibernate related libs
 
 ### Following is detailed configuration:
