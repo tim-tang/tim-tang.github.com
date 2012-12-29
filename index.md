@@ -10,7 +10,7 @@ feed: atom.xml
 
 [feed]: /atom.xml
 
-##Recent Posts
+### RECENT POSTS
 
 {% for post in site.posts limit:18%}
 <div class="section list">
