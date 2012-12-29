@@ -23,9 +23,13 @@ feed: atom.xml
 </div>
 {% endfor %}
 
+## [**OLDER POSTS &rarr;**](/archive.html)
+<!--
 <p>
+## [OLDER POSTS &rarr;](/archive.html)
 <a href="archive.html">OLDER POSTS &rarr;</a>
 </p>
+-->
 
 
 
