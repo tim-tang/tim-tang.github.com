@@ -10,7 +10,7 @@ feed: atom.xml
 
 [feed]: /atom.xml
 
-### RECENT POSTS
+## **RECENT POSTS**
 
 {% for post in site.posts limit:18%}
 <div class="section list">
@@ -24,7 +24,7 @@ feed: atom.xml
 {% endfor %}
 
 <p>
-<a href="archive.html">Older Posts &rarr;</a>
+<a href="archive.html">OLDER POSTS &rarr;</a>
 </p>
 
 
