@@ -81,10 +81,10 @@ I have been trying to teach Hibernate injecting dependencies into Entities (I kn
 
 ## How we define HibernateInterceptor:
 
-public class HibernateInterceptor extends EmptyInterceptor {
-	private static final long serialVersionUID = -6142366297876169168L;
-	private static final Logger logger = LoggerFactory.getLogger(HibernateInterceptor.class);
-	private static final String LAST_UPDATED = "lastUpdated";
+	public class HibernateInterceptor extends EmptyInterceptor {
+		private static final long serialVersionUID = -6142366297876169168L;
+		private static final Logger logger = LoggerFactory.getLogger(HibernateInterceptor.class);
+		private static final String LAST_UPDATED = "lastUpdated";
 
 	// This method is called when entity gets updated.
 	public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
@@ -201,4 +201,4 @@ public class HibernateInterceptor extends EmptyInterceptor {
 		}
 	}
 
-
+> Cheers!
