@@ -48,7 +48,7 @@ GitHub 提供了很好的代码配置管理方案，特别是linux系统用户�
     $git remote add origin git@github.com:tim-tang/everyday.git
     $git push -u origin master
 
-> 道这里git的配置完成，可以参考具体的官方文档[linux set up git][2], Git的深入学习可以看看这里：[Git Book][3] （原创文章）
+> 道这里git的配置完成，可以参考具体的官方文档[linux set up git][2], Git的深入学习可以看看这里：[Git Book](http://gitbook.liuhui998.com)（原创文章）
 
   [1]: https://github.com/tim-tang/everyday/blob/master/.gitignore "gitignore"
   [2]: http://help.github.com/linux-set-up-git/ "linux-set-up-git"

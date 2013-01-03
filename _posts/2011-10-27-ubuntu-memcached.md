@@ -70,6 +70,6 @@ location: Suzhou, China
 > 缓存命中率 = get_hits/cmd_get * 100%
 > get_misses的数字加上get_hits应该等于cmd_get
 > total_items == cmd_set == get_misses，当可用最大内存用光时。
-> 详细的memcached的服务器介绍可以查看这本书[Using_Memcached][2]
+> 详细的memcached的服务器介绍可以查看这本书[Using_Memcached][1]
 （原创文章）
 [1]: http://cms.everyday-cn.com/system/pictures/929/large_memcached_stats.png?1319684668 "memcached_stat"
