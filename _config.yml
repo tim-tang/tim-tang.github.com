@@ -10,7 +10,7 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : Tech Talk
-tagline: Ruby|Rails|Vim|Mac|Ubuntu
+tagline: Ruby|Rails|Vim|Mac|Linux
 author :
   name : Tim Tang
   email : tang.jilong@gmail.com
