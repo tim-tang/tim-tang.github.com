@@ -141,5 +141,14 @@ Introduce to hibernate JPA integrate with spring to implements JTA.
 		<property name="transactionTimeout" value="300" />
 	</bean>
 
+## Put jta.properties file into classpath:
+
+	com.atomikos.icatch.service=com.atomikos.icatch.standalone.UserTransactionServiceFactory
+	com.atomikos.icatch.console_file_name = tm.out
+	com.atomikos.icatch.log_base_name = tmlog
+	com.atomikos.icatch.tm_unique_name = com.atomikos.spring.jdbc.tm
+	com.atomikos.icatch.console_log_level = INFO
+	com.atomikos.icatch.max_timeout=3600000
+
 > Now you can use @Transaction/@PersistenceContext(unitName = "second") to generate the transacton and get the entitymanager, in spring application context.
 > Cheers!
