@@ -4,15 +4,13 @@ title: Tim Tang
 tagline: Supporting tagline
 group: navigation
 ---
-
-{% include JB/setup %}
-<img class='inset right' src='/images/avatar1.png' title='Tim Tang at redang island!' alt='Photo of Tim.Tang at redang island!' width='168px' />
-###SUMMARY
----
-
 Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
 When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
 
+<img class='inset right' src='/images/avatar1.png' title='Tim Tang at redang island!' alt='Photo of Tim.Tang at redang island!' width='168px' />
+
+###SUMMARY
+---
 _Specialities:_
 
 - More than 5 years experience in J2EE direction. Both in web development and backend service.
