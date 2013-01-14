@@ -92,17 +92,37 @@ _Specialities:_
 
 ### SKILLS & EXPERTISE
 ---
+_**Programming**_
 
-	- J2SE/J2EE
-		- Multi-thread/IO etc.
-		- JBoss/Tomcat/Jetty
-		- Spring/Spring Security/Hibernate etc.
-	- Ruby/RubyOnRails
-	- Linux/Mac OSX
-	- MySQL/PostgreSQL/Oracke/MongoDB
-	- HTML5/JQuery etc.
-	- Git/Perforce/Clear Case etc.
-	- VIM/Eclipse etc.
+    - JAVA/Ruby
+    - Multi-thread/IO etc.
+    - Spring Integration/Spring Security/Spring MVC/Hibernate etc.
+    - RubyOnRails
+
+_**Databases**_:
+
+    MySQL/PostgreSQL/Oracke/MongoDB
+
+_**Application Servers**_:
+
+    - Tomcat,Jetty,JBoss AS
+    - Apache, Nginx
+
+_**Web Development**_:
+
+    HTML5/JQuery etc.
+
+_**SCM Tools**_
+
+    Git/Perforce/Clear Case etc.
+
+_**Development Tools**_
+
+    VIM/Eclipse etc.
+
+_**Platforms**_:
+
+    Linux/Mac OSX/Windows
 
 ### PERSONAL DETAILS
 ---
