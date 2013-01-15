@@ -130,4 +130,4 @@ _**Platforms**_:
 - _Birthday_ => March 29, 1983
 - _Marital Status_ => Married
 - _Email_ => tang.jilong@gmail.com
-- _GitHub Profile_=> <https://github.com/tim-tang>
+- _GitHub Profile_ => <https://github.com/tim-tang>
