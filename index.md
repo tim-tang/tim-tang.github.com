@@ -6,8 +6,13 @@ feed: atom.xml
 ---
 {% include JB/setup %}
 
-[![Feed icon](/files/css/feed-icon-14x14.png){:title="Atom feed of recent posts" .right}][feed]
+<form action="/search.html" method="get" id="search_form">
+<div align='right'>
+    <input type="text" name="q" placeholder="Keywords..." />
+</div>
+</form>
 
+[![Feed icon](/files/css/feed-icon-14x14.png){:title="Atom feed of recent posts" .right}][feed]
 [feed]: /atom.xml
 
 ## **RECENT POSTS**
@@ -23,7 +28,7 @@ feed: atom.xml
 </div>
 {% endfor %}
 
-## [**Older &rarr;**](/archive.html)
+## [**Older posts &rarr;**](/archive.html)
 
 
 
