@@ -9,23 +9,6 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 
 <img class='inset right' src='/images/avatar1.png' title='Tim Tang at redang island!' alt='Photo of Tim.Tang at redang island!' width='168px' />
 
-### What he does & Loves doing
----
-- 5 years experience in J2EE direction. Both in web development and backend service.
-- Familiar with service layer development on Linux/Mac platform.
-- 5 years experience in J2EE, and 2 years for Ruby/Rails.
-- Familiar with the Linux web server administration and maintanance, has 3 personal websites in Linode VPS.
-- Last year mainly to do with Ruby on Rails Web development, has been very skilled and has done several projects, did some Ruby gems and Rails plugins.
-- Familiar with MySQL, PostgreSQL, MongoDB etc. Server database.
-- Familiar with Git / Perforce for source code version control.
-- 1 year experience in Web application architecture.
-- Familiar with Javascript / HTML / CSS for front-end development, and Know how to optimizing them.
-- Familiar with Linux, Mac work platform.
-- Familiar with Vim /Eclipse and others tools, and I like use them for both Ruby and J2EE development.
-- Familiar with shell script, and like to use terminal.
-- Architect high available and scalable J2EE backend service.
-- Like running & swimming & reading.
-
 ### Working Histories
 ---
 - (Aug 2012 – Time.now ) => Coding [@XPlusZ](http://www.xplusz.com)
