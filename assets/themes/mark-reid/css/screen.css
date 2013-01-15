@@ -571,3 +571,4 @@ img.maruku-png { }
 	color:#FFF;
 }
 
+#loader{background:url(../images/loader.gif) center center no-repeat;height:30px;width:30px;margin:0 auto;text-indent:-99999px}
