@@ -20,7 +20,7 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 - Familiar with Git / Perforce for source code version control.
 - 1 year experience in Web application architecture.
 - Familiar with Javascript / HTML / CSS for front-end development, and Know how to optimizing them.
-- Familiar with Linux, Mac work environment for development.
+- Familiar with Linux, Mac work platform.
 - Familiar with Vim /Eclipse and others tools, and I like use them for both Ruby and J2EE development.
 - Familiar with shell script, and like to use terminal.
 - Architect high available and scalable J2EE backend service.
@@ -37,6 +37,10 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 ### Contact Me
 ---
 - email => tang.jilong@gmail.com
+
+### Profile
+---
+- resume => [Tim.Tang's Resume](/resume.html)
 
 ### GitHub Public Repos
 ---
