@@ -78,6 +78,7 @@ location: Suzhou, China
 > ***需要注意的是当把solr服务器关闭后，我们需要重新reindex记录*** （原创文章）
 
 ## 补充：
+
 	sunspot在production环境的命令：
 	bundle exec rake sunspot:solr:start RAILS_ENV=production
 	bundle exec rake sunspot:reindex RAILS_ENV=production

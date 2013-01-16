@@ -48,6 +48,7 @@ Gemfile.lock则用来记录本机目前所有依赖的Ruby Gems及其版本。�
 ##可以使用bundle lock来锁定当前环境，这样便不能通过bundle update来更新依赖包的版本，保证了统一的环境
 
 	$ bundle lock
+
 ##解除锁定
 
 	$ bundle unlock

@@ -11,6 +11,7 @@ location: Suzhou, China
 ##安装homebrew比较简单：
 
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+
 ##通过brew安装mysql:
 
 	brew install mysql
@@ -34,11 +35,13 @@ location: Suzhou, China
 ##用如下命令登录即可：
 
 	mysql -uroot  #初始没有设置密码
+
 ##如果要在启动系统的时候启动服务可以执行如下命令：
 
 	mkdir -p ~/Library/LaunchAgents
 	cp /usr/local/Cellar/mysql/5.5.15/com.mysql.mysqld.plist ~/Library/LaunchAgents/
 	launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist
+
 ##在rails app 中常用到mysql,我们还需要建立一个软链接
 
 	sudo ln -s /tmp/mysql.sock /var/run/mysqld/mysqld.sock

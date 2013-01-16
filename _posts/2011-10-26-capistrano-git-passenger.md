@@ -23,7 +23,7 @@ location: Suzhou, China
 ##修改config/deploy.rb文件，下面是everyday的例子：
 
     set :application, "everyday"
-    set :repository,  "[git@github.com:tim-tang/everyday.git][2]"
+    set :repository,  "git@github.com:tim-tang/everyday.git"
     set :branch, "master"
     set :deploy_via, :remote_cache
     set :scm, :git
@@ -61,4 +61,3 @@ location: Suzhou, China
 
 > 这样我们可以用shell+crontab让capistrano定时去部署master上的代码。（原创文章）
   [1]: http://tim.everyday-cn.com/en/show_blog/245 "git config"
-  [2]: git@github.com:tim-tang/everyday.git

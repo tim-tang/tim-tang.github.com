@@ -11,6 +11,7 @@ location: Suzhou, China
 ##安装oh my zsh:
 
 	wget --no-check-certificate https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O##| sh
+
 ##要让安装生效，只要重启终端即可
 
 ##我们可以看到在~/目录下生成了.zshrc文件，修改它让它支持rvm,方便rails开发，将原来.bash_profile与.profile中的自定义内容导入过来：

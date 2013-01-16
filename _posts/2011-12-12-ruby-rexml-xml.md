@@ -80,4 +80,4 @@ location: Suzhou, China
 	names = XPath.match(xmldoc, "//format").map {|x| x.text }
 	p names
 
-> 以备不时之需
+> 以备不时之需!
