@@ -573,3 +573,25 @@ img.maruku-png { }
 
 #loader{background:url(../images/loader.gif) center center no-repeat;height:30px;width:30px;margin:0 auto;text-indent:-99999px}
 .match{background:#d6e4a2;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}
+.go_top {
+  background: #FFF;
+  text-align: center;
+  border:1px solid #eee;
+  display:none;
+  height:20px; width:24px;
+  padding-top:4px; overflow:hidden;
+  border-radius:6px;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+.icon {
+  display:inline-block;
+  transition-property: background-position;
+  transition-duration: 0.5s;
+  -moz-transition-property: background-position; /* Firefox 4 */
+  -moz-transition-duration: 0.5s; /* Firefox 4 */
+  -webkit-transition-property: background-position; /* Safari and Chrome */
+  -webkit-transition-duration: 0.5s; /* Safari and Chrome */
+}
+.icons_go_top { width: 16px; height: 16px; background: url(../images/go_top.png);}
