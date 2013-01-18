@@ -3,7 +3,7 @@ layout: post
 title: "Git workflow"
 description: "Git 分支与合并工作流程"
 category: Misc
-tags: [annual-paper]
+tags: [Git]
 location: Suzhou, China
 ---
 最近做项目，用到git的分支和开发流程整合,纪录一下具体的实践。
