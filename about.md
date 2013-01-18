@@ -19,10 +19,6 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 ---
 - email => tang.jilong@gmail.com
 
-### Profile
----
-- resume => [Tim.Tang's Resume](/resume.html)
-
 ### GitHub Public Repos
 ---
 - [Crawler Engine](https://github.com/tim-tang/crawler_engine)
@@ -31,3 +27,5 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 - [News Aggregation](https://github.com/tim-tang/news_agg)
 - [Everyday-Cn](https://github.com/tim-tang/everyday-cn)
 - [Teck Talk](https://github.com/tim-tang/tim-tang.github.com)
+
+> Personal profile => **_[Tim.Tang's Resume &rarr;](/resume.html)_**

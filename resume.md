@@ -15,8 +15,8 @@ _Specialities:_
 
 - More than 5 years experience in J2EE direction. Both in web development and backend service.
 - More than 2 years for Ruby/Rails web application development.
-- Familiar with Vim /Eclipse and others tools, and I like use them for both Ruby and J2EE development.
-- Familiar with shell script, and like to use Terminal and Vim.
+- Familiar with Vim /Eclipse and others tools, and I like use them for both Ruby,Python and J2EE development.
+- Familiar with shell script and coffee script, and like to use Terminal and Vim.
 - Like using Linux/Mac OSX development.
 - Like running & swimming & reading.
 
@@ -110,7 +110,7 @@ _**Application Servers**_:
 
 _**Web Development**_:
 
-    HTML5/JQuery etc.
+    HTML5/JQuery/CoffeeScript etc.
 
 _**SCM Tools**_
 
@@ -118,7 +118,7 @@ _**SCM Tools**_
 
 _**Development Tools**_
 
-    VIM/Eclipse etc.
+    VIM/Eclipse/iTerm2 etc.
 
 _**Platforms**_:
 
