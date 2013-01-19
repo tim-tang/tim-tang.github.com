@@ -56,7 +56,7 @@ _**PostgreSQL通过查找一个搜索路径来判断一个表究竟属于哪个s
     SHOW search_path;
     -- 将模式加入到搜索路径中
     SET search_path TO schema1;
-    -- 更改某个用于的search_path
+    -- 让某一个用户每次登陆都默认访问同一个模式
     ALTER USER user_name SET search_path to schema1
 
 > 有了PostgreSQL的schema就不用因为有相同表建立多个数据库，可以将多个数据库中的schema放入单个数据库中的多个schema中，在做db-migration的时候做一份migration script就可以，同样避免了多个数据库时候事务同步问题，还方便了数据库的管理真是一举多得！
