@@ -2,7 +2,7 @@
 layout: post
 title: "Rails3,GridFS,MongoID,CarrierWave实现图片上传"
 description: "Rails3, MongoID, CarrierWave使用MongoDB的GridFS作为图片存储,实现图片上传功能"
-category: "RubyOnRails"
+category: RubyOnRails
 tags: [Rails, MongoDB]
 location: Suzhou, China
 ---
@@ -152,10 +152,10 @@ location: Suzhou, China
 
 ##到这里终于可以启动服务，上传图片了，看看结果
 
-[carrierwave-mogoid](/images/post/carrierwave-mongoid.png){:width=300}
+![carrierwave-mogoid](/images/post/carrierwave-mongoid.png){:width=600}
 
 ##在看mongodb的查询结果，多了三个collection以及对于的储存记录
 
-[mogo-result](/images/post/mongodb-result.png){:width=300}
+![mogo-result](/images/post/mongodb-result.png){:width=600}
 
 > 注意:尽量不要在rails3.1以下版本操作，否则会出现无法集成mongoid的问题，OK JSUT DO IT!
