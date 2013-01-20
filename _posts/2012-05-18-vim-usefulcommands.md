@@ -31,6 +31,8 @@ Introduce to Vim commands. It is useful for your development.
 
 	V: 选中一行
 
+    10+ENTER: 光标下移10行
+
 ## 视图模式下剪切和拷贝
 
 	d：剪贴选择的内容到剪贴板。
@@ -109,5 +111,7 @@ Introduce to Vim commands. It is useful for your development.
 	% :             跳到对应的括号(),[],{}
 	dib:             删除内含 ‘(‘ ‘)’ 块
 	diB:             删除内含 ‘{‘ ‘}’ 大块
+    .: 重复上次操作
+    ~: 将小写改成大写
 
 > vim的实用中还需要一些插件，具体的配置可以看我们的[**vim环境**](https://github.com/tim-tang/vim).
