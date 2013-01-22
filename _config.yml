@@ -8,6 +8,14 @@ pygments: true
 #lsi: false
 #markdown: rdiscount
 coffeescript_folder: ./assets/themes/mark-reid/coffee/*
+destination: _site
+
+environments:
+  production:
+    url: http://tim.everyday-cn.com
+    remote:
+      connection: root@173.255.253.43
+      path: /root/tech_talk/_site
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
