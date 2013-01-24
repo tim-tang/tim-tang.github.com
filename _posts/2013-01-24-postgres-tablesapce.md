@@ -29,7 +29,7 @@ PostgreSQL 允许管理员在文件系统里定义表空间存储位置，这样
 ## 建立目录
 
     $ mkdir /home/timtang/pgdata
-    $ sudo chown -R postgres:postgres /home/smallfish/pgdata
+    $ sudo chown -R postgres:postgres /home/timtang/pgdata
 
 ## 如果权限没设置好下面语句会报错
 
