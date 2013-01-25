@@ -19,7 +19,7 @@ location: Suzhou, China
     git checkout <commit hash>
     git checkout -b hotfix
 
-## 从origin拉代码到本地
+## 从origin中hostfix branch代码拉到本地
 
     git checkout -b hotfix origin/hotfix
 
