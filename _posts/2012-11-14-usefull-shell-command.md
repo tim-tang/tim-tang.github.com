@@ -61,4 +61,7 @@ Note useful shell commands for both Mac OSX and Ubuntu.
 ## Commnads for MySQL cli
 
 	export MYSQL_PS1="mysql://\u@\h:/\d - \R:\m:\s > "
-	mysqldump --add-drop-table --extended-insert --force --log-error=error.log -uUSER -pPASS OLD_DB_NAME | ssh -C user@newhost "mysql -uUSER -pPASS NEW_DB_NAME" # 导出远端服务器数据库
+    # 导出远端服务器数据库
+	mysqldump --add-drop-table --extended-insert --force --log-error=error.log -uUSER -pPASS OLD_DB_NAME | ssh -C user@newhost "mysql -uUSER -pPASS NEW_DB_NAME"
+
+> Cheers!

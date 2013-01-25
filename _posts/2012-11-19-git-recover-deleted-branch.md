@@ -43,4 +43,3 @@ I accidentally deleted a local git branch, and I haven not pushed it to a remote
 	Switched to a new branch 'branch-name'
 
 >  **It is useful when you accidentally deleted a local branch, Cheers!**
-
