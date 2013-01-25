@@ -3,7 +3,7 @@ layout: post
 title: "PostgreSQL open remote connection"
 description: "Open PostgreSQL server remote connections."
 category: Msic
-tags: [postgresql]
+tags: [PostgreSQL]
 location: Suzhou, China
 ---
 Introduce how to open remote connections for postgresSQL server.

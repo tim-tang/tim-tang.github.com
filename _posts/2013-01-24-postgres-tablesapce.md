@@ -3,7 +3,7 @@ layout: post
 title: "PostgreSQL Tablespace 介绍"
 description: "介绍PostgreSQL tablespace 的应用"
 category: Misc
-tags: [postgresql]
+tags: [PostgreSQL]
 location: Suzhou, China
 ---
 
