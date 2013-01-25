@@ -3,7 +3,7 @@ layout: post
 title: "Build Jekyll presentation with Jekyll and Hyde"
 description: "Use jkeyll-and-hyde ruby gem to build on-line PPT"
 category: Git
-tags: [Git,GitHub]
+tags: [Git]
 location: Suzhou, China
 ---
 
