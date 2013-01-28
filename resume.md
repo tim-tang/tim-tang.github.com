@@ -105,8 +105,8 @@ _**Databases**_:
 
 _**Application Servers**_:
 
-    - Tomcat,Jetty,JBoss AS
-    - Apache, Nginx
+    - Tomcat/Jetty/JBoss AS
+    - Apache/Nginx
 
 _**Web Development**_:
 
