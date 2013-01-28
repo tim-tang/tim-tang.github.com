@@ -101,7 +101,7 @@ _**Programming**_
 
 _**Databases**_:
 
-    MySQL/PostgreSQL/Oracke/MongoDB
+    MySQL/PostgreSQL/Oracle/MongoDB
 
 _**Application Servers**_:
 
