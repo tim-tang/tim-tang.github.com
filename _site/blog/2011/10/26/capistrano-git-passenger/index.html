@@ -1,0 +1,214 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>打造Capistrano,Git,Passenger自动部署环境 &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="打造Capistrano,Git,Passenger自动部署环境">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="ROR capistrano git passenger deployment">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#Git-ref">Git <span>7</span></a></li>
+     
+    	<li><a href="/tags.html#RubyGem-ref">RubyGem <span>11</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">打造Capistrano,Git,Passenger自动部署环境</h1>
+
+  <p>对于rails应用capistrano提供的很好的自动化部署方案，支持部署版本的回滚，和github,svn等scm服务器有不错的集成，介绍下目前everyday所使用到的capistrano配置方案：</p>
+
+<h2 id='capistrano_gem'>安装capistrano gem.</h2>
+
+<pre><code>$gem install capistrano
+$cap -V         --检查安装是否正确
+$cap -T         --查看capistrano 命令</code></pre>
+
+<h2 id='rails_app_git_hubgithubgithubgithubrails'>让你的rails app 使用git hub,可以注册一个github帐号，具体的github安装配置参考<a href='http://tim.everyday-cn.com/en/show_blog/245' title='git config'>利用Github管理Rails代码</a>。</h2>
+
+<h2 id='documentseveryday'>进入～/Documents/everyday目录：</h2>
+
+<pre><code>$cap .            -- 生成Capfile &amp; config/deploy.rb
+$cap deploy:setup   --生成release/shared目录
+$cap deploy:check   --检查capistrano 所需要的环境是否满足</code></pre>
+
+<h2 id='configdeployrbeveryday'>修改config/deploy.rb文件，下面是everyday的例子：</h2>
+
+<pre><code>set :application, &quot;everyday&quot;
+set :repository,  &quot;git@github.com:tim-tang/everyday.git&quot;
+set :branch, &quot;master&quot;
+set :deploy_via, :remote_cache
+set :scm, :git
+set :scm_username, &quot;tang.jilong@139.com&quot;   
+set :scm_passphrase, &quot;*****&quot;
+set :use_sudo,   false 
+set :deploy_to,   &quot;/home/tim-tang/Documents/#{application}&quot;
+set :user, &quot;root&quot;
+set :password, &quot;*****&quot;
+ssh_options[:forward_agent] = true
+server &quot;192.168.1.104&quot;, :app, :web, :db, :primary =&gt; true
+namespace :deploy do
+  task :start, :roles =&gt; :app, do  
+    invoke_command &quot;/home/tim-tang/nginx/sbin/nginx&quot;
+  end
+  task :stop, :roles =&gt; :app,  do 
+    invoke_command &quot;/home/tim-tang/nginx/sbin/nginx -s stop&quot;
+  end
+  task :restart, :roles =&gt; :app, :except =&gt; { :no_release =&gt; true } do
+    run &quot;#{try_sudo} touch #{File.join(current_path,&#39;tmp&#39;,&#39;restart.txt&#39;)}&quot;
+    invoke_command &quot;/home/tim-tang/nginx/sbin/nginx -s stop&quot;
+    invoke_command &quot;/home/tim-tang/nginx/sbin/nginx&quot;
+  end
+end</code></pre>
+
+<h2 id='nginxnginxconfnginxconf'>还需要修改下nginx的配置，~/nginx/conf/nginx.conf</h2>
+
+<pre><code>......
+root /home/tim-tang/Documents/everyday/current/public;  --将原来的部署目录指到current下面。
+......</code></pre>
+
+<h2 id='githubnginx'>最后可以执行如下命令部署，将从github同步代码，并且自动重启nginx服务器。</h2>
+
+<pre><code>$cap deploy:cold  ---冷部署第一次使用
+$cap deploy   ---- 以后每次可以用</code></pre>
+
+<blockquote>
+<p>这样我们可以用shell+crontab让capistrano定时去部署master上的代码。（原创文章）</p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">144 Words</span>
+    <span class="date">26 October 2011</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2011/10/26/github-rails" class="next" title="利用Github管理Rails代码">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2011/10/25/vim-rubyonrails" class="prev" title="Vim开发RubyOnRails 环境打造">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+</body>
+</html>
+
