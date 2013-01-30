@@ -7,7 +7,7 @@ tags: [Mac]
 location: Suzhou, China
 ---
 
-经常使用terminal的哥们肯定会遇到需要root权限的问题，我又比较懒，很多代码的产生就是为了方便懒惰的程序员,经常使用sudo的时候需要输入密码，反正自己的系统自用就找了方法免去每次输入密码，下面介绍下：
+经常使用terminal的哥们肯定会遇到需要root权限的问题，我又比较懒，很多代码的产生就是为了方便懒惰的程序员,经常使用sudo的时候需要输入密码，反正自己的系统自己用就找了方法免去每次输入密码，下面介绍下：
 
 ## 修改 /etc/sudoers 这个文件
 
@@ -24,7 +24,7 @@ location: Suzhou, China
 
     # 修改amdin组都不用输入密码
     %admin ALL=(ALL) NOPASSWD: NOPASSWD ALL
-    # 只是想让 marine 用户输入sudo不需要密码
+    # 只是想让 tim 用户输入sudo不需要密码
     tim ALL=(ALL) NOPASSWD: ALL
 
 > admin群组的用户都能执行所有命令， 不需要输入password
