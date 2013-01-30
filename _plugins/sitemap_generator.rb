@@ -114,8 +114,9 @@ module Jekyll
       sitemap = REXML::Document.new << REXML::XMLDecl.new("1.0", "UTF-8")
 
       urlset = REXML::Element.new "urlset"
-      urlset.add_attribute("xmlns",
-        "http://www.sitemaps.org/schemas/sitemap/0.9")
+      urlset.add_attribute("xmlns", "http://www.sitemaps.org/schemas/sitemap/0.9")
+      urlset.add_attribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
+      urlset.add_attribute("xsi:schemaLocation", "http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd")
 
       @last_modified_post_date = fill_posts(site, urlset)
       fill_pages(site, urlset)
