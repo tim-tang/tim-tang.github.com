@@ -16,7 +16,7 @@ environments:
     url: http://tim.everyday-cn.com
     remote:
       connection: root@173.255.253.43
-      path: /root/tech_talk/_site
+      path: /srv/www/tim-tang.github.com/public_html/jekyll
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
