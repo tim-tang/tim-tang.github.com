@@ -35,6 +35,6 @@ location: Suzhou, China
     sudo !!
 
 > 有时候当我们输入了一大串命令后敲下去发现需要写sudo，这个时候不得不找回上个命令，然后回到命令开头，然后加上sudo空格, 这时候就可以用如上命令.
-
+> 最后推荐一个shell 命令的网站[commandlinefu.com](http://www.commandlinefu.com/commands/browse/sort-by-votes)
 
 
