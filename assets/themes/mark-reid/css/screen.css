@@ -226,7 +226,7 @@ ul.compact li a {
 	position: relative;
 	font-variant: small-caps;
 	line-height: 1em;
-	margin-top: .5em;
+	margin-top: 0;
 	margin-bottom: 0;
 }
 #header h1 {
