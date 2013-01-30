@@ -23,10 +23,10 @@ environments:
 title : Tech Talkin~
 tagline: Ruby|Rails|Vim|Mac|Linux
 author :
-  name : Tim Tang
+  name : Tim.Tang,Linux,ROR,Mac,Vim,Git
   email : tang.jilong@gmail.com
   github : tang.jilong@139.com
-  twitter : username
+  twitter : tangjilong
   feedburner : feedname
 
 # The production_url is only used when full-domain names are needed

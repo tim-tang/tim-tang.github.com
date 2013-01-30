@@ -3,7 +3,8 @@ layout: post
 title: "Mac sudo without password"
 description: "Mac配置sudo时免去输入密码"
 category: Mac
-tags: [Mac]
+keywords: mac sudo password
+tags: [Mac, Shell]
 location: Suzhou, China
 ---
 
