@@ -15,6 +15,7 @@ feed: atom.xml
 [![Feed icon](/files/css/feed-icon-14x14.png){:title="Atom feed of recent posts" .right}][feed]
 [feed]: /atom.xml
 
+
 ## **RECENT POSTS**
 
 {% for post in site.posts limit:18%}
