@@ -1,0 +1,4 @@
+---
+layout : nil
+---
+Sitemap: {{ site.environments.production.url}}/sitemap.xml
