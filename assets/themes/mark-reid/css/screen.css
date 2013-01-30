@@ -42,16 +42,16 @@ a.pdf:before {
 
 h1,h2,h3,h4 {
 	line-height:1em;
-	font-size:1.5em;
+	font-size:1.3em;
 	font-weight: normal;
 	clear: left;
 	font-family:Gill Sans MT, Gill Sans, Palatino,'lucida grande', sans-serif;
 }
-h1 { margin-bottom: 1em; }
+h1 {font-size:25px; margin-bottom: 1em; }
 h2 {
 	font-size: 100%;
 	line-height: 1.5em;
-	margin:1.5em 0 0.5em 0;
+	margin:1.5em 0 0.8em 0;
 	font-weight:bold;
 }
 
@@ -381,7 +381,7 @@ pre:hover {
 }
 code {
 	font-family:Gill Sans MT,Gill Sans, Palatino, georgia, "times new roman", serif;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	background-color: #f7f7ff;
 	line-height: 1.4em;
 }
