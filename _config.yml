@@ -9,6 +9,7 @@ pygments: true
 #markdown: rdiscount
 coffeescript_folder: ./assets/themes/mark-reid/coffee/*
 destination: _site
+multiviews: true
 
 environments:
   production:
