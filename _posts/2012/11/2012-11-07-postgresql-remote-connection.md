@@ -3,6 +3,7 @@ layout: post
 title: "PostgreSQL open remote connection"
 description: "Open PostgreSQL server remote connections."
 category: Msic
+keywords: postgresql remote connection
 tags: [PostgreSQL]
 location: Suzhou, China
 ---

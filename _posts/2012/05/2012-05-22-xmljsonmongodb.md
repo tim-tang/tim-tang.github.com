@@ -3,6 +3,7 @@ layout: post
 title: "XML,JSON转换存MongoDB"
 description: "使用Crack/JSON Gem将XML文件转换成JSON并存入MongoDB,"
 category: MongoDB
+keywords: mongodb json xml
 tags: [Ruby, MongoDB]
 location: Suzhou, China
 ---

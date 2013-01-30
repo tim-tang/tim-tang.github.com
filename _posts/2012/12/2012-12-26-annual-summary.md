@@ -3,6 +3,7 @@ layout: post
 title: "2012年度回顾"
 description: "2012快结束了，世界某日大难不死,写篇流水帐纪录下这一年来发生的事情!"
 category: Misc
+keywords: annual report
 tags: [Annual-Paper]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: Rails3,MongoDB,MongoID完整实例
 description: Rails3,MongoDB,MongoID完整实例
 category: RubyOnRails
+keywords: rails3 mongodb mongoid
 tags: [Rails, MongoDB]
 location: Suzhou, China
 ---

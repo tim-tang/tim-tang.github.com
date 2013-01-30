@@ -3,6 +3,7 @@ layout: post
 title: Rails3,fragment cache 缓存局部页面
 description: Rails3,fragment cache 缓存局部页面
 category: RubyOnRails
+keywords: rails3 fragment cache
 tags: [Rails]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "Mac Tricks"
 description: "Introduce to serveral mac tricks."
 category: Mac
+keywords: mac useful tricks
 tags: [Mac]
 location: Suzhou, China
 ---

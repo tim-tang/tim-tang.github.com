@@ -3,6 +3,7 @@ layout: post
 title: Nginx,Passenger,Rails3部署方案
 description: Nginx,Passenger,Rails3部署方案
 category: RubyOnRails
+keywords: nginx passenger rails3 deploy
 tags: [Nginx, Rails]
 location: Suzhou, China
 ---

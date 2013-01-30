@@ -3,6 +3,7 @@ layout: post
 title: 使用rails_best_practices代码重构
 description: 使用rails_best_practices代码重构
 category: RubyOnRails
+keywords: rails best practices refactor
 tags: [Rails]
 location: Suzhou, China
 ---

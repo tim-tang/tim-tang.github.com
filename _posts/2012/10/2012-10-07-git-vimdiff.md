@@ -3,6 +3,7 @@ layout: post
 title: "Git diff,vimdiff Integration"
 description: "Use vimdiff as Git merge tool."
 category: Git
+keywords: git vimdiff merge tool
 tags: [Git]
 location: Suzhou, China
 ---

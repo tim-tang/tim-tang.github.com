@@ -3,6 +3,7 @@ layout: post
 title: Ubuntu,Memcached安装监控
 description: Ubuntu,Memcached安装监控
 category: Ubuntu
+keywords: ubuntu memcached monitor
 tags: [Memcached]
 location: Suzhou, China
 ---

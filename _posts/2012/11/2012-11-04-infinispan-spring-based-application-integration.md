@@ -3,6 +3,7 @@ layout: post
 title: "Infinispan integrate with spring based application"
 description: "Integrate Infinispan with spring based application and cluster customization."
 category: Cluster
+keywords: infinispan spring integration
 tags: [Infinispan]
 location: Suzhou, China
 ---

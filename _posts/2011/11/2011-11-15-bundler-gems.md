@@ -3,6 +3,7 @@ layout: post
 title: 使用bundler管理gems
 description: 使用bundler管理gems
 category: RubyOnRails
+keywords: bundler gems
 tags: [Rails, RubyGem]
 location: Suzhou, China
 ---

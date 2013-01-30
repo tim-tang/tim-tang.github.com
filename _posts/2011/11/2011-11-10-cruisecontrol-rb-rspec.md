@@ -3,6 +3,7 @@ layout: post
 title: CruiseControl.rb,Rspec实践持续集成
 description: CruiseControl.rb,Rspec实践持续集成
 category: CI
+keywords: curisecontrol rspec
 tags: [Rspec, CI]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: Mac安装配置oh my zsh
 description: Mac安装配置oh my zsh
 category: Mac
+keywords: mac oh-my-zsh
 tags: [Mac, zsh]
 location: Suzhou, China
 ---

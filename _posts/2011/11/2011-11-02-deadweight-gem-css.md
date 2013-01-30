@@ -3,6 +3,7 @@ layout: post
 title: Deadweight gem找出未使用的css
 description: Deadweight gem找出未使用的css
 category: RubyOnRails
+keywords: deadweight css
 tags: [RubyGem, Rails]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "Vim 实用命令"
 description: "经过实际开发总结了一些有用的VIM命令。"
 category: Vim
+keywords: vim command trick
 tags: [Vim]
 location: Suzhou, China
 ---

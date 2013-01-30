@@ -3,6 +3,7 @@ layout: post
 title: 打造Capistrano,Git,Passenger自动部署环境
 description: 打造Capistrano,Git,Passenger自动部署环境
 category: RubyOnRails
+keywords: ROR capistrano git passenger deployment
 tags: [Git, RubyGem]
 location: Suzhou, China
 ---

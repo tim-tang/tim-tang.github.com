@@ -3,6 +3,7 @@ layout: post
 title: Vim开发RubyOnRails 环境打造
 description: Vim开发RubyOnRails 环境打造
 category: Vim
+keywords: vim ror development eviroment
 tags: [Vim, Rails]
 location: Suzhou, China
 ---

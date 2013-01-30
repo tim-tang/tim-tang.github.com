@@ -3,6 +3,7 @@ layout: post
 title: "PostgreSQL Schema 应用"
 description: "PostgreSQL 数据库Schema模式在项目中的应用"
 category: Misc
+keywords: postgresqldb schema
 tags: [PostgreSQL]
 location: Suzhou, China
 ---

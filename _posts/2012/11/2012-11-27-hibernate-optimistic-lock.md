@@ -3,6 +3,7 @@ layout: post
 title: "Handle optimistic lock for JPA and Hibernate integrated architecture"
 description: "Introduce to handle optimistic lock for JPA and Hibernate integration."
 category: J2EE
+keywords: hibernate jpa optimistic lock
 tags: [optimistic-lock]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "How to use spring security tags in free marker pages."
 description: "Introduce to use spring security tags in free marker."
 category: Msic
+keywords: spring security tags freemarker
 tags: [spring]
 location: Suzhou, China
 ---

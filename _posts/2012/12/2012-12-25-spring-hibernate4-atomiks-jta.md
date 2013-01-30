@@ -3,6 +3,7 @@ layout: post
 title: "Use spring3.1 hibernate4 atomikos3.8 to implements JTA(XA)"
 description: "Implements JTA on jetty with several open source framework."
 category: J2EE
+keywords: jta spring3 hibernate4 atomikos3.8
 tags: [JTA]
 location: Suzhou, China
 ---

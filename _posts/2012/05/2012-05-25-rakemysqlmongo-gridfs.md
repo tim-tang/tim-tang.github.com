@@ -3,6 +3,7 @@ layout: post
 title: "Rake从MySQL向Mongo GridFS迁移图片数据"
 description: "使用Rake将文件系统和MySQL中的图片数据迁移到GridFS中"
 category: MongoDB
+keywords: rake mongodb mysql gridfs
 tags: [MongoDB]
 location: Suzhou, China
 ---

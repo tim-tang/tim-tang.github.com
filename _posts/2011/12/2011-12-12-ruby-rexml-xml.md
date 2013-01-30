@@ -3,6 +3,7 @@ layout: post
 title: Ruby使用rexml解析xml
 description: Ruby使用rexml解析xml
 category: Ruby
+keywords: ruby rexml
 tags: [Ruby, RubyGem]
 location: Suzhou, China
 ---

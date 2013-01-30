@@ -3,6 +3,7 @@ layout: post
 title: "Useful shell command for Ubuntu/MAC"
 description: "Note some useful shell commands."
 category: Msic
+keywords: shell ubuntu mac command
 tags: [Shell]
 location: Suzhou, China
 ---

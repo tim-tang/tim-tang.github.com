@@ -3,6 +3,7 @@ layout: post
 title: "MongoDB Auto-Sharding初探"
 description: "Mongodb提供了Auto-Sharding的功能，通过简单的配置就可以很方便地构建一个分布式MongoDB集群"
 category: MongoDB
+keywords: mongodb auto sharding
 tags: [MongoDB]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: Rails3,Rspec,Factory_girl单元功能测试
 description: Rails3,Rspec,Factory_girl单元功能测试
 category: RubyOnRails
+keywords: rails3 rspec factory_girl
 tags: [Rails, RubyGem]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "使用Git管理命令行配置"
 description: "借助Git和GitHub来管理你的命令行配置文件"
 category: Mac
+keywords: github terminal dotfiles
 tags: [Mac]
 location: Suzhou, China
 ---

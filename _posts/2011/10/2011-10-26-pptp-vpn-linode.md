@@ -3,6 +3,7 @@ layout: post
 title: PPTP,VPN配置(Linode)
 description: PPTP,VPN配置(Linode)
 category: Msic
+keywords: pptp vpn linode
 tags: [Linode]
 location: Suzhou, China
 ---

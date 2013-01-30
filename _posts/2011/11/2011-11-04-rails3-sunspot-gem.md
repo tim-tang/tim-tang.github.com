@@ -3,6 +3,7 @@ layout: post
 title: Rails3全文检索使用Sunspot gem
 description: Rails3全文检索使用Sunspot gem
 category: RubyOnRails
+keywords: rails3 sunspot
 tags: [Rails, RubyGem]
 location: Suzhou, China
 ---

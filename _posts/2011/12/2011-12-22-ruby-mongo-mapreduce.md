@@ -3,6 +3,7 @@ layout: post
 title: Ruby实现Mongo MapReduce初探
 description: Ruby实现Mongo MapReduce初探
 category: Ruby
+keywords: ruby mongo mapreduce
 tags: [Ruby, MongoDB]
 location: Suzhou, China
 ---

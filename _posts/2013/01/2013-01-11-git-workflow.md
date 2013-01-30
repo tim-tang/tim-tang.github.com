@@ -3,6 +3,7 @@ layout: post
 title: "Git workflow"
 description: "Git 分支与合并工作流程"
 category: Misc
+keywords: git github workflow
 tags: [Git]
 location: Suzhou, China
 ---

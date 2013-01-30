@@ -3,6 +3,7 @@ layout: post
 title: 利用Github管理Rails代码
 description: 利用Github管理Rails代码
 category: Git
+keywords: github rails
 tags: [Git, GitHub]
 location: Suzhou, China
 ---

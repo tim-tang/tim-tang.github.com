@@ -3,6 +3,7 @@ layout: post
 title: "Recover a git branch you accidentally deleted"
 description: "How to recover a git branch you accidentally deleted"
 category: Git
+keywords: revcover git branch deleted
 tags: [Git]
 location: Suzhou, China
 ---

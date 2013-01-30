@@ -3,6 +3,7 @@ layout: post
 title: "Mac OSX下PostgreSQL安装配置"
 description: "在Mac OSX 安装postgres配置终端"
 category: Msic
+keywords: mac postgresql installation
 tags: [PostgreSQL]
 location: Suzhou, China
 ---

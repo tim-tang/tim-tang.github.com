@@ -3,6 +3,7 @@ layout: post
 title: Rails3 Routing构建RESTFUL应用(1)
 description: Rails3 Routing构建RESTFUL应用(1)
 category: RubyOnRails
+keywords: rails3 routing restful
 tags: [Rails]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: "Rails3,GridFS,MongoID,CarrierWave实现图片上传"
 description: "Rails3, MongoID, CarrierWave使用MongoDB的GridFS作为图片存储,实现图片上传功能"
 category: RubyOnRails
+keywords: rails3 gridfs mongoid carrierwave photo upload
 tags: [Rails, MongoDB]
 location: Suzhou, China
 ---

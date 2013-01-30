@@ -3,6 +3,7 @@ layout: post
 title: Ruby使用DBI gem操作mysql
 description: Ruby使用DBI gem操作mysql
 category: Ruby
+keywords: ruby dbi mysql
 tags: [Ruby, RubyGem]
 location: Suzhou, China
 ---

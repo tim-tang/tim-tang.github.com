@@ -3,6 +3,7 @@ layout: post
 title: Ubuntu11.10,MongoDB安装测试
 description: Ubuntu11.10,MongoDB安装测试
 category: Ubuntu
+keywords: ubuntu11 mongodb installation
 tags: [Ubuntu, MongoDB]
 location: Suzhou, China
 ---

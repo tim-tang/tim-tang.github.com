@@ -3,6 +3,7 @@ layout: post
 title: Rails3,delayed_job,mail gem异步发送邮件实现
 description: Rails3,delayed_job,mail gem异步发送邮件实现
 category: RubyOnRails
+keywords: rails3 delayed job mail
 tags: [RubyGem, Rails]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: ruby使用rails generator生成migration model文件
 description: ruby使用rails generator生成migration model文件
 category: Ruby
+keywords: ruby rails generator migration model
 tags: [Ruby, Rails]
 location: Suzhou, China
 ---

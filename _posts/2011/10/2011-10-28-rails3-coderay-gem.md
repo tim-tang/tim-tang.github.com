@@ -3,6 +3,7 @@ layout: post
 title: Rails3,CodeRay gem 高亮代码
 description: Rails3,CodeRay gem 高亮代码
 category: RubyOnRails
+keywords: rails3 coderay highlight
 tags: [Rails, RubyGem]
 location: Suzhou, China
 ---

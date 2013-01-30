@@ -3,6 +3,7 @@ layout: post
 title: "NerdTree Tricks"
 description: "Vim 插件nerdtree的一些使用技巧"
 category: Vim
+keywords: vim nerdtree tricks
 tags: [Vim]
 location: Suzhou, China
 ---

@@ -3,6 +3,7 @@ layout: post
 title: Mac通过homebrew 安装mysql
 description: Mac通过homebrew 安装mysql
 category: Mac
+keywords: mac homebrew mysql
 tags: [Homebrew, Mac]
 location: Suzhou, China
 ---

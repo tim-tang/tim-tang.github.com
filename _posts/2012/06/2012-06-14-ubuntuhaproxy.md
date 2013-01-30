@@ -3,6 +3,7 @@ layout: post
 title: "ubuntu下haproxy安装配置"
 description: "在ubuntu10.04 上搭建基于http请求的haproxy"
 category: Msic
+keywords: ubuntu haproxy configuration
 tags: [haproxy]
 location: Suzhou, China
 ---

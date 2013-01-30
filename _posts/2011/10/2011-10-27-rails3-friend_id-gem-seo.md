@@ -3,6 +3,7 @@ layout: post
 title: Rails3利用friend_id gem,SEO优化
 description: Rails3利用friend_id gem,SEO优化
 category: RubyOnRails
+keywords: rails3 friend_id seo
 tags: [Rails, RubyGem]
 location: Suzhou, China
 ---

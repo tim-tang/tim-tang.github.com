@@ -3,6 +3,7 @@ layout: post
 title: Ruby目录(Diretories)文件(files)操作
 description: Ruby目录(Diretories)文件(files)操作
 category: Ruby
+keywords: ruby directory files
 tags: [Ruby]
 location: Suzhou, China
 ---
