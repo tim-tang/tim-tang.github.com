@@ -9,7 +9,7 @@ layout: nil
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
     http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>{{ site.production_url }}</loc>
+        <loc>{{ site.environments.production.url }}</loc>
         <lastmod>2011-10-26T20:51:26+00:00</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.00</priority>
@@ -17,7 +17,7 @@ layout: nil
 
     {% for post in site.posts %}
     <url>
-        <loc>{{ site.production_url }}{{ post.url }}</loc>
+        <loc>{{ site.environments.production.url }}{{ post.url }}</loc>
         <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.00</priority>
