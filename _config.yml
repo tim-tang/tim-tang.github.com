@@ -14,7 +14,7 @@ multiviews: true
 
 environments:
   production:
-    url: http://tim.everyday-cn.com
+    url: http://www.timtang.me
     remote:
       connection: root@173.255.253.43
       path: /srv/www/tim-tang.github.com/public_html/jekyll
