@@ -8,7 +8,7 @@ feed: atom.xml
 
 <form action="/search.html" method="get" id="search_form">
 <div align='right'>
-    <input type="text" name="q" placeholder="Keywords..." />
+<input type="text" name="q" placeholder="Keywords..." />
 </div>
 </form>
 
@@ -32,10 +32,9 @@ feed: atom.xml
 ## [**Older posts &rarr;**](/archive.html)
 
 
-
 <script type="text/javascript">
 /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+var disqus_shortname = 'tecktalkin'; // required: replace example with your forum shortname
 
 /* * * DON'T EDIT BELOW THIS LINE * * */
 (function () {

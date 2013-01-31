@@ -94,7 +94,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : timstechtalk
+      short_name : tecktalkin
     livefyre :
       site_id : 123
     intensedebate :
