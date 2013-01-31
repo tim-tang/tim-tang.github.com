@@ -1,0 +1,203 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Mac sudo without password &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="Mac sudo without password">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="mac sudo password">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#Mac-ref">Mac <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#Shell-ref">Shell <span>2</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">Mac sudo without password</h1>
+
+  <p>经常使用terminal的哥们肯定会遇到需要root权限的问题，我又比较懒，很多代码的产生就是为了方便懒惰的程序员,经常使用sudo的时候需要输入密码，反正自己的系统自己用就找了方法免去每次输入密码，下面介绍下：</p>
+
+<h2 id='_etcsudoers_'>修改 /etc/sudoers 这个文件</h2>
+
+<pre><code>sudo visudo -f /etc/sudoers</code></pre>
+
+<blockquote>
+<p>建议用visudo 这个工具来修改，它会帮你校验文件配置是否正确</p>
+</blockquote>
+
+<h2 id='id57'>默认情况的权限是这样的</h2>
+
+<pre><code>root ALL=(ALL) ALL
+%admin ALL=(ALL) ALL</code></pre>
+
+<h2 id='id58'>修改成如下：</h2>
+
+<pre><code># 修改amdin组都不用输入密码
+%admin ALL=(ALL) NOPASSWD: NOPASSWD ALL
+# 只是想让 tim 用户输入sudo不需要密码
+tim ALL=(ALL) NOPASSWD: ALL</code></pre>
+
+<blockquote>
+<p>admin群组的用户都能执行所有命令， 不需要输入password</p>
+</blockquote>
+
+<h2 id='id59'>小技巧</h2>
+
+<pre><code># !! 表示上次执行的命令
+sudo !!</code></pre>
+
+<blockquote>
+<p>有时候当我们输入了一大串命令后敲下去发现需要写sudo，这个时候不得不找回上个命令，然后回到命令开头，然后加上sudo空格, 这时候就可以用如上命令. 最后推荐一个shell 命令的网站<a href='http://www.commandlinefu.com/commands/browse/sort-by-votes'>commandlinefu.com</a></p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">53 Words</span>
+    <span class="date">30 January 2013</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+  
+    <a href="/blog/2013/01/29/git-dotfiles" class="prev" title="使用Git管理命令行配置">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+

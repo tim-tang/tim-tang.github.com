@@ -1,0 +1,234 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>MongoDB Auto-Sharding初探 &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="MongoDB Auto-Sharding初探">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="mongodb auto sharding">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#MongoDB-ref">MongoDB <span>7</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">MongoDB Auto-Sharding初探</h1>
+
+  <p>MongoDB最近在项目种使用比较频繁，所以最近些这方面的东西比较多，下面我们看看MongoDB的Auto-Sharding提供了什么?</p>
+
+<ul>
+<li>Reblancing当各Sharding间负载和数据分布不平衡时自动触发 - 可以简单方便的添加和删除节点</li>
+
+<li>通过Replica Set 作自动的failover处理 - 可以横向扩展至上千台节点</li>
+</ul>
+
+<h3 id='mongodbauto_sharding'>一个MongoDB的Auto Sharding由三部分组成：</h3>
+
+<ul>
+<li>Shard: 即存储实际数据的分片，每个Shard可以是一个mongod实例，也可以是一组mongod实例构成的Replica Set</li>
+
+<li>Config Servers: 用来存储所有shard节点的配置信息,每个chunk的shard key范围,chunk在各shard的分布,该集群中所有DB和collection的sharding配置</li>
+
+<li>Routing Process: 它相当于一个透明代理，接收来自客户端的查询或更新请求，然后询问Config Servers需要到哪个Shard上查询或保存记录，再连接相应的Shard进行操作，最后将结果返回给客户端。</li>
+</ul>
+
+<blockquote>
+<p>下面搭建一个简单的MongoDB的集群，包括：两个Shards，一个Config Server和一个Routing Process</p>
+</blockquote>
+
+<h2 id='shardsconfig_server'>创建两个Shards和一个Config Server数据目录</h2>
+
+<pre><code>$sudo mkdir -p /data0/mongo/shard1 /data0/mongo/shard2 /data0/mongo/config</code></pre>
+
+<h2 id='mongodshardmongodconfig_servermongosrouting_process'>启动两个mongod进程作为Shard，一个mongod进程作为Config Server，一个mongos进程作为Routing Process</h2>
+
+<pre><code>$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27017 --fork --logpath ~/mongo_shard1.log --dbpath /data0/mongo/shard1 --shardsvr
+$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27018 --fork --logpath ~/mongo_shard2.log --dbpath /data0/mongo/shard2 --shardsvr
+$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongod --port 27217 --fork --logpath ~/mongo_config.log --dbpath /data0/mongo/config --configsvr
+$sudo ./software/mongodb-linux-i686-2.0.0/bin/mongos --port 27417 --fork --logpath ~/mongos.log --configdb 127.0.0.1:27217 --chunkSize 10</code></pre>
+
+<blockquote>
+<p>chunkSize这一项是用来指定chunk的大小的，单位是MB，默认大小为200MB</p>
+</blockquote>
+
+<h2 id='mongosshard'>登录到mongos，添加Shard节点</h2>
+
+<pre><code>$mongo --port 27417
+\&gt; use admin;
+\&gt; db.runCommand({addshard:&quot;127.0.0.1:27017&quot;})
+\&gt; db.runCommand({addshard:&quot;127.0.0.1:27018&quot;})</code></pre>
+
+<h2 id='timdbsharding_event_collectionshard_key__id1shard_keychoosing_a_sharding_key'>我们为数据库tim-db启用sharding, 将其中的event collection的shard key 设置为{_id:1},更多关于shard key的介绍，可以查看<a href='http://www.mongodb.org/display/DOCS/Choosing+a+Shard+Key'>Choosing A Sharding Key</a></h2>
+
+<pre><code>\&gt; db.runCommand({enablesharding:&#39;tim-db&#39;});
+\&gt; db.runCommand({shardcollection:&quot;tim-db.event&quot;, key:{_id:1}});</code></pre>
+
+<h2 id='ruby'>到这里我们些一个ruby脚本来测试</h2>
+
+<pre><code>#encoding:utf-8
+require &quot;mongo&quot;
+connection = Mongo::Connection.new(&quot;localhost&quot;, 27417)
+db = connection.db(&quot;tim-db&quot;)
+coll = db.collection(&quot;event&quot;)
+1.upto(100000) do |i|
+  myJSON = {&quot;name&quot; =&gt; &quot;MongoDB&quot;, &quot;type&quot; =&gt; &quot;database&quot;, &quot;count&quot; =&gt; i,&quot;created_at&quot;=&gt;(Time.now()+(i*3600))}
+  puts myJSON
+  coll.save(myJSON)
+end</code></pre>
+
+<blockquote>
+<p>我们可以通过db.event.stats()名录来查看两个sharding具体的数据情况，OK， good luck!</p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">147 Words</span>
+    <span class="date">28 May 2012</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2012/06/14/ubuntuhaproxy" class="next" title="ubuntu下haproxy安装配置">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2012/05/27/rdoc" class="prev" title="关于RDoc的使用">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+

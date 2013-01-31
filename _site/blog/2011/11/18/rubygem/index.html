@@ -1,0 +1,227 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>如何编写一个rubygem &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="如何编写一个rubygem">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="rubygem">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#RubyGem-ref">RubyGem <span>11</span></a></li>
+     
+    	<li><a href="/tags.html#Ruby-ref">Ruby <span>9</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">如何编写一个rubygem</h1>
+
+  <p>在开发everyday和<a href='http://tim.everyday-cn.com' title='tech talk'><strong><em>tech talk</em></strong></a>的时候一直使用别人开发的ruby gem,一直对别人的gem比较好奇，最近有时间看了下ruby gem的开发规范，自己写了个最简单的hello.gem作为入门实例和大家分享，下面看具体的实现：</p>
+
+<h2 id='gem'>先看下gem的基本文件布局：</h2>
+
+<pre><code>gemspec	#gem的规范说明。
+lib                    #用于存放lib文件
+bin                   #用于存放可执行文件
+ext                   #存放C/C++文件
+tests                #存放单元测试文件</code></pre>
+
+<h2 id='gem'>下面我们开始编写Gem,创建如下目录和文件:</h2>
+
+<pre><code>hello/hello.gemspec
+hello/lib/hello.rb</code></pre>
+
+<h2 id='hellogemspc'>hello.gemspc实现：</h2>
+
+<pre><code>Gem::Specification.new do |s|
+	s.author=&#39;tim.tang&#39;
+	s.email=&#39;tang.jilong@139.com&#39;
+	s.homepage=&#39;http://tim.everyday-cn.com&#39;
+	s.files = [&quot;lib/hello.rb&quot;]
+	s.description = &#39;Hello world rubygem&#39;
+	s.name = &#39;hello&#39;
+	s.version = &#39;0.1.0&#39;
+	s.summary = &#39;hello gems&#39;
+	s.files = [&quot;lib/hello.rb&quot;]
+end</code></pre>
+
+<h2 id='hellorb'>hello.rb实现：</h2>
+
+<pre><code>def hello
+	&quot;hello, this is my first ruby gem!&quot;
+end</code></pre>
+
+<h2 id='hellogem'>编译hello.gem</h2>
+
+<pre><code>$ gem build hello.gemspec</code></pre>
+
+<h2 id='hellogem'>安装hello.gem</h2>
+
+<pre><code>$ gem install hello.gem</code></pre>
+
+<h2 id='testrb'>最后写个测试test.rb：</h2>
+
+<pre><code>require &#39;rubygems&#39;
+require &#39;hello&#39;
+puts hello</code></pre>
+
+<h2 id='id26'>成功输出：</h2>
+
+<pre><code>hello, this is my first ruby gem!</code></pre>
+
+<blockquote>
+<p>这样一个最简单的ruby gem 就完成了，更深入的东西看<a href='http://docs.rubygems.org/read/chapter/20' title='rubygem'><strong><em>官方文档</em></strong></a> (原创)</p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">95 Words</span>
+    <span class="date">18 November 2011</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2011/11/23/ruby-rails-generator-migration-model" class="next" title="ruby使用rails generator生成migration model文件">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2011/11/15/rvm" class="prev" title="RVM使用指南">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+

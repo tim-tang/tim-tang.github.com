@@ -1,0 +1,277 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Vim 实用命令 &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="Vim 实用命令">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="vim command trick">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#Vim-ref">Vim <span>3</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">Vim 实用命令</h1>
+
+  <p>Introduce to Vim commands. It is useful for your development.</p>
+
+<h2 id='id36'>光标移动</h2>
+
+<pre><code>H：移动光标到屏幕上面
+
+M：移动光标到屏幕中间
+
+L：移动光标到屏幕下面
+
+fx：移动光标到当前行的下一个x处。很明显，x可以是任意一个字母，而且你可以使用;来重复你的上一个f命令。
+
+tx：和上面的命令类似，但是是移动到x的左边一个位置。（这真的很有用）
+
+Fx：和fx类似，不过是往回找。
+
+^ : 移到当前行的第一个非空字符。
+
+*：读取光标处的字符串，n 将光标移动到它再次出现的地方。
+
+0: 光标移动到行首
+
+V: 选中一行
+
+10+ENTER: 光标下移10行</code></pre>
+
+<h2 id='id37'>视图模式下剪切和拷贝</h2>
+
+<pre><code>d：剪贴选择的内容到剪贴板。
+
+y：拷贝选择的内容到剪贴板。
+
+c：剪贴选择的内容到剪贴板并且进入插入模式。</code></pre>
+
+<h2 id='id38'>代码处理</h2>
+
+<pre><code>%：匹配花括号，方括号，括号等。在一个括号的上面，然后按%，鼠标就会出现在匹配的另外一半括号处。
+
+gf: 打开引用的文件。
+
+ctrl+o: 返回到原来的文件。
+
+ctrl+w, f: 打开引用的文件, 并split窗口给新文件。
+
+ctrl+w, q: 关闭窗口。
+
+gg=G   格式化全文代码</code></pre>
+
+<h2 id='id39'>多列注释</h2>
+
+<pre><code>ctrl+v  选择列模式 输入I（大写），输入#或//，ctrl+[ 多列注释。</code></pre>
+
+<h2 id='nerdtree'>Nerdtree插件</h2>
+
+<pre><code>m: 提供文本文件系统菜单来创建/删除/移动/复制目录或文件
+
+r:  refreshing current directory
+
+R: refreshing root directory
+
+e: browser current directory</code></pre>
+
+<h2 id='id40'>文件操作</h2>
+
+<pre><code>:e ~/Desktop/xxx   打开文件
+
+:b#       返回到原来编辑的文件</code></pre>
+
+<h2 id='id41'>文件查找</h2>
+
+<pre><code>vimgrep /keywords/ **/*.rb
+
+:cw    打开查找结果</code></pre>
+
+<h2 id='id42'>文件内容替换</h2>
+
+<pre><code>:%s/str1/str2/ #用字符串 str2 替换文件中首次出现的字符串 str1
+
+:%s/str1/str2/g #用字符串 str2 替换文件中所有出现的字符串 str1
+
+:[range]s/pattern/string/[c,e,g,i]
+
+range: 指的是範圍，1,7 指從第一行至第七行，1,$ 指從第一至最後一行，也就是整篇文章，也可以 % 代表。
+pattern: 就是要被替換掉的字串，可以用 regexp 來表示。
+string: 將 pattern 由 string 所取代。
+c:  confirm，每次替換前會詢問。
+e:  不顯示 error。
+g:  globe，不詢問，整行替換。
+i:  ignore 不分大小寫。</code></pre>
+
+<h2 id='vim_'>vim 多列注释：</h2>
+
+<pre><code>ctrl+v  选择列模式
+输入I（大写），输入#或//，ctrl+[ 多列注释。</code></pre>
+
+<h2 id='id43'>有用的命令</h2>
+
+<pre><code>D: 删除光标后的内容
+/&lt;c-r&gt;&lt;c-w&gt;:    将当前单词添加到搜索栏
+% :             跳到对应的括号(),[],{}
+dib:             删除内含 ‘(‘ ‘)’ 块
+diB:             删除内含 ‘{‘ ‘}’ 大块
+.: 重复上次操作
+~: 将小写改成大写</code></pre>
+
+<blockquote>
+<p>vim的实用中还需要一些插件，具体的配置可以看我们的<a href='https://github.com/tim-tang/vim'><strong>vim环境</strong></a>.</p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">157 Words</span>
+    <span class="date">18 May 2012</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2012/05/22/xmljsonmongodb" class="next" title="XML,JSON转换存MongoDB">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2012/05/18/git" class="prev" title="Git,GitHub常用命令介绍">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+

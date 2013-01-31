@@ -1,0 +1,232 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Mac Tricks &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="Mac Tricks">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="mac useful tricks">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#Mac-ref">Mac <span>5</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">Mac Tricks</h1>
+
+  <p>Introduce to many useful mac tricks.</p>
+
+<h2 id='update_mac_software_in_terminal'>Update mac software in terminal</h2>
+
+<pre><code>$ sudo softwareupdate -l
+#proposed update
+$ sudo softwareupdate -i -a
+#In case you want to set well-defined upgrade you have to enter this command:
+$ sudo softwareupdate -i AppName</code></pre>
+
+<h2 id='resize_images_and_use_terminal'>Resize images and use terminal</h2>
+
+<pre><code>$ sips -Z 100x100 image.jpg</code></pre>
+
+<h2 id='terminal_cursor_movements'>Terminal cursor movements</h2>
+
+<pre><code>ctrl+u =&gt; delete from the cursor to the beginning of the line
+ctrl+k =&gt; delete from the cursor to the end of the line</code></pre>
+
+<h2 id='enable_safari_inspector'>Enable safari inspector</h2>
+
+<pre><code># enable safari develop tool
+$ defaults write com.apple.Safari WebKitDeveloperExtras -bool true
+# disable safari develop tool
+$ defaults write com.apple.Safari WebKitDeveloperExtras -bool false</code></pre>
+
+<blockquote>
+<p>check show develop menu bar in Preference.</p>
+</blockquote>
+
+<h2 id='kill_dashboard'>Kill dashboard</h2>
+
+<pre><code># disable dashboard
+$ defaults write com.apple.dashboard mcx-disabled -boolean yes
+$ killall Dock
+# enable dashboard
+$ defaults write com.apple.dashboard mcx-disabled -boolean false
+$ killall Dock</code></pre>
+
+<h2 id='show_hidden_files_in_finder'>Show hidden files in finder</h2>
+
+<pre><code>$ defaults write com.apple.finder AppleShowAllFiles true</code></pre>
+
+<h2 id='screen_capture'>Screen capture</h2>
+
+<pre><code>$ screen capture -S ~/Desktop/xxxx.jpg
+# only allow mouse selection mode
+$ screen capture -s ~/Desktop/xxxx.jpg</code></pre>
+
+<h2 id='kill_desktop'>Kill desktop</h2>
+
+<pre><code># to hide the desktop icons
+$ defaults write com.apple.finder CreateDesktop -bool false
+# to show the desktop icons
+$ defaults write com.apple.finder CreateDesktop -bool true</code></pre>
+
+<h2 id='bring_up_the_force_quit_menu'>Bring up the Force Quit menu.</h2>
+
+<pre><code>⌘+⌥+ESC (COMMAND + OPTION + ESCAPE)</code></pre>
+
+<blockquote>
+<p>Cheers!</p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">221 Words</span>
+    <span class="date">26 January 2013</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2013/01/29/git-dotfiles" class="next" title="使用Git管理命令行配置">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2013/01/24/postgres-tablesapce" class="prev" title="PostgreSQL Tablespace 介绍">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+

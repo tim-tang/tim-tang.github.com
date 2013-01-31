@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Recover a git branch you accidentally deleted &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="Recover a git branch you accidentally deleted">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="revcover git branch deleted">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#Git-ref">Git <span>7</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">Recover a git branch you accidentally deleted</h1>
+
+  <p>I accidentally deleted a local git branch, and I haven not pushed it to a remote server yet. The branch has several important commits, and it has not been merged with any other branches yet. How do I find the missing branch?</p>
+
+<h2 id='create_a_list_of_all_dangling_or_unreachable_commits'>Create a list of all dangling or unreachable commits.</h2>
+
+<pre><code>$ git fsck --full --no-reflogs --unreachable --lost-found
+unreachable tree 4a407b1b09e0d8a16be70aa1547332432a698e18
+unreachable tree 5040d8cf08c78119e66b9a3f8c4b61a240229259
+unreachable tree 60c0ce61b040f5e604850f747f525e88043dae12
+unreachable tree f080522d06b9853a2f18eeeb898724da4af7aed9
+unreachable blob bf01f514add2ada00a7ae5c666493d30d639018c
+...</code></pre>
+
+<blockquote>
+<p>These commits are copied into .git/lost-found/commit/, and non-commit objects are copied into .git/lost-found/other/.</p>
+</blockquote>
+
+<h2 id='print_a_list_of_commit_messages_for_all_commits_in_the_lost_and_found'>Print a list of commit messages for all commits in the lost and found.</h2>
+
+<pre><code>$ ls -1 .git/lost-found/commit/ | xargs -n 1 git log -n 1 --pretty=oneline
+63b65d3784b16f92bb370ad6a2c1091a05824ecc Call #to_s on value before calling some string methods, like gsub
+6ed99e63db69ca04f0cc78081a1fd471289551b2 On master: search and reset page
+973d9be3e2cefcd0c5801ad9cd1b2e18774b4bee Rename decorator proxy to decorator context
+9ae38fc6b0548cab08ccee1178db0ba0edeafdb2 foo
+9e994ca0c0c4785ab45bf64b367fdacccc4575a9 foo [#12345]
+9efa6b28b3b0a89c312484f28cf589385d613dfd On master: mysql db config
+c57a67c7e1c21fa0c32f152e73d8c3376cad19a0 bar
+cb3d67e1aa2226ab9d816fc541f36ff698bfda41 WIP on master: 40a4453 Use #website_url instead of #template_url or #url</code></pre>
+
+<h2 id='find_your_missing_commit_through_the_process_of_manual_inspection_ie_reading'>Find your missing commit through the process of manual inspection (i.e. reading).</h2>
+
+<pre><code>git log -p --stat --color 9ae38fc</code></pre>
+
+<h2 id='create_a_new_branch_with_the_missing_commit_as_the_branch_head'>Create a new branch with the missing commit as the branch head.</h2>
+
+<pre><code>$ git checkout -b branch-name 9ae38fc
+Switched to a new branch &#39;branch-name&#39;</code></pre>
+
+<blockquote>
+<p><strong>It is useful when you accidentally deleted a local branch, Cheers!</strong></p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">224 Words</span>
+    <span class="date">19 November 2012</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2012/11/27/hibernate-optimistic-lock" class="next" title="Handle optimistic lock for JPA and Hibernate integrated architecture">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2012/11/16/use-spring-security-tags-in-freemaker" class="prev" title="How to use spring security tags in free marker pages.">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+

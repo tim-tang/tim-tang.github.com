@@ -1,0 +1,232 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>ruby使用rails generator生成migration model文件 &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="ruby使用rails generator生成migration model文件">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="ruby rails generator migration model">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#Ruby-ref">Ruby <span>9</span></a></li>
+     
+    	<li><a href="/tags.html#Rails-ref">Rails <span>17</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">ruby使用rails generator生成migration model文件</h1>
+
+  <p>最近在业余时间写一个<a href='https://github.com/tim-tang/crawler_engine' title='crawler-engine'><strong><em>crawler engine</em></strong></a>的rubygem, 主要用途是通过rss抓取各个网站的最新新闻、博客等，期间用到了rails migration成数据库表结构和model，下面接介绍下如何在rubygem中使用rails/generator:</p>
+
+<h2 id='libgeneratorscrawler_engine_generatorrb'>首先我们要编写文件lib/generators/crawler_engine_generator.rb：</h2>
+
+<pre><code>require &#39;rails/generators&#39;
+require &#39;rails/generators/migration&#39;
+require &#39;rails/generators/active_record&#39;
+class CrawlerEngineGenerator &lt; Rails::Generators::Base
+	include Rails::Generators::Migration
+	extend ActiveRecord::Generators::Migration
+	desc &quot;Generates migration for crawler engine model&quot;
+	def self.source_root
+		File.expand_path(&#39;../templates&#39;, __FILE__)
+	end
+	def create_migration_file
+		migration_template &#39;migration.rb&#39;, &#39;db/migrate/create_crawler_engine&#39;
+	end
+	def crate_model_file
+		template &#39;post.rb&#39;, &#39;app/models/post.rb&#39;
+		template &#39;source.rb&#39;, &#39;app/models/source.rb&#39;
+	end
+end</code></pre>
+
+<blockquote>
+<p>在CrawlerEngineGenerator类中，会逐个执行public 方法。</p>
+</blockquote>
+
+<h2 id='libgeneratorstemplatesmigrationrb'>下面可以创建我们的lib/generators/templates/migration.rb:</h2>
+
+<pre><code>class CreateCrawlerEngine &lt; ActiveRecord::Migration
+	def self.up
+		create_table :sources, :force =&gt; true do |t|
+			t.string :site_name
+			t.string :link
+			t.string :filter
+			t.string :category
+			t.datetime :crawled_at # When to run. Could be Time.now for immediately, or sometime in the future.
+		end
+	end
+		def self.down
+		drop_table :sources
+		drop_table :posts
+	end
+end</code></pre>
+
+<h2 id='modeltemplatepostrbsourcerb'>如果同时生成model文件，我们只要在template目录下添加，post.rb&amp;source.rb文件如下：</h2>
+
+<pre><code>class Source &lt; ActiveRecord::Base
+end
+class Post &lt; ActiveRecord::Base
+end</code></pre>
+
+<h2 id='buildrubygemrails'>接下来就是build的你的rubygem并安装即可，这样就可以在rails项目中执行如下命令：</h2>
+
+<pre><code>$ rails g crawler_engine</code></pre>
+
+<h2 id='migrationmodel'>我们可以看到生成了migration文件和model文件。</h2>
+
+<blockquote>
+<p>就写到这里，要查看更详细的信息可以看<a href='https://github.com/tim-tang/crawler_engine' title='crawler-engine'><strong><em>crawler engine</em></strong></a>这个rubygem.(原创文章)</p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">120 Words</span>
+    <span class="date">23 November 2011</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2011/11/28/ruby-diretories-files" class="next" title="Ruby目录(Diretories)文件(files)操作">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2011/11/18/rubygem" class="prev" title="如何编写一个rubygem">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+

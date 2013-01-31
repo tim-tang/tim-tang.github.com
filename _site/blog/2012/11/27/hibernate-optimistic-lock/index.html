@@ -1,0 +1,364 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Handle optimistic lock for JPA and Hibernate integrated architecture &larr; Ruby|Rails|Vim|Mac|Linux</title>
+   <meta name="author" content="Tim.Tang,Linux,ROR,Mac,Vim,Git" />
+   <meta name="google-site-verification" content="7JJnZst8sKxU-b4eWEkwnN6hvo9ekME6QcDiqB9aRdo" />
+   <meta name="baidu-site-verification" content="f85E439uCSJKI89f" />
+   <meta name="description" content="Handle optimistic lock for JPA and Hibernate integrated architecture">
+   <link href="favicon.ico" rel="icon" type="image/x-icon">
+   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+   <link rel="start" href="/" />
+
+	
+	<meta name="keywords" content="hibernate jpa optimistic lock">
+	
+
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/feedname" title="RSS feed" />
+	
+  	<link rel="alternate" type="application/atom+xml" href="/atom.xml" title="RSS feed" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+   <!-- JavaScript -->
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/jquery-1.7.min.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/mustache.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/search.js" ></script>
+    <script type="text/javascript" src="/assets/themes/mark-reid/js/app.js" ></script>
+
+</head>
+<body id="">
+<div id="site">
+
+  <div id="header">
+    <h1>
+    	<a href="/" title="Tech Talkin~">Tech Talkin~</a>
+    	<span class="byline">&larr; <a href="/">Tim.Tang</span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+      <li><a  href="/about.html">About</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+<!--
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#optimistic-lock-ref">optimistic-lock <span>1</span></a></li>
+    
+  
+
+
+
+  </ul>
+ -->
+
+  <h1 class="emphnext">Handle optimistic lock for JPA and Hibernate integrated architecture</h1>
+
+  <p>While using DTO instead of managed entity to pass between backend and frontend KendoUI, @Version annotation for JPA will not work because DTO is not in persistence context and managed.</p>
+
+<p>The solution is to use Spring managed Hibernate interceptor in JPA, when updating an entity, we compare the entity current timestamp with latest timestamp in db, when current timestamp is earlier than that of db, we throw concurrency exception because it means this entity is already updated by another user.</p>
+
+<h2 id='so_here_are_steps_of_how_to_configure_the_interceptor'>So here are steps of how to configure the interceptor:</h2>
+
+<p><a href='http://blog.krecan.net/2009/01/24/spring-managed-hibernate-interceptor-in-jpa/'>http://blog.krecan.net/2009/01/24/spring-managed-hibernate-interceptor-in-jpa/</a></p>
+
+<p>I have been trying to teach Hibernate injecting dependencies into Entities (I know, there is magic @Configurableannotation, I wanted to try it without magic). It is quite easy to do it using Hibernate interceptor (for example likethis). But there is one drawback. It is not straightforward to inject interceptor into Hibernate when JPA abstraction is in the way.</p>
+
+<h2 id='it_is_simple_to_define_interceptor_in_persistencexml_using_hibernateejbinterceptor_property_but_it_is_only_possible_to_specify_class_name_you_can_not_inject_spring_bean_if_you_read_documentation_to_springlocalcontainerentitymanagerfactorybean_there_is_no_possibility_to_specify_the_interceptor_bean_there_neither_but_there_is_a_way_how_to_achieve_it_first_of_all_you_have_to_redefine_hibernate_persistenceprovider'>It is simple to define interceptor in persistence.xml using hibernate.ejb.interceptor property. But it is only possible to specify class name, you can not inject Spring bean. If you read documentation to SpringLocalContainerEntityManagerFactoryBean there is no possibility to specify the interceptor bean there neither. But there is a way how to achieve it. First of all, you have to redefine Hibernate PersistenceProvider.</h2>
+
+<pre><code>public class ConfigurableHibernatePersistence extends HibernatePersistence {
+	private Interceptor interceptor;
+	public Interceptor getInterceptor() {
+		return interceptor;
+	}
+	w we define HibernateInterceptor:
+
+		public void setInterceptor(Interceptor interceptor) {
+			this.interceptor = interceptor;
+		}
+
+	@SuppressWarnings(&quot;unchecked&quot;)
+		@Override
+		public EntityManagerFactory createContainerEntityManagerFactory(PersistenceUnitInfo info, Map map) {
+			Ejb3Configuration cfg = new Ejb3Configuration();
+			Ejb3Configuration configured = cfg.configure( info, map );
+			postprocessConfiguration(info, map, configured);
+			return configured != null ? configured.buildEntityManagerFactory() : null;
+		}
+
+	@SuppressWarnings(&quot;unchecked&quot;)
+		protected void postprocessConfiguration(PersistenceUnitInfo info, Map map, Ejb3Configuration configured) {
+			if (this.interceptor != null)
+			{
+				if (configured.getInterceptor()==null || EmptyInterceptor.class.equals(configured.getInterceptor().getClass()))
+				{
+					configured.setInterceptor(this.interceptor);
+				}
+				else
+				{
+					throw new IllegalStateException(&quot;Hibernate interceptor already set in persistence.xml (&quot;+configured.getInterceptor()+&quot;)&quot;);
+				}
+			}
+		}
+}</code></pre>
+
+<h2 id='here_we_override_method_createcontainerentitymanagerfactory_in_order_to_add_postprocessconfigurationmethod_call_in_this_method_it_is_possible_to_change_hibernate_configuration_as_needed_now_the_only_thing_to_be_done_is_configuring_spring_to_use_our_new_persistenceprovider_it_is_quite_simple'>Here we override method createContainerEntityManagerFactory in order to add postprocessConfigurationmethod call. In this method, it is possible to change Hibernate configuration as needed. Now the only thing to be done is configuring Spring to use our new PersistenceProvider. It is quite simple.</h2>
+
+<pre><code>&lt;bean id=&quot;auditEntityManagerFactory&quot;
+	class=&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot;&gt;
+	&lt;property name=&quot;dataSource&quot; ref=&quot;auditDataSource&quot;/&gt;
+	&lt;property name=&quot;packagesToScan&quot; value=&quot;mtx.audit.model&quot;/&gt;
+	&lt;property name=&quot;persistenceUnitName&quot; value=&quot;audit&quot;/&gt;
+	&lt;property name=&quot;jpaVendorAdapter&quot;&gt;
+		&lt;bean class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;&gt;
+			&lt;property name=&quot;databasePlatform&quot; value=&quot;org.hibernate.dialect.PostgreSQLDialect&quot;/&gt;
+		&lt;/bean&gt;
+	&lt;/property&gt;
+	&lt;property name=&quot;persistenceProvider&quot;&gt;
+		&lt;bean class=&quot;mtx.core.utils.ConfigurableHibernatePersistence&quot;&gt;
+			&lt;property name=&quot;interceptor&quot;&gt;
+				&lt;bean class=&quot;mtx.core.utils.HibernateInterceptor&quot;/&gt;
+			&lt;/property&gt;
+		&lt;/bean&gt;
+	&lt;/property&gt;
+&lt;/bean&gt;</code></pre>
+
+<h2 id='how_we_define_hibernateinterceptor'>How we define HibernateInterceptor:</h2>
+
+<pre><code>public class HibernateInterceptor extends EmptyInterceptor {
+	private static final long serialVersionUID = -6142366297876169168L;
+	private static final Logger logger = LoggerFactory.getLogger(HibernateInterceptor.class);
+	private static final String LAST_UPDATED = &quot;lastUpdated&quot;;
+
+// This method is called when entity gets updated.
+public boolean onFlushDirty(Object entity, Serializable id, Object[] currentState, Object[] previousState,
+		String[] propertyNames, Type[] types) {
+	int timeStampIndex = -1;
+	for (int i = 0; i &lt; propertyNames.length; i++) {
+		if (LAST_UPDATED.equals(propertyNames[i])) {
+			timeStampIndex = i;
+			break;
+		}
+	}
+
+	if (timeStampIndex != -1 &amp;&amp; timeStampIndex &lt; currentState.length &amp;&amp; timeStampIndex &lt; previousState.length
+			&amp;&amp; currentState[timeStampIndex] != null
+			&amp;&amp; ((Timestamp)previousState[timeStampIndex]).after(((Timestamp)currentState[timeStampIndex]))) {
+		throw new CallbackException(&quot;Concurrency Lock!&quot;);
+	}
+	return false;
+}</code></pre>
+
+<p>}</p>
+
+<h2 id='at_last_there_is_still_one_tricky_issue_in_a_transaction_when_we_update_an_entity_and_reference_it_below_by_default_hibernate_flush_occur_at_query_executionthis_means_the_entitys_timestamp_in_db_is_updated_when_query_occurs_but_current_timestamp_in_persistence_context_is_still_the_old_one_so_it_is_likely_concurrency_exception_willbe_thrown_on_normal_save_the_solution_is_to_make_flushing_to_occur_at_end_of_transactionto_do_this_we_must_extends_orgspringframeworkormjpavendorhibernatejpadialect_to_enable_flushmode_commit_in_entitymanagerfactory'>At last, there is still one tricky issue, in a transaction when we update an entity and reference it below, by default hibernate flush occur at query execution,this means the entity&#8217;s timestamp in db is updated when query occurs but current timestamp in persistence context is still the old one, so it is likely concurrency exception willbe thrown on normal save. The solution is to make flushing to occur at end of transaction.To do this, we must extends org.springframework.orm.jpa.vendor.HibernateJpaDialect to enable flushMode COMMIT in EntityManagerFactory:</h2>
+
+<pre><code>&lt;bean id=&quot;contentEntityManagerFactory&quot;
+	class=&quot;org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean&quot;&gt;
+	&lt;property name=&quot;jpaDialect&quot;&gt;
+		&lt;bean class=&quot;mtx.core.utils.HibernateJpaDialect&quot;&gt;
+			&lt;property name=&quot;flushMode&quot; value=&quot;COMMIT&quot;/&gt;
+		&lt;/bean&gt;
+	&lt;/property&gt;
+	&lt;property name=&quot;dataSource&quot; ref=&quot;contentDataSourceSpied&quot;/&gt;
+	&lt;property name=&quot;packagesToScan&quot; value=&quot;mtx.authoring.model&quot;/&gt;
+	&lt;property name=&quot;persistenceUnitName&quot; value=&quot;content&quot;/&gt;
+	&lt;property name=&quot;jpaVendorAdapter&quot;&gt;
+		&lt;bean class=&quot;org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter&quot;&gt;
+			&lt;property name=&quot;databasePlatform&quot; value=&quot;org.hibernate.dialect.PostgreSQLDialect&quot;/&gt;
+		&lt;/bean&gt;
+	&lt;/property&gt;
+
+	&lt;property name=&quot;jpaProperties&quot;&gt;
+		&lt;value&gt;
+		hibernate.show_sql=false
+		hibernate.format_sql=true
+		&lt;/value&gt;
+	&lt;/property&gt;
+	&lt;property name=&quot;persistenceProvider&quot;&gt;
+		&lt;bean class=&quot;mtx.core.utils.ConfigurableHibernatePersistence&quot;&gt;
+			&lt;property name=&quot;interceptor&quot;&gt;
+				&lt;bean class=&quot;mtx.core.utils.HibernateInterceptor&quot;/&gt;
+			&lt;/property&gt;
+		&lt;/bean&gt;
+	&lt;/property&gt;
+&lt;/bean&gt;</code></pre>
+
+<h2 id='override_hibernate_jpa_dialect'>Override Hibernate JPA Dialect:</h2>
+
+<pre><code>public class HibernateJpaDialect extends org.springframework.orm.jpa.vendor.HibernateJpaDialect {
+	private FlushMode flushMode;
+	public String getFlushMode() {
+		return flushMode!=null ? flushMode.toString() : null;
+	}
+
+
+	public void setFlushMode(String aFlushMode) {
+		flushMode = FlushMode.parse(aFlushMode);
+		if (aFlushMode != null &amp;&amp; flushMode == null) {
+			throw new IllegalArgumentException (aFlushMode+&quot; value invalid. See class org.hibernate.FlushMode for valid values&quot;);
+		}
+	}
+
+
+	public Object prepareTransaction(EntityManager entityManager, boolean readOnly, String name)
+		throws PersistenceException {
+			Session session = getSession(entityManager);
+			FlushMode currentFlushMode = session.getFlushMode();
+			FlushMode previousFlushMode = null;
+			if (getFlushMode() != null) {
+				session.setFlushMode(flushMode);
+				previousFlushMode = currentFlushMode;
+			} else if (readOnly) {
+				// We should suppress flushing for a read-only transaction.
+				session.setFlushMode(FlushMode.MANUAL);
+				previousFlushMode = currentFlushMode;
+			}
+			else {
+				// We need AUTO or COMMIT for a non-read-only transaction.
+				if (currentFlushMode.lessThan(FlushMode.COMMIT)) {
+					session.setFlushMode(FlushMode.AUTO);
+					previousFlushMode = currentFlushMode;
+				}
+			}
+			return new SessionTransactionData(session, previousFlushMode);
+		}
+
+
+	public void cleanupTransaction(Object transactionData) {
+		((SessionTransactionData) transactionData).resetFlushMode();
+	}
+
+	private static class SessionTransactionData {
+		private final Session session;
+		private final FlushMode previousFlushMode;
+
+		public SessionTransactionData(Session session, FlushMode previousFlushMode) {
+			this.session = session;
+			this.previousFlushMode = previousFlushMode;
+		}
+
+		public void resetFlushMode() {
+			if (this.previousFlushMode != null) {
+				this.session.setFlushMode(this.previousFlushMode);
+			}
+		}
+	}
+}</code></pre>
+
+<blockquote>
+<p>Cheers!</p>
+</blockquote>
+
+  <address class="signature">
+   <!--
+    <a class="author" href="/">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+	-->
+	<span class="author">812 Words</span>
+    <span class="date">27 November 2012</span>
+    <span class="location">Suzhou, China</span>
+  </address>
+
+  <div class="prev-next">
+  
+    <a href="/blog/2012/12/25/integrate-spring3-hibernate4-with-jboss-as7-jta" class="next" title="Integrate spring3.1 hibernate4 with JBoss AS7 JTA">Next Post &rarr;</a>
+  
+  
+    <a href="/blog/2012/11/19/git-recover-deleted-branch" class="prev" title="Recover a git branch you accidentally deleted">&larr; Earlier Post</a>
+  
+  </div>
+
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    
+    var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+  <a class="go_top" href="#"><i class="icon icons_go_top"></i></a>
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">Tim.Tang,Linux,ROR,Mac,Vim,Git</a>
+  			<br/>
+  		</span>
+  		<span class="engine">
+			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+            <a href="http://www.prchecker.info/" title="PageRank Checking Icon" target="_blank">
+                <img src="http://pr.prchecker.info/getpr.php?codex=aHR0cDovL3RpbS5ldmVyeWRheS1jbi5jb20=&tag=3" alt="PageRank Checking Icon" align="absmiddle" style="margin-left:8px;border:0;"/>
+            </a>
+  		</span>
+  	</address>
+  </div>
+
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript">
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; }
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23115957-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
+
