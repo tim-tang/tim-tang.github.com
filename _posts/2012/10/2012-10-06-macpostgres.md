@@ -6,6 +6,7 @@ category: Msic
 keywords: mac postgresql installation
 tags: [PostgreSQL]
 location: Suzhou, China
+alias: [/Msic/2012/10/06/macpostgres]
 ---
 
 Prequistion: 已经安装Homebrew：

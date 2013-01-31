@@ -6,6 +6,7 @@ category: Misc
 keywords: git github workflow
 tags: [Git]
 location: Suzhou, China
+alias: [/Misc/2013/01/11/git-workflow]
 ---
 最近做项目，用到git的分支和开发流程整合,纪录一下具体的实践。
 

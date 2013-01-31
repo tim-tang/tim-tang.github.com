@@ -6,6 +6,7 @@ category: Git
 keywords: github rails
 tags: [Git, GitHub]
 location: Suzhou, China
+alias: [/Git/2011/10/26/github-rails]
 ---
 GitHub 提供了很好的代码配置管理方案，特别是linux系统用户，没有道理不使用，废话少说，看下如何在ubuntu下用git管理你的rails代码:
 

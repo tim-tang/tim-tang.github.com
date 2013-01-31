@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: rails3 friend_id seo
 tags: [Rails, RubyGem]
 location: Suzhou, China
+alias: [/RubyOnRails/2011/10/27/rails3-friend_id-gem-seo]
 ---
 出于想增加blog被baidu,google 等搜索引擎收录的条目，于是想到了SEO优化，首先从url的美化开始，rails3中可以使用friendly_id 这个gem, github地址：[Friendly_id][1]
 

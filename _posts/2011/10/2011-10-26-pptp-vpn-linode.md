@@ -6,6 +6,7 @@ category: Msic
 keywords: pptp vpn linode
 tags: [Linode]
 location: Suzhou, China
+alias: [/Msic/2011/10/26/pptp-vpn-linode]
 ---
 介绍下Linode VPS上，利用PPTP搭建VPN服务器：
 

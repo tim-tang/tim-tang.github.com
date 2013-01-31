@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: rails3 gridfs mongoid carrierwave photo upload
 tags: [Rails, MongoDB]
 location: Suzhou, China
+alias: [/RubyOnRails/2012/05/24/rails3gridfsmongoidcarrierwave]
 ---
 
 最近准备将Everyday CMS的数据存储由MySQL切换到MongoDB,作为实验先探探路，看看能不能用MongoDB的GridFS来存储图片，下面具体的实现：

@@ -6,6 +6,7 @@ category: Vim
 keywords: vim command trick
 tags: [Vim]
 location: Suzhou, China
+alias: [/Vim/2012/05/18/vim-usefulcommands]
 ---
 
 Introduce to Vim commands. It is useful for your development.

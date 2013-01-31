@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: rails3 sunspot
 tags: [Rails, RubyGem]
 location: Suzhou, China
+alias: [/RubyOnRails/2011/11/04/rails3-sunspot-gem]
 ---
 在网站中经常用到全文检索，这样出于使用的方便打算给Everyday也做个全文检索的功能，网上比较了几个全文检索的gem,发现sunspot(内置了solr引擎)比较适合我的需求，并没有用到之前名气稍大的think_sphinx,下面介绍下rails3和[***Sunspot***][1]的集成：
 

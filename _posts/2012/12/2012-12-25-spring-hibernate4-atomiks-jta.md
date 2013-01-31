@@ -6,6 +6,7 @@ category: J2EE
 keywords: jta spring3 hibernate4 atomikos3.8
 tags: [JTA]
 location: Suzhou, China
+alias: [/J2EE/2012/12/25/spring-hibernate4-atomiks-jta]
 ---
 Introduce to hibernate JPA integrate with spring to implements JTA.
 

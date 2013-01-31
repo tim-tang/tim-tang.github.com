@@ -6,6 +6,7 @@ category: Git
 keywords: git vimdiff merge tool
 tags: [Git]
 location: Suzhou, China
+alias: [/Git/2012/10/07/git-vimdiff]
 ---
 This post introduction Integration vimdiff with git merge tool, for vim liked users.
 

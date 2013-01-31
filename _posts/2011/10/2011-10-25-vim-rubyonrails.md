@@ -6,6 +6,7 @@ category: Vim
 keywords: vim ror development eviroment
 tags: [Vim, Rails]
 location: Suzhou, China
+alias: [/Vim/2011/10/25/vim-rubyonrails]
 ---
 
 vim是一个很好的开发工具，对于习惯了IDE开发环境的程序员来说初用它可能会很痛苦，我也经历了这样的阶段（虽然我还是刚入门^_^），下面就介绍下我的vim开发环境配置：

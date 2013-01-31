@@ -6,6 +6,7 @@ category: Cluster
 keywords: jbossas7 mod_cluster HA
 tags: [Cluster]
 location: Suzhou, China
+alias: [/Cluster/2012/11/01/jbossas7-cluster-setup-with-modcluster]
 ---
 In this article, I would like to show you how to setup JBoss AS7 in domain mode and enable clustering so we could get HA and session replication among the nodes.
 

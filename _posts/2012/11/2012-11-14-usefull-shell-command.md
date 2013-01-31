@@ -6,6 +6,7 @@ category: Msic
 keywords: shell ubuntu mac command
 tags: [Shell]
 location: Suzhou, China
+alias: [/Msic/2012/11/14/usefull-shell-command]
 ---
 Note useful shell commands for both Mac OSX and Ubuntu.
 

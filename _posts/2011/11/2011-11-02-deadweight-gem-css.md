@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: deadweight css
 tags: [RubyGem, Rails]
 location: Suzhou, China
+alias: [/RubyOnRails/2011/11/02/deadweight-gem-css]
 ---
 我们在做项目的时候，经常用到一些第三方的css模板，Jquery插件等，里面常包含一些我们不需要的css定义，这个时候逐个去删除这些没使用到的css时比较头痛而且很容易出错，下面介绍一个自动查找无用的css的gem--[***deadweight***][1]:
 

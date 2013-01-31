@@ -6,6 +6,7 @@ category: Msic
 keywords: spring security tags freemarker
 tags: [spring]
 location: Suzhou, China
+alias: [/Msic/2012/11/16/use-spring-security-tags-in-freemaker]
 ---
 
 If we need to use spring security tags in free marker, do as following:

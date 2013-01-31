@@ -6,6 +6,7 @@ category: J2EE
 keywords: jta spring3.1 hibernate4 integration jbossas7
 tags: [JTA]
 location: Suzhou, China
+alias: [/J2EE/2012/12/25/integrate-spring3-hibernate4-with-jboss-as7-jta]
 ---
 
 Use JBoss AS7 JTA to integrate with spring3.1 and hibernate4 JPA.

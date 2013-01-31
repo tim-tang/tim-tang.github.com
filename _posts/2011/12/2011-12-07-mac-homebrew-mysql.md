@@ -6,6 +6,7 @@ category: Mac
 keywords: mac homebrew mysql
 tags: [Homebrew, Mac]
 location: Suzhou, China
+alias: [/Mac/2011/12/07/mac-homebrew-mysql]
 ---
 使用MBP有一年了，开始想在工作中使用mac由于各种不习惯最终失败，导致自己使用了一年多的ubuntu,最近把ubuntu升级到了11.10,新版本的unity界面，和程序之间的切换缓慢让我决定强制切换到mac  os 来开发，为将来尝试textmate做准备，没想到刚切到mac os 安装mysql就遇到了问题，下面介绍下在osx下brew安装mysql的过程：
 

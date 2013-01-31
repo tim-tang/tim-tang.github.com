@@ -6,6 +6,7 @@ category: Ruby
 keywords: ruby rexml
 tags: [Ruby, RubyGem]
 location: Suzhou, China
+alias: [/Ruby/2011/12/12/ruby-rexml-xml]
 ---
 在开发中常用到xml解析，在ruby中我们可以使用rexml来解析xml,rexml具有如下特点:
 

@@ -6,6 +6,7 @@ category: Git
 keywords: revcover git branch deleted
 tags: [Git]
 location: Suzhou, China
+alias: [/Git/2012/11/19/git-recover-deleted-branch]
 ---
 
 I accidentally deleted a local git branch, and I haven not pushed it to a remote server yet. The branch has several important commits, and it has not been merged with any other branches yet. How do I find the missing branch?

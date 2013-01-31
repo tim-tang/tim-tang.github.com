@@ -6,6 +6,7 @@ category: Misc
 keywords: annual report
 tags: [Annual-Paper]
 location: Suzhou, China
+alias: [/Misc/2012/12/26/annual-summary]
 ---
 第一次写个人的年终总结，纪录一下今年发生的一些事情，也是这一年来的回顾。
 

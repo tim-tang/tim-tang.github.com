@@ -6,6 +6,7 @@ category: Msic
 keywords: ubuntu haproxy configuration
 tags: [haproxy]
 location: Suzhou, China
+alias: [/Msic/2012/06/14/ubuntuhaproxy]
 ---
 
 ##安装：

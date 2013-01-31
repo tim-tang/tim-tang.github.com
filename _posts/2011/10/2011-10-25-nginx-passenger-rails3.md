@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: nginx passenger rails3 deploy
 tags: [Nginx, Rails]
 location: Suzhou, China
+alias: [/RubyOnRails/2011/10/25/nginx-passenger-rails3]
 ---
 上一篇记录文章记录了，rails3的开发环境配置，下面说下rails3的生产环境的部署方案，everyday使用的是nginx+passenger+ubuntu10.04LTS的部署方案：
 

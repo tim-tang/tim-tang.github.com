@@ -6,6 +6,7 @@ category: J2EE
 keywords: hibernate jpa optimistic lock
 tags: [optimistic-lock]
 location: Suzhou, China
+alias: [/J2EE/2012/11/27/hibernate-optimistic-lock]
 ---
 
 While using DTO instead of managed entity to pass between backend and frontend KendoUI, @Version annotation for JPA will not work because DTO

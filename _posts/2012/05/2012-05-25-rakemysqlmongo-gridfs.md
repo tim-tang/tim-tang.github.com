@@ -6,6 +6,7 @@ category: MongoDB
 keywords: rake mongodb mysql gridfs
 tags: [MongoDB]
 location: Suzhou, China
+alias: [/MongoDB/2012/05/25/rakemysqlmongo-gridfs]
 ---
 
 为了将来Everyday CMS的数据库切换到MongDB准备，这就涉及到了历史遗留数据的迁移尤其是图片，目前目前存储在文件系统上，下面使用Rake将文件系统种的图片导入GridFS.

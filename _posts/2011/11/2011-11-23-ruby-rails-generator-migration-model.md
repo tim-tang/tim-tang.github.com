@@ -6,6 +6,7 @@ category: Ruby
 keywords: ruby rails generator migration model
 tags: [Ruby, Rails]
 location: Suzhou, China
+alias: [/Ruby/2011/11/23/ruby-rails-generator-migration-model]
 ---
 最近在业余时间写一个[***crawler engine***][1]的rubygem, 主要用途是通过rss抓取各个网站的最新新闻、博客等，期间用到了rails migration成数据库表结构和model，下面接介绍下如何在rubygem中使用rails/generator:
 

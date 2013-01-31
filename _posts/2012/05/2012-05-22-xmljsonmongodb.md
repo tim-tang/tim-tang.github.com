@@ -6,6 +6,7 @@ category: MongoDB
 keywords: mongodb json xml
 tags: [Ruby, MongoDB]
 location: Suzhou, China
+alias: [/MongoDB/2012/05/22/xmljsonmongodb]
 ---
 
 最近项目用到xml和json的转换，于是想到了如何用ruby来实现这个功能，下面介绍下如何实现：

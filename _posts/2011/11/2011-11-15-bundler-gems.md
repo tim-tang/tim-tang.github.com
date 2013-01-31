@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: bundler gems
 tags: [Rails, RubyGem]
 location: Suzhou, China
+alias: [/RubyOnRails/2011/11/15/bundler-gems]
 ---
 #### Bundle介绍 ##
 

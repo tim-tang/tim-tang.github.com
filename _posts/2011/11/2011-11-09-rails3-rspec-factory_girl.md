@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: rails3 rspec factory_girl
 tags: [Rails, RubyGem]
 location: Suzhou, China
+alias: [/RubyOnRails/2011/11/09/rails3-rspec-factory_girl]
 ---
 Rspec使用行为驱动开发（Behaviour-driven development）,它从外围的业务成果的定义开始，然后深入到那些实现这个成果的功能块上。每一个功能都被收集成一个故事，它按照验收标准来定义这个功能的范围。在everyday中使用了一下，确实发现Rspec可以把测试用例写得更加易于理解。下面来看看如何用Rspec讲故事:
 

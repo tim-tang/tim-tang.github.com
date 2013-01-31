@@ -5,7 +5,7 @@ permalink: /blog/:year/:month/:day/:title
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 auto: true
 pygments: true
-safe: true
+safe: false
 #lsi: false
 #markdown: rdiscount
 coffeescript_folder: ./assets/themes/mark-reid/coffee/*

@@ -6,6 +6,7 @@ category: RubyOnRails
 keywords: ROR capistrano git passenger deployment
 tags: [Git, RubyGem]
 location: Suzhou, China
+alias: [/RubyOnRails/2011/10/26/capistrano-git-passenger]
 ---
 对于rails应用capistrano提供的很好的自动化部署方案，支持部署版本的回滚，和github,svn等scm服务器有不错的集成，介绍下目前everyday所使用到的capistrano配置方案：
 

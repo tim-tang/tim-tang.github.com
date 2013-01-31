@@ -6,6 +6,7 @@ category: MongoDB
 keywords: mongodb auto sharding
 tags: [MongoDB]
 location: Suzhou, China
+alias: [/MongoDB/2012/05/28/mongodb-auto-sharding]
 ---
   MongoDB最近在项目种使用比较频繁，所以最近些这方面的东西比较多，下面我们看看MongoDB的Auto-Sharding提供了什么?
 

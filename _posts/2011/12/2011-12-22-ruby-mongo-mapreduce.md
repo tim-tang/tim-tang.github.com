@@ -6,6 +6,7 @@ category: Ruby
 keywords: ruby mongo mapreduce
 tags: [Ruby, MongoDB]
 location: Suzhou, China
+alias: [/Ruby/2011/12/22/ruby-mongo-mapreduce]
 ---
 MapReduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。这样做的好处是可以在任务被分解后，可以通过大量机器进行并行计算，减少整个操作的时间。下面以MongoDB MapReduce为例说明:
 

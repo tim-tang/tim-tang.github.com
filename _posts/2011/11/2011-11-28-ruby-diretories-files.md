@@ -6,6 +6,7 @@ category: Ruby
 keywords: ruby directory files
 tags: [Ruby]
 location: Suzhou, China
+alias: [/Ruby/2011/11/28/ruby-diretories-files]
 ---
 最近一直在用ruby写crawler engine,不可避免的需要用到一些对文件和目录的操作，下面记录一下：
 
