@@ -1,6 +1,6 @@
 ### PERSONAL BLOG
 ---
-<http://tim.everyday-cn.com>
+<http://timtang.me>
 
 ### TODO:
 

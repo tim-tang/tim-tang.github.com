@@ -23,7 +23,7 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 ---
 - [Crawler Engine](https://github.com/tim-tang/crawler_engine)
 - [Everyday](https://github.com/tim-tang/everyday)
-- [Vim Configuration](https://github.com/tim-tang/vim)
+- [DotFiles](https://github.com/tim-tang/dotfiles)
 - [News Aggregation](https://github.com/tim-tang/news_agg)
 - [Everyday-Cn](https://github.com/tim-tang/everyday-cn)
 - [Teck Talk](https://github.com/tim-tang/tim-tang.github.com)
