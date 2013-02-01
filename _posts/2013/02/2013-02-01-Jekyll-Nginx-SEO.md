@@ -2,9 +2,9 @@
 layout: post
 title: "Jekyll and  Nginx SEO  tricks"
 description: "最近折腾Jekyll和Nginx的SEO调优的一些经验"
-category: Mac
+category: Misc
 keywords: Nginx Jekyll SEO Gzip
-tags: [Mac, Shell]
+tags: [Nginx]
 location: Suzhou, China
 ---
 
@@ -27,7 +27,7 @@ location: Suzhou, China
 - 设置jekyll config.yml的permalink,避免将来分类修改导致搜索引擎中有死链接：
 > permalink: /blog/:year/:month/:day/:title
 
-- 如何在搜索引擎中已经有死链接，可以使用Jekyll plugin:[Alias Generator](https://github.com/tsmango/jekyll_alias_generator)取修复
+- 如何在搜索引擎中已经有死链接，可以使用Jekyll plugin:[Alias Generator](https://github.com/tsmango/jekyll_alias_generator)去修复
 
 - 还有就是注意页面的keywords/title/tags/等关键字，增加外链接等...最重要的还是文章质量
 
