@@ -31,16 +31,17 @@ feed: atom.xml
 
 ## [**Older posts &rarr;**](/archive.html)
 
-
 <script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'timstechtalk'; // required: replace example with your forum shortname
-
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
- var s = document.createElement('script'); s.async = true;
- s.type = 'text/javascript';
- s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
- (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
- }());
+//<![CDATA[
+(function() {
+ var links = document.getElementsByTagName('a');
+ var query = '?';
+ for(var i = 0; i < links.length; i++) {
+     if(links[i].href.indexOf('#disqus_thread') >= 0) {
+         query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+     }
+ }
+ document.write('<script type="text/javascript" src="http://disqus.com/forums/timstechtalk/get_num_replies.js' + query + '"></' + 'script>');
+ })();
+//]]>
 </script>
