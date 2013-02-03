@@ -17,7 +17,9 @@ Tim has about 5 years of experience doing end-to-end development of web applicat
 
 ### Contact Me
 ---
+
 - email => tang.jilong@gmail.com
+- twitter => @tangjilong
 
 ### GitHub Public Repos
 ---
