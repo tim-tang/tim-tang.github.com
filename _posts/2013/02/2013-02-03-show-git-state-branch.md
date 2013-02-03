@@ -12,6 +12,7 @@ location: Suzhou, China
 
 ## 添加如下shell代码到~/.bash_profile
 
+    # http://timtang.me/blog/2013/02/03/show-git-state-branch/
     function parse_git_dirty {
           [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
     }
