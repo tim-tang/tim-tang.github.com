@@ -4,7 +4,7 @@ title: Tim Tang
 tagline: Supporting tagline
 group: navigation
 ---
-Has about 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
+Has more than 5 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies.
 When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
 
 <img class='inset right' src='/images/avatar1.png' title='Tim Tang at redang island!' alt='Photo of Tim.Tang at redang island!' width='168px' />
@@ -24,7 +24,7 @@ _Specialities:_
 ---
 ## Senior Engineer
 
-[**X Plus Z Online, Inc**](http://www.xplusz.com) => _August 2012 – Present (5 months)SuZhou_
+[**X Plus Z Online, Inc**](http://www.xplusz.com) => _August 2012 – Present (7 months)SuZhou_
 
 	- Code review, trouble shooting.
 	- Mentor team member.
