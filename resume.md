@@ -32,6 +32,7 @@ _Specialities:_
 	- Amazon EC2/JMeter load testing and performance tunning.
 	- Setup JBoss AS7 cluster environment.
 	- JBoss AS7 Infinispan/JTA/Spring/Hibernate JPA integration.
+	- Use Benerator to generate load testing data.
 
 ## Development Leader
 
