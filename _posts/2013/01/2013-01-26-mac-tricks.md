@@ -56,7 +56,7 @@ Introduce to many useful mac tricks.
     $ screen capture -s ~/Desktop/xxxx.jpg
 
 ## Kill desktop
-
+    
     # to hide the desktop icons
     $ defaults write com.apple.finder CreateDesktop -bool false
     # to show the desktop icons

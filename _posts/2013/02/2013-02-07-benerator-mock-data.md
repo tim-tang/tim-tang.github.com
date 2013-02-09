@@ -20,8 +20,10 @@ location: Suzhou, China
 ### Benerator 提供的两种安装方式：
 ---
 
+
 ## 通过安装包安装，具体安装信息:[_installing-the-benerator-distribution_](http://databene.org/databene-benerator/112-installing-the-benerator-distribution.html)
 > 注意：要设置环境变量，并把相应数据库的驱动放入lib/目录
+
 
 ## 用maven plugin的方式安装,在项目的pom.xml中加入benerator plugin的配置：
 
@@ -77,8 +79,10 @@ location: Suzhou, China
 
 > 使用 $mvn benerator:generate 即可执行
 
+
 ## 下面我们看下执行结果，这里有45张表，涉及到3个database schema，14000条数据,内部还包含了相当的业务处理，使用了23秒。
 ![Benerator Results](/images/post/benerator-result.png){:width=680 :height=80}
+
 
 ## Benerator的使用，我们可以参考如下文档：
 

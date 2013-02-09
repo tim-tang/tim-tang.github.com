@@ -14,6 +14,7 @@ location: Suzhou, China
 ---
 
 - 生成[sitemap.xml](http://timtang.me/sitemap.xml)使用[Sitemap.xml Generator](http://www.kinnetica.com/projects/jekyll-sitemap-generator/)
+
 > 注意如果使用Git Pages服务这个plugin是不会生成sitemap.xml的，github会认为你的plugin是不安全的，这种方式一般在自己的服务器上使用，如果使用github的服务可以参考:[sitemap.xml](https://github.com/tim-tang/tim-tang.github.com/blob/master/sitemap.xml)
 
 - 可以将生成的sitemap.xml提交到[google webmaster](http://www.google.com/webmasters/), [baidu 站长工具](http://zhanzhang.baidu.com/?castk=LTE%3D)等
@@ -25,6 +26,7 @@ location: Suzhou, China
 - 将页面中的javascript引用放到页面的最下端</body>标签前,加快页面加载
 
 - 设置jekyll config.yml的permalink,避免将来分类修改导致搜索引擎中有死链接：
+
 > permalink: /blog/:year/:month/:day/:title
 
 - 如何在搜索引擎中已经有死链接，可以使用Jekyll plugin:[Alias Generator](https://github.com/tsmango/jekyll_alias_generator)去修复
