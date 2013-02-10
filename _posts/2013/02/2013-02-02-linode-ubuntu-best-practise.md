@@ -73,7 +73,7 @@ location: Suzhou, China
     $ chkconfig --list nginx
     nginx 0:off  1:off  2:on   3:on   4:on   5:on   6:off
 
-> 参考： [**Linode doc**](http://library.linode.com/securing-your-server)
+> 参考: [**Linode doc**](http://library.linode.com/securing-your-server)
 
 ### Mysql 数据库自动备份
 ---
@@ -101,3 +101,4 @@ location: Suzhou, China
     $ sudo automysqlbackup
 
 > 希望对大家有帮助，这篇blog将持续更新....
+

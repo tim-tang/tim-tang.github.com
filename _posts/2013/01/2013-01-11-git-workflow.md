@@ -37,6 +37,7 @@ alias: [/Misc/2013/01/11/git-workflow]
     git merge hotfix
 
 ## git master--hotfix--develop工作流程图
+
 ![Hotfixes branching model](/images/post/branch-model-for-hotfixes.png)
 
 > 当然我们还可以给master分支打上标签，在此之上新建不同版本的branch来维护，此文档会持续更新！
