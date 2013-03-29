@@ -86,3 +86,4 @@ _通过业务属性name来重写equals/hashcode方法_
         return false;
     }
 
+> Cheers!
