@@ -9,12 +9,13 @@ location: Suzhou, China
 ---
 
 这篇blog将介绍hibernate 实体间one-to-one关系的单向和双向关联的差异,以及hibernate lazy loading问题。
-
 ### 准备工作
 ---
 
 - 我们有两个entity分别是character和wallet它们之间是1对1的关联关系
 - 在character中的wallet属性上加上OneToOne(cascade = CascadeType.ALL)
+- 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
+
 
 ## 单向关联与双向关联差异：
 ---

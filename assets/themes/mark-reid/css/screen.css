@@ -193,6 +193,7 @@ ul {
 ul li {
 	list-style-type: square;
 	list-style-position: outside;
+    font-size: 14px;
 }
 ol li {
 	list-style-type: decimal;
