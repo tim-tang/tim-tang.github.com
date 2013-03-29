@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hibernate JPA Training-4"
-description: "Hibernate one-to-many relationship"
+description: "Hibernate one-to-many relationship 2"
 category: J2EE 
 keywords: Hibernate JPA
 tags: [Hibernate]
