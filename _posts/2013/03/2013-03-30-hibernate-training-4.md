@@ -20,7 +20,7 @@ location: Suzhou, China
 ## one-to-many 级联更新字表(使用mappedBy,实体关系的owner为account)
 ---
 
-_执行如下代码_
+**执行如下代码**
 
 	@Test
     @Rollback(false)
@@ -34,14 +34,14 @@ _执行如下代码_
         entityManager.merge(account);
     }
 
-_我们可以看到log删除了字表的一条character数据_
+**我们可以看到log删除了字表的一条character数据**
 
     2013-03-29 11:52:59,331 DEBUG [org.hibernate.SQL] - <insert into Account (accountId, id) values (?, ?)>
     2013-03-29 11:52:59,335 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
     2013-03-29 11:52:59,335 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
     2013-03-29 11:52:59,337 DEBUG [org.hibernate.SQL] - <delete from Character where id=?>
 
-_当我们更改entity的唯一键characterId时无法删除这个entity,看代码_
+**当我们更改entity的唯一键characterId时无法删除这个entity,看代码**
 
 	@Test
     @Rollback(false)
@@ -58,7 +58,7 @@ _当我们更改entity的唯一键characterId时无法删除这个entity,看代�
         entityManager.merge(account);
     }
 
-_log信息,只是更新了character对象_
+**log信息,只是更新了character对象**
     
     2013-03-29 12:28:06,364 DEBUG [org.hibernate.SQL] - <insert into Account (accountId, id) values (?, ?)>
     2013-03-29 12:28:06,369 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
@@ -70,7 +70,7 @@ _log信息,只是更新了character对象_
 ## one-to-many 单向和双向关联所产生的不同点
 ---
 
-_Account和Character单向关联的情况_
+**Account和Character单向关联的情况**
 
 	@Test
     @Rollback(false)
@@ -81,7 +81,7 @@ _Account和Character单向关联的情况_
         Assert.assertTrue(character.getAccount()==null);
     }
 
-_我们可以看到无法从many方取得one方的状态, 下面看双向_
+**我们可以看到无法从many方取得one方的状态, 下面看双向**
 
 	@Test
     @Rollback(false)
@@ -101,7 +101,7 @@ _我们可以看到无法从many方取得one方的状态, 下面看双向_
 ## one-to-many 重置字表关系
 ---
 
-_保存一个transient状态的Account并重新设置它所关联的character字表,这个account实体已经在数据库存在，看会发生什么_
+**保存一个transient状态的Account并重新设置它所关联的character字表,这个account实体已经在数据库存在，看会发生什么**
 
 	@Test
     @Rollback(false)
@@ -124,7 +124,7 @@ _保存一个transient状态的Account并重新设置它所关联的character字
         entityManager.merge(account);
     }
 
-_看log我们只发现了一条sql insert语句，并不会去drop之前关联的characters_
+**看log我们只发现了一条sql insert语句，并不会去drop之前关联的characters**
 
     2013-03-29 13:00:21,326 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
 

@@ -20,7 +20,7 @@ location: Suzhou, China
 ## 单向关联与双向关联差异：
 ---
 
-_单向关联:setup代码_
+**单向关联:setup代码**
 
     @Before
     public void setup(){
@@ -38,7 +38,7 @@ _单向关联:setup代码_
         character.setWallet(wallet);
     }
     
-_双向关联:setup代码_
+**双向关联:setup代码**
 
     @Before
     public void setup(){
@@ -82,7 +82,7 @@ _双向关联:setup代码_
 ## Hibernate lazy loading 问题介绍及避免
 ---
 
-_执行如下代码，找出某个character_
+**执行如下代码，找出某个character**
 
     @Test
     @Rollback(false)
@@ -96,14 +96,14 @@ _执行如下代码，找出某个character_
         }       
     }
 
-_我们只执行了一条sql查询但是看log我们发现执行了2条select语句：_
+**我们只执行了一条sql查询但是看log我们发现执行了2条select语句：**
 
     2013-03-29 08:53:36,401 DEBUG [org.hibernate.SQL] - <select character0_.id as id2_, character0_.account_id as account3_2_,...
     2013-03-29 08:53:36,413 DEBUG [org.hibernate.SQL] - <select wallet0_.id as id6_3_, wallet0_.character_id as character5_6_3...
 
 > 多出来这条sql是在character.getWallet()的时候去执行的。
 
-_可以通过在第一次查询的时候把关联数据一起查出来，来解决这个问题，看如下代码_
+**以通过在第一次查询的时候把关联数据一起查出来，来解决这个问题，看如下代码**
 
     @Test
     @Rollback(false)
@@ -117,7 +117,7 @@ _可以通过在第一次查询的时候把关联数据一起查出来，来解�
         } 
     }
 
-_这样只会产生一条sql log_
+**这样只会产生一条sql log**
 
     2013-03-29 09:02:13,344 DEBUG [org.hibernate.SQL] - <select character0_.id as id2_0_, wallet1_.id as id6_1_, character0_.account_id as account3_2_0_, character0_.characterId as characte2_2_0_, character0_.wallet_id as wallet4_2_0_, wallet1_.character_id as character5_6_1_, wallet1_.currency as currency6_1_, wallet1_.hardBalance as hardBala3_6_1_, wallet1_.softBalance as softBala4_6_1_ from Character character0_ inner join Wallet wallet1_ on character0_.wallet_id=wallet1_.id> 
 

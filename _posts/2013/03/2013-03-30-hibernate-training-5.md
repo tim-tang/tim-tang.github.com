@@ -18,7 +18,7 @@ location: Suzhou, China
 
 ## many-to-many 关系owner与非owner删除时的差异
 
-_正常情况从item删除tag，代码_
+**正常情况从item删除tag，代码**
 
 	@Test
     @Transactional
@@ -32,7 +32,7 @@ _正常情况从item删除tag，代码_
         entityManager.merge(item1);
     }
 
-_从log信息中我们可以看到，会删除中间表的关联_
+**从log信息中我们可以看到，会删除中间表的关联**
 
     2013-03-29 13:23:33,844 DEBUG [org.hibernate.SQL] - <insert into Item (name, id) values (?, ?)>
     2013-03-29 13:23:33,848 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
@@ -41,7 +41,7 @@ _从log信息中我们可以看到，会删除中间表的关联_
     2013-03-29 13:23:33,849 DEBUG [org.hibernate.SQL] - <insert into Item_Tag (ITEM_ID, TAG_ID) values (?, ?)>
     2013-03-29 13:23:33,854 DEBUG [org.hibernate.SQL] - <delete from Item_Tag where ITEM_ID=? and TAG_ID=?>
 
-_从tag来删除item,代码_
+**从tag来删除item,代码**
     
     @Test
     @Transactional
@@ -55,7 +55,7 @@ _从tag来删除item,代码_
         entityManager.merge(item1);
     }
 
-_看log,并不会去删除中间表的关联_
+**看log,并不会去删除中间表的关联**
 
     2013-03-29 13:36:12,123 DEBUG [org.hibernate.SQL] - <insert into Item (name, id) values (?, ?)>
     2013-03-29 13:36:12,127 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
