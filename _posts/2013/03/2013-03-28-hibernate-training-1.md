@@ -58,4 +58,12 @@ location: Suzhou, China
 
 ![JPA-state-transition](/images/post/jpa-state-transitions.png)
 
-> Cheer!
+
+## hibernate traing blog列表
+---
+- [Hibernate JPA Training-2](http://timtang.me/blog/2013/03/29/hibernate-training-2/)
+- [Hibernate JPA Training-3](http://timtang.me/blog/2013/03/30/hibernate-training-3/)
+- [Hibernate JPA Training-4](http://timtang.me/blog/2013/03/30/hibernate-training-4/)
+- [Hibernate JPA Training-5](http://timtang.me/blog/2013/03/30/hibernate-training-5/)
+
+> Cheers!
