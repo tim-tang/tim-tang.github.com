@@ -20,7 +20,7 @@ location: Suzhou, China
 ## 单向关联与双向关联差异：
 ---
 
-_单向关联setup代码_
+_单向关联:setup代码_
 
     @Before
     public void setup(){
@@ -38,7 +38,7 @@ _单向关联setup代码_
         character.setWallet(wallet);
     }
     
-_双向关联setup代码_
+_双向关联:setup代码_
 
     @Before
     public void setup(){
@@ -58,7 +58,7 @@ _双向关联setup代码_
         wallet.setCharacter(character);
     }
 
-_都运行测试_
+**都运行测试**
 
     @Test
     @Rollback(false)
