@@ -10,6 +10,11 @@ location: Suzhou, China
 
 最近需要做一个hibernate和JPA的培训，整理了一些这方面的东西，下面分享一下。
 
+### 准备工作
+---
+
+- 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
+
 ### 首先通过几个API介绍下entity 在EntityManager中的声明周期管理
 
 ## public void persist(Object entity); 
