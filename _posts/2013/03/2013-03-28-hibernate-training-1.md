@@ -8,7 +8,7 @@ tags: [Hibernate]
 location: Suzhou, China
 ---
 
-最近需要做一个hibernate和JPA的培训，整理了一些这方面的东西，下面分享以下。
+最近需要做一个hibernate和JPA的培训，整理了一些这方面的东西，下面分享一下。
 
 ### 首先通过几个API介绍下entity 在EntityManager中的声明周期管理
 
@@ -29,11 +29,10 @@ location: Suzhou, China
 - 如果entity是一个游离态对象，将抛出IllegalArgumentException
 - 如果CascadeType.REMOVE设置在某个属性，将移除所关联的对象
 
-
 ## public void refresh(Object entity);
 ---
 
-- 如果entity是transient状态，操作ignore
+- 如果entity是transient状态，抛出IllegalArgumentException
 - 如果entity是managed状态，将会读取数据库中最新的数据
 - 如果entity已经不存在，操作ignore
 - 如果entity是detached状态，抛出IllegalArgumentException
