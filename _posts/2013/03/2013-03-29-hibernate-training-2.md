@@ -21,7 +21,8 @@ location: Suzhou, China
 ---
 
 _单向关联setup代码_
-     @Before
+
+    @Before
     public void setup(){
         // initial character
         character = new Character();
@@ -58,6 +59,7 @@ _双向关联setup代码_
     }
 
 _都运行测试_
+
     @Test
     @Rollback(false)
     public void testSave(){
