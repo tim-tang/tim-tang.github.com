@@ -15,6 +15,7 @@ location: Suzhou, China
 - Item和Tag是many-to-many关系
 - 通过 @JoinTable 注解描述关联表和关联条件。其中一端定义为 owner, 另一段定义为 inverse(对关联表进行更新操作，这端被忽略)。
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)    
+- 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
 ## Many-To-Many 关系owner与非owner删除时的差异
 ---

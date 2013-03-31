@@ -14,6 +14,7 @@ location: Suzhou, China
 ---
 
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
+- 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
 ### 首先通过几个API介绍下entity 在EntityManager中的声明周期管理
 

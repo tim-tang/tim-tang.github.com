@@ -16,6 +16,7 @@ location: Suzhou, China
 - Account和Character是one-to-many关系
 - orphanRemoval定义：当主表更新的时候会观察many一方的集合变化，级联更新
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
+- 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
 ## one-to-many 级联更新字表(使用mappedBy,实体关系的owner为account)
 ---

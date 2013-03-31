@@ -15,6 +15,7 @@ location: Suzhou, China
 - 我们有两个entity分别是character和wallet它们之间是1对1的关联关系
 - 在character中的wallet属性上加上OneToOne(cascade = CascadeType.ALL)
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
+- 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
 
 ## 单向关联与双向关联差异：

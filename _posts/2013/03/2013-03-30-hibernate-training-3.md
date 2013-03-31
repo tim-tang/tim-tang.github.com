@@ -18,6 +18,7 @@ location: Suzhou, China
 - entityManager.flush(): 将hibernate一级缓存中的实体操作flush到数据库
 - entityManager.clear(): 将hibernate一级缓存清空
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
+- 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
 ## one-to-many使用和不使用mappedBy时的差异
 ---
