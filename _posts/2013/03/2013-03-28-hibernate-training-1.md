@@ -8,7 +8,7 @@ tags: [Hibernate]
 location: Suzhou, China
 ---
 
-最近需要做一个hibernate和JPA的培训，整理了一些这方面的东西，下面分享一下。
+最近需要做一个hibernate和JPA的培训，整理了一些这方面的东西，下面分享一下,着一部分主要介绍jpa state transition 及entity之间的关联关系。
 
 ### 准备工作
 ---
@@ -16,7 +16,17 @@ location: Suzhou, China
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
 - 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
-### 首先通过几个API介绍下entity 在EntityManager中的声明周期管理
+##  下面这张图展现了entity的生命周期
+---
+![JPA-state-transition](/images/post/jpa-state-transitions.png)
+
+- New/Transient，新创建的实体对象，没有主键(identity)值
+- Managed，对象处于Persistence Context(持久化上下文）中，被EntityManager管理
+- Detached，对象已经游离到Persistence Context之外，进入Application Domain
+- Removed, 实体对象被删除
+
+### 下面通过几个API介绍下entity 在EntityManager中的声明周期管理
+---
 
 ## public void persist(Object entity); 
 ---
@@ -59,17 +69,31 @@ location: Suzhou, China
 - LockModeType.READ 其他事务只能并发的读entity不能并发的写
 - LockModeType.WRITE 其他事务不能并发的读也不能并发的写这个entity
 
-##  下面这张图展现了entity的生命周期
+
+### Hibernate 实体间关联关系
 ---
 
-![JPA-state-transition](/images/post/jpa-state-transitions.png)
+**对关联关系映射的要点如下:**
+
+    |RELATION-TYPE             | OWNING-SIDE  | INVERSE-SIDE
+    ---------------------------|------------|---------------------------------------
+    |One-To-One                |@OneToOne   |@OneToOne(mappedBy="othersideName")
+    ---------------------------|------------|---------------------------------------
+    |One-To-Many/Many-To-One   |@ManyToOne  |@OneToMany(mappedBy="xxx")
+    ---------------------------|------------|---------------------------------------
+    |Many-To-Many              |@ManyToMany |@ManyToMany(mappedBy ="xxx")
+    ---------------------------|------------|---------------------------------------
+
+**其中 many-to-many关系的owning-side可以使用@JoinTable声明自定义关联表**
 
 
 ## hibernate traing blog列表
 ---
+
 - [Hibernate JPA Training-2](http://timtang.me/blog/2013/03/29/hibernate-training-2/)
 - [Hibernate JPA Training-3](http://timtang.me/blog/2013/03/30/hibernate-training-3/)
 - [Hibernate JPA Training-4](http://timtang.me/blog/2013/03/30/hibernate-training-4/)
 - [Hibernate JPA Training-5](http://timtang.me/blog/2013/03/30/hibernate-training-5/)
 
 > Cheers!
+
