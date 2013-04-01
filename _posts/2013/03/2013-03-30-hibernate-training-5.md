@@ -102,9 +102,43 @@ location: Suzhou, China
     2013-03-30 15:54:29,198 DEBUG [org.hibernate.SQL] - <delete from Item_Tag where ITEM_ID=? and TAG_ID=?>
     2013-03-30 15:54:29,202 DEBUG [org.hibernate.SQL] - <insert into Item_Tag (ITEM_ID, TAG_ID) values (?, ?)>
 
-> 只有当表关系中owner着一方的数据删除时候，才会级联删除字表数据。
+> 只有当表关系中owner着一方的数据删除时候，才会级联删除子表数据。
 
-## 最后我们再来看只存字表数据会是什么情况？
+## 经常发生的场景是我们不需要，重置所有的关联，只是部分重置关系如何操作？
+
+**为了避免这种情况，我们可以不reset整个collection，改用collection之上的，clear/removeAll/retainAll方法,我们可以通过如下代码测试**
+
+    @Test
+    @Transactional
+    @Rollback(false)
+    public void testResetTagsWithoutPersist(){
+        Item item = (Item) entityManager.createQuery("from Item").getResultList().get(0);
+        // assign managed entity to a transient entity.
+        Tag tag1 = null;
+        for(Tag tag: item.getTags()){
+            if(tag.getName().equals("tag1")){
+                tag1 = tag;
+                break;
+            }
+        }
+        
+        // transient entity.
+        Tag tag3 = new Tag();
+        tag3.setName("tag3");
+        //will use the original set will not delete tag2 relation
+        item.getTags().clear();
+        item.addTag(tag1);
+        item.addTag(tag3);
+        entityManager.merge(item);
+    }
+
+**从log中可以看到，不会全部重置关系，只是更新了特定中间表纪录，并写入字表**
+
+    2013-04-01 08:22:09,240 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
+    2013-04-01 08:22:09,243 DEBUG [org.hibernate.SQL] - <delete from Item_Tag where ITEM_ID=? and TAG_ID=?>
+    2013-04-01 08:22:09,243 DEBUG [org.hibernate.SQL] - <insert into Item_Tag (ITEM_ID, TAG_ID) values (?, ?)>
+
+## 最后我们再来看只存子表数据会是什么情况？
 ---
 
 **代码**
@@ -123,4 +157,5 @@ location: Suzhou, China
     2013-03-30 16:00:48,289 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
 
 > 到这里所有hibernate-jpa training的东西就告一段落了，对hibernate内容太多例如:Criteria/JPQL/HQL/事务的隔离和锁机制/hibernate 2级缓存等.没办法一一讲到了，很多问题还需要深入。Cheers!
+
 

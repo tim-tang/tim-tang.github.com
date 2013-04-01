@@ -8,7 +8,7 @@ tags: [Hibernate]
 location: Suzhou, China
 ---
 
-这篇blog介绍hibernate比较常用的one-to-many关系,涉及mappedBy属性使用，orderBy annotation使用，entity hashcode设置等。
+这篇blog介绍hibernate比较常用的one-to-many关系,涉及mappedBy,属性使用,JoinColumn annotation的使用，orderBy annotation使用，entity hashcode设置等。
 
 ### 准备工作
 ---
@@ -47,6 +47,22 @@ location: Suzhou, China
     2013-03-29 10:16:54,330 DEBUG [org.hibernate.SQL] - <insert into Category (name, pointOfSale, priority, id) values (?, ?, ?, ?)>
 
 > mappedBy 使用时不需要中间表，否则需要中间表维护。
+
+## 使用JoinColumn annotation来避免产生中间表
+
+**这里还可以通过在PointOfSale entity上设置如下代码，避免中间表产生**
+
+    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinColumn(name = "pointOfSale")
+    private List<Category> categories = new ArrayList<Category>();
+
+**执行上面的test case, 我们可以在log中看到，无需维护中间表**
+
+    2013-04-01 07:55:46,243 DEBUG [org.hibernate.SQL] - <insert into PointOfSale (name, id) values (?, ?)>
+    2013-04-01 07:55:46,247 DEBUG [org.hibernate.SQL] - <insert into Category (name, pointOfSale, priority, id) values (?, ?, ?, ?)>
+    2013-04-01 07:55:46,248 DEBUG [org.hibernate.SQL] - <insert into Category (name, pointOfSale, priority, id) values (?, ?, ?, ?)>
+    2013-04-01 07:55:46,249 DEBUG [org.hibernate.SQL] - <update Category set pointOfSale=? where id=?>
+    2013-04-01 07:55:46,249 DEBUG [org.hibernate.SQL] - <update Category set pointOfSale=? where id=?>
 
 ## OrderBy 注解的使用  
 ---
