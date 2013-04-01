@@ -15,6 +15,7 @@ location: Suzhou, China
 
 - PointOfSale和Category是One-To-Many关系
 - mappedBy定义：定义在被拥有方的,他指向拥有方,mappedBy的含义，应该理解为，拥有方能够自动维护跟被拥有方的关系
+- inverse定义：指定由哪一方来维护之间的关联关系,当一方中指定了“inverse=true”，那么另一方就有责任责实体之间的关联关系
 - entityManager.flush(): 将Hibernate一级缓存中的实体操作flush到数据库
 - entityManager.clear(): 将Hibernate一级缓存清空
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
