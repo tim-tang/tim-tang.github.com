@@ -10,17 +10,20 @@ location: Suzhou, China
 
 这篇blog介绍hibernate比较常用的one-to-many关系,涉及mappedBy,属性使用,JoinColumn annotation的使用，orderBy annotation使用，entity hashcode设置等。
 
-### 准备工作
+### 1- 准备工作
 ---
 
-- PointOfSale和Category是one-to-many关系
+- PointOfSale和Category是One-To-Many关系
 - mappedBy定义：定义在被拥有方的,他指向拥有方,mappedBy的含义，应该理解为，拥有方能够自动维护跟被拥有方的关系
-- entityManager.flush(): 将hibernate一级缓存中的实体操作flush到数据库
-- entityManager.clear(): 将hibernate一级缓存清空
+- entityManager.flush(): 将Hibernate一级缓存中的实体操作flush到数据库
+- entityManager.clear(): 将Hibernate一级缓存清空
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
 - 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
-## one-to-many使用和不使用mappedBy时的差异
+### 2- One-To-Many 介绍
+---
+
+## 2.1- one-to-many使用和不使用mappedBy时的差异
 ---
 
 **当PointOfSale不使用mappedBy的时候，执行如下代码:**
@@ -48,7 +51,7 @@ location: Suzhou, China
 
 > mappedBy 使用时不需要中间表，否则需要中间表维护。
 
-## 使用JoinColumn annotation来避免产生中间表
+## 2.2- 使用JoinColumn annotation来避免产生中间表
 ---
 
 **这里还可以通过在PointOfSale entity上设置如下代码，避免中间表产生**
@@ -65,7 +68,7 @@ location: Suzhou, China
     2013-04-01 07:55:46,249 DEBUG [org.hibernate.SQL] - <update Category set pointOfSale=? where id=?>
     2013-04-01 07:55:46,249 DEBUG [org.hibernate.SQL] - <update Category set pointOfSale=? where id=?>
 
-## OrderBy 注解的使用  
+## 2.3- OrderBy 注解的使用  
 ---
 
 **将OrderBy annotation加入实体属性上，执行如下代码测试**
@@ -82,7 +85,7 @@ location: Suzhou, China
         }
     }
 
-## Hibernate entity hash code 设置的时候需要注意:
+## 2.4- Hibernate Entity Hash Code 设置的时候需要注意:
 ---
 
 - 要设置基与业务属性的唯一组合来重写equals/hashcode方法

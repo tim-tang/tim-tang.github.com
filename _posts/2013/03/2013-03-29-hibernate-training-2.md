@@ -9,7 +9,7 @@ location: Suzhou, China
 ---
 
 这篇blog将介绍hibernate 实体间one-to-one关系的单向和双向关联的差异,以及hibernate lazy loading问题。
-### 准备工作
+### 1- 准备工作
 ---
 
 - 我们有两个entity分别是character和wallet它们之间是1对1的关联关系
@@ -17,8 +17,10 @@ location: Suzhou, China
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
 - 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
+### 2- Hibernate One-To-One 介绍
+---
 
-## 单向关联与双向关联差异：
+## 2.1- 单向关联与双向关联差异：
 ---
 
 **单向关联:setup代码**
@@ -80,7 +82,7 @@ location: Suzhou, China
 
 > 在remove的时候也是一样双向关联的会多一条update语句，使用的时候要特别注意！
 
-## Hibernate lazy loading 问题介绍及避免
+## 2.2- Hibernate Lazy Loading 问题介绍及避免
 ---
 
 **执行如下代码，找出某个character**

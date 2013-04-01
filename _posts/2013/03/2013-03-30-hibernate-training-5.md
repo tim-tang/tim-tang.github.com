@@ -8,16 +8,19 @@ tags: [Hibernate]
 location: Suzhou, China
 ---
 
-这一篇是hibernate training 系列blog的最后一篇，将介绍many-to-many关联中的各种操作。
+这一篇是Hibernate Training 系列blog的最后一篇，将介绍Many-To-Many关联中的各种操作。
 
-### 准备工作
+### 1- 准备工作
 ---
-- Item和Tag是many-to-many关系
+- Item和Tag是Many-To-Many关系
 - 通过 @JoinTable 注解描述关联表和关联条件。其中一端定义为 owner, 另一段定义为 inverse(对关联表进行更新操作，这端被忽略)。
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)    
 - 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
-## Many-To-Many 关系owner与非owner删除时的差异
+### 2- Hibernate Many-To-Many 介绍
+---
+
+## 2.1- Many-To-Many 关系owner与非owner删除时的差异
 ---
 
 **正常情况从item删除tag，代码**
@@ -67,7 +70,7 @@ location: Suzhou, China
 
 > 所以这是一个注意点。
 
-## Many-To-Many重置关系
+## 2.2- Many-To-Many重置关系
 ---
 
 **在开发中经常需要重置多对多实体之间的关系，代码**
@@ -104,7 +107,7 @@ location: Suzhou, China
 
 > 只有当表关系中owner着一方的数据删除时候，才会级联删除子表数据。
 
-## 经常发生的场景是我们不需要，重置所有的关联，只是部分重置关系如何操作？
+## 2.3- 经常发生的场景是我们不需要，重置所有的关联，只是部分重置关系如何操作？
 ---
 
 **为了避免这种情况，我们可以不reset整个collection，改用collection之上的,clear/removeAll/retainAll方法,通过如下代码测试**
@@ -139,7 +142,7 @@ location: Suzhou, China
     2013-04-01 08:22:09,243 DEBUG [org.hibernate.SQL] - <delete from Item_Tag where ITEM_ID=? and TAG_ID=?>
     2013-04-01 08:22:09,243 DEBUG [org.hibernate.SQL] - <insert into Item_Tag (ITEM_ID, TAG_ID) values (?, ?)>
 
-## 最后我们再来看只存子表数据会是什么情况？
+## 2.4- 最后我们再来看只存子表数据会是什么情况？
 ---
 
 **代码**
@@ -158,4 +161,3 @@ location: Suzhou, China
     2013-03-30 16:00:48,289 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
 
 > 到这里所有hibernate-jpa training的东西就告一段落了，对hibernate内容太多例如:Criteria/JPQL/HQL/事务的隔离和锁机制/hibernate 2级缓存等.没办法一一讲到了，很多问题还需要深入。Cheers!
-

@@ -10,7 +10,7 @@ location: Suzhou, China
 
 接着之前的blog继续介绍hibernate one-to-many关系，将涉及到orphanRemoval使用，one-to-many单向和双向关联不同产生的问题。
 
-### 准备工作
+### 1- 准备工作
 ---
 
 - Account和Character是one-to-many关系
@@ -18,7 +18,9 @@ location: Suzhou, China
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
 - 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
-## one-to-many 级联更新字表(使用mappedBy,实体关系的owner为character)
+### 2- One-To-Many 介绍
+---
+## 2.1- One-To-Many 级联更新子表(使用mappedBy,实体关系的owner为character)
 ---
 
 **执行如下代码**
@@ -35,7 +37,7 @@ location: Suzhou, China
         entityManager.merge(account);
     }
 
-**我们可以看到log删除了字表的一条character数据**
+**我们可以看到log删除了子表的一条character数据**
 
     2013-03-29 11:52:59,331 DEBUG [org.hibernate.SQL] - <insert into Account (accountId, id) values (?, ?)>
     2013-03-29 11:52:59,335 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
@@ -68,7 +70,7 @@ location: Suzhou, China
 
 > 使用的时候要注意这个问题。
 
-## one-to-many 单向和双向关联所产生的不同点
+## 2.2- one-to-many 单向和双向关联所产生的不同点
 ---
 
 **Account和Character单向关联的情况**
@@ -99,10 +101,10 @@ location: Suzhou, China
 
 > 开发的时候需要注意，需要建立双向关联才能从子表得到主表的状态。
 
-## one-to-many 重置字表关系
+## 2.3- one-to-many 重置子表关系
 ---
 
-**保存一个transient状态的Account并重新设置它所关联的character字表,这个account实体已经在数据库存在，看会发生什么**
+**保存一个transient状态的Account并重新设置它所关联的character子表,这个account实体已经在数据库存在，看会发生什么**
 
 	@Test
     @Rollback(false)
