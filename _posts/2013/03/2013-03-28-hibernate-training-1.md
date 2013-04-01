@@ -86,6 +86,10 @@ location: Suzhou, China
 
 **其中 many-to-many关系的owning-side可以使用@JoinTable声明自定义关联表**
 
+## 事件及监听
+---
+
+![hibernate-event](/images/post/hibernate-event.gif)
 
 ## hibernate traing blog列表
 ---
