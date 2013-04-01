@@ -49,6 +49,7 @@ location: Suzhou, China
 > mappedBy 使用时不需要中间表，否则需要中间表维护。
 
 ## 使用JoinColumn annotation来避免产生中间表
+---
 
 **这里还可以通过在PointOfSale entity上设置如下代码，避免中间表产生**
 

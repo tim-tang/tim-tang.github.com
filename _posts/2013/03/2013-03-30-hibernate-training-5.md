@@ -105,8 +105,9 @@ location: Suzhou, China
 > 只有当表关系中owner着一方的数据删除时候，才会级联删除子表数据。
 
 ## 经常发生的场景是我们不需要，重置所有的关联，只是部分重置关系如何操作？
+---
 
-**为了避免这种情况，我们可以不reset整个collection，改用collection之上的，clear/removeAll/retainAll方法,我们可以通过如下代码测试**
+**为了避免这种情况，我们可以不reset整个collection，改用collection之上的,clear/removeAll/retainAll方法,通过如下代码测试**
 
     @Test
     @Transactional
@@ -132,7 +133,7 @@ location: Suzhou, China
         entityManager.merge(item);
     }
 
-**从log中可以看到，不会全部重置关系，只是更新了特定中间表纪录，并写入字表**
+**从log中可以看到，不会全部重置关系，只是更新了特定中间表纪录，并写入子表**
 
     2013-04-01 08:22:09,240 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
     2013-04-01 08:22:09,243 DEBUG [org.hibernate.SQL] - <delete from Item_Tag where ITEM_ID=? and TAG_ID=?>
@@ -151,11 +152,10 @@ location: Suzhou, China
         entityManager.persist(tag2);
     }
 
-**我们可以在log中清楚的看到只会存字表数据没有主表和中间表数据**
+**我们可以在log中清楚的看到只会存子表数据没有主表和中间表数据**
 
     2013-03-30 16:00:48,287 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
     2013-03-30 16:00:48,289 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
 
 > 到这里所有hibernate-jpa training的东西就告一段落了，对hibernate内容太多例如:Criteria/JPQL/HQL/事务的隔离和锁机制/hibernate 2级缓存等.没办法一一讲到了，很多问题还需要深入。Cheers!
-
 
