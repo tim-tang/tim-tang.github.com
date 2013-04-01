@@ -33,7 +33,7 @@ location: Suzhou, China
 
 - 如果entity是一个新建的实体(transient)，将会变成entitiyManager管理的受管态(持久态)
 - 如果entity已经是持久态，将会ignore
-- 如果entity是游离态(detached) ,将会变成受管态
+- 如果entity是游离态(detached) ,将会抛出javax.persistence.PersistenceException不允许保存游离态entity
 - 如果CascadeType.PERSIST.设置某个属性，这个操作将会递归保存所有这个属性关联的对象。
 
 ## 2.1- public void remove(Object entity);
@@ -42,7 +42,7 @@ location: Suzhou, China
 - 如果entity是新建的对象(transient),操作ignore
 - 如果entity是受管态，将删除entity
 - 如果entity是一个已经移除的对象，操作ignore
-- 如果entity是一个游离态对象，将抛出IllegalArgumentException
+- 如果entity是一个游离态对象，将抛出IllegalArgumentException不能删除游离态entity
 - 如果CascadeType.REMOVE设置在某个属性，将移除所关联的对象
 
 ## 2.2- public void refresh(Object entity);
