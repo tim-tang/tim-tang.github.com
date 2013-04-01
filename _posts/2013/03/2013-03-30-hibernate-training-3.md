@@ -86,11 +86,14 @@ location: Suzhou, China
         }
     }
 
-## 2.4- Hibernate Entity Hash Code 设置的时候需要注意:
+## 2.4- 针对id判断实体相等就是合理的策略了吗？
 ---
+关键还是看你怎样才认为实体对象是相等的，这个倒不能采取hibernate对id的特殊用法。 如果认为业务属性无所谓，只要id相等就相等，那就完全可以用id作为判断相等的依据,如果需要根据业务属性来判定，那么id就不是合理的策略，因为很可能id不等但是业务属性都相等。 
 
-- 要设置基与业务属性的唯一组合来重写equals/hashcode方法
-- 如果基于主键来重写equals/hashcode方法，将带来很多问题，eg.级联表存一对多关系时，多的一方没有主键，造成只能存一条，不推荐这种做法
+**针对以上的分析，有没有最佳实践呢?**
+- 用无意义主键id做hashCode/equals 
+- 用的所有值做hashCode/equals 
+- 用一个(或者几个)相对稳定的业务字段做hashCode/equals (比如user, 就用userName). 
 
 **通过业务属性name来重写equals/hashcode方法**
     
