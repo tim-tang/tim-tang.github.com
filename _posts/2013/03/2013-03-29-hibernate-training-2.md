@@ -74,7 +74,7 @@ location: Suzhou, China
     2013-03-29 08:35:16,434 DEBUG [org.hibernate.SQL] - <insert into Wallet (character_id, currency, hardBalance, softBalance, id) values (?, ?, ?, ?, ?)>
     2013-03-29 08:35:16,441 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
 
-**而双向关联执行了2条insert语句和一条update语句用来更新关系:**
+**而双向关联执行了2条insert语句和一条update语句用来更新关系,关系的主控方(inverse side)会主动更新关系:**
 
     2013-03-29 08:47:34,884 DEBUG [org.hibernate.SQL] - <insert into Wallet (character_id, currency, hardBalance, softBalance, id) values (?, ?, ?, ?, ?)>
     2013-03-29 08:47:34,889 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
