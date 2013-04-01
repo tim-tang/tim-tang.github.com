@@ -18,7 +18,7 @@ location: Suzhou, China
 - 具体的代码在github中[**hibernate-jpa-training**](https://github.com/tim-tang/hibernate-jpa-training)
 - 培训PPT 链接 => <http://tim-tang.github.com/jekyll_presentation> 
 
-## one-to-many 级联更新字表(使用mappedBy,实体关系的owner为account)
+## one-to-many 级联更新字表(使用mappedBy,实体关系的owner为character)
 ---
 
 **执行如下代码**
@@ -125,8 +125,25 @@ location: Suzhou, China
         entityManager.merge(account);
     }
 
-**看log我们只发现了一条sql insert语句，并不会去drop之前关联的characters**
+**看log我们只发现了一条sql insert语句，并不会去drop之前关联的characters,因为account不是关系的owner，owner为character**
 
     2013-03-29 13:00:21,326 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
+
+**再使用@JoinColumn来设置双向关联**
+
+        //再account enity中characters属性设置
+        @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+        @JoinColumn(name="account_id")  //will not generate associated table.
+
+**再次执行上面的test case, 看log:**
+
+    2013-04-01 12:54:54,843 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
+    2013-04-01 12:54:54,846 DEBUG [org.hibernate.SQL] - <update Character set account_id=null where account_id=? and id=?>
+    2013-04-01 12:54:54,846 DEBUG [org.hibernate.SQL] - <update Character set account_id=null where account_id=? and id=?>
+    2013-04-01 12:54:54,847 DEBUG [org.hibernate.SQL] - <update Character set account_id=? where id=?>
+    2013-04-01 12:54:54,848 DEBUG [org.hibernate.SQL] - <delete from Character where id=?>
+    2013-04-01 12:54:54,848 DEBUG [org.hibernate.SQL] - <delete from Character where id=?>
+
+**因为account和character是双向关联，任意一端都可以维护关系，所以会删除character 子表**
 
 > Cheers!
