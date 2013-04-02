@@ -70,7 +70,7 @@ location: Suzhou, China
 
 > 如果我们不去更新这个受管态对象character的状态，则可以删除，使用的时候要注意这个问题。
 
-## 2.2- one-to-many 单向和双向关联所产生的不同点
+## 2.2- One-To-Many 单向和双向关联所产生的不同点
 ---
 
 **Account和Character单向关联的情况**
@@ -101,10 +101,10 @@ location: Suzhou, China
 
 > 开发的时候需要注意，需要建立双向关联才能从子表得到主表的状态。
 
-## 2.3- one-to-many 重置子表关系
+## 2.3- One-To-Many 重置子表关系
 ---
 
-**保存一个transient状态的Account并重新设置它所关联的character子表,这个account实体已经在数据库存在，看会发生什么**
+**保存一个Transient状态的Account并重新设置它所关联的character子表,这个account实体已经在数据库存在，看会发生什么**
 
 	@Test
     @Rollback(false)

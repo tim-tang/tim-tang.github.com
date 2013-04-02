@@ -160,4 +160,4 @@ location: Suzhou, China
     2013-03-30 16:00:48,287 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
     2013-03-30 16:00:48,289 DEBUG [org.hibernate.SQL] - <insert into Tag (name, id) values (?, ?)>
 
-> 到这里所有hibernate-jpa training的东西就告一段落了，对hibernate内容太多例如:Criteria/JPQL/HQL/事务的隔离和锁机制/hibernate 2级缓存等.没办法一一讲到了，很多问题还需要深入。Cheers!
+> 到这里所有hibernate-jpa training的东西就告一段落了，Hibernate内容太多例如:Criteria/JPQL/HQL/事务的隔离和锁机制/Hibernate 2级缓存等.没办法一一讲到了，很多问题还需要深入。Hibernate 比较灵活，是一把双刃剑对开发者也提出的更高的要求，尤其在模型的设计上，一定要吃透业务需求！Cheers!
