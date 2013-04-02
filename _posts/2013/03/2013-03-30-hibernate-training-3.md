@@ -95,9 +95,41 @@ location: Suzhou, China
 - 用的所有值做hashCode/equals 
 - 用一个(或者几个)相对稳定的业务字段做hashCode/equals (比如user, 就用userName). 
 
-**通过业务属性name来重写equals/hashcode方法**
-    
+##下面我们来分析一下项目中用id来重写equlas/hashCode的处理方式**
+
      @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(getId()).toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Character) {
+            return ((Character) obj).getId() == getId();
+        }
+        return false;
+    }
+
+**貌似没什么问题，实际上我们执行如下代码：**
+
+    @Test
+    @Rollback(false)
+    public void testSaveWithInvalidHashCode(){
+        System.out.println("=======" + account.getCharacters().size() + "=========");
+        entityManager.persist(account);
+    }
+
+**从log中可以看到，character只有一条插入，实际我们需要2条，问题出在equals/hashCode的重写，因为transient对象没有主键，在set中比较时hibernate会认为它们相等**
+
+    =======1=========
+    2013-04-02 08:19:18,320 DEBUG [org.hibernate.SQL] - <insert into Account (accountId, id) values (?, ?)>
+    2013-04-02 08:19:18,327 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
+
+> 因此如果与业务无关，不需要覆盖equals和hashcode方法，直接沿用Object的就可以
+
+**有业务相关性属性name来重写equals/hashcode方法**
+    
+    @Override
     public int hashCode() {
         return new HashCodeBuilder().append(name).toHashCode();
     }
