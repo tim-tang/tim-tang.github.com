@@ -22,7 +22,7 @@ location: Suzhou, China
 
 - New/Transient，新创建的实体对象，没有主键(identity)值
 - Managed，对象处于Persistence Context(持久化上下文）中，被EntityManager管理
-- Detached，对象已经游离到Persistence Context之外，进入Application Domain
+- Detached，其对应的session实例关闭后就处于游离状态,对象已经游离到Persistence Context之外
 - Removed, 实体对象被删除
 
 ### 2- 下面通过几个API介绍下entity 在EntityManager中的声明周期管理
