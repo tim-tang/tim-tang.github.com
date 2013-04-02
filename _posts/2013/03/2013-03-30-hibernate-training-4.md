@@ -44,7 +44,7 @@ location: Suzhou, China
     2013-03-29 11:52:59,335 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
     2013-03-29 11:52:59,337 DEBUG [org.hibernate.SQL] - <delete from Character where id=?>
 
-**当我们更改entity的唯一键characterId时无法删除这个entity,看代码**
+**当我们更改account关联的character唯一键characterId时无法删除这个entity,看代码**
 
 	@Test
     @Rollback(false)
@@ -68,7 +68,7 @@ location: Suzhou, China
     2013-03-29 12:28:06,369 DEBUG [org.hibernate.SQL] - <insert into Character (account_id, characterId, wallet_id, id) values (?, ?, ?, ?)>
     2013-03-29 12:28:06,371 DEBUG [org.hibernate.SQL] - <update Character set account_id=?, characterId=?, wallet_id=? where id=?>
 
-> 使用的时候要注意这个问题。
+> 如果我们不去更新这个受管态对象character的状态，则可以删除，使用的时候要注意这个问题。
 
 ## 2.2- one-to-many 单向和双向关联所产生的不同点
 ---
