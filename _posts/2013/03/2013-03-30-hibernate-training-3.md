@@ -95,7 +95,7 @@ location: Suzhou, China
 - 用的所有值做hashCode/equals 
 - 用一个(或者几个)相对稳定的业务字段做hashCode/equals (比如user, 就用userName). 
 
-##下面我们来分析一下项目中用id来重写equlas/hashCode的处理方式**
+## 2.5- 下面我们来分析一下项目中用id来重写equlas/hashCode的处理方式
 
      @Override
     public int hashCode() {
@@ -144,3 +144,4 @@ location: Suzhou, China
     }
 
 > Cheers!
+
