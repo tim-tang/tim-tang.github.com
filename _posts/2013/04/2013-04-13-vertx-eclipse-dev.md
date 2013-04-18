@@ -8,7 +8,7 @@ tags: [Vertx.io]
 location: Suzhou, China
 ---
 
-最近要做一个基于[Vertx.io](http://vertx.io)的pub/sub的功能，这个web框架比较新，目前还没有很好的IDE支持，下面介绍下自己摸索的基于eclipse/maven的一个开发环境。
+最近要做一个基于[Vertx.io](http://vertx.io)的pub/sub的功能，具体代码可见[vertx-pubsub](https://github.com/tim-tang/vertx-pubsub)，这个web框架比较新，目前还没有很好的IDE支持，下面介绍下自己摸索的基于eclipse/maven的一个开发环境。
 最近还写了一个基于Grails集成Redis/Atmosphere的pub/sub 的sample，有兴趣的可以看看[grails-atmosphere-redis-feed](https://github.com/tim-tang/grails-atmosphere-redis-feed)
 
 ### 前提条件：
