@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vertx.io Introduction"
-description: "vertx开发介绍"
+description: "Vertx.io开发及性能介绍"
 category: J2EE 
 keywords: vertx,websocket
 tags: [Vertx.io] 
