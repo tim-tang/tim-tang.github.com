@@ -31,4 +31,4 @@ Tim has more than 5 years of experience doing end-to-end development of web appl
 ---
 - _[&rarr; Tim's Resume ](/resume.html)_
 
-> TO BE A CODE ARTISAN! 
+> -- TO BE A CODE ARTISAN! --

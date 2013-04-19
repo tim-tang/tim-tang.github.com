@@ -12,7 +12,7 @@
 ### TODO:
 
 - Migrate the jekyll blog to Octopress.. cause Jekyll can not use third-party plugin on git pages server.
-- Blog -> --Vertx eclipse devlopment environment.--
-- Blog -> --Grails Redis Atmosphere Pub/Sub Sample.--
+- Blog -> <strike>Vertx eclipse devlopment environment.</strike>
+- Blog -> <strike>Grails Redis Atmosphere Pub/Sub Sample.</strike>
 
 
