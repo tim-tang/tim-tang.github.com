@@ -8,7 +8,7 @@ tags: [Vertx.io]
 location: Suzhou, China
 ---
 
-写了一个基于[Vertx.io](http://vertx.io)的pub/sub的sample,拿出来吹一下，具体的代码再GitHub上[vertx-pubsub](https://github.com/tim-tang/vertx-pubsub),下面介绍下Vertx.io的一些功能。
+写了一个基于[Vertx.io](http://vertx.io)的pub/sub的sample,拿出来吹一下，具体的代码在GitHub上[vertx-pubsub](https://github.com/tim-tang/vertx-pubsub),下面介绍下Vertx.io的一些功能。
 
 ## Vertx.io的特性：
 ---

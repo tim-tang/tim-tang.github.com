@@ -23,16 +23,11 @@ Tim has more than 5 years of experience doing end-to-end development of web appl
 - twitter => @tangjilong
 
 
-### GitHub Public Repos
+### GitHub Profile
 ---
-- [Crawler Engine](https://github.com/tim-tang/crawler_engine)
-- [Everyday](https://github.com/tim-tang/everyday)
-- [DotFiles](https://github.com/tim-tang/dotfiles)
-- [News Aggregation](https://github.com/tim-tang/news_agg)
-- [Everyday-Cn](https://github.com/tim-tang/everyday-cn)
-- [Tech Talkin~](https://github.com/tim-tang/tim-tang.github.com)
+- _[&rarr; GitHub Repos](https://github.com/tim-tang)_
 
-### Profile
+### Personal Profile
 ---
 - _[&rarr; Tim's Resume ](/resume.html)_
 
