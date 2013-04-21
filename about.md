@@ -11,7 +11,7 @@ Tim has more than 6 years of experience doing end-to-end development of web appl
 ---
 - (Aug 2012 – Time.now ) => Coding [@XPlusZ](http://www.xplusz.com)
 - (Feb 2010 – Aug 2012 ) => Coding [@Dextrys](http://www.dextrys.com)
-- (Aug 2009 – Feb 2010 ) => Freelancer Ruby/Rails @home
+- (Aug 2009 – Feb 2010 ) => Freelancer Ruby/Rails [@Home](http://everyday-cn.com)
 - (Feb 2008 – July 2009) => Coding [@Technodex](http://www.technodex.com)
 - (Nov 2006 – Jan 2008 ) => Coding [@Yucheng Tech](http://www.yuchengtech.com)
 
