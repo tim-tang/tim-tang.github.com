@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "敏捷开发修炼之道-体会"
-description: "最近读书的一些体会"
+description: "最近读敏捷开发修炼之道的一些体会"
 category: Misc
 keywords: agile
 tags: [Scrum] 
