@@ -14,8 +14,8 @@ Tim has more than 6 years of experience doing end-to-end development of web appl
 - Ruby/Shell/ROR/NodeJS/Vertx lover.
 - Fans of Mac osx/Linux.
 - Linode/GitHub/StackOverflow user. 
-- Vim/Terminaladdictor.
-- And more... 
+- Vim/Terminal addictor.
+- And [more...](/resume.html)
 
 ### Contact Me
 ---
