@@ -17,7 +17,7 @@ location: Suzhou, China
 	# Author: tim.tang
 	rm -f changelog.md
 
-	git tag -l | sort -u | while read TAG ; do
+	git for-each-ref --sort='*authordate' --format='%(tag)' refs/tags | grep -v '^$' | tail -r | while read TAG ; do
 	    echo
 	    if [ $NEXT ];then
 	        echo '       ' >> changelog.md
