@@ -36,7 +36,7 @@ _Specialities:_
 - [JBoss AS7](http://www.jboss.org/jbossas) Infinispan/JTA/Spring/Hibernate JPA integration.
 - Use [Databene Benerator](http://databene.org/databene-benerator) to generate mock data.
 - [Vert.x](http://vertx.io) pub/sub server for online-chat demo.
-- [NodeJS](http://nodejs.org) smartbus server. coding/deployment/(load/integration)testing.
+- [NodeJS](http://nodejs.org) smartbus server. coding/deployment/(load/integration)testing/doc/auto shell script.
 
 ## Development Leader
 
