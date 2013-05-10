@@ -35,7 +35,8 @@ _Specialities:_
 - Setup JBoss AS7 cluster environment.
 - [JBoss AS7](http://www.jboss.org/jbossas) Infinispan/JTA/Spring/Hibernate JPA integration.
 - Use [Databene Benerator](http://databene.org/databene-benerator) to generate mock data.
-- [Vert.x](http://vertx.io) pub/sub server.
+- [Vert.x](http://vertx.io) pub/sub server for online-chat demo.
+- [NodeJS](http://nodejs.org) smartbus server. coding/deployment/(load/integration)testing.
 
 ## Development Leader
 
