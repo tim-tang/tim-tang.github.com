@@ -116,4 +116,34 @@ Introduce to Vim commands. It is useful for your development.
     .: 重复上次操作
     ~: 将小写改成大写
 
+## 命令补充
+
+    Select Text
+    V stands for v$ (select whole line)
+
+    Changing Text
+    cw (Change Word Ex cw,c2w)
+    C stands for c$ (change to end of the line)
+    s stands for cl (change one character)
+    S stands for cc (change a whole line)
+
+    Joining Lines
+    J (Join Lines to One. Ex J,3J)
+    gJ (Join Lines without Spaces)
+
+    Replacing Charcter
+    r<Charcter> (Replace Charater Under Cursour. Ex. ru,5ra,3r<Enter> )
+    R<Charcter>
+
+    Changing Case
+    ~ (Change Case of Character Ex. ~,12~,~fq)
+    U (Make the text Uppercase)
+    u (Make the text Lowercase)
+    g~motion (It does not depend on tildeop)
+    g~~ or g~g~ (Changes case of whole line)
+    gUmotion (All uppercase)
+    gUU (Changes to uppercase for whole line)
+    gUw  (Changes to uppercase for word)
+    guw  (Changes to lowercase for word)
+
 > vim的实用中还需要一些插件，具体的配置可以看我们的[**vim环境**](https://github.com/tim-tang/vim).
