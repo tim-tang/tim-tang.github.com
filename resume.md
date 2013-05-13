@@ -13,9 +13,9 @@ When not in front of a computer Tim enjoys spending time outdoors with his wife 
 ---
 _Specialities:_
 
-- More than 6 years experience in J2EE direction. Both in web development and backend service.
+- More than 6 years experience in JEE direction. Both in web development and backend service.
 - More than 2 years for Ruby/Rails web application development.
-- Familiar with Vim & Eclipse and others tools, and I like use them for both Ruby,Python and J2EE development.
+- Familiar with Vim & Eclipse and others tools, and I like use them for both Ruby,Python and JEE development.
 - Familiar with shell script and coffee script, and like to use Terminal and Vim.
 - Like using Linux/Mac OSX development.
 - Like running & swimming & reading.
