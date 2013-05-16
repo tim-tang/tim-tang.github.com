@@ -20,9 +20,10 @@ Tim has more than 6 years of experience doing end-to-end development of web appl
 ### Contact Me
 ---
 
-- email => tang.jilong@gmail.com
-- about.me => <http://about.me/tang.jilong>
-- twitter => @tangjilong
+- Email => tang.jilong@gmail.com
+- About.me => <http://about.me/tang.jilong>
+- Twitter => @tangjilong
+- LinkedIn => [Tim.Tang Profile](http://www.linkedin.com/pub/tim-tang/45/994/238)
 
 
 ### GitHub Profile
