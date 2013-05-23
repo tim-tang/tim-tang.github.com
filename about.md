@@ -15,7 +15,7 @@ Tim has more than 6 years of experience doing end-to-end development of web appl
 - Fans of Mac osx/Linux.
 - Linode/GitHub/StackOverflow user. 
 - Vim/Terminal addictor.
-- And [more...](/resume.html)
+- And [more...](/Tim.Tang-resume-en.pdf)
 
 ### Contact Me
 ---
