@@ -32,6 +32,6 @@ Tim has more than 6 years of experience doing end-to-end development of web appl
 
 ### Personal Profile
 ---
-- _[&rarr; Tim's Resume ](/resume.html)_
+- _[&rarr; Tim's Resume ](/Tim.Tang-resume-en.pdf)_
 
 > -- TO BE A CODE ARTISAN! --
