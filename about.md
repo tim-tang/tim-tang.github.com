@@ -5,7 +5,7 @@ tagline: Supporting tagline
 group: navigation
 ---
 
-Tim has more than 6 years of experience doing end-to-end development of web applications for small startups and in the enterprise. In all contexts he strives to find simple, common-sense solutions to complex problems. Over the years he has worked with a wide variety of technologies. Tim currently enjoys spending most of his time with Ruby and Linux but often has to find ways to coexist with legacy technologies for example JEE in the IT department at a large enterprise. [Everyday](http://everyday-cn.com) & [Tech Talkin~](http://timtang.me) are two experimental websites for technic research and accumulate. When not in front of a computer Tim enjoys spending time outdoors with his wife and little daughter or torturing himself by running long distances.
+Experienced End-To-End developer, able to take on responsibility for the analysis and development of creative projects. Always strive to find simple, common-sense solutions to complex problems, adhere to coding clean. Currently enjoys spending most of spare time with Ruby/Node.js/Linux.
 
 ### Tim is mixer of... 
 ---
