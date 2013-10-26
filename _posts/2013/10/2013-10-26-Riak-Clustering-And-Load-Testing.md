@@ -8,7 +8,7 @@ tags: [Riak]
 location: Suzhou, China
 ---
 
-很久没写博客了，最近用到Riak就写篇这方面相关的东西吧。具体特性和其它NoSQL的比较就不在这里介绍，大家可以看官方文档[Riak Doc](http://docs.basho.com/riak/latest/),这里主要关注Riak在局域网环境下的集群和性能情况。
+很久没写博客了，最近用到Riak就写篇这方面相关的东西吧。具体特性和其它NoSQL的比较就不在这里介绍，大家可以看官方文档[Riak Doc](http://docs.basho.com/riak/latest/),这里主要关注Riak在局域网环境下的集群情况。
 
 ## 1- 准备工作
 ---
