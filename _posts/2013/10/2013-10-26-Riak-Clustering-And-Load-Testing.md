@@ -77,7 +77,8 @@ location: Suzhou, China
 
 - 4- Riak再单机上的集群可以参考[Five Minute Install](http://docs.basho.com/riak/latest/quickstart/).
 
-## 一些有用的Riak的参考收集(这些资料非常有用,对理解Riak的实现和原理及使用有很大帮助)
+## 4- 一些有用的Riak的参考收集(这些资料非常有用,对理解Riak的实现和原理及使用有很大帮助)
+---
 
 - [Basic Riak Cluster](http://docs.basho.com/riak/latest/quickstart/)
 - [Riak Basic Usage](https://github.com/basho/riak-java-client/wiki/Cookbook)
