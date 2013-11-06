@@ -20,8 +20,9 @@ location: Suzhou, China
 2- 搭建Riak clustering, 可以参考:[Riak局域网环境下集群](http://timtang.me/blog/2013/10/26/riak-clustering-in-lan)
 
 ## 2- 给出HAProxy配置文件的详细信息
+---
 
-   global
+    global
         log 127.0.0.1     local0
         log 127.0.0.1     local1 notice
         maxconn           256000
@@ -68,6 +69,7 @@ location: Suzhou, China
 > 以上是基于Riak Protocol Buffer接口的配置。
 
 ## 3- 配置基于Http API，在HAProxy配置文件中加入如下设置
+---
 
     backend riak_rest_backend
        mode               http
@@ -84,12 +86,14 @@ location: Suzhou, China
        default_backend    riak_rest_backend
 
 ## 4- 启动HAProxy服务器并查看HAProxy状态
+---
 
     $ haproxy -f <HAPROXY-CONF-FOLDER>/haproxy.cfg
 
 > 打开浏览器访问[http://localhost:9999](http://localhost:9999) 可以查看HAProxy的详细统计,每2s会刷新一次。
 
 ## 5- 维护HAProxy后端的Riak node, 我们可以使用[socat](http://www.dest-unreach.org/socat/)
+---
     
     ## Disable riak node in HAProxy
     $ echo "disable server <backend>/<riak_node>" | socat stdio /etc/haproxy/haproxysock
