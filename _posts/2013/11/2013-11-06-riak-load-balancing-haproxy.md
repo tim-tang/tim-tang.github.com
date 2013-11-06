@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Riak Load-Balance with HAPorxy"
+title: "Riak Load-Balancing with HAPorxy"
 description: "Riak使用HAProxy作集群负载均衡"
 category: Riak
 keywords: riak load-balancing haproxy
