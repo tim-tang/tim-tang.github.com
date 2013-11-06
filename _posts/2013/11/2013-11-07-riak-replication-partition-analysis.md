@@ -55,10 +55,10 @@ Riak通过[一致性哈希算法](http://blog.csdn.net/sparkliang/article/detail
 
 我们有一个叫做favorite的数据对象，现在将它存入Riak，假设3号虚拟节点存储了这个数据，Riak会将这一分数据复制到prefere list中的另外的2个虚拟节点中，就像上图中的4/5.这里我们发现C/D/E正好是在不同的物理Riak node上，这样任何一个或两个物理节点down掉也不会影响Riak的可用性。这样就保证了high availability.
 
-## 参考
+## 推荐一些参考资料
 ---
 
-[Riak-Replication](http://docs.basho.com/riak/latest/theory/concepts/Replication/)
+- [Riak-Replication](http://docs.basho.com/riak/latest/theory/concepts/Replication/)
 
 > 注意这里并不能保证上面3 replications完全在不同的物理节点上，这是由Riak选取虚拟节点的机制决定的. Cherrs!
 
