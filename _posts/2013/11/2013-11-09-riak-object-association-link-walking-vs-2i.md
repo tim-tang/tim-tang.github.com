@@ -44,6 +44,10 @@ NoSQL数据库在处理对象关系的时候比较头痛，下面我们在Riak�
 
 > 由此看来2i(Secondary Index)来管理对象关系是最佳的策略。
 
+## 推荐阅读
+
+- [NoSQL 数据建模技术](http://coolshell.cn/articles/7270.html)
+
 > 当然我们也经常在NoSQL中使用composite-key来处理特定的业务模型，这个在某些场景下是非常有效和方便，主要看你如何来灵活制定混合主键的生成策略. Cheers!
 
 
