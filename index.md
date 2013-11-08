@@ -12,7 +12,7 @@ feed: atom.xml
 </div>
 </form>
 
-[![Feed icon](/files/css/feed-icon-14x14.png){:title="Atom feed of recent posts" .right}][feed]
+[![Feed icon](/images/feed-icon-14x14.png){:title="Atom feed of recent posts" .right}][feed]
 [feed]: /atom.xml
 
 
