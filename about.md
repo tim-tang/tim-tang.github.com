@@ -7,6 +7,8 @@ group: navigation
 
 Experienced End-To-End developer, able to take on responsibility for the analysis and development of creative projects. Always strive to find simple, common-sense solutions to complex problems, adhere to coding clean. Currently enjoys spending most of spare time with Ruby/Node.js/Linux.
 
+![tim-avatar](/images/avatar1.png)
+
 ### Tim is mixer of... 
 ---
 - Jekyll blogger.
@@ -32,6 +34,6 @@ Experienced End-To-End developer, able to take on responsibility for the analysi
 
 ### Personal Profile
 ---
-- _[&rarr; Tim's Resume ](/Tim.Tang-resume-en.pdf)_
+- _[&rarr; Tim's Resume ](/images/pdf/Tim.Tang-resume-en.pdf)_
 
 > -- TO BE A CODE ARTISAN! --
