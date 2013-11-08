@@ -15,7 +15,6 @@ var Mustache;
   }
 }(function () {
   var exports = {};
-
   exports.name = "mustache.js";
   exports.version = "0.5.1-dev";
   exports.tags = ["{{", "}}"];
