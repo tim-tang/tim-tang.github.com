@@ -22,7 +22,7 @@ environments:
 # so be sure to set them if your theme uses them.
 #
 title : Tech Talkin~
-tagline: Ruby|Rails|Vim|Mac|Linux
+tagline: Ruby|NoSQL|NodeJS|Vim|Mac|Linux
 author :
   name : Tim.Tang,Linux,ROR,Mac,Vim,Git
   email : tang.jilong@gmail.com
