@@ -3,7 +3,6 @@
 permalink: /blog/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "yuicompressor-2.4.7.jar"]
-auto: true
 pygments: true
 safe: false
 #lsi: false

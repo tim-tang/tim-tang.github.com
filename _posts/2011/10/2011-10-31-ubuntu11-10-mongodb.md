@@ -7,12 +7,15 @@ keywords: ubuntu11 mongodb installation
 tags: [Ubuntu, MongoDB]
 location: Suzhou, China
 ---
+
 下面简单介绍下MongoDB在Ubuntu上的安装:
 
-##下载MongoDB，从[MongoDB官方网站][1]
+##下载MongoDB，从[MongoDB官方网站](http://www.mongodb.org)
+
 ##解压下载文件：
 
-     tar xzf mongodb-linux-i686-2.0.0.tgz
+     $ tar -xzf mongodb-linux-i686-2.0.0.tgz
+
 ##创建数据存放目录：
 
      $sudo mkdir -p /data/db/
@@ -30,4 +33,3 @@ location: Suzhou, China
      { "_id" : ObjectId("4eae68e06fad58973cf5f17b"), "a" : 1 }
 
 >正确显示查询结果即可  (原创文章)
-[1]: http://www.mongodb.org "MongoDB"

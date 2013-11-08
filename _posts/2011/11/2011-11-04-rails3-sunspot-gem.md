@@ -8,7 +8,7 @@ tags: [Rails, RubyGem]
 location: Suzhou, China
 alias: [/RubyOnRails/2011/11/04/rails3-sunspot-gem]
 ---
-在网站中经常用到全文检索，这样出于使用的方便打算给Everyday也做个全文检索的功能，网上比较了几个全文检索的gem,发现sunspot(内置了solr引擎)比较适合我的需求，并没有用到之前名气稍大的think_sphinx,下面介绍下rails3和[***Sunspot***][1]的集成：
+在网站中经常用到全文检索，这样出于使用的方便打算给Everyday也做个全文检索的功能，网上比较了几个全文检索的gem,发现sunspot(内置了solr引擎)比较适合我的需求，并没有用到之前名气稍大的think_sphinx,下面介绍下rails3和[***Sunspot***](http://outoftime.github.com/sunspot/)的集成：
 
 ##安装sunspot gem:
 
@@ -59,7 +59,7 @@ alias: [/RubyOnRails/2011/11/04/rails3-sunspot-gem]
 	$ bundle exec rake sunspot:reindex
 
 ##添加页面search form代码：
-![alt text][2]
+![search code](http://cms.everyday-cn.com/system/pictures/973/large__search.png?1320390727)
 
 ##controller中增加方法：
 
@@ -75,7 +75,7 @@ alias: [/RubyOnRails/2011/11/04/rails3-sunspot-gem]
 	get 'search_list' => :search_list, :as => :search_list
 
 ##启动rails服务，测试结果如下：
-![sunspot][3]
+![searchResult](http://cms.everyday-cn.com/system/pictures/974/large_result_list.png?1320391117)
 
 > ***需要注意的是当把solr服务器关闭后，我们需要重新reindex记录*** （原创文章）
 
@@ -86,7 +86,3 @@ alias: [/RubyOnRails/2011/11/04/rails3-sunspot-gem]
 	bundle exec rake sunspot:reindex RAILS_ENV=production
 	production环境需要安装jdk环境，否则无法启动服务，查看服务是否启动：
 	$ ps -ef|grep solr
-
-  [1]: http://outoftime.github.com/sunspot/ "sunspot"
-  [2]: http://cms.everyday-cn.com/system/pictures/973/large__search.png?1320390727 "search code"
-  [3]: http://cms.everyday-cn.com/system/pictures/974/large_result_list.png?1320391117 "search_results"

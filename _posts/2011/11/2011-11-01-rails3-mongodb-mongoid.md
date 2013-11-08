@@ -10,7 +10,7 @@ alias: [/RubyOnRails/2011/11/01/rails3-mongodb-mongoid]
 ---
 一直想尝试下rails3和mongodb,mongoid的集成使用，网上找了一圈没发现有好的文档，最后只能自己动手了，主要参考了railscasts和mongoid的官方文档，下面介绍下具体实现:
 
-##前提条件MongoDB已经成功安装，具体安装可参考：[*Ubuntu11.10,MongoDB安装测试*][1]
+##前提条件MongoDB已经成功安装，具体安装可参考：[*Ubuntu11.10,MongoDB安装测试*](http://timtang.me/blog/2011/10/31/ubuntu11-10-mongodb)
 
 ##下面开始安装mongid gem:
 
@@ -43,10 +43,10 @@ alias: [/RubyOnRails/2011/11/01/rails3-mongodb-mongoid]
 	$ rm -f blog_mongo/config/database.yml
 
 ##现在我需要产生一个blog的scaffold
-![mongoid][2]
+![mongoid](http://cms.everyday-cn.com/system/pictures/953/large_mongo_scaffold.png?1320105964)
 
 ##和一个comment的model
-![comment][3]
+![comment](http://cms.everyday-cn.com/system/pictures/950/large_g_model.png?1320105960)
 
 ##下面我们需要修改相应的文件，首先是blog_mongo/app/models/blog.rb：
 
@@ -74,7 +74,7 @@ alias: [/RubyOnRails/2011/11/01/rails3-mongodb-mongoid]
 	end
 
 ##到这里我们还需要产生一个comment的controller:
-![controller][4]
+![controller](http://cms.everyday-cn.com/system/pictures/949/large_g_controller_comments.png?1320105958)
 
 ##修改blog_mongo/app/controllers/comments_controller.rb增加方法：
 
@@ -111,9 +111,4 @@ alias: [/RubyOnRails/2011/11/01/rails3-mongodb-mongoid]
 
 ##启动服务就可有正常运行了，下面看看运行结果了！
 
-> (原创文章)
-
-  [1]: http://tim.everyday-cn.com/zh/show_blog/ubuntu11-10-mongodb "MongoDB Installation"
-  [2]: http://cms.everyday-cn.com/system/pictures/953/large_mongo_scaffold.png?1320105964 "scaffold"
-  [3]: http://cms.everyday-cn.com/system/pictures/950/large_g_model.png?1320105960 "mongoid comment"
-  [4]: http://cms.everyday-cn.com/system/pictures/949/large_g_controller_comments.png?1320105958 "controller"
+> Cheers!
