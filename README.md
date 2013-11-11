@@ -1,7 +1,5 @@
 # Personal Blog With Jekyll
 
-[Tech Talkin~](http://timtang.me)
-
 [![Dependency Status](https://gemnasium.com/tim-tang/tim-tang.github.com.png)](https://gemnasium.com/tim-tang/tim-tang.github.com)
 
 
