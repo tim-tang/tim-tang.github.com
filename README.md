@@ -1,4 +1,9 @@
-# Personal Blog With Jekyll
+___________           .__      ___________      .__   __      ___     
+\__    ___/___   ____ |  |__   \__    ___/____  |  | |  | __ / _ \_/\ 
+  |    |_/ __ \_/ ___\|  |  \    |    |  \__  \ |  | |  |/ / \/ \___/ 
+    |    |\  ___/\  \___|   Y  \   |    |   / __ \|  |_|    <           
+      |____| \___  >\___  >___|  /   |____|  (____  /____/__|_ \          
+                   \/     \/     \/                 \/          \/      
 
 [![Dependency Status](https://gemnasium.com/tim-tang/tim-tang.github.com.png)](https://gemnasium.com/tim-tang/tim-tang.github.com)
 
