@@ -67,5 +67,7 @@ location: Suzhou, China
 
 - [A Little Riak Book](http://littleriakbook.com)
 
+- [Node.js中实现MongoDB的两阶段提交](http://www.cnodejs.org/topic/5070492b01d0b80148dc45f8)
+
 > Riak 在运维上的优越性和0宕机的高可用性，是我们选择它的重要原因 Cheers!
 
