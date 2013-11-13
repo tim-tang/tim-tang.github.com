@@ -61,6 +61,7 @@ Riak通过[一致性哈希算法](http://blog.csdn.net/sparkliang/article/detail
 - [Riak-Replication](http://docs.basho.com/riak/latest/theory/concepts/Replication/)
 - 这次培训的Keynote &rarr; [Introducing Riak](/images/pdf/riak-intro.pdf)
 - [Call me maybe: RICON East talk](http://aphyr.com/posts/296-call-me-maybe-ricon-east-talk)
+- [Call me maybe: Carly Rae Jepsen and the perils of network partitions](http://aphyr.com/posts/281-call-me-maybe-carly-rae-jepsen-and-the-perils-of-network-partitions)
 
 > 注意这里并不能保证上面3 replications完全在不同的物理节点上，这是由Riak选取虚拟节点的机制决定的. Cherrs!
 
