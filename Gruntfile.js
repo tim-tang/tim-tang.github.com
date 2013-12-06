@@ -62,6 +62,21 @@ module.exports = function(grunt) {
         },
         clean: {
             dist: ['assets/themes/mark-reid/css/main.min.css', 'assets/themes/mark-reid/js/scripts.min.js']
+        },
+        rsync: {
+            options: {
+                args: ["--verbose"],
+                exclude: [".git*", ".DS_Store"],
+                recursive: true
+            },
+            prod: {
+                options: {
+                    src: "./_site",
+                    dest: "/srv/www/tim-tang.github.com/public_html/jekyll/_site",
+                    host: "root@173.255.253.43",
+                    syncDestIgnoreExcl: true
+                }
+            }
         }
     });
 
@@ -73,9 +88,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-recess');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-svgmin');
+    grunt.loadNpmTasks("grunt-rsync");
 
     // Register tasks
     grunt.registerTask('default', ['clean', 'recess', 'uglify', 'imagemin', 'svgmin']);
     grunt.registerTask('dev', ['watch']);
-
+    grunt.registerTask('dp', ['rsync']);
 };
