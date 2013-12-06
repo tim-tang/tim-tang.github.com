@@ -34,3 +34,7 @@ Visit the project's website at [http://timtang.me](http://timtang.me)
 
 > Cheers!
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tim-tang/tim-tang.github.com/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
