@@ -13,11 +13,11 @@ Experienced End-To-End developer, able to take on responsibility for the analysi
 ---
 - Jekyll blogger.
 - JEE/WEB coder.
-- Ruby/Shell/ROR/NodeJS/Vertx lover.
+- Ruby/Python/NodeJS/Flask/SeaJS/Vertx lover.
 - Fans of Mac OSX/NoSQL/Linux.
 - Linode/GitHub/StackOverflow user. 
 - Vim/Terminal addictor.
-- And [more...](/Tim.Tang-resume-en.pdf)
+- And [more...](/images/pdf/Tim.Tang-resume-en.pdf)
 
 ### Contact Me
 ---
