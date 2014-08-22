@@ -36,7 +36,14 @@ Visit the project's website at [http://timtang.me](http://timtang.me)
 
 ## TODO:
 
-- Use google font on local.
+- Replace rsync with fabric to deploy.
+- Auto deploy with travis.
+- Replace logo and favicon.
+- Use google font locally & change chinese font.
+- Remove category page & update menu.
+- Concat css/js with grunt
+- Uploading assets files to OSS.
+- Write more blogs...
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tim-tang/tim-tang.github.com/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
