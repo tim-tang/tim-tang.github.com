@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcome to Tech Talkin~ &rarr; {Ruby|ROR|Vim|Mac|Linux}
+title: Welcome to Tech Talk~ &rarr; {Python|Vim|NoSQL|Linux}
 tagline: Supporting tagline
 feed: atom.xml
 ---

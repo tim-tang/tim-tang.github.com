@@ -21,7 +21,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,t
 /* @end */
 
 body {
-	font-family:Gill Sans MT, Gill Sans, Palatino, georgia, "times new roman", serif;
+	font-family: 'Raleway', Gill Sans, Palatino, georgia, "times new roman", serif;
 	background-color: whitesmoke;
 	background-position: center -18em;
 	background-repeat: repeat-x;
@@ -43,9 +43,9 @@ a.pdf:before {
 h1,h2,h3,h4 {
 	line-height:1em;
 	font-size:1.3em;
-	font-weight: normal;
+	font-weight: 700;
 	clear: left;
-	font-family:Gill Sans MT, Gill Sans, Palatino,'lucida grande', sans-serif;
+	font-family: 'Raleway', sans-serif;
 }
 h1 {font-size:25px; margin-bottom: 1em; }
 h2 {
@@ -137,7 +137,7 @@ line-height: 1.864em;
 blockquote {
 	padding: 13px 13px 21px 15px;
 	margin-bottom: 18px;
-	font-family:Gill Sans MT,Gill Sans,georgia,serif;
+	font-family: 'Raleway', serif;
 	font-style: italic;
 }
 
@@ -145,7 +145,7 @@ blockquote:before {
 	content:"\201C";
 	font-size:40px;
 	margin-left:-10px;
-	font-family:Gill Sans MT,Gill Sans,georgia,serif;
+	font-family: 'Raleway', serif;
 	color: grey;
 }
 
@@ -231,11 +231,12 @@ ul.compact li a {
 	margin-bottom: 0;
 }
 #header h1 {
-	font-family:Gill Sans MT, Gill Sans, Palatino, georgia, "times new roman", serif;
+	font-family: 'Raleway', serif;
 	margin-bottom: 0;
 	line-height: 0.9em;
 	display: block;
-	font-weight: normal;
+    font-weight: 900;
+	/*font-weight: normal;*/
 }
 
 #header ul {
@@ -308,7 +309,7 @@ body#Kith #header a.kith
 	padding-right: 3em;
 }
 .section h1 {
-	font-family:Gill Sans MT, Gill Sans, Palatino, georgia, serif;
+	font-family: 'Raleway', serif;
 	font-size: 100%;
 	line-height: 1.43em;
 	position: absolute;
@@ -380,12 +381,15 @@ pre:hover {
 	border-right: none;
 	overflow: visible;
 }
+
 code {
-	font-family:Gill Sans MT,Gill Sans, Palatino, georgia, "times new roman", serif;
+	font-family: 'Raleway', serif;
 	font-size: 1.1em;
+    font-weight: 300;
 	background-color: #f7f7ff;
 	line-height: 1.4em;
 }
+
 pre > code {
 	background-color: transparent;
 }
@@ -596,3 +600,37 @@ img.maruku-png { }
   -webkit-transition-duration: 0.5s; /* Safari and Chrome */
 }
 .icons_go_top { width: 16px; height: 16px; background: url(../images/go_top.png);}
+
+/*---------------------------------------------------
+ * Google Fonts Style
+ * ------------------------------------------------*/
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), local('Raleway-Light'), url(../fonts/Raleway-Light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), url(../fonts/Raleway.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Raleway Medium'), local('Raleway-Medium'), url(../fonts/Raleway-Medium.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway Bold'), local('Raleway-Bold'), url(../fonts/Raleway-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Raleway Heavy'), local('Raleway-Heavy'), url(../fonts/Raleway-Heavy.woff) format('woff');
+}

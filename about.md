@@ -5,7 +5,7 @@ tagline: Supporting tagline
 group: navigation
 ---
 
-Experienced End-To-End developer, able to take on responsibility for the analysis and development of creative projects. Always strive to find simple, common-sense solutions to complex problems, adhere to coding clean. Currently enjoys spending most of spare time with Ruby/Node.js/Linux.
+Experienced End-To-End developer, able to take on responsibility for the analysis and development of creative projects. Always strive to find simple, common-sense solutions to complex problems, adhere to coding clean. Currently enjoys spending most of spare time with Ruby/Python/Node.JS/Linux.
 
 ![tim-avatar](/images/avatar1.png)
 
@@ -17,7 +17,7 @@ Experienced End-To-End developer, able to take on responsibility for the analysi
 - Fans of Mac OSX/NoSQL/Linux.
 - Linode/GitHub/StackOverflow user. 
 - Vim/Terminal addictor.
-- And [more...](/images/pdf/Tim.Tang-resume-en.pdf)
+- And [more...](/images/pdf/Tim.Tang.pdf)
 
 ### Contact Me
 ---
@@ -34,6 +34,6 @@ Experienced End-To-End developer, able to take on responsibility for the analysi
 
 ### Personal Profile
 ---
-- _[&rarr; Tim's Resume ](/images/pdf/Tim.Tang-resume-en.pdf)_
+- _[&rarr; Tim's Resume ](/images/pdf/Tim.Tang.pdf)_
 
 > -- TO BE A CODE ARTISAN! --

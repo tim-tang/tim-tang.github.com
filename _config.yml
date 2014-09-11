@@ -22,9 +22,9 @@ environments:
 # so be sure to set them if your theme uses them.
 #
 title : Tech Talkin~
-tagline: Ruby|NoSQL|NodeJS|Vim|Mac|Linux
+tagline: Python|NoSQL|NodeJS|Vim|Linux
 author :
-  name : Tim.Tang,Linux,ROR,Mac,Vim,Git
+  name : Tim.Tang,Linux,Node.JS,Vim,Python
   email : tang.jilong@gmail.com
   github : tang.jilong@139.com
   twitter : tangjilong
