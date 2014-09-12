@@ -73,7 +73,7 @@ module.exports = function(grunt) {
                 options: {
                     src: "./_site",
                     dest: "/srv/www/tim-tang.github.com/public_html/jekyll/_site",
-                    host: "root@173.255.253.43",
+                    host: "hash@173.255.253.43",
                     syncDestIgnoreExcl: true
                 }
             }
