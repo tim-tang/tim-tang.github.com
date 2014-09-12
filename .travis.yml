@@ -1,6 +1,8 @@
 language: ruby
 node_js:
   - "0.10"
+python:
+  - '2.7'
 rvm:
   - 2.0.0
 notifications:
@@ -11,17 +13,19 @@ before_script:
   - base64 --decode --ignore-garbage ~/.ssh/id_rsa_base64 > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - pip install fabric
   - bundle install
   - npm install
   - npm install -g grunt-cli
 script:
-  - echo 'Build assets files.'
+  - echo 'Build Assets Files.'
   - grunt
-  - echo 'Build entire site.'
+  - echo 'Build Entire Site.'
   - jekyll build -t
-  - rsync -avz -i ~/.ssh/id_rsa --stats -ii --delete --progress _site/ hash@173.255.253.43:/srv/www/tim-tang.github.com/public_html/jekyll/_site
+ # - rsync -avz -i ~/.ssh/id_rsa --stats -ii --delete --progress _site/ hash@173.255.253.43:/srv/www/tim-tang.github.com/public_html/jekyll/_site
 after_success:
   - echo 'Ready to deploy distro to Linode server.'
+  - fab setup deploy
 branches:
   only:
   - master
