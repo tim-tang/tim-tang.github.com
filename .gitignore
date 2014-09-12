@@ -2,3 +2,4 @@
 _site/*
 *.swp
 node_modules/
+*.log
