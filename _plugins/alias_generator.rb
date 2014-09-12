@@ -24,8 +24,8 @@
 # Author: Thomas Mango
 # Site: http://thomasmango.com
 # Plugin Source: http://github.com/tsmango/jekyll_alias_generator
-# Site Source: http://github.com/tsmango/thomasmango.com
-# PLugin License: MIT
+# Site Source: http://github.com/tsmango/tsmango.github.com
+# Plugin License: MIT
 
 module Jekyll
 
@@ -71,7 +71,7 @@ module Jekyll
         end
 
         (alias_index_path.split('/').size + 1).times do |sections|
-          @site.static_files << Jekyll::AliasFile.new(@site, @site.dest, alias_index_path.split('/')[0, sections].join('/'), nil)
+          @site.static_files << Jekyll::AliasFile.new(@site, @site.dest, alias_index_path.split('/')[0, sections].join('/'), '')
         end
       end
     end

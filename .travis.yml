@@ -1,0 +1,22 @@
+language: ruby
+node_js:
+  - "0.10"
+rvm:
+  - 2.0.0
+notifications:
+  email:
+    - tang.jilong@gmail.com
+before_script:
+  - bundle install
+  - npm install
+  - npm install -g grunt-cli
+script:
+  - echo 'Build assets files.'
+  - grunt
+  - echo 'Build entire site.'
+  - jekyll build -t
+after_success:
+  - echo 'Ready to deploy distro to Linode server.'
+branches:
+  only:
+  - master

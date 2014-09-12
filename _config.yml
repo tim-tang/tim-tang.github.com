@@ -3,8 +3,8 @@
 permalink: /blog/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md","CNAME", "Gruntfile.js", "package.json", "node_modules"]
-pygments: true
-safe: false
+highlighter: pygments
+safe: true
 #lsi: false
 #markdown: rdiscount
 coffeescript_folder: ./assets/themes/mark-reid/coffee/*
