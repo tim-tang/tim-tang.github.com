@@ -1,10 +1,12 @@
   ```
-  ___________           .__      ___________      .__   __      ___     
-  \__    ___/___   ____ |  |__   \__    ___/____  |  | |  | __ / _ \_/\ 
-    |    |_/ __ \_/ ___\|  |  \    |    |  \__  \ |  | |  |/ / \/ \___/ 
-    |    |\  ___/\  \___|   Y  \   |    |   / __ \|  |_|    <           
-    |____| \___  >\___  >___|  /   |____|  (____  /____/__|_ \          
-               \/     \/     \/                 \/          \/      
+   _________   _______    ________   ___  ___          _________   ________   ___        ___  __       
+  |\___   ___\|\  ___ \  |\   ____\ |\  \|\  \        |\___   ___\|\   __  \ |\  \      |\  \|\  \     
+  \|___ \  \_|\ \   __/| \ \  \___| \ \  \\\  \       \|___ \  \_|\ \  \|\  \\ \  \     \ \  \/  /|_   
+       \ \  \  \ \  \_|/__\ \  \     \ \   __  \           \ \  \  \ \   __  \\ \  \     \ \   ___  \  
+        \ \  \  \ \  \_|\ \\ \  \____ \ \  \ \  \           \ \  \  \ \  \ \  \\ \  \____ \ \  \\ \  \ 
+         \ \__\  \ \_______\\ \_______\\ \__\ \__\           \ \__\  \ \__\ \__\\ \_______\\ \__\\ \__\
+          \|__|   \|_______| \|_______| \|__|\|__|            \|__|   \|__|\|__| \|_______| \|__| \|__|
+                                                                                                                                                                                                                                                                                      
   ```
 
 [![Build Status](https://travis-ci.org/tim-tang/tim-tang.github.com.svg)](https://travis-ci.org/tim-tang/tim-tang.github.com)
@@ -14,11 +16,12 @@ Visit the project's website at [http://timtang.me](http://timtang.me)
 
 ## Bootstrap blog
 
-- Install Jekyll and Grunt dependency
+- Install dependencies
 
     ```
-    $ sudo gem install jekyll 
+    $ bundle install 
     $ npm install
+    $ npm install -g grunt-cli
     ```
     
 - Go to <BLOG_HOME>/ and run Grunt to optimize image/css/js
