@@ -15,7 +15,7 @@ script:
   - grunt
   - echo 'Build entire site.'
   - jekyll build -t
-  - rsync -avz --delete --progress _site/ root:/srv/www/tim-tang.github.com/public_html/jekyll/_site
+  #- rsync -avz --delete --progress _site/ hash@173.255.253.43:/srv/www/tim-tang.github.com/public_html/jekyll/_site
 after_success:
   - echo 'Ready to deploy distro to Linode server.'
 branches:
