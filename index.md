@@ -28,7 +28,7 @@ feed: atom.xml
 </div>
 {% endfor %}
 
-## [**Older posts &rarr;**](/archive.html)
+## [**Older posts &rarr;**](/categories.html)
 
 <script type="text/javascript">
 //<![CDATA[
