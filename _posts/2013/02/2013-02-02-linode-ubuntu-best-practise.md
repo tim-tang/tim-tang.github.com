@@ -41,6 +41,19 @@ location: Suzhou, China
     $ chmod 700 .ssh
     $ chmod 600 .ssh/authorized_keys
 
+> 当然为了更安全，还需要修改/etc/ssh/sshd_config文件，禁止 root 远程登录,禁止口令登录,强制要 求用 private/public key 登录
+
+    PermitRootLogin no
+    X11Forwarding no
+    UsePAM yes
+    PasswordAuthentication no
+    ChallengeResponseAuthentication no
+    AuthorizedKeysFile .ssh/authorized_keys #注意这个authorized_keys的文件位置, 有时需要注意不要使用/root/.ssh/authorized_keys
+
+> 修改好SSH服务后需要重启服务
+
+    $ sudo service ssh reload
+
 > 这样你就可以直接登陆远程服务器，无须输入秘密！
 
 ## 我们有时会处于安全考虑避免使用root用户登陆，可以如下设置：
