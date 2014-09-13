@@ -2,6 +2,7 @@
 Tech Talk Jekyll blog auto deployment tool.
 """
 from fabric.api import *
+from fabric.contrib.project import *
 from fabric.contrib.files import exists
 from fabric.colors import green, red
 
@@ -25,9 +26,10 @@ def setup():
 
 def deploy():
     """ Ready to deploy Jekyll blog """
-    if exists(JEKYLL_HOME):
+    if not exists(JEKYLL_HOME):
         run("mkdir -p %s" % JEKYLL_HOME)
-    else:
-       run('rm -rf %s/_site' % JEKYLL_HOME)
-    put("_site", JEKYLL_HOME)
+    #else:
+    #   run('rm -rf %s/_site' % JEKYLL_HOME)
+    rsync_project(JEKYLL_HOME, '_site', delete=True)
+    #upload_project("_site", JEKYLL_HOME)
     print(red("Deploy Linode production server succeed!"))
