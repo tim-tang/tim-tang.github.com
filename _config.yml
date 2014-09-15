@@ -2,7 +2,7 @@
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /blog/:year/:month/:day/:title
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md","CNAME", "Gruntfile.js", "package.json", "node_modules"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md","CNAME", "Gruntfile.js", "package.json", "node_modules", "fabfile.py", "Gemfile", "bin"]
 highlighter: pygments
 safe: true
 #lsi: false
@@ -15,7 +15,7 @@ environments:
   production:
     url: http://timtang.me
     remote:
-      connection: timtang@173.255.253.43
+      connection: hash@173.255.253.43
       path: /srv/www/tim-tang.github.com/public_html/jekyll/_site
 
 # Themes are encouraged to use these universal variables
