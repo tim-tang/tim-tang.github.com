@@ -2,7 +2,6 @@
 Tech Talk Jekyll blog auto deployment tool.
 """
 from fabric.api import *
-from fabric.contrib.project import *
 from fabric.contrib.files import exists
 from fabric.colors import green, red
 
@@ -22,7 +21,7 @@ def setup():
     env.user = DEPLOY_USER
     env.key_filename = TRAVIS_SSH_KEY
     env.port = 22
-    print(red("Login Linode production server succeed!"))
+    print(red("Login Linode production server succeed!!!"))
 
 def deploy():
     """ Ready to deploy Jekyll blog """
@@ -33,4 +32,4 @@ def deploy():
     #rsync_project(JEKYLL_HOME, '_site', delete=True)
     #upload_project("_site", JEKYLL_HOME)
     put('_site', JEKYLL_HOME)
-    print(red("Deploy Linode production server succeed!"))
+    print(red("Deploy Linode Production Server Succeed!!!"))

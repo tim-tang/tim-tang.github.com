@@ -23,7 +23,6 @@ script:
   - echo 'Build Entire Site.'
   - sed 's/production_env: false/production_env: true/g' _config.yml > _config_production.yml
   - jekyll build --config _config_production.yml
- # - rsync -avz -i ~/.ssh/id_rsa --stats -ii --delete --progress _site/ hash@173.255.253.43:/srv/www/tim-tang.github.com/public_html/jekyll/_site
 after_success:
   - echo 'Ready to deploy distro to Linode server.'
   - fab setup deploy
