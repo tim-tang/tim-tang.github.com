@@ -21,7 +21,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,t
 /* @end */
 
 body {
-	font-family: 'Raleway', Gill Sans, Palatino, georgia, "times new roman", serif;
+	font-family: 'Raleway', Gill Sans, serif;
 	background-color: whitesmoke;
 	background-position: center -18em;
 	background-repeat: repeat-x;
@@ -367,7 +367,8 @@ pre {
 	font-size: 0.75em; /* Hack to make code look same size as body font */
 	line-height: 1.5em;
 	color: #111;
-	background: #fffff0;
+	background: #fffff0;	
+	/*background: #2C2C2C;*/
 	border: 1px solid #ddc;
 	padding: 0.5em 1em;
 	overflow: hidden;
@@ -385,8 +386,9 @@ pre:hover {
 code {
 	font-family: 'Raleway', serif;
 	font-size: 1.1em;
-    font-weight: 300;
+   font-weight: 300;
 	background-color: #f7f7ff;
+	/*background-color: #FDFDFD;*/
 	line-height: 1.4em;
 }
 
