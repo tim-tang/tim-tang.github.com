@@ -10,10 +10,11 @@ safe: true
 coffeescript_folder: ./assets/themes/mark-reid/coffee/*
 destination: _site
 multiviews: true
-
+production_env: false
 environments:
   production:
     url: http://timtang.me
+
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
