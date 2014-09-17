@@ -14,9 +14,6 @@ multiviews: true
 environments:
   production:
     url: http://timtang.me
-    remote:
-      connection: hash@173.255.253.43
-      path: /srv/www/tim-tang.github.com/public_html/jekyll/_site
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
