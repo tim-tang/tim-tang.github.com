@@ -21,7 +21,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,t
 /* @end */
 
 body {
-	font-family: 'Raleway', Gill Sans, serif;
+	font-family: 'Goudy Bookletter 1911', 'Raleway', Gill Sans, serif;
 	background-color: whitesmoke;
 	background-position: center -18em;
 	background-repeat: repeat-x;
@@ -45,7 +45,7 @@ h1,h2,h3,h4 {
 	font-size:1.3em;
 	font-weight: 700;
 	clear: left;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Goudy Bookletter 1911', 'Raleway', sans-serif;
 }
 h1 {font-size:25px; margin-bottom: 1em; }
 h2 {
@@ -137,7 +137,7 @@ line-height: 1.864em;
 blockquote {
 	padding: 13px 13px 21px 15px;
 	margin-bottom: 18px;
-	font-family: 'Raleway', serif;
+	font-family: 'Goudy Bookletter 1911', 'Raleway', serif;
 	font-style: italic;
 }
 
@@ -145,7 +145,7 @@ blockquote:before {
 	content:"\201C";
 	font-size:40px;
 	margin-left:-10px;
-	font-family: 'Raleway', serif;
+	font-family: 'Goudy Bookletter 1911', 'Raleway', serif;
 	color: grey;
 }
 
@@ -231,7 +231,7 @@ ul.compact li a {
 	margin-bottom: 0;
 }
 #header h1 {
-	font-family: 'Raleway', serif;
+	font-family: 'Goudy Bookletter 1911', 'Raleway', serif;
 	margin-bottom: 0;
 	line-height: 0.9em;
 	display: block;
@@ -635,4 +635,10 @@ img.maruku-png { }
   font-style: normal;
   font-weight: 900;
   src: local('Raleway Heavy'), local('Raleway-Heavy'), url(../fonts/Raleway-Heavy.woff) format('woff');
+}
+@font-face {
+  font-family: 'Goudy Bookletter 1911';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Goudy Bookletter 1911'), local('GoudyBookletter1911'), url(../fonts/GoudyBookletter1911.woff) format('woff');
 }
