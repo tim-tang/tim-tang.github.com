@@ -40,16 +40,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        svgmin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'images/',
-                    src: '{,*/}*.svg',
-                    dest: 'images/'
-                }]
-            }
-        },
         watch: {
             css: {
                 files: ['assets/thems/mark-reid/css/*.css'],
@@ -72,9 +62,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-recess');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
-    grunt.loadNpmTasks('grunt-svgmin');
 
     // Register tasks
-    grunt.registerTask('default', ['clean', 'recess', 'uglify', 'imagemin', 'svgmin']);
+    grunt.registerTask('default', ['clean', 'recess', 'uglify', 'imagemin']);
     grunt.registerTask('dev', ['watch']);
 };

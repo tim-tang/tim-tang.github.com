@@ -4,4 +4,6 @@ _site/*
 node_modules/
 *.log
 *.pyc
+assets/themes/mark-reid/css/main.min.css
+assets/themes/mark-reid/js/main.min.js
 
