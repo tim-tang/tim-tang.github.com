@@ -6,7 +6,7 @@ module.exports = function(grunt) {
             options: {
                 jshintrc: '.jshintrc'
             },
-            all: ['Gruntfile.js', 'assets/themes/mark-reid/js/*.js', '!assets/themes/mark-reid/js/scripts.min.js']
+            all: ['Gruntfile.js', 'assets/themes/mark-reid/js/*.js', '!assets/themes/mark-reid/js/main.min.js']
         },
         recess: {
             dist: {
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            dist: ['assets/themes/mark-reid/css/main.min.css', 'assets/themes/mark-reid/js/scripts.min.js']
+            dist: ['assets/themes/mark-reid/css/main.min.css', 'assets/themes/mark-reid/js/main.min.js']
         }
     });
 
