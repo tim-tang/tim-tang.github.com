@@ -384,7 +384,7 @@ pre:hover {
 }
 
 code {
-	font-family: 'Raleway', serif;
+	font-family: 'Sanchez', 'Raleway', serif;
 	font-size: 1.1em;
    font-weight: 300;
 	background-color: #f7f7ff;
@@ -641,4 +641,10 @@ img.maruku-png { }
   font-style: normal;
   font-weight: 400;
   src: local('Goudy Bookletter 1911'), local('GoudyBookletter1911'), url(../fonts/GoudyBookletter1911.woff) format('woff');
+}
+@font-face {
+  font-family: 'Sanchez';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sanchez'), local('Sanchez-Regular'), url(../fonts/Sanchez.ttf) format('truetype');
 }
