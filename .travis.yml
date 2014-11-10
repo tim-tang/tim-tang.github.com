@@ -22,7 +22,7 @@ script:
   - grunt
   - echo 'Build Entire Site.'
  # - sed 's/production_env: false/production_env: true/g' _config.yml > _config_production.yml
-  - jekyll build
+  - bundle exec jekyll build
 after_success:
   - echo 'Ready to deploy distro to Linode server.'
   - fab setup deploy
