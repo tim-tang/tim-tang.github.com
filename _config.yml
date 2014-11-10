@@ -10,7 +10,7 @@ safe: true
 coffeescript_folder: ./assets/themes/mark-reid/coffee/*
 destination: _site
 multiviews: true
-production_env: false
+production_env: true
 environments:
   production:
     url: http://timtang.me
