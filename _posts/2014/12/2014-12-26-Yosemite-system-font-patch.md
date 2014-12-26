@@ -46,9 +46,9 @@ Mac OSX Yosemite系统字体修改找了很多但是都不完美，终于在逛G
 
 > 鉴于这个问题 https://github.com/dtinth/YosemiteSystemFontPatcher/issues/16 我们需要做如下操作！
 
- $ cp *.ttf /Library/Fonts/
- $ cd /Library/Fonts/ && sudo chown root:wheel System\ Avenir\ Next\ *
- $ diskutil repairPermissions /
+    $ cp *.ttf /Library/Fonts/
+    $ cd /Library/Fonts/ && sudo chown root:wheel System\ Avenir\ Next\ *
+    $ diskutil repairPermissions /
 
 > 将用户登出以后重新登录, 就可以大功告成了!
 
