@@ -19,6 +19,7 @@ location: Suzhou, China
 ## 安装步骤
 ----
 
+
     $ git clone https://github.com/tim-tang/dockerfiles.git  
 
 > Clone 我的dockerfile, 并进入工程dockerfiles/oracle11gr2目录, 记得把你的oracle安装文件也解压到这个目录下!
@@ -54,9 +55,9 @@ location: Suzhou, China
 > 这里如果你有Registry repo可以直接push到registry上让别人也可以使用!
 
 ## 一些不错的参考资料
-----
+---
 
-- [](http://fabiokung.com/2014/03/13/memory-inside-linux-containers/)
+- http://fabiokung.com/2014/03/13/memory-inside-linux-containers/
 - [docker资源管理](http://segmentfault.com/blog/yexiaobai/1190000000681188#fnref:footnote2)
 
 > Cheers!
