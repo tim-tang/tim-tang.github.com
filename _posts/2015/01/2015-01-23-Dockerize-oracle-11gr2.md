@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Dockerize Oracle11gR2  DB"
+title: "Dockerize Oracle11gR2 DB"
 description: "Docker基于OracleLinux 6.6 image安装Oracle11gR2."
 category: docker
-keywords: Docker Oracle11g
+keywords: Docker Oracle11gr2
 tags: [Docker]
 location: Suzhou, China
 ---
@@ -17,6 +17,7 @@ location: Suzhou, China
 - 准备好Oracle11gR2的安装文件(Linux 版本)
 
 ## 安装步骤
+----
 
     $ git clone https://github.com/tim-tang/dockerfiles.git  
 
@@ -32,13 +33,13 @@ location: Suzhou, China
     $ ssh -p 2222 root@localhost #登陆container使用你之前设置的root用户密码
 
 > 下面我们cd到/dockerfiles/oracle11gr2目录来安装oracle db.
-    
+
     $ su - oracle
     $ cd  /dockerfiles/oracle11gr2/database
     $ ./runInstaller -debug -silent -force -waitforcompletion -ignorePrereq -responseFile /dockerfiles/oracle11gr2/response/db_install.rsp
 
 > 等待安装完成, 使用root用户执行如下oracle自带配置脚本
-    
+
     $ su root
     $ sh /opt/app/oraInventory/orainstRoot.sh
     $ sh /opt/app/oracle/product/11.2.0/db_1/root.sh
@@ -55,7 +56,7 @@ location: Suzhou, China
 ## 一些不错的参考资料
 ----
 
-- http://fabiokung.com/2014/03/13/memory-inside-linux-containers/
-- docker资源管理 -> http://segmentfault.com/blog/yexiaobai/1190000000681188#fnref:footnote2
+- [](http://fabiokung.com/2014/03/13/memory-inside-linux-containers/)
+- [docker资源管理](http://segmentfault.com/blog/yexiaobai/1190000000681188#fnref:footnote2)
 
 > Cheers!
