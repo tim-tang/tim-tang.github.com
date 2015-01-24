@@ -46,18 +46,19 @@ location: Suzhou, China
     $ sh /opt/app/oracle/product/11.2.0/db_1/root.sh
     $ sqlplus sys/rootme99@orcl as sysdba #测试安装
 
-> 顺带提以下如果你是通过boot2docker来安装,那就需要配置virtualbox的端口映射了, 否则Host主机是访问不到11521断口的.
+> 顺带提一下如果你是通过boot2docker来安装,那就需要配置virtualbox的端口映射了, 否则Host主机是访问不到11521端口的.
 
     $ docker commit -m='bla bla bla'  <CONTAINER_ID> localhost:5000/orcl11g
     $ boot2docker stop   # 这里注意一定要commit你的container再stop, 
     $ VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port11521,tcp,,11521,,1521”
 
-> 这里如果你有Registry repo可以直接push到registry上让别人也可以使用!
+> 这里如果你有Registry repository可以直接push到registry上让别人也可以使用!
 
 ## 一些不错的参考资料
 ---
 
 - http://fabiokung.com/2014/03/13/memory-inside-linux-containers/
 - [docker资源管理](http://segmentfault.com/blog/yexiaobai/1190000000681188#fnref:footnote2)
+- http://blog.liuts.com/post/242/
 
 > Cheers!
