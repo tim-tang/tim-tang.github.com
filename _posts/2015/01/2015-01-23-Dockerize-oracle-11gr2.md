@@ -19,11 +19,9 @@ location: Suzhou, China
 ## 安装步骤
 ----
 
+Clone 我的dockerfile, 并进入工程dockerfiles/oracle11gr2目录, 记得把你的oracle安装文件也解压到这个目录下!
 
     $ git clone https://github.com/tim-tang/dockerfiles.git  
-
-> Clone 我的dockerfile, 并进入工程dockerfiles/oracle11gr2目录, 记得把你的oracle安装文件也解压到这个目录下!
-
     $ docker pull oraclelinux:6.6  # 下载 Oracle Linux 6.6 image
 
 > 注意在开始安装前你需要修改下 set_root_pw.sh和db_install.rsp文件, 把你自己的container和数据库密码填上!
@@ -53,6 +51,12 @@ location: Suzhou, China
     $ VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port11521,tcp,,11521,,1521”
 
 > 这里如果你有Registry repository可以直接push到registry上让别人也可以使用!
+
+最后还要修改下__/etc/oratab__ 文件方便下次重启，修改如下：
+
+    orcl:/opt/app/oracle/product/11.2.0/db_1:Y
+
+> 把N改成Y, 以后直接用dbstart起服务的时候比较方便！
 
 ## 一些不错的参考资料
 ---
