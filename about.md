@@ -5,7 +5,7 @@ tagline: Supporting tagline
 group: navigation
 ---
 
-Experienced End-To-End developer, able to take on responsibility for the analysis and development of creative projects. Always strive to find simple, common-sense solutions to complex problems, adhere to coding clean. Currently enjoys spending most of spare time with SmartOS/Riak Core/Erlang/Python/NodeJS.
+ᴇxᴩᴇʀɪᴇɴᴄᴇᴅ ᴇɴᴅ-ᴛᴏ-ᴇɴᴅ ᴅᴇᴠᴇʟᴏᴩᴇʀ, ᴀʙʟᴇ ᴛᴏ ᴛᴀᴋᴇ ᴏɴ ʀᴇꜱᴩᴏɴꜱɪʙɪʟɪᴛy ꜰᴏʀ ᴛʜᴇ ᴀɴᴀʟyꜱɪꜱ ᴀɴᴅ ᴅᴇᴠᴇʟᴏᴩᴍᴇɴᴛ ᴏꜰ ᴄʀᴇᴀᴛɪᴠᴇ ᴩʀᴏᴊᴇᴄᴛꜱ. ᴀʟᴡᴀyꜱ ꜱᴛʀɪᴠᴇ ᴛᴏ ꜰɪɴᴅ ꜱɪᴍᴩʟᴇ, ᴄᴏᴍᴍᴏɴ-ꜱᴇɴꜱᴇ ꜱᴏʟᴜᴛɪᴏɴꜱ ᴛᴏ ᴄᴏᴍᴩʟᴇx ᴩʀᴏʙʟᴇᴍꜱ, ᴀᴅʜᴇʀᴇ ᴛᴏ ᴄᴏᴅɪɴɢ ᴄʟᴇᴀɴ. ᴄᴜʀʀᴇɴᴛʟy ᴇɴᴊᴏyꜱ ꜱᴩᴇɴᴅɪɴɢ ᴍᴏꜱᴛ ᴏꜰ ꜱᴩᴀʀᴇ ᴛɪᴍᴇ ᴡɪᴛʜ ꜱᴍᴀʀᴛᴏꜱ/ʀɪᴀᴋ ᴄᴏʀᴇ/ᴇʀʟᴀɴɢ/ᴩyᴛʜᴏɴ/ɴᴏᴅᴇᴊꜱ.
 
 ![tim-avatar](/images/avatar1.png)
 
@@ -24,7 +24,7 @@ Experienced End-To-End developer, able to take on responsibility for the analysi
 - Email => tang.jilong@gmail.com
 - About.me => <http://about.me/tang.jilong>
 - Twitter => @tangjilong
-- LinkedIn => [Tim.Tang Profile](http://www.linkedin.com/pub/tim-tang/45/994/238)
+- LinkedIn => [Tim.Tang Linkedin](http://www.linkedin.com/pub/tim-tang/45/994/238)
 
 
 ### GitHub Profile
@@ -35,4 +35,4 @@ Experienced End-To-End developer, able to take on responsibility for the analysi
 ---
 - _[&rarr; Tim's Resume ](/images/pdf/Tim.Tang.pdf)_
 
-> -- TO BE A CODE ARTISAN! --
+> -- 🅣🅞 🅑🅔 🅐 🅒🅞🅓🅔 🅐🅡🅣🅘🅢🅐🅝! --
