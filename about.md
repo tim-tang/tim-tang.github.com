@@ -1,6 +1,6 @@
 ---
 layout: page
-title: A Little About Me
+title: 𝔸 𝕃𝕚𝕥𝕥𝕝𝕖 𝔸𝕓𝕠𝕦𝕥 𝕄𝕖
 tagline: Supporting tagline
 group: navigation
 ---
