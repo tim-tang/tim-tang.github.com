@@ -70,11 +70,13 @@ Clone 我的dockerfile, 并进入工程dockerfiles/oracle11gr2目录, 记得把�
 ## 一些不错的参考资料
 ---
 
-- No SSHD in docker container -> http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/
-- Docker Skills -> https://groups.google.com/forum/#!topic/dockercn/silv7awTJco
-- Access a Docker Container Without Ssh -> http://www.sebastien-han.fr/blog/2014/01/27/access-a-container-without-ssh/
+- [No SSHD in docker container](http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/)
+- [Docker Skills](https://groups.google.com/forum/#!topic/dockercn/silv7awTJco)
+- [Access a Docker Container Without Ssh](http://www.sebastien-han.fr/blog/2014/01/27/access-a-container-without-ssh/)
+- [Docker Tips](http://www.tech-d.net)
 - http://fabiokung.com/2014/03/13/memory-inside-linux-containers/
-- [docker资源管理](http://segmentfault.com/blog/yexiaobai/1190000000681188#fnref:footnote2)
+- [Docker资源管理](http://segmentfault.com/blog/yexiaobai/1190000000681188#fnref:footnote2)
 - http://blog.liuts.com/post/242/
+- [Docker Persistence](http://www.alexecollins.com/docker-persistence/)
 
 > Cheers!
