@@ -49,6 +49,15 @@ Clone 我的dockerfile, 并进入工程dockerfiles/oracle11gr2目录, 记得把�
     $ docker commit -m='bla bla bla'  <CONTAINER_ID> localhost:5000/orcl11g
     $ boot2docker stop   # 这里注意一定要commit你的container再stop, 
     $ VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port11521,tcp,,11521,,1521”
+    $ boot2docker ip   # 取得docker2docker的ip 地址， 一般情况是:192.168.59.103
+
+> 这里需要重启boot2docker和oracle container
+
+    $ boot2docker start
+    $ sudo docker run --privileged -h orcl11g.cn.oracle.com -d -p 2222:22 -p 11521:1521 -v /dev/shm:/dev/shm --name orcl  -t localhost:5000/orcl11
+    $ ssh -p 2222 root@localhost 
+    $ service dbora start   ## 启动oracle 服务使用upstart.
+    $ sqlplus sys/<Your Pass>@192.168.59.103:11521/orcl  # 在主机测试的时候需要使用boot2docker ip.
 
 > 这里如果你有Registry repository可以直接push到registry上让别人也可以使用!
 
