@@ -42,6 +42,12 @@ Visit the project's website at [http://timtang.me](http://timtang.me)
     $ fab setup deploy
     ```
 
+- Start Service
+
+    ```
+    docker run --name jekyll -p 80:80 -v /srv/jekyll:/srv/jekyll -v /srv/jekyll/default.conf:/etc/nginx/conf.d/default.conf -d nginx
+    ```
+
 ## TODO:
 
 - Uploading assets files to OSS.

@@ -2,7 +2,7 @@
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /blog/:year/:month/:day/:title
 
-exclude: [".rvmrc", "Gemfile.lock", ".rbenv-version", "README.md", "Rakefile", "changelog.md","CNAME", "Gruntfile.js", "package.json", "node_modules", "fabfile.py", "Gemfile", "bin"]
+exclude: ["nginx.conf",".rvmrc", "Gemfile.lock", ".rbenv-version", "README.md", "Rakefile", "changelog.md","CNAME", "Gruntfile.js", "package.json", "node_modules", "fabfile.py", "Gemfile", "bin"]
 highlighter: pygments
 safe: true
 #lsi: false
@@ -67,6 +67,8 @@ JB :
   #     This means always setting the protocol (http|https) or prefixing with "/"
   BASE_PATH : false
 
+  THEME_NAME : mark-reid
+
   # By default, the asset_path is automatically defined relative to BASE_PATH plus the enabled theme.
   # ex: [BASE_PATH]/assets/themes/[THEME-NAME]
   #
@@ -75,7 +77,7 @@ JB :
   #   http://s3.amazonaws.com/yoursite/themes/watermelon
   #   /assets
   #
-  ASSET_PATH : false
+  ASSET_PATH : /assets/themes/mark-reid
 
   # These paths are to the main pages Jekyll-Bootstrap ships with.
   # Some JB helpers refer to these paths; change theme here if needed.
