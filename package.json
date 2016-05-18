@@ -2,6 +2,7 @@
   "name": "Tim-Tech-Talkin~",
   "author": "Tim.Tang <tang.jilong@gmail.com>",
   "homepage": "http://timtang.me",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/tim-tang/tim-tang.github.com"
