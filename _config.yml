@@ -2,7 +2,7 @@
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /blog/:year/:month/:day/:title
 
-exclude: ["nginx.conf",".rvmrc", "Gemfile.lock", ".rbenv-version", "README.md", "Rakefile", "changelog.md","CNAME", "Gruntfile.js", "package.json", "node_modules", "fabfile.py", "Gemfile", "bin"]
+exclude: ["vendor", "nginx.conf",".rvmrc", "Gemfile.lock", ".rbenv-version", "README.md", "Rakefile", "changelog.md","CNAME", "Gruntfile.js", "package.json", "node_modules", "fabfile.py", "Gemfile", "bin"]
 highlighter: pygments
 safe: true
 #lsi: false
