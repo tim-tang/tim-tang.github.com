@@ -13,16 +13,16 @@ multiviews: true
 production_env: true
 environments:
   production:
-    url: http://timtang.me
+    url: https://timtang.me
 
 
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
 title : Tech Talk~
-tagline: Python|NoSQL|NodeJS|Vim|Linux
+tagline: Python|NoSQL|NodeJS|Erlang|SmartOS
 author :
-  name : Tim.Tang,Linux,Node.JS,Vim,Python
+  name : Tim.Tang,SmartOS,Node.JS,Erlang,Python
   email : tang.jilong@gmail.com
   github : tang.jilong@139.com
   twitter : tangjilong
