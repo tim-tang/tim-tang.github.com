@@ -8,7 +8,7 @@ tags: [Riak Core]
 location: Suzhou, China
 ---
 
-此篇blog是对RICON 2013的一个来自StackMob工程师的Share [Using Riak Core to Manage Distributed Services](https://www.youtube.com/watch?v=d1mQdfNK9l4)的一些个人思考和解读，此YouTube链接需要翻墙,无法翻墙的用户可以直接在这里下载: (http://pan.baidu.com/s/1eS59LDo). 
+此篇blog是对RICON 2013的一个来自StackMob工程师的Share [Using Riak Core to Manage Distributed Services](https://www.youtube.com/watch?v=d1mQdfNK9l4)的一些个人思考和解读，此YouTube链接需要翻墙,无法翻墙的用户可以直接在这里[下载](http://pan.baidu.com/s/1eS59LDo). 
 
 ## 关于StackMob
 ---
@@ -18,7 +18,7 @@ location: Suzhou, China
 ## Riak Core的应用场景
 ---
 
-我们对Riak Core的一般理解都是做分布式的KV的存储和缓存，消息队列等，其实Riak Core 最擅长的是根据Key来快速的定位到服务(内部依赖于一致性hash的特性)，封装了所有的分布式系统需要处理的scale/distributed/fault tolerance的处理细节，能够快速的帮助我实现分布式高可用的应用。Riak Core提供了很好的对独立服务管理功能, 能够应对多租户的环境，用户的具体服务／数据对开发人员的角度来看是透明的，这样就可以很方便的去开发各种分布式应用服务。更细节的riak core的介绍可以看我的上一篇blog[Riak Core 解析](https://timtang.me/blog/2016/05/18/Riak-Core-Deepin).
+我们对Riak Core的一般理解都是做分布式的KV的存储和缓存，消息队列等，其实Riak Core 最擅长的是根据Key来快速的定位到服务(内部依赖于一致性hash的特性)，封装了所有的分布式系统需要处理的scale/distributed/fault tolerance的处理细节，能够快速的帮助我实现分布式高可用的应用。Riak Core提供了很好的对独立服务管理功能, 能够应对多租户的环境，用户的具体服务／数据对开发人员的角度来看是透明的，这样就可以很方便的去开发各种分布式应用服务。更细节的riak core的介绍可以看我的上一篇blog [Riak Core 解析](https://timtang.me/blog/2016/05/18/Riak-Core-Deepin).
 
 
 ## Riak Core和服务
