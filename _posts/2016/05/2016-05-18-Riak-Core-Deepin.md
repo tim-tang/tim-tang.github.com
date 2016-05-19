@@ -142,6 +142,8 @@ Riak Core提供了哪些Out Of Box 功能? 如下列表:
 - Rolling upgrade capability.
 - Key based request dispatch.
 
+> 这里顺便提下riak core实际上已经实现了基于key的这种load balancer的功能，前提是要求不同的Key(Bucket/Key).
+
 ## 一些不错的参考:
 ---
 
