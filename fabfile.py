@@ -30,9 +30,6 @@ def deploy():
     #put('nginx.conf', '%s/default.conf' %(JEKYLL_HOME))
     else:
        run('sudo rm -rf %s/_site' % JEKYLL_HOME)
-    #rsync_project(JEKYLL_HOME, '_site', delete=True)
-    #upload_project("_site", JEKYLL_HOME)
     put('_site', JEKYLL_HOME)
-    #run('docker restart jekyll')
     run('systemctl restart nginx')
     print(green("!!! Deploy Linode Production Server Succeed !!!"))

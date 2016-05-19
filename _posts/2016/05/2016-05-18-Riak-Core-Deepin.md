@@ -8,13 +8,13 @@ tags: [Riak Core]
 location: Suzhou, China
 ---
 
-终于有时间写点博客把一些技术点沉淀下来，说下[Riak Core](https://github.com/basho/riak_core),这方面的资料也比较少，写一点关于riak core的使用体会和它的内部原理，做了一个keynote,可以在这里下载到[Build Masterless Application With Riak Core](https://github.com/tim-tang/midi/blob/master/Masterless_Distributed_Applications_With_Riak_Core.pdf), 这里偷懒就直接扔到代码里了:), 同时为了方便大家理解，写了一个基于Erlang OTP 18/Rebar3的demo,代码在GitHub [midi](https://github.com/tim-tang/midi), 这个代码是根据经典的[try-try-try](https://github.com/tim-tang/try-try-try)例子实现进行了重构和扩展， 可以结合代码理解会比较方便.下面具体来看为什么说Riak Core 是个好东西，以及Riak Core中的每个概念。
+终于有时间写点博客把一些技术点沉淀下来，说下[Riak Core](https://github.com/basho/riak_core),这方面的资料也比较少，写一点关于riak core的使用体会和它的内部原理，做了一个keynote,可以在这里下载到[Build Masterless Application With Riak Core](/images/pdf/Masterless_Distributed_Applications_With_Riak_Core.pdf), 同时为了方便大家理解，写了一个基于Erlang OTP 18/Rebar3的demo,代码在GitHub [midi](https://github.com/tim-tang/midi), 这个代码是根据经典的[try-try-try](https://github.com/tim-tang/try-try-try)例子实现进行了重构和扩展， 可以结合代码理解会比较方便.下面具体来看为什么说Riak Core 是个好东西，以及Riak Core中的每个概念。
 
 
 ## Why Riak Core?
 ---
 
-Riak Core 不是一个新的分布式框架，有basho公司基于[Amazone Dynamo Paper](http://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf)开发，最早是在riakdb里面的核心代码，后来basho工程师发现这部分代码可以抽出来，用来开发分布式应用的框架，就有了[Riak Core](https://github.com/basho/riak_core), Riak Core基于一致性hash可提供了很好的去中心华分布式计算和存储的模型，非常容易横向扩展，提供了很好的容错和self healing的处理机制，基于riak core我们能够很快速的开发出分布式应用，包括:分布式的消息队列，分布式的kv存储服务,分布式的计算不服务等，甚至可以用它来开发基于SOA的服务调度系统(这块有时间在后续的blog来分享).具体特性：
+Riak Core 不是一个新的分布式框架，有basho公司基于[Amazone Dynamo Paper](http://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf)开发，最早是在riakdb里面的核心代码，后来basho工程师发现这部分代码可以抽出来，用来开发分布式应用的框架，就有了[Riak Core](https://github.com/basho/riak_core), Riak Core基于一致性hash可提供了很好的去中心华分布式计算和存储的模型，非常容易横向扩展，提供了很好的容错和self healing的处理机制，基于riak core我们能够很快速的开发出分布式应用，包括:分布式的消息队列，分布式的kv存储服务,分布式的计算不服务等，甚至可以用它来开发基于SOA的服务调度系统(这块有时间在后续的blog来分享)。
 
 ## 为什么使用一致性hash?
 ---
@@ -113,10 +113,22 @@ Handoff的类型:
 Active Anti-Antropy, riakdb的实现是后台的一个进程，每个一段时间执行一下，主要处理不同物理节点上的数据比较，每个物理节点上都有一个hashtree在缓存内，通过比较hashtree, 快速的找到，不一致的数据然后merge它。
 riak core本身并没有提供out of box的aae接口，但是它提供了aae所有需要的基本module比如,hashtree的实现，具体的实现可以看这里:[Hashtree](https://github.com/basho/riak_core/blob/develop/docs/hashtree.md), 实际上是根据bucket/key来hash树节点，方便快速的从树的root比较，找到不同然后更新。Riak Core Hashtree的时候默认tree width是1024, 固定3层。
 
+## Tombstones
+---
+
+Tombstones: 假如我们一份数据有3副本，设置成D=1，实际上只删除了1个副本，这是如果R=2正好读取到另外的2vnode, 这是数据一致性就出问题了。所以N/R/W/D的设置还是比较关键的，在服务端的开发中也是需要考虑到tombstones的问题.
+
+对于Tombstones的场景Riak Core本身并没有提供很好的解决，需要用户自己写代码实现。可能的解决方案如下:
+
+- [DottedDB](https://github.com/ricardobcl/DottedDB)
+- [ServerWideClocks](https://github.com/ricardobcl/ServerWideClocks) 
+- [Global_Logic_Clocks](/images/pdf/global_logical_clocks.pdf)
+
+
 ## 总结一下
 ---
 
-Riak Core提供了哪些out of box 功能? 如下列表:
+Riak Core提供了哪些Out Of Box 功能? 如下列表:
 
 - Physical Node cluster state management.
 - Ring state management.
@@ -127,9 +139,13 @@ Riak Core提供了哪些out of box 功能? 如下列表:
 - Rolling upgrade capability.
 - Key based request dispatch.
 
+
+
 ## 一些不错的参考:
 ---
 
 - [Riak Core Cluster Meta](https://gist.github.com/jrwest/d290c14e1c472e562548#343-manually-triggering-exchanges)
 - [Little Riak Core Book](https://marianoguerra.github.io/little-riak-core-book/)
 - [Rebar3 Riak Core Template](https://github.com/marianoguerra/rebar3_template_riak_core)
+- [CRDT LASP](https://github.com/lasp-lang/lasp)
+- [Why Vector Clock are Easy](http://basho.com/posts/technical/why-vector-clocks-are-easy/)
