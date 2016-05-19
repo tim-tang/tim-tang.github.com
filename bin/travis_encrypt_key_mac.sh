@@ -5,7 +5,7 @@ then
 fi
 
 # To generate secure SSH deploy key for a github repo to be used from Travis
-base64 --break=0 ~/.ssh/id_rsa_linode > ~/.ssh/id_rsa_linode_base64
+base64 --break=0 ~/.ssh/id_rsa > ~/.ssh/id_rsa_linode_base64
 ENCRYPTION_FILTER="echo \$(echo \"- secure: \")\$(travis encrypt \"\$FILE='\`cat $FILE\`'\" -r tim-tang/tim-tang.github.com)"
 # If you don't have homebrew please install it from http://brew.sh/
 if [[ ! $(which brew) ]]
