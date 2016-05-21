@@ -8,7 +8,7 @@ tags: [Riak Core]
 location: Suzhou, China
 ---
 
-此篇blog是对RICON 2013的一个来自StackMob工程师的Share [Using Riak Core to Manage Distributed Services](https://www.youtube.com/watch?v=d1mQdfNK9l4)的一些个人思考和解读，此YouTube链接需要翻墙,无法翻墙的用户可以直接在这里[下载](http://pan.baidu.com/s/1eS59LDo). 
+此篇blog是对RICON 2013的一个来自StackMob工程师的Share [Using Riak Core to Manage Distributed Services](https://www.youtube.com/watch?v=d1mQdfNK9l4)的一些个人思考和解读，此YouTube链接需要翻墙,无法翻墙的朋友可以直接在这里[下载](http://pan.baidu.com/s/1eS59LDo). 
 
 ## 关于StackMob
 ---
