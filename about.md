@@ -11,28 +11,26 @@ group: navigation
 
 ### Tim is mixer of... 
 ---
-- Jekyll blogger and JEE/WEB coder.
+- Jekyll blogger and coder.
 - Fans SmartOS/Riak Core/NoSQL 
 - Erlang/Python/NodeJS/Flask/SeaJS/Vertx lover.
 - Linode/GitHub/StackOverflow user. 
-- Vim/Terminal addictor.
-- And [more...](/images/pdf/Tim.Tang.pdf)
+- Vim/Tmux addictor.
+- [More...](/images/pdf/Tim.Tang.pdf)
 
-### Contact Me
+### Personal Profile
 ---
-
-- Email => tang.jilong@gmail.com
-- About.me => <http://about.me/tang.jilong>
-- Twitter => @tangjilong
-- LinkedIn => [Tim.Tang Linkedin](http://www.linkedin.com/pub/tim-tang/45/994/238)
-
+- _[&rarr; Tim's Resume ](/images/pdf/Tim.Tang.pdf)_
 
 ### GitHub Profile
 ---
 - _[&rarr; GitHub Repos](https://github.com/tim-tang)_
 
-### Personal Profile
+### Contact Me
 ---
-- _[&rarr; Tim's Resume ](/images/pdf/Tim.Tang.pdf)_
+
+- Email => tang.jilong@gmail.com
+- Twitter => @tangjilong
+- LinkedIn => [Tim.Tang Linkedin](http://www.linkedin.com/pub/tim-tang/45/994/238)
 
 > -- 🅣🅞 🅑🅔 🅐 🅒🅞🅓🅔 🅐🅡🅣🅘🅢🅐🅝! --
