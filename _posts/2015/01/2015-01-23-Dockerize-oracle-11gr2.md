@@ -2,7 +2,7 @@
 layout: post
 title: "Dockerize Oracle11gR2 DB"
 description: "Docker基于OracleLinux 6.6 image安装Oracle11gR2."
-category: docker
+category: Docker
 keywords: Docker Oracle11gr2
 tags: [Docker]
 location: Suzhou, China

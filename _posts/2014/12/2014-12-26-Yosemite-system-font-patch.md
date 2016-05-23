@@ -2,7 +2,7 @@
 layout: post
 title: "Mac OSX Yosemite系统字体修改"
 description: "Max OSX Yosemite 使用Avenir Next作为系统字体"
-category: misc
+category: Misc
 keywords: Yosemite system font patch
 tags: [Misc]
 location: Suzhou, China
