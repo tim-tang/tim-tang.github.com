@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Gossip in Riak Core"
-description: "Plumtree based Gossip Protocol In Riak Core"
+title: "Plumtree based Gossip Protocol In Riak Core"
+description: "Riak Core Gossip Internal"
 category: Riak Core 
 keywords: Gossip Plumtree Riak Core
 tags: [Riak Core]
@@ -30,7 +30,7 @@ Gossip协议最大的问题是集群规模大了之后，为了确保每个节�
 
 ## 正常工作场景
 
-Riak Core中基于Plumtree的Gossip协议实现主要是在Module:[riak_core_brodcast](https://github.com/basho/riak_core/blob/develop/src/riak_core_broadcast.erl), 就600多行代码，实现了一个基于gen server的self healing的spanning tree(通过不同的物理节点基于plumtree消息协议自动构建), 具体构建策略可以看init_peer/0, 下面主要看看具体的plumtree实现。
+Riak Core中基于Plumtree的Gossip协议实现主要是在Module:[riak_core_brodcast](https://github.com/basho/riak_core/blob/develop/src/riak_core_broadcast.erl), 就600多行代码，实现了一个基于gen server的self healing的spanning tree(通过不同的物理节点基于plumtree消息协议自动构建), 具体发送策略可以看init_peer/0, 这里根据节点数量的不同提供了3中机制，分别是直接点对点/环状/Spanning Tree的方式, 从源码来看message的内容对开发者是透明的，唯一的要求是需要有唯一的消息ID. 下面主要看看具体的plumtree实现。
 
 举例来看,如下图:
 
@@ -68,7 +68,7 @@ Riak Core中基于Plumtree的Gossip协议实现主要是在Module:[riak_core_bro
 
 ![gossip-9](/images/post/gossip-9.png)
 
-### 单点失效场景
+## 单点失效场景
 
 下面看下单点失效的场景，riak core的gossip如何处理, 接着上面的正常场景的例子，如果node-3 down掉，如下图:
 
@@ -92,7 +92,7 @@ node-1依旧发送eager消息给node-2/3, 但node-3挂掉，eager消息到不了
 
 在[riak_core_brodcast](https://github.com/basho/riak_core/blob/develop/src/riak_core_broadcast.erl)模块内部实现了一个outstanding sets用来存储所有的lazy消息(ihave消息)，用于在将来的某个时刻发送，当收到graft ack或者ignore的应答的时候，将这个消息从outstanding sets中删除, 这样可以控制集合消息的无限增加。
 
-> 这里从Basho内部的测试数据看可以容忍70%的节点失效而不丢消息!
+> 这里从Basho内部的测试数据看可以容忍70%的节点失效而不丢消息! 实际上
 
 ### Plumtree 数据指标
 ---
@@ -104,8 +104,14 @@ node-1依旧发送eager消息给node-2/3, 但node-3挂掉，eager消息到不了
 
 > 这里就不具体介绍了，plumtree的论文链接里面有详细的介绍。
 
+### 一句话总结
+---
+
+> 实际上Riak Core 实现的是Self Healing的[Spanning Tree](https://en.wikipedia.org/wiki/Spanning_tree), 当Eager Push 断开的情况下，通过Lazy Pull来修复通信。
+
 ### 参考资料
 ---
 
 - [Basho - Data Dissemination](https://www.youtube.com/watch?v=bo367a6ZAwM)
 - [Thicket: A Protocol for Building and. Maintaining Multiple Trees in a P2P Overlay](http://dl.acm.org/citation.cfm?id=1916397)
+- [Epidemic algorithms for replicated database maintenance](http://dl.acm.org/citation.cfm?id=41841)
