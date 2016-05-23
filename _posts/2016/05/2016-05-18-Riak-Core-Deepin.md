@@ -58,7 +58,7 @@ Fallback vnode的产生是由于一个物理节点down了，这个node上的所�
 ## VNode Master
 ---
 
-看到这里你可能会问，如果有vnode挂了，怎么来协调消息？ 这里vnode master就起作用了，它会知道所有的vnode的状态，那vnode master是如何知道所有vnode的状态的？每个物理服务器上都有一个vnode master的进程, 每个节点都会缓存一份整个ring的当前状态，riak core通过gossip协议，相互告知cluster中的节点，我的状态是什么，你的状态是什么，比较节点状态，更新ring缓存(riak_core_ring_manager:get_my_ring/0)来获取当前节点ring状态), 这样vnode master就知道了整个ring的状态，将message发达合适vnode.
+看到这里你可能会问，如果有vnode挂了，怎么来协调消息？ 这里vnode master就起作用了，它会知道所有的vnode的状态，那vnode master是如何知道所有vnode的状态的？每个物理服务器上都有一个vnode master的进程, 每个节点都会缓存一份整个ring的当前状态，riak core通过[gossip](https://www.cs.cornell.edu/home/rvr/papers/flowgossip.pdf)协议，相互告知cluster中的节点，我的状态是什么，你的状态是什么，比较节点状态，更新ring缓存(riak_core_ring_manager:get_my_ring/0)来获取当前节点ring状态), 这样vnode master就知道了整个ring的状态，将message发达合适vnode.
 
 ## 关于N/R/W 和preflist
 ---
