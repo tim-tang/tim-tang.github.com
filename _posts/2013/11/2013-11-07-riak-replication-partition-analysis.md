@@ -2,7 +2,7 @@
 layout: post
 title: "Riak Replication and Partition原理解析"
 description: "分析Riak Replication和vnode原理"
-category: riak
+category: Riak
 keywords: riak replication partition 
 tags: [Riak] 
 location: Suzhou, China

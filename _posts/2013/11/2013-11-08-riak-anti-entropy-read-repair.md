@@ -2,7 +2,7 @@
 layout: post
 title: "Riak Anti-Entropy and Eventual Consistency分析"
 description: "分析Riak Anti-Entropy and Eventual Consistency原理"
-category: riak
+category: Riak
 keywords: riak replication partition 
 tags: [Riak] 
 location: Suzhou, China

@@ -2,7 +2,7 @@
 layout: post
 title: "Riak对象关系管理Link Walking vs. 2i"
 description: "Riak对象关系管理使用Link Walking, 2i(Secondary Index)策略的比较"
-category: riak
+category: Riak
 keywords: riak link walking 2i secondary index
 tags: [Riak] 
 location: Suzhou, China

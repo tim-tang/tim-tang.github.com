@@ -2,9 +2,9 @@
 layout: post
 title: "双网卡安装SmartOS使用VirtualBox"
 description: "在VirtualBox中使用NAT, Host-Only双网卡安装SmartOS"
-category: IaaS
+category: IAAS
 keywords: smartos virtualbox nat host-only
-tags: [IaaS]
+tags: [IAAS]
 location: Suzhou, China
 ---
 
