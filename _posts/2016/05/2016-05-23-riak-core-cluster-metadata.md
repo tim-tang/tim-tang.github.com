@@ -24,5 +24,7 @@ Riak Core的cluster metadata主要用于存储全局的(cluster wide)的元数�
 ---
 
 - [Cluster Meta](https://gist.github.com/jrwest/d290c14e1c472e562548#36-removing-metadata-hashtree-files)
+- [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree)
 
 > 这块的实际应用中会少些，就不详细介绍了，Cheers!
+

@@ -92,7 +92,7 @@ node-1依旧发送eager消息给node-2/3, 但node-3挂掉，eager消息到不了
 
 在[riak_core_brodcast](https://github.com/basho/riak_core/blob/develop/src/riak_core_broadcast.erl)模块内部实现了一个outstanding sets用来存储所有的lazy消息(ihave消息)，用于在将来的某个时刻发送，当收到graft ack或者ignore的应答的时候，将这个消息从outstanding sets中删除, 这样可以控制集合消息的无限增加。
 
-> 这里从Basho内部的测试数据看可以容忍70%的节点失效而不丢消息! 实际上
+> 这里从Basho内部的测试数据看可以容忍70%的节点失效而不丢消息! 
 
 ### Plumtree 数据指标
 ---
