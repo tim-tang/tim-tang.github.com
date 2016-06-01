@@ -54,6 +54,14 @@ ZFS提供了多种soft raid的方式，下面看使用比较多的Raidz的整列
 
 > 建议基数不超过16(除非你的CPU特别强悍)
 
+
+## ZFS Dynamic Strip
+--- 
+由于ZFS是基于COW和一个全局动态的ZFS Pool，任何一次写 操作，都是对一块新数据块（Block）的一次写操作。ZFS从ZFS Pool中动态挑选出一个最优的设备，并且以一个transaction（事务）线性写入，充分有效地利用了现有设备的带宽, 也减少了read-modify-write的次数。如下图我们有5个磁盘，组成了raidz1的整列，每次不同的颜色代表不同的strip, 所有的写入都是一个完整的strip。对于写入的recordsize都是可以动态调整的，但只是对新文件创建有影响。已存在的文件还是保持其原有的recordsize。调节recordsize对顺序类型的负载没有帮助。调节recordsize的方式是针对使用随机少量的读写来密集的处理大文件的情况来提升作业量。
+
+![raidz](/images/post/zfs-raidz.png)
+
+
 ## ZFS Transaction
 ---
 
