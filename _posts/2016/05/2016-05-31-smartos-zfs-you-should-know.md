@@ -57,7 +57,7 @@ ZFS提供了多种soft raid的方式，下面看使用比较多的Raidz的整列
 ## ZFS Transaction
 ---
 
-先个图看下ZFS的整个I/O Stack:
+先给个图看下ZFS的整个I/O Stack:
 
 ![stack](/images/post/zfs-io-stack.png)
 
