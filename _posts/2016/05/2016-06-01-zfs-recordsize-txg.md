@@ -331,3 +331,10 @@ Let's do it, 我们将每次写操作延迟6秒, 为什么是6秒？ZFS的transa
 - 写一个大文件会跨多个transaction group。 
 - 对于ZFS的分析来说zdb非常有用, 需要用好。
 
+## 很不错的资料
+---
+
+- [ZFS On-Disk Data Walk](http://www.osdevcon.org/2008/files/osdevcon2008-max.pdf)
+- ZFS大神Max Bruning的blog: [Max Bruning's weblog](http://mbruning.blogspot.jp/2009/04/raidz-on-disk-format.html)
+- [ZFS On-Disk Format Using mdb and zdb视频](https://www.youtube.com/watch?v=BIxVSqUELNc)
+
