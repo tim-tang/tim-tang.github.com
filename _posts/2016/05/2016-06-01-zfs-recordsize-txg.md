@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "ZFS Recodsize 和 TXG 探索"
-description: "ZFS Recodsize and Transaction Group You Should Know"
+title: "ZFS Recordsize 和 TXG 探索"
+description: "ZFS Recordsize and Transaction Group You Should Know"
 category: SmartOS
 keywords: SmartOS ZFS zdb
 tags: [SmartOS]
