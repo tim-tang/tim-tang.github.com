@@ -3,7 +3,7 @@ layout: post
 title: "ZFS Recodsize 和 TXG 探索"
 description: "ZFS Recodsize and Transaction Group You Should Know"
 category: SmartOS
-keywords: SmartOS ZFS
+keywords: SmartOS ZFS zdb
 tags: [SmartOS]
 location: Suzhou, China
 ---
@@ -25,7 +25,7 @@ ZFS的recordsize参数对于磁盘的性能调优很重要，ZFS默认的records
 > 这里会用到[zdb](https://www.freebsd.org/cgi/man.cgi?query=zdb&sektion=&n=1)来分析整个数据处理情况, 这篇blog [Examining ZFS At Point-Blank Range](http://www.cuddletech.com/blog/pivot/entry.php?id=980)也许能帮助你更好的使用zdb。
 
 ## 测试-1, recordsize=128K, 文件写到磁盘是不是每次都写128K的block?
-----
+---
 
 我们先从简单的开始，使用dd命令在testpool上写一个128K的文件, 这个文件正好符合recordsize的大小，看看ZFS是如何处理的。
 
@@ -142,6 +142,7 @@ ZFS的recordsize参数对于磁盘的性能调优很重要，ZFS默认的records
 > 从这个结果来看，我们只存了200K的文件，但实际磁盘却存了256K的数据，所以当文件的大小超过recordsize的时候，多出来的部分72K, 会存另外一个128K的block, 实际上会浪费掉56K的存储空间。如果你比较关注空间效率，最好要开启compress。
 
 ## 测试-3: 存储多个2K的小文件，这个时候transaction group如何处理?
+---
 
 下面我们尝试存储6个2K的小文件：
     
@@ -254,7 +255,7 @@ Let's do it, 我们将每次写操作延迟6秒, 为什么是6秒？ZFS的transa
 
 > 从outputs我们可以看到以128K的文件存储在磁盘，分布在不同transaction group上。所以一次写会根据recordsize跨多个transaction group。
 
-## 测试-5: 最好我们来测试下压缩的情况
+## 测试-5: 最后我们来测试下压缩的情况
 ---
 
 我们使用推荐的LZ4的压缩方式:

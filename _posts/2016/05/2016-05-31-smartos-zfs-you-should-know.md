@@ -54,7 +54,6 @@ ZFS提供了多种soft raid的方式，下面看使用比较多的Raidz的整列
 
 > 建议基数不超过16(除非你的CPU特别强悍)
 
-
 ## ZFS Dynamic Strip
 --- 
 
@@ -75,6 +74,7 @@ ZFS提供了多种soft raid的方式，下面看使用比较多的Raidz的整列
 
 ## Trasction Group
 ---
+
 在任意时刻，系统最多同时存在如下3种类型的transaction group在一个pool里面:
 
 - Open Group: 维护文件系统把新的写请求
@@ -104,6 +104,7 @@ ZFS提供了多种soft raid的方式，下面看使用比较多的Raidz的整列
 
 ## ZIL (ZFS Intent Log)
 ----
+
 ZIL 我们一般使用一个或则多个硬盘，正常情况下使用ssd的磁盘，ZIL能记录所有的写操作，然后写到ZIL 的磁盘，因为zfs copy on write的机制，ZIL实际的存储信息很小, 只保存修改的数据，或者是数据块的外部指针, 假如你写入一个大的数据文件，如果设置logbias=troughput, 那么这个所有的写操作是直接到data pool的不经过ZIL, ZIL中只保存数据的指针, 所以说如果设置logbias=troughput,那么使用独立的ZIL设备是没有意义的。 如果logbias=latency，由于zfs对zil的使用有阈值限制, 例如单次提交的写超过阈值则直接写data pool, 否则会写入ZIL之后sync到data pool。这个阈值是通过设置zfs_immediate_write_sz (/etc/system文件)的大小来确定。所有的这些参数的调整要更据你的具体应用场景来确定。
 
 > 这里如果我们不添加独立ZIL设备，实际上pool里面的数据盘上也会又ZIL的存储, 只要是ZFS sync=standard, 值得一提的是sync=always的话，所有文件系统的transaction是直接写到data pool.
@@ -123,6 +124,7 @@ ZIL 我们一般使用一个或则多个硬盘，正常情况下使用ssd的磁�
 
 ## SmartOS 上ZFS I/O Throttle
 ---
+
 对于在云平台多租户场景下任意一个租户vm的IO的burst可能会对其他租户的正常使用造成影响, SmartOS实现了I/O throttle:
 
 - 跟踪每个vm的IO 请求，当IO 请求超过合理的范围，这个vm的所有read/write请求会delay一些时间，最大是100微秒。

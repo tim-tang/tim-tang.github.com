@@ -7,6 +7,8 @@ group: navigation
 
 ᴇxᴩᴇʀɪᴇɴᴄᴇᴅ ᴇɴᴅ-ᴛᴏ-ᴇɴᴅ ᴅᴇᴠᴇʟᴏᴩᴇʀ, ᴀʙʟᴇ ᴛᴏ ᴛᴀᴋᴇ ᴏɴ ʀᴇꜱᴩᴏɴꜱɪʙɪʟɪᴛy ꜰᴏʀ ᴛʜᴇ ᴀɴᴀʟyꜱɪꜱ ᴀɴᴅ ᴅᴇᴠᴇʟᴏᴩᴍᴇɴᴛ ᴏꜰ ᴄʀᴇᴀᴛɪᴠᴇ ᴩʀᴏᴊᴇᴄᴛꜱ. ᴀʟᴡᴀyꜱ ꜱᴛʀɪᴠᴇ ᴛᴏ ꜰɪɴᴅ ꜱɪᴍᴩʟᴇ, ᴄᴏᴍᴍᴏɴ-ꜱᴇɴꜱᴇ ꜱᴏʟᴜᴛɪᴏɴꜱ ᴛᴏ ᴄᴏᴍᴩʟᴇx ᴩʀᴏʙʟᴇᴍꜱ, ᴀᴅʜᴇʀᴇ ᴛᴏ ᴄᴏᴅɪɴɢ ᴄʟᴇᴀɴ. ᴄᴜʀʀᴇɴᴛʟy ᴇɴᴊᴏyꜱ ꜱᴩᴇɴᴅɪɴɢ ᴍᴏꜱᴛ ᴏꜰ ꜱᴩᴀʀᴇ ᴛɪᴍᴇ ᴡɪᴛʜ ꜱᴍᴀʀᴛᴏꜱ/ʀɪᴀᴋ ᴄᴏʀᴇ/ᴇʀʟᴀɴɢ/ᴩyᴛʜᴏɴ/ɴᴏᴅᴇᴊꜱ.
 
+> __I Am Hunting Job Now, Feel Free To Contact Me!__
+
 ![tim-avatar](/images/avatar1.png)
 
 ### Tim is mixer of... 
@@ -33,4 +35,3 @@ group: navigation
 - Twitter => @tangjilong
 - LinkedIn => [Tim.Tang Linkedin](http://www.linkedin.com/pub/tim-tang/45/994/238)
 
-> -- 🅣🅞 🅑🅔 🅐 🅒🅞🅓🅔 🅐🅡🅣🅘🅢🅐🅝! --
