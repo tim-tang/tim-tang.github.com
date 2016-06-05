@@ -117,7 +117,7 @@ location: Suzhou, China
 
 看起来不错，block pointer的metadata和第2个数据block变了, B=517/517 transaction group Id也是一致的， 第一个数据block没任何变化, 这是我们想要的，我们在来看看数据：
 
-    $ zdb -ddddd 0:40c600:20000:r
+    $ zdb -R testpool 0:40c600:20000:r
     ... skip info ...
     zone
     zoo
